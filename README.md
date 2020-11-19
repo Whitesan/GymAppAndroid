@@ -1,2 +1,0 @@
-# GymAppAndroid
-Gym app(android)
