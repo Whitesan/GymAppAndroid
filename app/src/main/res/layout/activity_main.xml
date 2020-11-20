@@ -41,16 +41,22 @@
         <androidx.cardview.widget.CardView
 
             android:id="@+id/textView"
-            android:layout_width="175dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_column="0"
             android:layout_row="0"
-            android:layout_height="175dp"
+            android:layout_marginBottom="20dp"
+            android:stateListAnimator="@anim/anima"
+            android:foreground="?attr/selectableItemBackground"
+
+            android:clickable="true"
             android:background="@drawable/block"
 
-            android:padding="15dp"
-            android:text="\nTextView42"
 
-            app:cardBackgroundColor="@color/graphite">
+            app:cardCornerRadius="40dp"
+            app:cardBackgroundColor="@color/cardview_dark_background">
 
             <ImageView
                 android:layout_width="100dp"
@@ -61,13 +67,17 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/textView2"
-            app:cardBackgroundColor="@color/graphite"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            app:cardBackgroundColor="@color/cardview_dark_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_column="1"
             android:layout_row="0"
             android:background="@drawable/block"
+            app:cardCornerRadius="40dp"
             android:padding="15dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp">
             <ImageView
                 android:layout_width="match_parent"
@@ -80,13 +90,16 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            app:cardBackgroundColor="@color/graphite"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            app:cardBackgroundColor="@color/cardview_dark_background"
             android:background="@drawable/block"
             android:layout_column="0"
             android:layout_row="1"
-            android:text="\nTextView42"
+
+            app:cardCornerRadius="40dp"
             android:textAlignment="center"
             android:padding="15dp"
             >
@@ -100,12 +113,15 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="175dp"
-            android:layout_height="175dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_column="1"
             android:layout_row="1"
-            app:cardBackgroundColor="@color/graphite"
+            app:cardBackgroundColor="@color/cardview_dark_background"
             android:padding="15dp"
+            app:cardCornerRadius="40dp"
             android:layout_marginLeft="15dp"
             android:textAlignment="center" >
 
@@ -117,5 +133,15 @@
                 />
         </androidx.cardview.widget.CardView>
     </GridLayout>
+    <RelativeLayout
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/black"
+        >
+
+
+
+    </RelativeLayout>
 
    </LinearLayout>
