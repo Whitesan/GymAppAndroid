@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GymApp</string>
+    <string name="calendar">Calendar</string>
+    <string name="training">Training</string>
+    <string name="statistics">Statistics</string>
+    <string name="planner">Planner</string>
 </resources>
