@@ -37,7 +37,7 @@
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/textView"
+            android:id="@+id/cardViewCalendar"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_column="0"
@@ -80,7 +80,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewTraining"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -126,6 +126,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/textViewStatistics"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -169,7 +170,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-
+            android:id="@+id/textViewPlanner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
