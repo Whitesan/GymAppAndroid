@@ -19,10 +19,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val planer = findViewById<CardView>(R.id.cardViewPlanner)
+
         planer.setOnClickListener{
                 val intent =  Intent(applicationContext,PlannerActivity::class.java)
                 startActivity(intent)
         }
+
         val statistics = findViewById<CardView>(R.id.cardViewStatistics)
         statistics.setOnClickListener{
             val intent =  Intent(applicationContext,StatisticsActivity::class.java)

@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 
 @Suppress("DEPRECATION")
 class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
-        val button = findViewById<Button>(R.id.backCalendar)
+        val button = findViewById<ImageView>(R.id.backCalendar)
         button.setOnClickListener{
             val intent =  Intent(applicationContext,MainActivity::class.java)
             startActivity(intent)
