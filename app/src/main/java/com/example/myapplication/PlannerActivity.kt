@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 
 @Suppress("DEPRECATION")
 class PlannerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planner)
-        val button = findViewById<Button>(R.id.backPlanner)
-        button.setOnClickListener{
+        val back = findViewById<ImageView>(R.id.backPlanner)
+        back.setOnClickListener{
                 val intent =  Intent(applicationContext,MainActivity::class.java)
                 startActivity(intent)
         }
