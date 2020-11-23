@@ -1,8 +1,12 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+
 /*TODO
 
 */
@@ -13,7 +17,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        var planer = findViewById(R.id.textViewPlanner) as CardView
+        planer.setOnClickListener(object:View.OnClickListener
+        {
+            override fun onClick(v: View?) {
+                val intent =  Intent(applicationContext,PlannerActivity::class.java)
+                startActivity(intent)
+            }
+        })
 
     }
 
@@ -37,5 +48,10 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         hideSystemUI()
+    }
+    public fun planner(view: View)
+    {
+        val intent =  Intent(this,PlannerActivity::class.java)
+        startActivity(intent)
     }
 }
