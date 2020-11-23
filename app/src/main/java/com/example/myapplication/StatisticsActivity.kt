@@ -16,8 +16,8 @@ class StatisticsActivity : AppCompatActivity() {
         val button = findViewById<ImageView>(R.id.backStatistics)
         button.setOnClickListener{
             val intent =  Intent(applicationContext,MainActivity::class.java)
-            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
-            
+            startActivity(intent)
+
         }
     }
 
