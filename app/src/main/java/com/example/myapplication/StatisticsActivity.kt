@@ -7,16 +7,17 @@ import android.view.View
 import android.widget.Button
 
 @Suppress("DEPRECATION")
-class PlannerActivity : AppCompatActivity() {
+class StatisticsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_planner)
-        val button = findViewById<Button>(R.id.backPlanner)
+        setContentView(R.layout.activity_statistics)
+        val button = findViewById<Button>(R.id.backStatistics)
         button.setOnClickListener{
-                val intent =  Intent(applicationContext,MainActivity::class.java)
-                startActivity(intent)
+            val intent =  Intent(applicationContext,MainActivity::class.java)
+            startActivity(intent)
         }
     }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {

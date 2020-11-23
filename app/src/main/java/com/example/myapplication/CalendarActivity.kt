@@ -7,16 +7,17 @@ import android.view.View
 import android.widget.Button
 
 @Suppress("DEPRECATION")
-class PlannerActivity : AppCompatActivity() {
+class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_planner)
-        val button = findViewById<Button>(R.id.backPlanner)
+        setContentView(R.layout.activity_calendar)
+        val button = findViewById<Button>(R.id.backCalendar)
         button.setOnClickListener{
-                val intent =  Intent(applicationContext,MainActivity::class.java)
-                startActivity(intent)
+            val intent =  Intent(applicationContext,MainActivity::class.java)
+            startActivity(intent)
         }
     }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {

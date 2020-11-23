@@ -80,7 +80,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/textViewTraining"
+            android:id="@+id/cardViewTraining"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -126,7 +126,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/textViewStatistics"
+            android:id="@+id/cardViewStatistics"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -170,7 +170,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/textViewPlanner"
+            android:id="@+id/cardViewPlanner"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"

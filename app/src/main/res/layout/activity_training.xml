@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlannerActivity"
+    tools:context=".StatisticsActivity"
     android:background="@color/black"
-
     >
-
     <Button
-        android:id="@+id/backPlanner"
+        android:id="@+id/backTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="141dp"
