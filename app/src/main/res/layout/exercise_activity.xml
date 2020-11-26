@@ -74,7 +74,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/entry_shape"
-                android:hint="@string/enterTrainingName"
+                android:hint="@string/enterExerciseName"
                 android:inputType="text"
                 android:padding="15dp"
                 android:paddingStart="24sp"
@@ -90,6 +90,7 @@
                 android:text="Series"
                 android:textSize="25sp"
                 android:textAlignment="center"
+
                 android:background="@color/graphite"
                 >
 
@@ -186,9 +187,9 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
+                    android:layout_margin="15dp"
                     android:text="Dodaj"
-                    android:background="@color/cardview_dark_background"
+                    android:background="@color/green"
                     ></Button>
 
             </RelativeLayout>

@@ -6,4 +6,5 @@
     <string name="planner">Planner</string>
     <string name="trainingCreator">Creator</string>
     <string name="enterTrainingName">Enter training name</string>
+    <string name="enterExerciseName">Enter exercise name</string>
 </resources>

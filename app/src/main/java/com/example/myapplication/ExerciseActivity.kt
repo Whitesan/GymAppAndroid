@@ -21,6 +21,9 @@ class ExerciseActivity : AppCompatActivity() {
         val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
         weightPicker.maxValue = 1000
         weightPicker.minValue = 0
+
+
+
         val button = findViewById<ImageView>(R.id.backExercise)
         button.setOnClickListener{
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
