@@ -12,7 +12,6 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:id="@+id/TrainingCreatorLayout"
-
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,6 +86,10 @@
                 android:textColorHint="@color/text_transpatentish"
                 android:singleLine="true"
                 />
+<!--            <RecyclerView>-->
+<!--                -->
+<!--                -->
+<!--            </RecyclerView>-->
         </LinearLayout>
     </RelativeLayout>
 

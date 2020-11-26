@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.NumberPicker
 import androidx.cardview.widget.CardView
 
@@ -19,7 +21,11 @@ class ExerciseActivity : AppCompatActivity() {
         val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
         weightPicker.maxValue = 1000
         weightPicker.minValue = 0
-
+        val button = findViewById<ImageView>(R.id.backExercise)
+        button.setOnClickListener{
+            val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
+            startActivity(intent)
+        }
 
 
         var name:String?
@@ -64,6 +70,7 @@ class ExerciseActivity : AppCompatActivity() {
         hideSystemUI()
     }
     fun View.hideKeyboard(){
+        hideSystemUI()
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }

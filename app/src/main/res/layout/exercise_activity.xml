@@ -24,7 +24,7 @@
             >
 
             <ImageView
-                android:id="@+id/backPlanner"
+                android:id="@+id/backExercise"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/backward"

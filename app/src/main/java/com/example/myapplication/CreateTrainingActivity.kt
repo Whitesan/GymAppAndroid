@@ -16,10 +16,6 @@ class CreateTrainingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_training)
-//        val layout=findViewById<LinearLayout>(R.id.TrainingCreatorLayout)
-//        layout.setOnTouchListener(v,event->{
-//
-//        })
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
         button.setOnClickListener{
             val intent =  Intent(applicationContext, PlannerActivity::class.java)
@@ -47,6 +43,7 @@ class CreateTrainingActivity : AppCompatActivity() {
 
     }
     fun View.hideKeyboard(){
+            hideSystemUI()
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
             inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }
