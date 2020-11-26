@@ -14,7 +14,7 @@ class CreateTrainingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_training)
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
         button.setOnClickListener{
-            val intent =  Intent(applicationContext,MainActivity::class.java)
+            val intent =  Intent(applicationContext,PlannerActivity::class.java)
             startActivity(intent)
         }
     }

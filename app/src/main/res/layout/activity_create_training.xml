@@ -62,15 +62,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             >
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/enterTrainingName"
 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/entry_shape"
+                android:hint="@string/enterTrainingName"
                 android:inputType="text"
-                android:textAlignment="textEnd" />
+                android:padding="15dp"
+                android:paddingStart="24sp"
+                android:paddingEnd="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_transpatentish" />
         </LinearLayout>
     </RelativeLayout>
 

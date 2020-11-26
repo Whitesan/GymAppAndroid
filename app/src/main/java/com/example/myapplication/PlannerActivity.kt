@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 
 @Suppress("DEPRECATION")
 class PlannerActivity : AppCompatActivity() {
@@ -17,6 +18,14 @@ class PlannerActivity : AppCompatActivity() {
                 val intent =  Intent(applicationContext,MainActivity::class.java)
                 startActivity(intent)
         }
+        val createTraining = findViewById<CardView>(R.id.createTrainingCardView)
+        createTraining.setOnClickListener{
+            val intent =  Intent(applicationContext,CreateTrainingActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
