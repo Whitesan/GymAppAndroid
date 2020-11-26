@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+         android:id="@+id/exerciseLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ExerciseActivity"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:layout_weight="15"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@color/black"
+            >
+
+            <ImageView
+                android:id="@+id/backPlanner"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/backward"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:padding="10dp"
+                />
+            <TextView
+                android:id="@+id/plannerTitle"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="Exercise"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:fontFamily="serif-monospace"
+                android:layout_marginTop="5dp"
+                android:layout_weight="5"
+
+                />
+            <ImageView
+                android:id="@+id/settingsPlanner"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/settings"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="14"
+            android:background="@color/black"
+            android:orientation="vertical"
+
+            >
+            <EditText
+                android:id="@+id/enterExerciseName"
+                android:cursorVisible="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/entry_shape"
+                android:hint="@string/enterTrainingName"
+                android:inputType="text"
+                android:padding="15dp"
+                android:paddingStart="24sp"
+                android:paddingEnd="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_transpatentish"
+                android:singleLine="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Series"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:background="@color/graphite"
+                >
+
+            </TextView>
+            <NumberPicker
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:layout_margin="15dp"
+                android:background="@color/cardview_dark_background"
+
+                >
+
+            </NumberPicker>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:background="@color/black"
+                android:orientation="vertical"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/graphite"
+                        android:text="Weight"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        >
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/graphite"
+                        android:text="Weight"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        >
+
+                    </TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="6">
+
+                    <NumberPicker
+                        android:id="@+id/weightPicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@color/cardview_dark_background"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        >
+
+                    </NumberPicker>
+                    <NumberPicker
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@color/cardview_dark_background"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        >
+
+                    </NumberPicker>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:text="Dodaj"
+                    android:background="@color/cardview_dark_background"
+                    ></Button>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
