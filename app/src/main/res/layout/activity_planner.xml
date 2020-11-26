@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".PlannerActivity"
     android:background="@color/black"
     android:orientation="vertical"
@@ -54,16 +55,105 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="0dp"
         android:layout_weight="14"
         android:background="@color/black"
         android:orientation="vertical"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            />
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:layout_margin="35dp"
+            app:cardBackgroundColor="@color/cardview_dark_background"
+            app:cardCornerRadius="30dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:textStyle="bold"
+                    android:text="Create Training"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/carpenter" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:layout_marginRight="35dp"
+            android:layout_marginLeft="35dp"
+
+            app:cardBackgroundColor="@color/cardview_dark_background"
+            app:cardCornerRadius="30dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+                    android:textStyle="bold"
+                    android:text="Add training to calendar"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/check" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            >
+        </RelativeLayout>
 
     </LinearLayout>
 
