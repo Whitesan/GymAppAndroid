@@ -4,4 +4,6 @@
     <string name="training">Training</string>
     <string name="statistics">Statistics</string>
     <string name="planner">Planner</string>
+    <string name="trainingCreator">Creator</string>
+    <string name="enterTrainingName">Enter Training Name</string>
 </resources>
