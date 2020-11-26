@@ -8,6 +8,10 @@
     android:background="@color/black"
     android:orientation="vertical"
     android:layout_weight="15"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/TrainingCreatorLayout"
 
     >
     <LinearLayout
@@ -66,7 +70,8 @@
             >
 
             <EditText
-
+                android:id="@+id/enterTrainingName"
+                android:cursorVisible="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -79,7 +84,9 @@
                 android:paddingEnd="20sp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textColorHint="@color/text_transpatentish" />
+                android:textColorHint="@color/text_transpatentish"
+                android:singleLine="true"
+                />
         </LinearLayout>
     </RelativeLayout>
 
