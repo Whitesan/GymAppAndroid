@@ -6,16 +6,13 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.NumberPicker
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
+    val exercise = Exercise()
     var seriesCounter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +47,8 @@ class ExerciseActivity : AppCompatActivity() {
         weightPicker.minValue = 0
 
         val repsPicker = findViewById<NumberPicker>(R.id.repsPicker)
-        weightPicker.maxValue = 100
-        weightPicker.minValue = 0
+        repsPicker.maxValue = 100
+        repsPicker.minValue = 0
 
 
         val button = findViewById<ImageView>(R.id.backExercise)
@@ -73,10 +70,19 @@ class ExerciseActivity : AppCompatActivity() {
             seriesCounter++;
             val button = Button(this) as Button;
             button.text = seriesCounter.toString()
+
             button.setBackgroundColor(button.context.resources.getColor(R.color.green))
             button.layoutParams = params
-
             seriesPicker.addView(button)
+
+            val reps = repsPicker.value
+            val weight = weightPicker.value
+            val exerciseNameField = findViewById<EditText>(R.id.enterExerciseName)
+            val exerciseName = exerciseNameField.text
+            val series = Series(seriesCounter,reps,weight)
+            exercise.addSeries(series)
+            Toast.makeText(this,series.toString(),Toast.LENGTH_LONG).show()
+
         }
 
 
