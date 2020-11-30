@@ -19,9 +19,8 @@ class ExerciseActivity : AppCompatActivity() {
         setContentView(R.layout.exercise_activity)
 
         val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
-        weightPicker.maxValue = 1000
+        weightPicker.maxValue = 500
         weightPicker.minValue = 0
-
 
 
         val button = findViewById<ImageView>(R.id.backExercise)
