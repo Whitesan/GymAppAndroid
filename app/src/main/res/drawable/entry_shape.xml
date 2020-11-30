@@ -3,10 +3,8 @@
     android:shape="rectangle"
     android:padding="10dp"
     >
-    <solid android:color="@color/almost_transparent" />
+<!--    <solid android:color="@color/almost_transparent" />-->
     <corners
         android:radius="60dp"
-
         />
-
 </shape>

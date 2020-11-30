@@ -76,6 +76,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/entry_shape"
+                android:backgroundTint="@color/almost_transparent"
                 android:hint="@string/enterTrainingName"
                 android:inputType="text"
                 android:padding="15dp"
@@ -86,10 +87,15 @@
                 android:textColorHint="@color/text_transpatentish"
                 android:singleLine="true"
                 />
-<!--            <RecyclerView>-->
-<!--                -->
-<!--                -->
-<!--            </RecyclerView>-->
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/entry_shape"
+                android:backgroundTint="@color/green"
+                android:text="@string/createExercise"
+                />
         </LinearLayout>
     </RelativeLayout>
 
