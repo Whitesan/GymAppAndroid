@@ -56,56 +56,63 @@
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_weight="14"
-        android:background="@color/black"
-        >
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="25dp"-->
+
+<!--        android:background="@color/black"-->
+<!--        >-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:orientation="vertical"
+            android:layout_weight="14"
             >
 
             <EditText
                 android:id="@+id/enterTrainingName"
-                android:cursorVisible="false"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
+                android:layout_weight="1.5"
+
                 android:background="@drawable/entry_shape"
                 android:backgroundTint="@color/almost_transparent"
+                android:cursorVisible="false"
                 android:hint="@string/enterTrainingName"
                 android:inputType="text"
                 android:padding="15dp"
                 android:paddingStart="24sp"
                 android:paddingEnd="20sp"
+                android:singleLine="true"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textColorHint="@color/text_transpatentish"
-                android:singleLine="true"
-                />
+                android:layout_marginBottom="20dp"
+                android:textSize="17sp" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layout_weight="12"
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="0dp"
+
 
                     />
 
             <Button
+                android:layout_weight="1.5"
                 android:id="@+id/createExerciseButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_margin="15dp"
                 android:background="@drawable/entry_shape"
                 android:backgroundTint="@color/green"
                 android:text="@string/createExercise"
                 />
         </LinearLayout>
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
 </LinearLayout>

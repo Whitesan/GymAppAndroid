@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/entry_shape"
         android:backgroundTint="@color/almost_transparent"
-        android:text="TEST"
-
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="20dp"
         />
 </LinearLayout>
