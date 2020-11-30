@@ -7,9 +7,13 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
@@ -40,7 +44,13 @@ class CreateTrainingActivity : AppCompatActivity() {
             }
             false
         })
-
+        val list=ListElements<String>()
+        val adapter=createRecyclerView(list)
+        val newExerciseButton = findViewById<Button>(R.id.createExerciseButton)
+        newExerciseButton.setOnClickListener{
+            updateRecyclerView(list,adapter)
+            Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show()
+        }
     }
     fun View.hideKeyboard(){
             hideSystemUI()
@@ -66,5 +76,15 @@ class CreateTrainingActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         hideSystemUI()
+    }
+    private fun createRecyclerView(list:ListElements<String>): ListAdapter<String>{
+        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter=ListAdapter<String>(list)
+        recycler.adapter=adapter
+        recycler.layoutManager=LinearLayoutManager(this)
+        return adapter
+    }
+    fun updateRecyclerView(elementList:ListElements<String>,adapter: ListAdapter<String>){
+        adapter.notifyItemInserted(elementList.appendList("TEST ELEMENT"))
     }
 }
