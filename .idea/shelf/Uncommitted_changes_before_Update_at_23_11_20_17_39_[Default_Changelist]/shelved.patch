@@ -1,0 +1,59 @@
+Index: app/src/main/java/com/example/myapplication/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.myapplication\n\nimport android.os.Bundle\nimport android.view.View\nimport androidx.appcompat.app.AppCompatActivity\n\n@Suppress(\"DEPRECATION\")\nclass MainActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_main)\n\n\n    }\n\n\n    override fun onWindowFocusChanged(hasFocus: Boolean) {\n        super.onWindowFocusChanged(hasFocus)\n        if (hasFocus) {\n            hideSystemUI()\n        }\n    }\n\n    private fun hideSystemUI() {\n\n        val decorView: View = window.decorView\n        decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE\n                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION\n                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN\n                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION\n                or View.SYSTEM_UI_FLAG_FULLSCREEN\n                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)\n    }\n    override fun onResume() {\n        super.onResume()\n        hideSystemUI()\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/myapplication/MainActivity.kt	(revision b1fc19b9a2c6acaadd40a3a4355dabcb92fd674a)
++++ app/src/main/java/com/example/myapplication/MainActivity.kt	(date 1606149506000)
+@@ -1,8 +1,11 @@
+ package com.example.myapplication
+ 
++import android.content.Intent
+ import android.os.Bundle
+ import android.view.View
++import android.widget.Button
+ import androidx.appcompat.app.AppCompatActivity
++import androidx.cardview.widget.CardView
+ 
+ @Suppress("DEPRECATION")
+ class MainActivity : AppCompatActivity() {
+@@ -10,7 +13,16 @@
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
+ 
+-
++        val plannerButton =findViewById<CardView>(R.id.textViewTraining) as CardView
++        plannerButton.setOnClickListener{
++            val intent= Intent(this,TrainingActivity::class.java)
++            startActivity(intent)
++        }
++        val statisticsButton =findViewById<CardView>(R.id.textViewStatistics) as CardView
++        statisticsButton.setOnClickListener{
++            val intent= Intent(this,StatisticsActivity::class.java)
++            startActivity(intent)
++        }
+     }
+ 
+ 
+Index: app/src/main/res/layout/activity_training.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_training.xml	(date 1606148273000)
++++ app/src/main/res/layout/activity_training.xml	(date 1606148273000)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".TrainingActivity"
++    android:background="@color/black"
++    >
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
