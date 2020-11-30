@@ -96,6 +96,8 @@
                 >
 
             </TextView>
+
+
             <NumberPicker
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -125,7 +127,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/graphite"
-                        android:text="Weight"
+                        android:text="Reps"
                         android:textSize="25sp"
                         android:textAlignment="center"
                         >
@@ -150,23 +152,27 @@
                     android:layout_weight="6">
 
                     <NumberPicker
-                        android:id="@+id/weightPicker"
+                        android:id="@+id/repsPicker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:background="@color/cardview_dark_background"
+                        android:background="@drawable/picker_shape"
+                        android:backgroundTint="@color/cardview_dark_background"
                         android:layout_marginRight="50dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="20dp"
+
                         >
 
                     </NumberPicker>
                     <NumberPicker
+                        android:id="@+id/weightPicker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
-                        android:background="@color/cardview_dark_background"
+                        android:background="@drawable/picker_shape"
+                        android:backgroundTint="@color/cardview_dark_background"
                         android:layout_marginRight="50dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="20dp"
