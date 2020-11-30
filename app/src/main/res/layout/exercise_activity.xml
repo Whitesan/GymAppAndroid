@@ -97,17 +97,31 @@
 
             </TextView>
 
-
-            <NumberPicker
-                android:layout_width="match_parent"
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:layout_margin="15dp"
-                android:background="@color/cardview_dark_background"
+
+                android:background="@color/black"
 
                 >
+                <LinearLayout
+                    android:id="@+id/seriesPicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    >
 
-            </NumberPicker>
+
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,6 +207,7 @@
                 android:layout_weight="2">
 
                 <Button
+                    android:id="@+id/addExercise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"

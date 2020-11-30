@@ -1,33 +1,27 @@
 package com.example.myapplication
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.NumberPicker
-import androidx.cardview.widget.CardView
+import androidx.appcompat.app.AppCompatActivity
+
 
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
+    var seriesCounter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
 
-        val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
-        weightPicker.maxValue = 500
-        weightPicker.minValue = 0
 
-
-        val button = findViewById<ImageView>(R.id.backExercise)
-        button.setOnClickListener{
-            val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
-            startActivity(intent)
-        }
 
 
         var name:String?
@@ -49,6 +43,43 @@ class ExerciseActivity : AppCompatActivity() {
             }
             false
         })
+
+
+        val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
+        weightPicker.maxValue = 500
+        weightPicker.minValue = 0
+
+        val repsPicker = findViewById<NumberPicker>(R.id.repsPicker)
+        weightPicker.maxValue = 100
+        weightPicker.minValue = 0
+
+
+        val button = findViewById<ImageView>(R.id.backExercise)
+        button.setOnClickListener{
+            val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
+            startActivity(intent)
+        }
+
+        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT)
+        params.setMargins(10,10,10,10)
+
+        val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
+
+
+        val addExercise = findViewById<Button>(R.id.addExercise)
+        addExercise.setOnClickListener{
+            seriesCounter++;
+            val button = Button(this) as Button;
+            button.text = seriesCounter.toString()
+            button.setBackgroundColor(button.context.resources.getColor(R.color.green))
+            button.layoutParams = params
+
+            seriesPicker.addView(button)
+        }
+
+
 
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
