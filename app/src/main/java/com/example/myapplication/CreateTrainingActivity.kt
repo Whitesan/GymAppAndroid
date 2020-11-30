@@ -51,6 +51,14 @@ class CreateTrainingActivity : AppCompatActivity() {
             updateRecyclerView(list,adapter)
             Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show()
         }
+        val endButton=findViewById<Button>(R.id.endCreatingExercises)
+        endButton.setOnClickListener{
+            val intent =  Intent(applicationContext, PlannerActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
     }
     fun View.hideKeyboard(){
             hideSystemUI()

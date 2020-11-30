@@ -33,7 +33,7 @@ class ExerciseActivity : AppCompatActivity() {
         }
         entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
-                name = entry.text.toString()
+               exercise.addName(entry.text.toString())
                 entry.hideKeyboard()
                 entry.isCursorVisible = false
                 return@OnKeyListener true
@@ -81,7 +81,8 @@ class ExerciseActivity : AppCompatActivity() {
             val exerciseName = exerciseNameField.text
             val series = Series(seriesCounter,reps,weight)
             exercise.addSeries(series)
-            Toast.makeText(this,series.toString(),Toast.LENGTH_LONG).show()
+
+            Toast.makeText(this,exercise.toString(),Toast.LENGTH_LONG).show()
 
         }
 

@@ -1,15 +1,21 @@
 package com.example.myapplication
 
-class Exercise{
-
+class Exercise(){
+    var exerciseName : String="none"
     val list = ArrayList<Series>()
-    var exerciseName : String = "exercise"
-    var seriesCount:Int = 0;
+
     fun addSeries(series: Series)
     {
         list.add(series)
-        seriesCount++;
+    }
+    fun addName(name:String?){
+        if(name!=null){
+            exerciseName=name
+        }
+
     }
 
-
+    override fun toString(): String {
+        return exerciseName+ " "+ list.size;
+    }
 }
