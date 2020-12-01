@@ -7,82 +7,80 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 
 
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
+
     val exercise = Exercise()
-    var seriesCounter = 0
+    var seriesCounter = 1
+    var selectedSeries = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
+        Toast.makeText(this, "tes34t", Toast.LENGTH_SHORT).show()
 
+        val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
 
-
-
-        var name:String?
-        val entry = findViewById<EditText>(R.id.enterExerciseName)
-        entry.setOnFocusChangeListener{ v, focus ->
-            if(focus==false){
-                name = entry.text.toString()
-                entry.hideKeyboard()
-            }
-            entry.isCursorVisible = focus
-
-        }
-        entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
-               exercise.addName(entry.text.toString())
-                entry.hideKeyboard()
-                entry.isCursorVisible = false
-                return@OnKeyListener true
-            }
-            false
-        })
-
-
-        val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
-        weightPicker.maxValue = 500
-        weightPicker.minValue = 0
-
-        val repsPicker = findViewById<NumberPicker>(R.id.repsPicker)
-        repsPicker.maxValue = 100
-        repsPicker.minValue = 0
-
-
-        val button = findViewById<ImageView>(R.id.backExercise)
-        button.setOnClickListener{
+        // Back to previous window button
+        val backButton = findViewById<ImageView>(R.id.backExercise)
+        backButton.setOnClickListener{
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
             startActivity(intent)
         }
 
-        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT)
-        params.setMargins(10,10,10,10)
+        //Setting series scrollView
+        val seriesScroll = findViewById<HorizontalScrollView>(R.id.seriesScroll)
 
-        val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
+        // Setting EditText window
+        val entry = findViewById<EditText>(R.id.enterExerciseName)
+        setNameEntry(entry);
 
 
+        //Setting repsPicker
+        val repsPicker = findViewById<NumberPicker>(R.id.repsPicker)
+        repsPicker.maxValue = 100
+        repsPicker.minValue = 0
+        repsPicker.setOnValueChangedListener(OnValueChangeListener { picker, oldVal, newVal ->
+
+            exercise.list[selectedSeries - 1].reps = newVal
+            //Toast.makeText(this, exercise.toString(), Toast.LENGTH_LONG).show()
+
+        })
+
+
+
+        //Setting weightPicker
+        val weightPicker = findViewById<NumberPicker>(R.id.weightPicker)
+        weightPicker.maxValue = 500
+        weightPicker.minValue = 0
+        weightPicker.setOnValueChangedListener(OnValueChangeListener { picker, oldVal, newVal ->
+
+
+            exercise.list[selectedSeries - 1].weight = newVal
+            //Toast.makeText(this, exercise.toString(), Toast.LENGTH_LONG).show()
+
+
+        })
+        //Create first series
+        val firstButton = createSeriesButton("1")
+        addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
+
+
+
+        val endButton = findViewById<Button>(R.id.endWindow)
+        endButton.setOnClickListener{
+            seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
+        }
         val addExercise = findViewById<Button>(R.id.addExercise)
         addExercise.setOnClickListener{
             seriesCounter++;
-            val button = Button(this) as Button;
-            button.text = seriesCounter.toString()
-
-            button.setBackgroundColor(button.context.resources.getColor(R.color.green))
-            button.layoutParams = params
-            seriesPicker.addView(button)
-
-            val reps = repsPicker.value
-            val weight = weightPicker.value
-            val exerciseNameField = findViewById<EditText>(R.id.enterExerciseName)
-            val exerciseName = exerciseNameField.text
-            val series = Series(seriesCounter,reps,weight)
-            exercise.addSeries(series)
-
-            Toast.makeText(this,exercise.toString(),Toast.LENGTH_LONG).show()
+            val button = createSeriesButton(seriesCounter.toString())
+            addButtonToList(button,seriesPicker,seriesScroll,weightPicker,repsPicker);
+            //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
 
         }
 
@@ -113,5 +111,72 @@ class ExerciseActivity : AppCompatActivity() {
         hideSystemUI()
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
+    }
+    public fun setNameEntry(entry : EditText)
+    {
+        var name:String?
+        entry.setOnFocusChangeListener{ v, focus ->
+            if(focus==false){
+                name = entry.text.toString()
+                entry.hideKeyboard()
+            }
+            entry.isCursorVisible = focus
+        }
+
+        entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
+                exercise.addName(entry.text.toString())
+                entry.hideKeyboard()
+                entry.isCursorVisible = false
+                return@OnKeyListener true
+            }
+            false
+        })
+    }
+    fun createSeriesButton(text : String) : Button
+    {
+        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT)
+        params.setMargins(10, 10, 10, 10)
+        val button = Button(this)
+        button.text = text
+        button.layoutParams = params
+        return button;
+    }
+    fun addButtonToList(button: Button, list : LinearLayout,seriesScroll : HorizontalScrollView,weightPicker:NumberPicker,repsPicker:NumberPicker)
+    {
+        //Make all button gray
+        for(i in 0..list.childCount -1)
+        {
+            val temp = list.getChildAt(i) as Button
+            temp.setBackgroundDrawable(getResources().getDrawable(R.color.graphite));
+        }
+        //setting onCLick listener
+        button.setOnClickListener{
+            for(i in 0..list.childCount -1)
+            {
+                val temp = list.getChildAt(i) as Button
+                if(button.text == temp.text)
+                    continue
+                else
+                    temp.setBackgroundDrawable(getResources().getDrawable(R.color.graphite));
+
+            }
+            button.setBackgroundDrawable(getResources().getDrawable(R.color.green))
+            selectedSeries = Integer.valueOf(button.text as String)
+            weightPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].weight;
+            repsPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].reps;
+        }
+        button.setBackgroundDrawable(getResources().getDrawable(R.color.green));
+        selectedSeries = Integer.valueOf(button.text as String)
+
+        list.addView(button)
+        val buttonText = button.text as String
+        val series = Series(Integer.valueOf(buttonText),0,0)
+        exercise.addSeries(series)
+
+      //  seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+
     }
 }
