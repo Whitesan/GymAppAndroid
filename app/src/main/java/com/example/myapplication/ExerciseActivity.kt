@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 //sdfsdfsdfsdrf
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
-
+//ddd
     val exercise = Exercise()
     var seriesCounter = 1
     var selectedSeries = 1;
