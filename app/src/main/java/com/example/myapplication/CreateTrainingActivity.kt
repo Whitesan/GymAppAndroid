@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
@@ -46,10 +47,9 @@ class CreateTrainingActivity : AppCompatActivity() {
         })
         val list=ListElements<String>()
         val adapter=createRecyclerView(list)
-        val newExerciseButton = findViewById<Button>(R.id.createExerciseButton)
+        val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
         newExerciseButton.setOnClickListener{
             updateRecyclerView(list,adapter)
-            Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show()
         }
         val endButton=findViewById<Button>(R.id.endCreatingExercises)
         endButton.setOnClickListener{
