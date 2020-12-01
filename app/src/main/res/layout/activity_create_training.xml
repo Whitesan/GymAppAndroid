@@ -65,27 +65,33 @@
 
             <EditText
             android:id="@+id/enterTrainingName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_weight="1.5"
-
+            android:layout_marginHorizontal="60dp"
             android:background="@drawable/entry_shape"
             android:backgroundTint="@color/almost_transparent"
             android:cursorVisible="false"
             android:hint="@string/enterTrainingName"
             android:inputType="text"
-            android:padding="15dp"
-            android:paddingStart="24sp"
-            android:paddingEnd="20sp"
+
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/text_transpatentish"
-            android:layout_marginBottom="20dp"
+
             android:textSize="17sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/almost_transparent"
+
+                android:layout_marginTop="5dp"
+                />
             <RelativeLayout
+                android:focusable="true"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="10">
@@ -102,7 +108,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="10dp"
                     android:contentDescription="@string/plus"
                     android:src="@drawable/ic_plus"
                     app:backgroundTint="@color/green" />
@@ -112,14 +119,15 @@
 
 
             <Button
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:id="@+id/endCreatingExercises"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_margin="15dp"
-                   android:layout_gravity="center"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
 
-                    android:background="@drawable/entry_shape"
+                android:background="@drawable/entry_shape"
                     android:backgroundTint="@color/red"
                     android:text="@string/end"
                     />
