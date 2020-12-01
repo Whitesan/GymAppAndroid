@@ -10,7 +10,7 @@ import android.widget.*
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 
-
+//sdfsdfsdfsdrf
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
 
