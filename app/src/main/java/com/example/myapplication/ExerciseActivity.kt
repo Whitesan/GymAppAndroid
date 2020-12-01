@@ -20,7 +20,7 @@ class ExerciseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "tes34t", Toast.LENGTH_SHORT).show()
 
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
 
@@ -175,6 +175,7 @@ class ExerciseActivity : AppCompatActivity() {
         val buttonText = button.text as String
         val series = Series(Integer.valueOf(buttonText),0,0)
         exercise.addSeries(series)
+
       //  seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
     }

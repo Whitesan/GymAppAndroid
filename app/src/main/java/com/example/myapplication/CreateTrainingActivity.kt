@@ -53,11 +53,11 @@ class CreateTrainingActivity : AppCompatActivity() {
             val intent =  Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-        val element=findViewById<TextView>(R.id.listElement)
-        element.setOnLongClickListener {
-            Toast.makeText(this, "test23", Toast.LENGTH_SHORT).show()
-            return@setOnLongClickListener true
-        }
+//        val element=findViewById<TextView>(R.id.listElement)
+//        element.setOnLongClickListener {
+//            Toast.makeText(this, "test23", Toast.LENGTH_SHORT).show()
+//            return@setOnLongClickListener true
+//        }
 
     }
     fun View.hideKeyboard(){
