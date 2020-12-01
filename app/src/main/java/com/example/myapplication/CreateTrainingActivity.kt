@@ -1,17 +1,14 @@
 package com.example.myapplication
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -49,15 +46,18 @@ class CreateTrainingActivity : AppCompatActivity() {
         val adapter=createRecyclerView(list)
         val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
         newExerciseButton.setOnClickListener{
-            updateRecyclerView(list,adapter)
+            updateRecyclerView(list, adapter)
         }
         val endButton=findViewById<Button>(R.id.endCreatingExercises)
         endButton.setOnClickListener{
             val intent =  Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-
-
+        val element=findViewById<TextView>(R.id.listElement)
+        element.setOnLongClickListener {
+            Toast.makeText(this, "test23", Toast.LENGTH_SHORT).show()
+            return@setOnLongClickListener true
+        }
 
     }
     fun View.hideKeyboard(){
@@ -85,14 +85,18 @@ class CreateTrainingActivity : AppCompatActivity() {
         super.onResume()
         hideSystemUI()
     }
-    private fun createRecyclerView(list:ListElements<String>): ListAdapter<String>{
+    private fun createRecyclerView(list: ListElements<String>): ListAdapter<String>{
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         val adapter=ListAdapter<String>(list)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
+        val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
+        val touchHelper = ItemTouchHelper(callback)
+        touchHelper.attachToRecyclerView(recycler);
         return adapter
     }
-    fun updateRecyclerView(elementList:ListElements<String>,adapter: ListAdapter<String>){
-        adapter.notifyItemInserted(elementList.appendList("TEST ELEMENT"))
+    var id=0
+    fun updateRecyclerView(elementList: ListElements<String>, adapter: ListAdapter<String>){
+        adapter.notifyItemInserted(elementList.appendList("TEST ELEMENT #"+id++))
     }
 }

@@ -1,5 +1,9 @@
 package com.example.myapplication
 
+import android.widget.Toast
+import java.util.*
+import kotlin.collections.ArrayList
+
 class ListElements <T>{
     private var lastItem=0
     private var list:ArrayList<T> = ArrayList<T>()
@@ -16,5 +20,12 @@ class ListElements <T>{
     }
     fun getAt(index:Int):T{
         return list.get(index);
+    }
+    fun swap(index:Int, index2:Int){
+        Collections.swap(list,index,index2)
+
+    }
+    fun remove(index:Int){
+        list.removeAt(index)
     }
 }

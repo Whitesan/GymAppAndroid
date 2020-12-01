@@ -11,6 +11,7 @@ class Exercise(){
     fun addName(name:String?){
         if(name!=null){
             exerciseName=name
+
         }
 
     }
