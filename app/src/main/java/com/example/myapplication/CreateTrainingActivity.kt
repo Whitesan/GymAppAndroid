@@ -55,7 +55,7 @@ class CreateTrainingActivity : AppCompatActivity() {
         }
         val element=findViewById<TextView>(R.id.listElement)
         element.setOnLongClickListener {
-            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "test23", Toast.LENGTH_SHORT).show()
             return@setOnLongClickListener true
         }
 
