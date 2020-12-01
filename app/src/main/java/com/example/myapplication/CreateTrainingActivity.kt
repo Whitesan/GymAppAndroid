@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-
+//TTESTTETSTASDS
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

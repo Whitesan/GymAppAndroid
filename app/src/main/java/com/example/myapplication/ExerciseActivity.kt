@@ -176,7 +176,7 @@ class ExerciseActivity : AppCompatActivity() {
         val series = Series(Integer.valueOf(buttonText),0,0)
         exercise.addSeries(series)
 
-      //  seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+
 
     }
 }
