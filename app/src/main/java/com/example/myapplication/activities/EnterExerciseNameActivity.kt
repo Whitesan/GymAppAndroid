@@ -10,7 +10,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import com.example.myapplication.R
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Part
 
 @Suppress("DEPRECATION")
 class EnterExerciseNameActivity : AppCompatActivity() {
@@ -23,12 +26,16 @@ class EnterExerciseNameActivity : AppCompatActivity() {
             startActivity(intent)
         }
         val button2 = findViewById<Button>(R.id.ContinueCreatingButton)
+        var name:String="none"
+
         button2.setOnClickListener{
+            val exercise= Exercise(name, Part("plecy"))
+
             val intent =  Intent(applicationContext, ExerciseActivity::class.java)
+            intent.putExtra("Exercise",exercise)
             startActivity(intent)
         }
         val entry=findViewById<EditText>(R.id.enterExerciseNameEntry)
-        var name:String
         entry.setOnFocusChangeListener{ v, focus ->
             if(focus==false){
                 name = entry.text.toString()

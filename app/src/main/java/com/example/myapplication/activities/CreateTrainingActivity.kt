@@ -16,7 +16,6 @@ import com.example.myapplication.ListAdapter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Part
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-//TTESTTETSTASDS
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,11 +56,7 @@ class CreateTrainingActivity : AppCompatActivity() {
             val intent =  Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-//        val element=findViewById<TextView>(R.id.listElement)
-//        element.setOnLongClickListener {
-//            Toast.makeText(this, "test23", Toast.LENGTH_SHORT).show()
-//            return@setOnLongClickListener true
-//        }
+
 
     }
     fun View.hideKeyboard(){

@@ -28,10 +28,9 @@ class ExerciseActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
-        exercise = super.getIntent().getSerializableExtra("exercise") as Exercise
-
+        exercise = super.getIntent().getSerializableExtra("Exercise") as Exercise
+        Toast.makeText(this, exercise.toString(), Toast.LENGTH_SHORT).show()
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
-
         // Back to previous window button
         val backButton = findViewById<ImageView>(R.id.backExercise)
         backButton.setOnClickListener{

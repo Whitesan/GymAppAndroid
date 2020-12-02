@@ -1,6 +1,8 @@
 package com.example.myapplication.exercises
 
-class Part(private val name : String){
+import java.io.Serializable
+
+class Part(private val name : String):Serializable{
 
 
     override fun toString(): String {
