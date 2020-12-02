@@ -6,25 +6,29 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ListAdapter<T>(private val listElements: ListElements<T>) : RecyclerView.Adapter<ListAdapter<T>.ViewHolder>(),ItemTouchHelperAdapter
+class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerView.Adapter<ListAdapter<Exercise>.ViewHolder>(),ItemTouchHelperAdapter
 
 {
 
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val nameTextView = itemView.findViewById<TextView>(R.id.listElement)
+        val nameTextView2 = itemView.findViewById<TextView>(R.id.listElement2)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter<T>.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter<Exercise>.ViewHolder {
         val element = parent.context
         val inflater = LayoutInflater.from(element)
         val listElementView = inflater.inflate(R.layout.list_element_layout, parent, false)
         return ViewHolder(listElementView)
     }
 
-    override fun onBindViewHolder(viewHolder: ListAdapter<T>.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ListAdapter<Exercise>.ViewHolder, position: Int) {
         val element = listElements.getAt(position)
         val textView = viewHolder.nameTextView
-        textView.setText(element.toString())
+        textView.setText(element.getName())
+        val PartTextView = viewHolder.nameTextView2
+        textView.setText(element.getName())
+        PartTextView.setText(element.getPart().toString())
     }
     override fun getItemCount(): Int {
         return listElements.getSize()

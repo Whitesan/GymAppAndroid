@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
 
-    val exercise = Exercise()
+    val exercise = Exercise("testName",Part("part"))
     var seriesCounter = 1
     var selectedSeries = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +123,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
-                exercise.addName(entry.text.toString())
+                //exercise.addName(entry.text.toString())
                 entry.hideKeyboard()
                 entry.isCursorVisible = false
                 return@OnKeyListener true

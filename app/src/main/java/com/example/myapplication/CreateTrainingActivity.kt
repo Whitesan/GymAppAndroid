@@ -42,7 +42,7 @@ class CreateTrainingActivity : AppCompatActivity() {
             }
             false
         })
-        val list=ListElements<String>()
+        val list=ListElements()
         val adapter=createRecyclerView(list)
         val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
         newExerciseButton.setOnClickListener{
@@ -85,9 +85,9 @@ class CreateTrainingActivity : AppCompatActivity() {
         super.onResume()
         hideSystemUI()
     }
-    private fun createRecyclerView(list: ListElements<String>): ListAdapter<String>{
+    private fun createRecyclerView(list: ListElements): ListAdapter<Exercise>{
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter=ListAdapter<String>(list)
+        val adapter=ListAdapter<Exercise>(list)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
@@ -96,7 +96,9 @@ class CreateTrainingActivity : AppCompatActivity() {
         return adapter
     }
     var id=0
-    fun updateRecyclerView(elementList: ListElements<String>, adapter: ListAdapter<String>){
-        adapter.notifyItemInserted(elementList.appendList("TEST ELEMENT #"+id++))
+    fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
+        var temp=Exercise("Nazwa # $id",Part("Plecy"));
+        id++
+        adapter.notifyItemInserted(elementList.appendList(temp))
     }
 }
