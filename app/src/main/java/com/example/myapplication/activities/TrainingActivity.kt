@@ -1,31 +1,22 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
+import com.example.myapplication.R
 
 @Suppress("DEPRECATION")
-class PlannerActivity : AppCompatActivity() {
+class TrainingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_planner)
-        val back = findViewById<ImageView>(R.id.backPlanner)
-        back.setOnClickListener{
-                val intent =  Intent(applicationContext,MainActivity::class.java)
-                startActivity(intent)
-        }
-        val createTraining = findViewById<CardView>(R.id.createTrainingCardView)
-        createTraining.setOnClickListener{
-            val intent =  Intent(applicationContext,CreateTrainingActivity::class.java)
+        setContentView(R.layout.activity_training)
+        val button = findViewById<ImageView>(R.id.backTraining)
+        button.setOnClickListener{
+            val intent =  Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)

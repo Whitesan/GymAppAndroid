@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.*
+import com.example.myapplication.ListAdapter
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Part
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 //TTESTTETSTASDS
 @Suppress("DEPRECATION")
@@ -42,7 +46,7 @@ class CreateTrainingActivity : AppCompatActivity() {
             }
             false
         })
-        val list=ListElements()
+        val list= ListElements()
         val adapter=createRecyclerView(list)
         val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
         newExerciseButton.setOnClickListener{
@@ -85,9 +89,9 @@ class CreateTrainingActivity : AppCompatActivity() {
         super.onResume()
         hideSystemUI()
     }
-    private fun createRecyclerView(list: ListElements): ListAdapter<Exercise>{
+    private fun createRecyclerView(list: ListElements): ListAdapter<Exercise> {
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter=ListAdapter<Exercise>(list)
+        val adapter= ListAdapter<Exercise>(list)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
@@ -97,7 +101,7 @@ class CreateTrainingActivity : AppCompatActivity() {
     }
     var id=0
     fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
-        var temp=Exercise("Nazwa # $id",Part("Plecy"));
+        var temp= Exercise("Nazwa # $id", Part("Plecy"));
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))
     }

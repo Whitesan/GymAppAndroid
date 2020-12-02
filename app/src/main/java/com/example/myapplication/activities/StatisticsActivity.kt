@@ -1,12 +1,11 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
-import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
+import com.example.myapplication.R
 
 @Suppress("DEPRECATION")
 class StatisticsActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ class StatisticsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_statistics)
         val button = findViewById<ImageView>(R.id.backStatistics)
         button.setOnClickListener{
-            val intent =  Intent(applicationContext,MainActivity::class.java)
+            val intent =  Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
 
         }

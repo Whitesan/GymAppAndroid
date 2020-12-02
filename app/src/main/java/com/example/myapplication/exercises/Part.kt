@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.exercises
 
 class Part(private val name : String){
 

@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,16 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Part
+import com.example.myapplication.R
+import com.example.myapplication.exercises.Series
 
 
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
 
-    val exercise = Exercise("testName",Part("part"))
+    val exercise = Exercise("testName", Part("part"))
     var seriesCounter = 1
     var selectedSeries = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
