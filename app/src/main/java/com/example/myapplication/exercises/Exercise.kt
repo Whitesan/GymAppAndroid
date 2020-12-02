@@ -1,6 +1,6 @@
-package com.example.myapplication
+package com.example.myapplication.exercises
 
-class Exercise(private var exerciseName:String,private var part:Part ){
+class Exercise(private var exerciseName:String,private var part: Part){
     val list = ArrayList<Series>()
     fun addSeries(series: Series)
     {
@@ -9,7 +9,7 @@ class Exercise(private var exerciseName:String,private var part:Part ){
     fun getName():String{
         return exerciseName
     }
-    fun getPart():Part?{
+    fun getPart(): Part?{
         return part
     }
     override fun toString(): String {

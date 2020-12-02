@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
-        <activity android:name=".ExerciseActivity" />
-        <activity android:name=".CreateTrainingActivity" />
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".StatisticsActivity" />
-        <activity android:name=".PlannerActivity" />
-        <activity android:name=".TrainingActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.ExerciseActivity" />
+        <activity android:name=".activities.CreateTrainingActivity" />
+        <activity android:name=".activities.CalendarActivity" />
+        <activity android:name=".activities.StatisticsActivity" />
+        <activity android:name=".activities.PlannerActivity" />
+        <activity android:name=".activities.TrainingActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

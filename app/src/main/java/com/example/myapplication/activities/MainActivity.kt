@@ -1,12 +1,11 @@
-package com.example.myapplication
+package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import com.example.myapplication.R
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
@@ -16,23 +15,23 @@ class MainActivity : AppCompatActivity() {
         val planer = findViewById<CardView>(R.id.cardViewPlanner)
 
         planer.setOnClickListener{
-                val intent =  Intent(applicationContext,PlannerActivity::class.java)
+                val intent =  Intent(applicationContext, PlannerActivity::class.java)
                 startActivity(intent)
         }
 
         val statistics = findViewById<CardView>(R.id.cardViewStatistics)
         statistics.setOnClickListener{
-            val intent =  Intent(applicationContext,StatisticsActivity::class.java)
+            val intent =  Intent(applicationContext, StatisticsActivity::class.java)
             startActivity(intent)
         }
         val training = findViewById<CardView>(R.id.cardViewTraining)
         training.setOnClickListener{
-            val intent =  Intent(applicationContext,TrainingActivity::class.java)
+            val intent =  Intent(applicationContext, TrainingActivity::class.java)
             startActivity(intent)
         }
         val calendar = findViewById<CardView>(R.id.cardViewCalendar)
         calendar.setOnClickListener{
-            val intent =  Intent(applicationContext,ExerciseActivity::class.java)
+            val intent =  Intent(applicationContext, ExerciseActivity::class.java)
             startActivity(intent)
         }
     }
