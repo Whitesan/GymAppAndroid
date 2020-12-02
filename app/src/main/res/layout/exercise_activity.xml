@@ -97,35 +97,54 @@
 
             </TextView>
 
-            <HorizontalScrollView
-                android:id="@+id/seriesScroll"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:accessibilityLiveRegion="assertive"
-                android:background="@color/black"
-
-                >
-                <LinearLayout
-                    android:id="@+id/seriesPicker"
+                <HorizontalScrollView
+                    android:id="@+id/seriesScroll"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_margin="10dp"
-                    android:clickable="true"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
                     android:focusable="true"
+                    android:layout_gravity="start"
+                    android:focusableInTouchMode="true"
+                    android:accessibilityLiveRegion="assertive"
+                    android:background="@color/black"
+
                     >
+                    <LinearLayout
+                        android:id="@+id/seriesPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        >
+                    </LinearLayout>
+                </HorizontalScrollView>
 
 
 
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
 
-            </HorizontalScrollView>
+                <Button
+                    android:layout_weight="0.5"
+                    android:id="@+id/deleteSeries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:text="DELETE"
+                    android:background="@drawable/entry_shape"
+                    android:backgroundTint="@color/red"
+                    />
 
+            </LinearLayout>
 
 
             <LinearLayout
@@ -213,23 +232,17 @@
 
                 <Button
                     android:layout_weight="1"
-                    android:id="@+id/addExercise"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:text="@string/add"
-                    android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/green"
-                    />
-                <Button
-                    android:layout_weight="1"
                     android:id="@+id/endWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:text="End"
+
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:text="SAVE"
                     android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/green"
                     />
 
             </LinearLayout>

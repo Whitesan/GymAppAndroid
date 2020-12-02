@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 @Suppress("DEPRECATION")
@@ -66,7 +68,9 @@ class ExerciseActivity : AppCompatActivity() {
         })
         //Create first series
         val firstButton = createSeriesButton("1")
-        addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
+        addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker);
+        val secondButton = createSeriesButton("+")
+        addButtonToList(secondButton,seriesPicker,seriesScroll,weightPicker,repsPicker);
 
 
 
@@ -74,14 +78,25 @@ class ExerciseActivity : AppCompatActivity() {
         endButton.setOnClickListener{
             seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
         }
-        val addExercise = findViewById<Button>(R.id.addExercise)
-        addExercise.setOnClickListener{
+        /*
+        val addSeries = findViewById<Button>(R.id.addSeries)
+        addSeries.setOnClickListener{
             seriesCounter++;
             val button = createSeriesButton(seriesCounter.toString())
             addButtonToList(button,seriesPicker,seriesScroll,weightPicker,repsPicker);
             //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
             seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
 
+        }
+        */
+
+
+        val deleteSeries = findViewById<Button>(R.id.deleteSeries)
+        deleteSeries.setOnClickListener{
+
+            seriesCounter--;
+            exercise.list.removeAt(seriesCounter);
+            seriesPicker.removeViewAt(seriesCounter);
         }
 
     }
@@ -145,35 +160,51 @@ class ExerciseActivity : AppCompatActivity() {
     fun addButtonToList(button: Button, list : LinearLayout,seriesScroll : HorizontalScrollView,weightPicker:NumberPicker,repsPicker:NumberPicker)
     {
         //Make all button gray
-        for(i in 0..list.childCount -1)
+        for(i in 0..list.childCount -2)
         {
             val temp = list.getChildAt(i) as Button
             temp.setBackgroundDrawable(getResources().getDrawable(R.color.graphite));
         }
         //setting onCLick listener
-        button.setOnClickListener{
-            for(i in 0..list.childCount -1)
-            {
-                val temp = list.getChildAt(i) as Button
-                if(button.text == temp.text)
-                    continue
-                else
-                    temp.setBackgroundDrawable(getResources().getDrawable(R.color.graphite));
-
-            }
-            button.setBackgroundDrawable(getResources().getDrawable(R.color.green))
-            selectedSeries = Integer.valueOf(button.text as String)
-            weightPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].weight;
-            repsPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].reps;
+        if(button.text == "+")
+        {
+             button.setOnClickListener{
+                 seriesCounter++;
+                 val button2 = createSeriesButton(seriesCounter.toString())
+                 addButtonToList(button2,list,seriesScroll,weightPicker,repsPicker);
+                 val b = list[seriesCounter - 1]
+                 list.removeViewAt(seriesCounter - 1)
+                 list.addView(b)
+                 //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                 seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
+             }
+            button.setBackgroundDrawable(getResources().getDrawable(R.color.green));
+            list.addView(button)
         }
-        button.setBackgroundDrawable(getResources().getDrawable(R.color.green));
-        selectedSeries = Integer.valueOf(button.text as String)
+        else
+        {
+            button.setOnClickListener{
+                for(i in 0..list.childCount -2)
+                {
+                    val temp = list.getChildAt(i) as Button
+                    if(button.text == temp.text)
+                        continue
+                    else
+                        temp.setBackgroundDrawable(getResources().getDrawable(R.color.graphite));
 
-        list.addView(button)
-        val buttonText = button.text as String
-        val series = Series(Integer.valueOf(buttonText),0,0)
-        exercise.addSeries(series)
-
+                }
+                button.setBackgroundDrawable(getResources().getDrawable(R.color.blue))
+                selectedSeries = Integer.valueOf(button.text as String)
+                weightPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].weight;
+                repsPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].reps;
+            }
+            button.setBackgroundDrawable(getResources().getDrawable(R.color.blue));
+            selectedSeries = Integer.valueOf(button.text as String)
+            val buttonText = button.text as String
+            val series = Series(Integer.valueOf(buttonText),0,0)
+            exercise.addSeries(series)
+            list.addView(button)
+        }
 
 
     }

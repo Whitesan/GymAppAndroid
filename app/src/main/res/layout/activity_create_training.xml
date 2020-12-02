@@ -110,7 +110,6 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginBottom="10dp"
-                    android:contentDescription="@string/plus"
                     android:src="@drawable/ic_plus"
                     app:backgroundTint="@color/green" />
             </RelativeLayout>
