@@ -84,8 +84,6 @@ class ExerciseActivity : AppCompatActivity() {
 
         }
 
-
-
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
