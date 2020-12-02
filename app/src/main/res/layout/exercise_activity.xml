@@ -65,26 +65,7 @@
             android:orientation="vertical"
 
             >
-            <EditText
-                android:id="@+id/enterExerciseName"
-                android:cursorVisible="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/entry_shape"
-                android:backgroundTint="@color/almost_transparent"
-                android:hint="@string/enterExerciseName"
-                android:inputType="text"
-                android:padding="15dp"
-                android:paddingStart="24sp"
-                android:paddingEnd="20sp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textColorHint="@color/text_transpatentish"
-                android:singleLine="true"
-                />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

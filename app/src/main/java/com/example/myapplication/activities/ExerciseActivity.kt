@@ -28,7 +28,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
-        Toast.makeText(this, "tes34t", Toast.LENGTH_SHORT).show()
+
 
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
 
@@ -41,11 +41,6 @@ class ExerciseActivity : AppCompatActivity() {
 
         //Setting series scrollView
         val seriesScroll = findViewById<HorizontalScrollView>(R.id.seriesScroll)
-
-        // Setting EditText window
-        val entry = findViewById<EditText>(R.id.enterExerciseName)
-        setNameEntry(entry);
-
 
         //Setting repsPicker
         val repsPicker = findViewById<NumberPicker>(R.id.repsPicker)
