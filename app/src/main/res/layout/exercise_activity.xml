@@ -36,7 +36,7 @@
                 android:id="@+id/plannerTitle"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:text="Exercise"
+                android:text="@string/exercise"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity android:name=".activities.EnterExerciseNameActivity"></activity>
         <activity android:name=".activities.ExerciseActivity" />
         <activity android:name=".activities.CreateTrainingActivity" />
         <activity android:name=".activities.CalendarActivity" />

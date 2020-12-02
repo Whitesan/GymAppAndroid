@@ -105,4 +105,5 @@ class CreateTrainingActivity : AppCompatActivity() {
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))
     }
+
 }

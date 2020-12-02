@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
         val calendar = findViewById<CardView>(R.id.cardViewCalendar)
         calendar.setOnClickListener{
-            val intent =  Intent(applicationContext, ExerciseActivity::class.java)
+            val intent =  Intent(applicationContext, EnterExerciseNameActivity::class.java)
             startActivity(intent)
         }
     }

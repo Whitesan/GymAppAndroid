@@ -39,4 +39,5 @@ class CalendarActivity : AppCompatActivity() {
         super.onResume()
         hideSystemUI()
     }
+
 }
