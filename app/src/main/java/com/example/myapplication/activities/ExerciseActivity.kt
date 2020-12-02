@@ -95,9 +95,12 @@ class ExerciseActivity : AppCompatActivity() {
         val deleteSeries = findViewById<Button>(R.id.deleteSeries)
         deleteSeries.setOnClickListener{
 
-            seriesCounter--;
-            exercise.list.removeAt(seriesCounter);
-            seriesPicker.removeViewAt(seriesCounter);
+            if(seriesCounter > 1)
+            {
+                seriesCounter--;
+                exercise.list.removeAt(seriesCounter);
+                seriesPicker.removeViewAt(seriesCounter);
+            }
         }
 
 
