@@ -21,14 +21,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
 
-    val exercise = Exercise("testName", Part("part"))
+    lateinit var exercise : Exercise
     var seriesCounter = 1
     var selectedSeries = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
-
+        exercise = super.getIntent().getSerializableExtra("exercise") as Exercise
 
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
 
