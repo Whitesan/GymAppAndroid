@@ -1,5 +1,5 @@
-package com.example.myapplication
 
+package com.example.myapplication.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
@@ -10,16 +10,22 @@ import android.widget.*
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import com.example.myapplication.R
+import com.example.myapplication.activities.CreateTrainingActivity
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Part
+import com.example.myapplication.exercises.Series
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 @Suppress("DEPRECATION")
 class ExerciseActivity : AppCompatActivity() {
 
-    val exercise = Exercise("testName",Part("part"))
+    val exercise = Exercise("testName", Part("part"))
     var seriesCounter = 1
     var selectedSeries = 1;
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.exercise_activity)
         Toast.makeText(this, "tes34t", Toast.LENGTH_SHORT).show()
@@ -67,6 +73,7 @@ class ExerciseActivity : AppCompatActivity() {
 
         })
         //Create first series
+
         val firstButton = createSeriesButton("1")
         addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker);
         val secondButton = createSeriesButton("+")
@@ -98,6 +105,8 @@ class ExerciseActivity : AppCompatActivity() {
             exercise.list.removeAt(seriesCounter);
             seriesPicker.removeViewAt(seriesCounter);
         }
+
+
 
     }
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -183,6 +192,7 @@ class ExerciseActivity : AppCompatActivity() {
         }
         else
         {
+
             button.setOnClickListener{
                 for(i in 0..list.childCount -2)
                 {
@@ -204,6 +214,8 @@ class ExerciseActivity : AppCompatActivity() {
             val series = Series(Integer.valueOf(buttonText),0,0)
             exercise.addSeries(series)
             list.addView(button)
+
+
         }
 
 
