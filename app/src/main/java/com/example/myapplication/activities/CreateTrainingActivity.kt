@@ -16,6 +16,7 @@ import com.example.myapplication.ListAdapter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Part
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,7 +97,7 @@ class CreateTrainingActivity : AppCompatActivity() {
     }
     var id=0
     fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
-        var temp= Exercise("Nazwa # $id", Part("Plecy"));
+        var temp= Exercise("Nazwa # $id", Part.getPart("Plecy")!!);
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))
     }
