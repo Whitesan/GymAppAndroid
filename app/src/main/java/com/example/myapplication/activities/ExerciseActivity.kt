@@ -2,6 +2,7 @@
 package com.example.myapplication.activities
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -100,6 +101,15 @@ class ExerciseActivity : AppCompatActivity() {
                 seriesCounter--;
                 exercise.list.removeAt(seriesCounter);
                 seriesPicker.removeViewAt(seriesCounter);
+
+                Log.i("xd",seriesCounter.toString() + " " + selectedSeries.toString())
+                selectedSeries = seriesCounter
+                val b = seriesPicker[seriesCounter-1] as Button
+                Log.i("xd2",b.text.toString())
+                //Toast.makeText(this,b.text,Toast.LENGTH_LONG).show()
+                weightPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].weight;
+                repsPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].reps;
+                b.setBackgroundDrawable(getResources().getDrawable(R.color.blue));
             }
         }
 
@@ -181,11 +191,14 @@ class ExerciseActivity : AppCompatActivity() {
                  val b = list[seriesCounter - 1]
                  list.removeViewAt(seriesCounter - 1)
                  list.addView(b)
-                 //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+                 Thread.sleep(1000)
                  seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
+                 //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+
              }
             button.setBackgroundDrawable(getResources().getDrawable(R.color.green));
             list.addView(button)
+
         }
         else
         {
