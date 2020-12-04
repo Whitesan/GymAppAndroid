@@ -27,15 +27,11 @@ class EnterExerciseNameActivity : AppCompatActivity() {
         }
         val button2 = findViewById<Button>(R.id.ContinueCreatingButton)
         var name:String="none"
-
         button2.setOnClickListener{
                val  exercise= Part.getPart("plecy")?.let { part -> Exercise(name, part) }
                 val intent =  Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise",exercise)
                 startActivity(intent)
-
-
-
         }
         val entry=findViewById<EditText>(R.id.enterExerciseNameEntry)
         entry.setOnFocusChangeListener{ v, focus ->

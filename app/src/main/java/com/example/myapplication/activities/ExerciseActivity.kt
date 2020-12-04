@@ -109,6 +109,7 @@ class ExerciseActivity : AppCompatActivity() {
                 //Toast.makeText(this,b.text,Toast.LENGTH_LONG).show()
                 weightPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].weight;
                 repsPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].reps;
+
                 b.setBackgroundDrawable(getResources().getDrawable(R.color.blue));
             }
         }
@@ -191,7 +192,7 @@ class ExerciseActivity : AppCompatActivity() {
                  val b = list[seriesCounter - 1]
                  list.removeViewAt(seriesCounter - 1)
                  list.addView(b)
-                 Thread.sleep(1000)
+
                  seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
                  //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
@@ -224,6 +225,12 @@ class ExerciseActivity : AppCompatActivity() {
             val series = Series(Integer.valueOf(buttonText),0,0)
             exercise.addSeries(series)
             list.addView(button)
+            if(seriesCounter > 1)
+            {
+                exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(button.text as String) - 2].weight;
+                exercise.list[Integer.valueOf(button.text as String) - 1].reps = exercise.list[Integer.valueOf(button.text as String) - 2].reps;
+
+            }
 
 
         }

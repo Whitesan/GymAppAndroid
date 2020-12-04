@@ -10,6 +10,7 @@ import java.text.ParseException
  * @author Adrian Kucharski
  */
 public final class JsonIO {
+    /*
     companion object{
         /**
          * A static method for saving "Traning Plan" to JSON file
@@ -39,4 +40,7 @@ public final class JsonIO {
             /*return TrainingPlan*/
         }
     }
+
+     */
+
 }

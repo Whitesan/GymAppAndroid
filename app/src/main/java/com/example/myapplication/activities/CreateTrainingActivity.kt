@@ -58,7 +58,6 @@ class CreateTrainingActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
     }
     fun View.hideKeyboard(){
             hideSystemUI()
