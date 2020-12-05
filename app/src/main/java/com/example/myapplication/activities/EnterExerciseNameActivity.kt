@@ -41,8 +41,32 @@ class EnterExerciseNameActivity : AppWindowActivity() {
             }
         }
 
-    }
+        val typePicker = findViewById<LinearLayout>(R.id.typePicker)
+        val but = createSeriesButton("view1")
+        val but2 = createSeriesButton("view2")
+        val but3 = createSeriesButton("view3")
+        val but4 = createSeriesButton("view4")
+        val but5 = createSeriesButton("view5")
+        typePicker.addView(but)
+        typePicker.addView(but2)
+        typePicker.addView(but3)
+        typePicker.addView(but4)
+        typePicker.addView(but5)
+       // typePicker.addView(but)
 
+    }
+    fun createSeriesButton(text : String) : Button
+    {
+        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT)
+        params.setMargins(10, 10, 10, 10)
+        val button = Button(this)
+        button.text = text
+
+        button.layoutParams = params
+        return button;
+    }
     private fun setTextListener() {
         val entry = findViewById<EditText>(R.id.enterExerciseNameEntry)
         entry.setOnFocusChangeListener { v, focus ->
