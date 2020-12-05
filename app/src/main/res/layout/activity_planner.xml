@@ -108,7 +108,6 @@
             android:layout_weight="5"
             android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
-
             app:cardBackgroundColor="@color/cardview_dark_background"
             app:cardCornerRadius="30dp"
             >

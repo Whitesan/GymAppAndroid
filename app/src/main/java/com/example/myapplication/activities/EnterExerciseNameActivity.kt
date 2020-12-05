@@ -98,11 +98,4 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         val message = findViewById<TextView>(R.id.TrainingNameEmpty)
         message.setVisibility(View.VISIBLE);
     }
-
-
-    fun View.hideKeyboard() {
-        super.hideSystemUI()
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-        inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
-    }
 }

@@ -119,11 +119,6 @@ class ExerciseActivity : AppWindowActivity() {
 
     }
 
-    fun View.hideKeyboard(){
-        hideSystemUI()
-        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-        inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
-    }
     public fun setNameEntry(entry : EditText)
     {
         var name:String?
