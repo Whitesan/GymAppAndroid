@@ -16,8 +16,16 @@
     <string name="Continue">Continue</string>
     <string name="empty_name">Name cannot be empty!</string>
     <string name="defaultName">Training #</string>
-
+    <string name="butt">Butt</string>
+    <string name="biceps">Biceps</string>
+    <string name="chest">Chest</string>
+    <string name="legs">Legs</string>
+    <string name="triceps">Triceps</string>
+    <string name="back">Back</string>
+    <string name="shoulders">Shoulders</string>
+    <string name="cardio">Cardio</string>
     <!-- XML LAYOUT STRINGS -->
     <string name="actPlannerCreateTraning">Create Traning</string>
     <string name="actPlannerTraningList">Traning List</string>
+
 </resources>
