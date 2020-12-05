@@ -8,15 +8,13 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import android.widget.HorizontalScrollView
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import com.example.myapplication.R
-import com.example.myapplication.activities.CreateTrainingActivity
 import com.example.myapplication.exercises.Exercise
-import com.example.myapplication.exercises.Part
 import com.example.myapplication.exercises.Series
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 @Suppress("DEPRECATION")
@@ -193,9 +191,7 @@ class ExerciseActivity : AppCompatActivity() {
                  list.removeViewAt(seriesCounter - 1)
                  list.addView(b)
 
-                 seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT)
-                 //seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-
+                 seriesScroll.post(Runnable { seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT) })
              }
             button.setBackgroundDrawable(getResources().getDrawable(R.color.green));
             list.addView(button)
