@@ -24,5 +24,11 @@ class PlannerActivity : AppWindowActivity() {
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
             startActivity(intent)
         }
+        val createTrainingsListActivity = findViewById<CardView>(R.id.createTrainingsListCardViev)
+        createTrainingsListActivity.setOnClickListener{
+            val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
