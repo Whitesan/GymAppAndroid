@@ -19,7 +19,7 @@ import com.example.myapplication.exercises.Series
 
 
 @Suppress("DEPRECATION")
-class ExerciseActivity : AppCompatActivity() {
+class ExerciseActivity : AppWindowActivity() {
 
     lateinit var exercise : Exercise
     var seriesCounter = 1
@@ -118,21 +118,7 @@ class ExerciseActivity : AppCompatActivity() {
 
 
     }
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            hideSystemUI()
-        }
-    }
 
-    private fun hideSystemUI() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
-    override fun onResume() {
-        super.onResume()
-        hideSystemUI()
-    }
     fun View.hideKeyboard(){
         hideSystemUI()
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
