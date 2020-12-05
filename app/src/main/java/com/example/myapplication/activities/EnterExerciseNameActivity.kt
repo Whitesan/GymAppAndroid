@@ -44,7 +44,6 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         }
 
         val typePicker = findViewById<LinearLayout>(R.id.typePicker)
-
         //Set on click listener to containers
         for(i in typePicker)
         {
@@ -71,26 +70,9 @@ class EnterExerciseNameActivity : AppWindowActivity() {
 
             }
         }
-
-
     }
 
-    fun createSeriesButton(text: String): Button {
-        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.MATCH_PARENT
-        )
-        params.setMargins(10, 10, 10, 10)
 
-        val button = Button(this)
-
-
-        button.text = text
-
-        button.layoutParams = params
-        button.setBackgroundDrawable(getResources().getDrawable(R.color.light_gray));
-        return button;
-    }
 
     private fun setTextListener() {
         val entry = findViewById<EditText>(R.id.enterExerciseNameEntry)
