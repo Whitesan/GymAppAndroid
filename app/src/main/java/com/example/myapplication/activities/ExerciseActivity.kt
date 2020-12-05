@@ -29,6 +29,8 @@ class ExerciseActivity : AppCompatActivity() {
         setContentView(R.layout.exercise_activity)
         exercise = super.getIntent().getSerializableExtra("Exercise") as Exercise
         Toast.makeText(this, exercise.toString(), Toast.LENGTH_SHORT).show()
+        val title  = findViewById<TextView>(R.id.plannerTitle)
+        title.text = exercise.getName()
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
         // Back to previous window button
         val backButton = findViewById<ImageView>(R.id.backExercise)
