@@ -92,7 +92,10 @@ open class CreateTrainingActivity : AppWindowActivity() {
     private fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
         var temp= Exercise("Nazwa # $id", Part.getPart("Plecy")!!);
         id++
-        adapter.notifyItemInserted(elementList.appendList(temp))
+        val index=elementList.appendList(temp)
+        adapter.notifyItemInserted(index)
+        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
+        recycler.scrollToPosition(index+1)
     }
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)

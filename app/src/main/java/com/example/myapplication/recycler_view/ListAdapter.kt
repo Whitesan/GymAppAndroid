@@ -29,8 +29,12 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
         val icon:ImageView = itemView.findViewById(R.id.ListElementIcon)
         val newExerciseButton: TextView = itemView.findViewById(R.id.AddNewExerciseButton)
         val listElementLayout:RelativeLayout= itemView.findViewById(R.id.listElementLayout)
+        val size:Int=listElements.getSize()
     }
 
+    override fun getLastItem(): Int {
+        return listElements.getSize()-1
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter<Exercise>.ViewHolder {
         val element = parent.context
         val inflater = LayoutInflater.from(element)
