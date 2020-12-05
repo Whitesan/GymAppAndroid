@@ -11,7 +11,7 @@ class TrainingsListActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainings_list)
-        val button = findViewById<ImageView>(R.id.backTraningsList)
+        val button = findViewById<ImageView>(R.id.backTrainingsList)
         button.setOnClickListener {
             val intent = Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)

@@ -19,7 +19,7 @@ android:layout_weight="15"
     >
 
     <ImageView
-        android:id="@+id/backTraningsList"
+        android:id="@+id/backTrainingsList"
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:src="@drawable/backward"
@@ -41,7 +41,7 @@ android:layout_weight="15"
 
         />
     <ImageView
-        android:id="@+id/settingsTraningsList"
+        android:id="@+id/settingsTrainingsList"
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:src="@drawable/settings"
