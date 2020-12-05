@@ -14,5 +14,6 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="enter_name"> Create Exercise</string>
     <string name="Continue">Continue</string>
+    <string name="empty_name">Name cannot be empty!</string>
 
 </resources>

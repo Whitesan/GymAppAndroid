@@ -58,6 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="13"
+        android:orientation="vertical"
         >
         <EditText
             android:id="@+id/enterExerciseNameEntry"
@@ -77,6 +78,19 @@
             android:textColorHint="@color/text_transpatentish"
             android:textSize="17sp"
             />
+        <TextView
+            android:id="@+id/TrainingNameEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_name"
+            android:layout_marginVertical="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            />
+
+
+
 
     </LinearLayout>
     <Button
