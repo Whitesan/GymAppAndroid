@@ -41,6 +41,7 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {
+
         if (fromPosition < toPosition) {
             for (i in fromPosition until toPosition) {
                 listElements.swap(i, i + 1)
