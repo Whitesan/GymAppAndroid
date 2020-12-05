@@ -11,7 +11,6 @@ class SimpleItemTouchHelperCallback(private var adapter:ItemTouchHelperAdapter) 
         if (viewHolder.adapterPosition == adapter.getLastItem()){
             return makeFlag(ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.DOWN or ItemTouchHelper.UP)
         }
-
         val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
         val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
         return makeMovementFlags(dragFlags, swipeFlags)

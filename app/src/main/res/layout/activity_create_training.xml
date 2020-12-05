@@ -3,146 +3,130 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/TrainingCreatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.CalendarActivity"
-    android:background="@color/black"
-    android:orientation="vertical"
     android:layout_weight="15"
+    android:background="@color/black"
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:id="@+id/TrainingCreatorLayout">
+    android:orientation="vertical"
+    tools:context=".activities.CalendarActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
         android:background="@color/black"
-        >
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/backTrainingCreator"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/backward"
             android:layout_gravity="start"
             android:layout_weight="1"
             android:padding="10dp"
-            />
+            android:src="@drawable/backward" />
+
         <TextView
             android:id="@+id/trainingCreatorTitle"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_weight="5"
+            android:fontFamily="serif-monospace"
             android:text="@string/trainingCreator"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="5dp"
-            android:layout_weight="5"
 
             />
+
         <ImageView
             android:id="@+id/trainingCreatorSettings"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/settings"
             android:layout_gravity="start"
             android:layout_weight="1"
             android:padding="10dp"
-            />
+            android:src="@drawable/settings" />
 
     </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="14"
-            >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:orientation="vertical">
 
-            <EditText
+        <EditText
             android:id="@+id/enterTrainingName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="60dp"
             android:layout_marginTop="15dp"
             android:layout_weight="1"
-            android:layout_marginHorizontal="60dp"
             android:background="@drawable/entry_shape"
             android:backgroundTint="@color/almost_transparent"
             android:cursorVisible="false"
-            android:text="@string/defaultName"
             android:inputType="text"
             android:singleLine="true"
+            android:text="@string/defaultName"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/text_transpatentish"
             android:textSize="17sp" />
-            <TextView
-                android:id="@+id/EnterTraining2"
+
+        <TextView
+            android:id="@+id/EnterTraining2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="0.5"
+            android:text="@string/enterTrainingName"
+            android:textAlignment="center"
+            android:textColor="@color/text_transpatentish"
+            android:visibility="visible" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="3dp"
+
+            android:background="@color/almost_transparent" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:text="@string/enterTrainingName"
-                android:layout_marginVertical="5dp"
-                android:textAlignment="center"
-                android:textColor="@color/text_transpatentish"
-                android:visibility="visible"
-            />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/almost_transparent"
-
-                android:layout_marginTop="3dp"
-                />
-            <RelativeLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="10">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/createExerciseButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_plus"
-                    app:backgroundTint="@color/green" />
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+        </RelativeLayout>
 
 
+        <Button
+            android:id="@+id/endCreatingExercises"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/entry_shape"
+            android:backgroundTint="@color/green"
+            android:text="@string/save" />
+    </LinearLayout>
 
-
-            <Button
-                    android:layout_weight="1"
-                    android:id="@+id/endCreatingExercises"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-
-                android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/red"
-                    android:text="@string/end"
-                    />
-        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

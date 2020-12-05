@@ -55,8 +55,6 @@
             android:text="@string/addNewExercise"
             android:layout_marginHorizontal="20dp"
             android:layout_centerVertical="true"
-            android:clickable="true"
-            android:focusable="true"
             android:visibility="invisible"
 
             />

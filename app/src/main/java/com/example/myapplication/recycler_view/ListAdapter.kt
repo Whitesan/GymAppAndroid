@@ -7,10 +7,7 @@ import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +18,7 @@ import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.recycler_view.AddButton
 
 
-class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerView.Adapter<ListAdapter<Exercise>.ViewHolder>(),ItemTouchHelperAdapter
+class ListAdapter<Exercise>(private val listElements: ListElements, private val itemTouchListener: View.OnTouchListener) : RecyclerView.Adapter<ListAdapter<Exercise>.ViewHolder>(),ItemTouchHelperAdapter
 {
     inner class ViewHolder(listItemView: View) : RecyclerView.ViewHolder(listItemView) {
         val nameTextView:TextView = itemView.findViewById(R.id.listElement)
@@ -30,6 +27,8 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
         val newExerciseButton: TextView = itemView.findViewById(R.id.AddNewExerciseButton)
         val listElementLayout:RelativeLayout= itemView.findViewById(R.id.listElementLayout)
         val size:Int=listElements.getSize()
+        val item=itemView
+
     }
 
     override fun getLastItem(): Int {
@@ -39,6 +38,8 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
         val element = parent.context
         val inflater = LayoutInflater.from(element)
         val listElementView = inflater.inflate(R.layout.list_element_layout, parent, false)
+
+
         return ViewHolder(listElementView)
     }
 
@@ -46,7 +47,7 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
 
         val element = listElements.getAt(position)
         if(element is AddButton && element == listElements.getAt(listElements.getSize()-1)){
-            setAsButton(viewHolder,element)
+            setAsButton(viewHolder,element,itemTouchListener)
 
         }
         else{
@@ -57,8 +58,7 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
         }
 
     }
-    private fun setAsButton(viewHolder: ListAdapter<Exercise>.ViewHolder,element:AddButton){
-
+    private fun setAsButton(viewHolder: ListAdapter<Exercise>.ViewHolder,element:AddButton,itemTouchListener:View.OnTouchListener){
         //TODO
         //sometimes new button appears(!?). Usually after 8-9 exercise. DEBUG !!!!!
         val textView = viewHolder.nameTextView
@@ -76,6 +76,9 @@ class ListAdapter<Exercise>(private val listElements: ListElements) : RecyclerVi
         buttonDrawable = DrawableCompat.wrap(buttonDrawable!!)
         DrawableCompat.setTint(buttonDrawable, Color.BLUE)
         listElementLayout.background = buttonDrawable
+        listElementLayout.setOnTouchListener(itemTouchListener)
+
+
     }
 
 
