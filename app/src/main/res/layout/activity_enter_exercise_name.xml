@@ -113,8 +113,8 @@
             android:accessibilityLiveRegion="assertive"
             android:background="@color/black"
             android:focusable="true"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
+
+            android:layout_marginBottom="80dp"
             android:focusableInTouchMode="true"
 
             >
@@ -126,7 +126,115 @@
                 android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp"
+                    android:background="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="bieps"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/barbell"
+                        >
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="bieps"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/barbell"
+                        >
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="bieps"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/barbell"
+                        >
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="bieps"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/barbell"
+                        >
+                    </ImageView>
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
         </HorizontalScrollView>
 
 

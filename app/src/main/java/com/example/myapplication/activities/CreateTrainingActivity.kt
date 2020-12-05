@@ -21,45 +21,45 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppWindowActivity() {
-    var enteredText:String=""
+    var enteredText: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_training)
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
-        button.setOnClickListener{
-            val intent =  Intent(applicationContext, PlannerActivity::class.java)
+        button.setOnClickListener {
+            val intent = Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
         setTextListener(1)
 
-        val list= ListElements()
-        val adapter=createRecyclerView(list)
+        val list = ListElements()
+        val adapter = createRecyclerView(list)
 
         val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
-        newExerciseButton.setOnClickListener{
+        newExerciseButton.setOnClickListener {
             updateRecyclerView(list, adapter)
         }
-        val endButton=findViewById<Button>(R.id.endCreatingExercises)
-        endButton.setOnClickListener{
+        val endButton = findViewById<Button>(R.id.endCreatingExercises)
+        endButton.setOnClickListener {
             if (enteredText.isEmpty()) {
                 showErrorMessage()
             } else {
-                val intent =  Intent(applicationContext, PlannerActivity::class.java)
+                val intent = Intent(applicationContext, PlannerActivity::class.java)
                 startActivity(intent)
 
             }
         }
     }
+
     @SuppressLint("SetTextI18n")
-    private fun setTextListener(number:Int) {
+    private fun setTextListener(number: Int) {
         val entry = findViewById<EditText>(R.id.enterTrainingName)
-        entry.setText(getString(R.string.defaultName)+number.toString())
-        entry.setOnFocusChangeListener{ v, focus ->
-            if(focus==false){
+        entry.setText(getString(R.string.defaultName) + number.toString())
+        entry.setOnFocusChangeListener { v, focus ->
+            if (focus == false) {
                 enteredText = entry.text.toString()
                 entry.hideKeyboard()
-            }
-            else if(entry.getText().toString().contains(getString(R.string.defaultName))){
+            } else if (entry.getText().toString().contains(getString(R.string.defaultName))) {
                 entry.setText("")
             }
             entry.isCursorVisible = focus
@@ -76,31 +76,33 @@ class CreateTrainingActivity : AppWindowActivity() {
         })
     }
 
-    private fun View.hideKeyboard(){
-            super.hideSystemUI()
-            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-            inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
+    private fun View.hideKeyboard() {
+        super.hideSystemUI()
+        val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }
 
     private fun createRecyclerView(list: ListElements): ListAdapter<Exercise> {
-        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter= ListAdapter<Exercise>(list)
-        recycler.adapter=adapter
-        recycler.layoutManager=LinearLayoutManager(this)
+        val recycler = findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter = ListAdapter<Exercise>(list)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(this)
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
         val touchHelper = ItemTouchHelper(callback)
-        touchHelper.attachToRecyclerView(recycler);
+        touchHelper.attachToRecyclerView(recycler)
         return adapter
     }
-    var id=0
-    private fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
-        var temp= Exercise("Nazwa # $id", Part.getPart("Plecy")!!);
+
+    var id = 0
+    private fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>) {
+        var temp = Exercise("Nazwa # $id", Part.getPart("Plecy")!!)
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))
     }
+
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)
-        message.text=getString(R.string.empty_name)
+        message.text = getString(R.string.empty_name)
         message.setTextColor(resources.getColor(R.color.red))
     }
 }
