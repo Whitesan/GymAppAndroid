@@ -57,188 +57,179 @@
         </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:background="@color/black"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/graphite"
+            android:text="Series"
+            android:textAlignment="center"
+
+            android:textSize="25sp">
+
+        </TextView>
+
+        <HorizontalScrollView
+            android:id="@+id/seriesScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:layout_weight="2"
+            android:accessibilityLiveRegion="assertive"
+            android:background="@color/black"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/seriesPicker"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"></LinearLayout>
+        </HorizontalScrollView>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="14"
+            android:layout_weight="1">
+
+
+            <Button
+                android:id="@+id/deleteSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/entry_shape"
+                android:backgroundTint="@color/red"
+                android:text="DELETE" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
             android:background="@color/black"
             android:orientation="vertical"
 
             >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Series"
-                android:textSize="25sp"
-                android:textAlignment="center"
-
-                android:background="@color/graphite"
-                >
-
-            </TextView>
-
-                <HorizontalScrollView
-                    android:id="@+id/seriesScroll"
-                    android:layout_width="wrap_content"
-                    android:layout_weight="2"
-                    android:layout_height="0dp"
-                    android:focusable="true"
-                    android:layout_gravity="start"
-                    android:focusableInTouchMode="true"
-                    android:accessibilityLiveRegion="assertive"
-                    android:background="@color/black"
-
-                    >
-                    <LinearLayout
-                        android:id="@+id/seriesPicker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_margin="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        >
-                    </LinearLayout>
-                </HorizontalScrollView>
-
-
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="wrap_content">
 
-
-                <Button
-                    android:layout_weight="0.5"
-                    android:id="@+id/deleteSeries"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:text="DELETE"
-                    android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/red"
-                    />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="8"
-                android:background="@color/black"
-                android:orientation="vertical"
-
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/graphite"
-                        android:text="Reps"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        >
-
-                    </TextView>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@color/graphite"
-                        android:text="Weight"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        >
-
-                    </TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="6">
-
-                    <NumberPicker
-                        android:id="@+id/repsPicker"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="@drawable/picker_shape"
-                        android:backgroundTint="@color/cardview_dark_background"
-                        android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-
-                        >
-
-                    </NumberPicker>
-                    <NumberPicker
-                        android:id="@+id/weightPicker"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:background="@drawable/picker_shape"
-                        android:backgroundTint="@color/cardview_dark_background"
-                        android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="20dp"
-                        >
-
-                    </NumberPicker>
-
-                </LinearLayout>
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-
-                <Button
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/endWindow"
+                    android:background="@color/graphite"
+                    android:text="Reps"
+                    android:textAlignment="center"
+                    android:textSize="25sp">
+
+                </TextView>
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/graphite"
+                    android:text="Weight"
+                    android:textAlignment="center"
+                    android:textSize="25sp">
 
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginRight="70dp"
-                    android:text="SAVE"
-                    android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/green"
-                    />
-
+                </TextView>
             </LinearLayout>
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="6">
 
+                <NumberPicker
+                    android:id="@+id/repsPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/picker_shape"
+                    android:backgroundTint="@color/cardview_dark_background"
 
-            </RelativeLayout>
+                    >
 
+                </NumberPicker>
 
+                <NumberPicker
+                    android:id="@+id/weightPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="3"
+                    android:background="@drawable/picker_shape"
+                    android:backgroundTint="@color/cardview_dark_background">
+
+                </NumberPicker>
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <Button
+                android:id="@+id/endWindow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="70dp"
+                android:layout_marginBottom="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/entry_shape"
+                android:backgroundTint="@color/green"
+                android:text="SAVE" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+        </RelativeLayout>
+
 
     </LinearLayout>
+
+
+</LinearLayout>

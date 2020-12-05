@@ -167,6 +167,7 @@ class ExerciseActivity : AppCompatActivity() {
         params.setMargins(10, 10, 10, 10)
         val button = Button(this)
         button.text = text
+
         button.layoutParams = params
         return button;
     }
