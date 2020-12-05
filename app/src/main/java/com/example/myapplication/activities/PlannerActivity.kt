@@ -24,8 +24,5 @@ class PlannerActivity : AppWindowActivity() {
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
 }
