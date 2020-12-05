@@ -133,12 +133,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_margin="10dp"
-                    android:background="@color/light_gray"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
                     >
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="bieps"
+                        android:text="@string/chest"
                         android:textAlignment="center"
                         android:textSize="30sp"
                         >
@@ -149,7 +150,94 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/barbell"
+                        android:src="@drawable/chest"
+                        >
+                    </ImageView>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/back"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/back"
+                        >
+                    </ImageView>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shoulders"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/shoulder"
+                        >
+                    </ImageView>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
+                    >
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cardio"
+                        android:textAlignment="center"
+                        android:textSize="30sp"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/cardio"
                         >
                     </ImageView>
                 </LinearLayout>
@@ -159,12 +247,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@color/light_gray"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
                     >
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="bieps"
+                        android:text="@string/triceps"
                         android:textAlignment="center"
                         android:textSize="30sp"
                         >
@@ -175,7 +264,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/barbell"
+                        android:src="@drawable/biceps"
                         >
                     </ImageView>
                 </LinearLayout>
@@ -184,12 +273,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@color/light_gray"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
                     >
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="bieps"
+                        android:text="@string/butt"
                         android:textAlignment="center"
                         android:textSize="30sp"
                         >
@@ -200,21 +290,23 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/barbell"
+                        android:src="@drawable/butt"
                         >
                     </ImageView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="@color/light_gray"
+                    android:background="@drawable/rounded_view"
+                    android:backgroundTint="@color/light_gray"
                     >
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="bieps"
+                        android:text="@string/biceps"
                         android:textAlignment="center"
                         android:textSize="30sp"
                         >
@@ -225,7 +317,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/barbell"
+                        android:src="@drawable/biceps"
                         >
                     </ImageView>
                 </LinearLayout>

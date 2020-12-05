@@ -4,11 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.iterator
 import com.example.myapplication.R
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Part
@@ -16,9 +15,12 @@ import com.example.myapplication.exercises.Part
 @Suppress("DEPRECATION")
 class EnterExerciseNameActivity : AppWindowActivity() {
     private var enteredText: String = ""
+    lateinit var selectedTypeView : LinearLayout // selected type Container
+    var selectedTypeName : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_exercise_name)
+
 
         val backButton = findViewById<ImageView>(R.id.backEnterName)
         backButton.setOnClickListener {
@@ -40,19 +42,36 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 startActivity(intent)
             }
         }
-/*
+
         val typePicker = findViewById<LinearLayout>(R.id.typePicker)
-        val but = createSeriesButton("   view1111111  ")
-        val but2 = createSeriesButton("   view2222222   ")
-        val but3 = createSeriesButton("   view3333333   ")
-        val but4 = createSeriesButton("view4")
-        val but5 = createSeriesButton("view5")
-        typePicker.addView(but)
-        typePicker.addView(but2)
-        typePicker.addView(but3)
-        typePicker.addView(but4)
-        typePicker.addView(but5)
-        // typePicker.addView(but)*/
+
+        //Set on click listener to containers
+        for(i in typePicker)
+        {
+            i.alpha = 0.5F
+            i.setOnClickListener(){
+                //Set off all containers
+                for(j in typePicker)
+                {
+                    if(!j.equals(i))
+                    {
+                        j.alpha = 0.5F
+                    }
+                }
+                //Set on clicked container and set current Window to i
+                i.alpha = 1F
+                selectedTypeView = i as LinearLayout
+                for(content in selectedTypeView)
+                {
+                    val textField = content as TextView
+                    selectedTypeName = textField.text.toString()
+                    Toast.makeText(this,selectedTypeName,Toast.LENGTH_LONG).show()
+                    break
+                }
+
+            }
+        }
+
 
     }
 
