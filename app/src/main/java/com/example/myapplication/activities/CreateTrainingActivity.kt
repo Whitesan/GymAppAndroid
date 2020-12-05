@@ -20,7 +20,7 @@ import com.example.myapplication.exercises.Part
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 @Suppress("DEPRECATION")
-class CreateTrainingActivity : AppCompatActivity() {
+class CreateTrainingActivity : AppWindowActivity() {
     var enteredText:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,26 +76,12 @@ class CreateTrainingActivity : AppCompatActivity() {
         })
     }
 
-    fun View.hideKeyboard(){
-            hideSystemUI()
+    private fun View.hideKeyboard(){
+            super.hideSystemUI()
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
             inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            hideSystemUI()
-        }
-    }
 
-    private fun hideSystemUI() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
-    override fun onResume() {
-        super.onResume()
-        hideSystemUI()
-    }
     private fun createRecyclerView(list: ListElements): ListAdapter<Exercise> {
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         val adapter= ListAdapter<Exercise>(list)
@@ -107,7 +93,7 @@ class CreateTrainingActivity : AppCompatActivity() {
         return adapter
     }
     var id=0
-    fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
+    private fun updateRecyclerView(elementList: ListElements, adapter: ListAdapter<Exercise>){
         var temp= Exercise("Nazwa # $id", Part.getPart("Plecy")!!);
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))

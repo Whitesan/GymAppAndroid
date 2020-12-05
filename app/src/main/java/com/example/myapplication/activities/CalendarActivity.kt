@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.example.myapplication.R
 
 @Suppress("DEPRECATION")
-class CalendarActivity : AppCompatActivity() {
+class CalendarActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
@@ -19,21 +19,4 @@ class CalendarActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) {
-            hideSystemUI()
-        }
-    }
-
-    private fun hideSystemUI() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
-    override fun onResume() {
-        super.onResume()
-        hideSystemUI()
-    }
-
 }
