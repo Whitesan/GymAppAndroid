@@ -40,10 +40,8 @@ class CreateTrainingActivity : AppCompatActivity() {
         }
         val endButton=findViewById<Button>(R.id.endCreatingExercises)
         endButton.setOnClickListener{
-            //TODO
-            //validate empty string
             if (enteredText.isEmpty()) {
-                //showErrorMessage()
+                showErrorMessage()
             } else {
                 val intent =  Intent(applicationContext, PlannerActivity::class.java)
                 startActivity(intent)
@@ -120,5 +118,9 @@ class CreateTrainingActivity : AppCompatActivity() {
         id++
         adapter.notifyItemInserted(elementList.appendList(temp))
     }
-
+    private fun showErrorMessage() {
+        val message = findViewById<TextView>(R.id.EnterTraining2)
+        message.text=getString(R.string.empty_name)
+        message.setTextColor(resources.getColor(R.color.red))
+    }
 }

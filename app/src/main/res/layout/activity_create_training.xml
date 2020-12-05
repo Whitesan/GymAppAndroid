@@ -82,6 +82,7 @@
             android:textColorHint="@color/text_transpatentish"
             android:textSize="17sp" />
             <TextView
+                android:id="@+id/EnterTraining2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
