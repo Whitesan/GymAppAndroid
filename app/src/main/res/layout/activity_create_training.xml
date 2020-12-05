@@ -69,34 +69,45 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:layout_marginHorizontal="60dp"
             android:background="@drawable/entry_shape"
             android:backgroundTint="@color/almost_transparent"
             android:cursorVisible="false"
-            android:hint="@string/enterTrainingName"
+            android:text="@string/defaultName"
             android:inputType="text"
-
             android:singleLine="true"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/text_transpatentish"
-
             android:textSize="17sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:text="@string/enterTrainingName"
+                android:layout_marginVertical="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/text_transpatentish"
+                android:visibility="visible"
+            />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/almost_transparent"
 
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="3dp"
                 />
             <RelativeLayout
-                android:focusable="true"
+
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="10">
                 <androidx.recyclerview.widget.RecyclerView
-
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

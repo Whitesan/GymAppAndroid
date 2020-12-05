@@ -43,7 +43,6 @@ class EnterExerciseNameActivity : AppCompatActivity() {
     }
 
     private fun setTextListener() {
-
         val entry = findViewById<EditText>(R.id.enterExerciseNameEntry)
         entry.setOnFocusChangeListener { v, focus ->
             if (focus == false) {
@@ -61,7 +60,6 @@ class EnterExerciseNameActivity : AppCompatActivity() {
             }
             false
         })
-
     }
 
     private fun showErrorMessage() {

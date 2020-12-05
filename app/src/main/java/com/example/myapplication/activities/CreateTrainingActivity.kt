@@ -1,5 +1,6 @@
 package com.example.myapplication.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
@@ -19,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 @Suppress("DEPRECATION")
 class CreateTrainingActivity : AppCompatActivity() {
+    var enteredText:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_training)
@@ -27,38 +29,56 @@ class CreateTrainingActivity : AppCompatActivity() {
             val intent =  Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-        var name:String?
-        val entry = findViewById<EditText>(R.id.enterTrainingName)
-        entry.setOnFocusChangeListener{ v, focus ->
-                if(focus==false){
-                    name = entry.text.toString()
-                    entry.hideKeyboard()
-                }
-                entry.isCursorVisible = focus
+        setTextListener(1)
 
-        }
-        entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
-            if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
-                name = entry.text.toString()
-                entry.hideKeyboard()
-                entry.isCursorVisible = false
-                return@OnKeyListener true
-            }
-            false
-        })
         val list= ListElements()
         val adapter=createRecyclerView(list)
+
         val newExerciseButton = findViewById<FloatingActionButton>(R.id.createExerciseButton)
         newExerciseButton.setOnClickListener{
             updateRecyclerView(list, adapter)
         }
         val endButton=findViewById<Button>(R.id.endCreatingExercises)
         endButton.setOnClickListener{
-            val intent =  Intent(applicationContext, PlannerActivity::class.java)
-            startActivity(intent)
-        }
+            //TODO
+            //validate empty string
+            if (enteredText.isEmpty()) {
+                //showErrorMessage()
+            } else {
+                val intent =  Intent(applicationContext, PlannerActivity::class.java)
+                startActivity(intent)
 
+            }
+        }
     }
+    @SuppressLint("SetTextI18n")
+    private fun setTextListener(number:Int) {
+        val entry = findViewById<EditText>(R.id.enterTrainingName)
+        entry.setText(getString(R.string.defaultName)+number.toString())
+        entry.setOnFocusChangeListener{ v, focus ->
+            if(focus==false){
+                enteredText = entry.text.toString()
+                entry.hideKeyboard()
+            }
+            else if(entry.getText().toString().contains(getString(R.string.defaultName))){
+                entry.setText("")
+            }
+            entry.isCursorVisible = focus
+
+        }
+        entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
+                enteredText = entry.text.toString()
+                entry.hideKeyboard()
+                entry.isCursorVisible = false
+                return@OnKeyListener true
+            }
+            false
+        })
+    }
+
+
+
     fun View.hideKeyboard(){
             hideSystemUI()
             val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager

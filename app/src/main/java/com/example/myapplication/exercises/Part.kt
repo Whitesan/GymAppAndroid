@@ -11,8 +11,6 @@ class Part:Serializable{
             map.put("klata",Part().setName("klata"))
             map.put("biceps",Part().setName("biceps"))
             map.put("triceps",Part().setName("triceps"))
-
-
         }
         fun getPart(name:String):Part?{
             return map.get(name.toLowerCase())
