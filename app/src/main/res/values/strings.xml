@@ -17,4 +17,7 @@
     <string name="empty_name">Name cannot be empty!</string>
     <string name="defaultName">Training #</string>
 
+    <!-- XML LAYOUT STRINGS -->
+    <string name="actPlannerCreateTraning">Create Traning</string>
+    <string name="actPlannerTraningList">Traning List</string>
 </resources>

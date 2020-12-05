@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.PlannerActivity"
-    android:background="@color/black"
+    android:background="@color/white"
     android:orientation="vertical"
     android:layout_weight="15"
 
@@ -86,7 +86,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="10dp"
                     android:textStyle="bold"
-                    android:text="Create Training"/>
+                    android:text="@string/actPlannerCreateTraning"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
@@ -100,10 +100,6 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-
-
-
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -131,7 +127,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="10dp"
                     android:textStyle="bold"
-                    android:text="Add training to calendar"/>
+                    android:text="@string/actPlannerTraningList"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
