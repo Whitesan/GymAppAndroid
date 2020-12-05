@@ -27,4 +27,5 @@
     <!-- XML LAYOUT STRINGS -->
     <string name="actPlannerCreateTraning">Create Traning</string>
     <string name="actPlannerTraningList">Traning List</string>
+
 </resources>

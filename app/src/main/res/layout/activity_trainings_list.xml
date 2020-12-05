@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activities.TrainingsListActivity"
+android:background="@color/black"
+android:orientation="vertical"
+android:layout_weight="15"
+
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:background="@color/black"
+    >
+
+    <ImageView
+        android:id="@+id/backTrainingsList"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/backward"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/traningsListTitle"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:text="@string/actPlannerTraningList"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:fontFamily="serif-monospace"
+        android:layout_marginTop="5dp"
+        android:layout_weight="5"
+
+        />
+    <ImageView
+        android:id="@+id/settingsTrainingsList"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/settings"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:padding="10dp"
+        />
+</LinearLayout>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:layout_weight="14"
+    android:background="@color/black"
+    >
+
+</RelativeLayout>
+</LinearLayout>
