@@ -40,7 +40,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 startActivity(intent)
             }
         }
-
+/*
         val typePicker = findViewById<LinearLayout>(R.id.typePicker)
         val but = createSeriesButton("   view1111111  ")
         val but2 = createSeriesButton("   view2222222   ")
@@ -52,7 +52,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         typePicker.addView(but3)
         typePicker.addView(but4)
         typePicker.addView(but5)
-        // typePicker.addView(but)
+        // typePicker.addView(but)*/
 
     }
 
