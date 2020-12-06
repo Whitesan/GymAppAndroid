@@ -24,8 +24,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 @Suppress("DEPRECATION")
  class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     var enteredText:String=""
-    private val list= ListElements()
-    private val adapter= ListAdapter<Exercise>(list,this)
+    private val adapter= ListAdapter(this)
     private var id=0  //TODO delete this later
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,22 +76,22 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
     }
 
     private fun createRecyclerView(){
-        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
+         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recycler)
-        adapter.notifyItemInserted(list.addButton(AddButton()))
+        adapter.appendItem(AddButton(),recycler)
+
+
     }
 
     private fun updateRecyclerView(){
-        val temp= Exercise("Nazwa # $id", Part.getPart("Plecy")!!);
-        id++
-        val index=list.appendList(temp)
-        adapter.notifyItemInserted(index)
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        recycler.scrollToPosition(index+1)
+        adapter.appendItem(Exercise("Nazwa # $id", Part.getPart("Plecy")!!),recycler)
+
+        id++
     }
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)
