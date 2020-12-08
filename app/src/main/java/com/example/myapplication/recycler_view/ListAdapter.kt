@@ -8,8 +8,6 @@ import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.recycler_view.ButtonAdapter
 import com.example.myapplication.recycler_view.ExerciseAdapter
 import java.util.*
-
-
 class ListAdapter(private val itemTouchListener: View.OnTouchListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
     private val items: LinkedList<Exercise> = LinkedList<Exercise>()
@@ -33,7 +31,7 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener) :
         if (buttonAdapter.getViewType() == viewType) {
             val view = LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.list_element_layout, parent, false)
+                .inflate(R.layout.button_list_element_layout, parent, false)
             return buttonAdapter.onCreateViewHolder(view)
         } else if (exerciseAdapter.getViewType() == viewType) {
             val view = LayoutInflater
@@ -51,13 +49,6 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener) :
         } else if (exerciseAdapter.getViewType() == viewType) {
             exerciseAdapter.onBindViewHolder(items, position, holder)
         }
-//        if(position==0){
-//            buttonAdapter.onBindViewHolder(items, position, holder,itemTouchListener)
-//        }
-//        else{
-//            exerciseAdapter.onBindViewHolder(items, position, holder)
-//        }
-
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int): Boolean {

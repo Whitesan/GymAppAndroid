@@ -24,7 +24,7 @@ class ButtonAdapter(private val viewType: Int) {
         holder: RecyclerView.ViewHolder,
         itemTouchListener: View.OnTouchListener
     ) {
-//        val button: AddButton = items[position] as AddButton
+
         val vh: ButtonViewHolder = holder as ButtonViewHolder
         vh.bindButton(itemTouchListener)
 

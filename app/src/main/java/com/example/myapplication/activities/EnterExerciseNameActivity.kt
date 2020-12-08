@@ -15,22 +15,18 @@ import com.example.myapplication.exercises.Part
 @Suppress("DEPRECATION")
 class EnterExerciseNameActivity : AppWindowActivity() {
     private var enteredText: String = ""
-    lateinit var selectedTypeView : LinearLayout // selected type Container
+    private lateinit var selectedTypeView : LinearLayout // selected type Container
     var selectedTypeName : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_exercise_name)
 
-
         val backButton = findViewById<ImageView>(R.id.backEnterName)
         backButton.setOnClickListener {
             val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
             startActivity(intent)
-
         }
-
         setTextListener()
-
         val buttonContinue = findViewById<Button>(R.id.ContinueCreatingButton)
         buttonContinue.setOnClickListener {
             if (enteredText.isEmpty()) {
@@ -96,6 +92,6 @@ class EnterExerciseNameActivity : AppWindowActivity() {
 
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.TrainingNameEmpty)
-        message.setVisibility(View.VISIBLE);
+        message.visibility = View.VISIBLE;
     }
 }

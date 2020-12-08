@@ -20,15 +20,26 @@ import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Part
 import com.example.myapplication.recycler_view.AddButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.Serializable
 
 @Suppress("DEPRECATION")
- class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
-    var enteredText:String=""
+ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
+
+    companion object{
+        //TODO make an entire recyclerView static
+        // and erase list of exercise after "save"  button
+        var exerciseList= ArrayList<Exercise>()
+        private var enteredText:String=""
+    }
     private val adapter= ListAdapter(this)
-    private var id=0  //TODO delete this later
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_training)
+        val temp : Serializable? = super.getIntent().getSerializableExtra("Exercise")
+        if (temp != null){
+            exerciseList.add(temp as Exercise)
+        }
         setTextListener(1)
         createRecyclerView()
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
@@ -41,8 +52,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
             if (enteredText.isEmpty()) {
                 showErrorMessage()
             } else {
-                val intent =  Intent(applicationContext, PlannerActivity::class.java)
-                startActivity(intent)
+               onExit()
 
             }
         }
@@ -83,23 +93,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recycler)
         adapter.appendItem(AddButton(),recycler)
-
-
+        for(e : Exercise in exerciseList){
+            adapter.appendItem(e,recycler)
+        }
     }
-
-    private fun updateRecyclerView(){
-        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        adapter.appendItem(Exercise("Nazwa # $id", Part.getPart("Plecy")!!),recycler)
-
-        id++
+    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+        val intent = Intent(applicationContext, EnterExerciseNameActivity::class.java)
+        startActivity(intent)
+        return false;
+    }
+    private fun onExit(){
+        //TODO save to json
+        enteredText= ""
+        exerciseList.clear()
+        val intent =  Intent(applicationContext, PlannerActivity::class.java)
+        startActivity(intent)
     }
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)
         message.text=getString(R.string.empty_name)
         message.setTextColor(resources.getColor(R.color.red))
     }
-    override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
-        updateRecyclerView()
-        return false;
-    }
+
 }
