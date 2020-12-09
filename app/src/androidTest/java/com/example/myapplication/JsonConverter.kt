@@ -1,5 +1,6 @@
 package com.example.myapplication
 import com.google.gson.GsonBuilder
+import java.io.FileOutputStream
 import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
@@ -13,7 +14,8 @@ abstract class JsonConverter<T>(private val jsonFilename: String) {
 
     // conversion from object to json
     fun toJson(element: T?) {
-        try {
+
+          try {
             FileWriter(jsonFilename).use { fileWriter ->
                 if (element == null) {
                     throw NullPointerException("ELEMENT IS NULL")

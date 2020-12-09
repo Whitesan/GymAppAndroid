@@ -37,7 +37,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)
             }
-        }
+        } 
 
         val typePicker = findViewById<LinearLayout>(R.id.typePicker)
         //Set on click listener to containers
@@ -56,6 +56,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 //Set on clicked container and set current Window to i
                 i.alpha = 1F
                 selectedTypeView = i as LinearLayout
+
                 for(content in selectedTypeView)
                 {
                     val textField = content as TextView

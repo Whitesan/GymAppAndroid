@@ -6,21 +6,20 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.*
 import com.example.myapplication.ListAdapter
+import com.example.myapplication.R
+import com.example.myapplication.SimpleItemTouchHelperCallback
+import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
-import com.example.myapplication.exercises.Part
+import com.example.myapplication.exercises.Training
 import com.example.myapplication.recycler_view.AddButton
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.Serializable
+
 
 @Suppress("DEPRECATION")
  class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
@@ -58,9 +57,10 @@ import java.io.Serializable
         }
     }
     @SuppressLint("SetTextI18n")
-    private fun setTextListener(number:Int) {
+    private fun setTextListener(number: Int) {
         val entry = findViewById<EditText>(R.id.enterTrainingName)
-        entry.setText(getString(R.string.defaultName)+number.toString())
+        entry.setText(getString(R.string.defaultName) + number.toString())
+
         enteredText= entry.text.toString()
         entry.setOnFocusChangeListener{ v, focus ->
             if(focus==false){
@@ -92,9 +92,9 @@ import java.io.Serializable
         val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recycler)
-        adapter.appendItem(AddButton(),recycler)
+        adapter.appendItem(AddButton(), recycler)
         for(e : Exercise in exerciseList){
-            adapter.appendItem(e,recycler)
+            adapter.appendItem(e, recycler)
         }
     }
     override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
@@ -104,9 +104,16 @@ import java.io.Serializable
     }
     private fun onExit(){
         //TODO save to json
+        val training = Training(enteredText, exerciseList)
+        val yourFilePath = filesDir.toString() + "/" + "Training.json"
+        val json :TrainingJsonConverter = TrainingJsonConverter()
+        json.toJson(training,yourFilePath)
+       // val training2 = json.fromJson(yourFilePath)
         enteredText= ""
         exerciseList.clear()
-        val intent =  Intent(applicationContext, PlannerActivity::class.java)
+
+
+        val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
         startActivity(intent)
     }
     private fun showErrorMessage() {
