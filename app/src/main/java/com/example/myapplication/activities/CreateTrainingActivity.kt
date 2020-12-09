@@ -17,6 +17,7 @@ import com.example.myapplication.SimpleItemTouchHelperCallback
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Training
+import com.example.myapplication.exercises.Trainings
 import com.example.myapplication.recycler_view.AddButton
 import java.io.Serializable
 
@@ -111,8 +112,14 @@ import java.io.Serializable
         val training = Training(enteredText, exerciseList)
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
         val json :TrainingJsonConverter = TrainingJsonConverter()
-        json.toJson(training,yourFilePath)
-       // val training2 = json.fromJson(yourFilePath)
+        var trainings = json.fromJson(yourFilePath)
+        if(trainings.trainingList == null)
+        {
+            trainings = Trainings(ArrayList())
+        }
+        trainings.trainingList.add(training)
+        json.toJson(trainings,yourFilePath)
+
         enteredText= ""
         exerciseList.clear()
 

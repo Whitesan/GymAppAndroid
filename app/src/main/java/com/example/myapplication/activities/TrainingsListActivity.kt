@@ -20,7 +20,7 @@ class TrainingsListActivity : AppWindowActivity() {
         }
         val json : TrainingJsonConverter = TrainingJsonConverter()
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
-        val training= json.fromJson(yourFilePath)
-        Toast.makeText(this, training.getName() +" ", Toast.LENGTH_LONG).show()
+        val trainings= json.fromJson(yourFilePath)
+        Toast.makeText(this, trainings.showTrainings() +" " , Toast.LENGTH_LONG).show()
     }
 }

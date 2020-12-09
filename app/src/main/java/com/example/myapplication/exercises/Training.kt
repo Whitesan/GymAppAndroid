@@ -10,6 +10,6 @@ class Training(private var name:String, var exerciseList :ArrayList<Exercise>) :
     }
     fun showExercise():String
     {
-        return exerciseList[0].getName()
+        return exerciseList.toString()
     }
 }
