@@ -22,7 +22,7 @@ class TrainingsListActivity : AppWindowActivity() {
         }
         val json : TrainingJsonConverter = TrainingJsonConverter()
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
-        val trainings= json.fromJson(yourFilePath)
+        val trainings= json.fromJson(yourFilePath)!!
         Toast.makeText(this, trainings.showTrainings() +" " , Toast.LENGTH_LONG).show()
         val trainingList = findViewById<LinearLayout>(R.id.trainingList)
         for(t in trainings.trainingList)

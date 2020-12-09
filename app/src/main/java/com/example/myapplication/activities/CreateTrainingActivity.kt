@@ -23,16 +23,18 @@ import java.io.Serializable
 
 
 @Suppress("DEPRECATION")
- class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener,View.OnClickListener {
+ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
     companion object{
         var exerciseList= ArrayList<Exercise>()
         private var enteredText:String=""
     }
     private val adapter= ListAdapter(this)
+    private lateinit var entry:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_training)
+        entry = findViewById<EditText>(R.id.enterTrainingName)
         val temp : Serializable? = super.getIntent().getSerializableExtra("Exercise")
         if (temp != null){
             exerciseList.add(temp as Exercise)
@@ -55,7 +57,6 @@ import java.io.Serializable
     }
     @SuppressLint("SetTextI18n")
     private fun setTextListener(number: Int) {
-        val entry = findViewById<EditText>(R.id.enterTrainingName)
         if(enteredText.isNotEmpty())
             entry.setText(enteredText)
         else{
@@ -99,27 +100,19 @@ import java.io.Serializable
         }
     }
     override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
+        enteredText = entry.text.toString()
         val intent = Intent(applicationContext, EnterExerciseNameActivity::class.java)
         startActivity(intent)
         return false;
     }
-    override fun onClick(p0: View?) {
-        val editButton:TextView = findViewById(R.id.editButton)
-        editButton.setOnClickListener{
 
-
-        }
-    }
     private fun onExit(){
-        //TODO save to json
         val training = Training(enteredText, exerciseList)
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
         val json :TrainingJsonConverter = TrainingJsonConverter()
-        var trainings = json.fromJson(yourFilePath)
-        if(trainings.trainingList == null)
-        {
+        var trainings :Trainings? = json.fromJson(yourFilePath)
+        if(trainings ==null )
             trainings = Trainings(ArrayList())
-        }
         trainings.trainingList.add(training)
         json.toJson(trainings,yourFilePath)
 

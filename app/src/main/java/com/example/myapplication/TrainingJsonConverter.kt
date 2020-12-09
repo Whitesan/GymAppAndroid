@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import com.example.myapplication.exercises.Training
 import com.example.myapplication.exercises.Trainings
 import com.google.gson.Gson
 import java.io.*
@@ -25,7 +24,7 @@ class TrainingJsonConverter()
         fileOutputStream.flush()
         fileOutputStream.close()
     }
-    fun fromJson(yourFilePath: String):Trainings
+    fun fromJson(yourFilePath: String):Trainings?
     {
         val gson = Gson()
         var text = ""
@@ -61,8 +60,7 @@ class TrainingJsonConverter()
         }
 //Use Gson to recreate your Object from the text String
 //Use Gson to recreate your Object from the text String
-        var yourObject: Trainings = gson.fromJson(text,Trainings::class.java)
-        return yourObject
+        return gson.fromJson(text,Trainings::class.java)
     }
 
 }
