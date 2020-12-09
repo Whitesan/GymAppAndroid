@@ -59,9 +59,13 @@ import java.io.Serializable
     @SuppressLint("SetTextI18n")
     private fun setTextListener(number: Int) {
         val entry = findViewById<EditText>(R.id.enterTrainingName)
-        entry.setText(getString(R.string.defaultName) + number.toString())
+        if(enteredText.isNotEmpty())
+            entry.setText(enteredText)
+        else{
+            entry.setText(getString(R.string.defaultName) + number.toString())
+            enteredText= entry.text.toString()
 
-        enteredText= entry.text.toString()
+        }
         entry.setOnFocusChangeListener{ v, focus ->
             if(focus==false){
                 enteredText = entry.text.toString()

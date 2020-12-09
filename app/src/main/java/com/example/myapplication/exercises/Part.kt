@@ -18,7 +18,6 @@ class Part : Serializable {
             map.put("cardio", Part().setName("cardio"))
             map.put("triceps", Part().setName("triceps"))
             map.put("biceps", Part().setName("biceps"))
-
             map.put("legs", Part().setName("legs"))
             map.put("stomach", Part().setName("stomach"))
 

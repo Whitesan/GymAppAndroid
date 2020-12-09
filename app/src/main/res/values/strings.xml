@@ -31,4 +31,6 @@
     <string name="reps">Reps</string>
     <string name="weight">Weight</string>
     <string name="series">Series</string>
+    <string name="edit">Edit</string>
+
 </resources>
