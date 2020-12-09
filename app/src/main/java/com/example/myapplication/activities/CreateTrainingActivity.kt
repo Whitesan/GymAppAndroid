@@ -23,11 +23,8 @@ import java.io.Serializable
 
 
 @Suppress("DEPRECATION")
- class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
-
+ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener,View.OnClickListener {
     companion object{
-        //TODO make an entire recyclerView static
-        // and erase list of exercise after "save"  button
         var exerciseList= ArrayList<Exercise>()
         private var enteredText:String=""
     }
@@ -53,7 +50,6 @@ import java.io.Serializable
                 showErrorMessage()
             } else {
                onExit()
-
             }
         }
     }
@@ -107,6 +103,13 @@ import java.io.Serializable
         startActivity(intent)
         return false;
     }
+    override fun onClick(p0: View?) {
+        val editButton:TextView = findViewById(R.id.editButton)
+        editButton.setOnClickListener{
+
+
+        }
+    }
     private fun onExit(){
         //TODO save to json
         val training = Training(enteredText, exerciseList)
@@ -122,8 +125,6 @@ import java.io.Serializable
 
         enteredText= ""
         exerciseList.clear()
-
-
         val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
         startActivity(intent)
     }

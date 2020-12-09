@@ -15,7 +15,7 @@ import com.example.myapplication.exercises.Part
 @Suppress("DEPRECATION")
 class EnterExerciseNameActivity : AppWindowActivity() {
     private var enteredText: String = ""
-    private lateinit var part:Part
+    private var part:Part?=null
     private lateinit var selectedTypeView : LinearLayout // selected type Container
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,41 +30,24 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         val buttonContinue = findViewById<Button>(R.id.ContinueCreatingButton)
         buttonContinue.setOnClickListener {
             if (enteredText.isEmpty()) {
-                showErrorMessage()
-            } else {
+                val message = findViewById<TextView>(R.id.TrainingNameEmpty)
+                message.visibility = View.VISIBLE;
+            }
+            else if(part==null){
+                val message = findViewById<TextView>(R.id.TrainingNameEmpty)
+                message.text=getString(R.string.selectPartError)
+                message.visibility = View.VISIBLE;
+            }
+            else{
                 val exercise =Exercise(enteredText, part)
                 val intent = Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)
             }
-        } 
-
-        val typePicker = findViewById<LinearLayout>(R.id.typePicker)
-        //Set on click listener to containers
-        for(i in typePicker)
-        {
-            i.alpha = 0.5F
-            i.setOnClickListener{
-                //Set off all containers
-                for(j in typePicker)
-                {
-                    if(j != i)
-                    {
-                        j.alpha = 0.5F
-                    }
-                }
-                //Set on clicked container and set current Window to i
-                i.alpha = 1F
-                selectedTypeView = i as LinearLayout
-
-                val textField =i.getChildAt(0) as TextView
-                part = Part.getPart(textField.text.toString()) !!
-
-            }
         }
+        selectPartListener()
+
     }
-
-
 
     private fun setTextListener() {
         val entry = findViewById<EditText>(R.id.enterExerciseNameEntry)
@@ -89,5 +72,24 @@ class EnterExerciseNameActivity : AppWindowActivity() {
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.TrainingNameEmpty)
         message.visibility = View.VISIBLE;
+    }
+    private fun selectPartListener(){
+        val typePicker = findViewById<LinearLayout>(R.id.typePicker)
+        for(i in typePicker)
+        {
+            i.alpha = 0.5F
+            i.setOnClickListener{
+                for(j in typePicker)
+                {
+                    if(j != i)
+                        j.alpha = 0.5F
+                }
+                i.alpha = 1F
+                selectedTypeView = i as LinearLayout
+                val textField =i.getChildAt(0) as TextView
+                part = Part.getPart(textField.text.toString()) !!
+
+            }
+        }
     }
 }
