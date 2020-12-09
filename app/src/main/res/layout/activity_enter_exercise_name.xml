@@ -147,7 +147,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/chest"
@@ -176,7 +175,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/back"
@@ -205,10 +203,9 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/shoulder"
+                        android:src="@drawable/shoulders"
                         >
                     </ImageView>
                 </LinearLayout>
@@ -234,7 +231,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/cardio"
@@ -261,7 +257,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/biceps"
@@ -287,7 +282,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/butt"
@@ -314,7 +308,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:src="@drawable/biceps"

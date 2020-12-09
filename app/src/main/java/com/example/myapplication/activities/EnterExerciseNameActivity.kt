@@ -15,8 +15,8 @@ import com.example.myapplication.exercises.Part
 @Suppress("DEPRECATION")
 class EnterExerciseNameActivity : AppWindowActivity() {
     private var enteredText: String = ""
+    private lateinit var part:Part
     private lateinit var selectedTypeView : LinearLayout // selected type Container
-    var selectedTypeName : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_exercise_name)
@@ -32,7 +32,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
             if (enteredText.isEmpty()) {
                 showErrorMessage()
             } else {
-                val exercise = Part.getPart("plecy")?.let { part -> Exercise(enteredText, part) }
+                val exercise =Exercise(enteredText, part)
                 val intent = Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)
@@ -44,11 +44,11 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         for(i in typePicker)
         {
             i.alpha = 0.5F
-            i.setOnClickListener(){
+            i.setOnClickListener{
                 //Set off all containers
                 for(j in typePicker)
                 {
-                    if(!j.equals(i))
+                    if(j != i)
                     {
                         j.alpha = 0.5F
                     }
@@ -57,13 +57,8 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 i.alpha = 1F
                 selectedTypeView = i as LinearLayout
 
-                for(content in selectedTypeView)
-                {
-                    val textField = content as TextView
-                    selectedTypeName = textField.text.toString()
-                    Toast.makeText(this,selectedTypeName,Toast.LENGTH_LONG).show()
-                    break
-                }
+                val textField =i.getChildAt(0) as TextView
+                part = Part.getPart(textField.text.toString()) !!
 
             }
         }

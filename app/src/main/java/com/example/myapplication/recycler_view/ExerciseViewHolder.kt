@@ -1,5 +1,6 @@
 package com.example.myapplication.recycler_view
 
+import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -13,9 +14,9 @@ class ExerciseViewHolder(view:View) : RecyclerView.ViewHolder(view) {
     val nameTextView2: TextView = itemView.findViewById(R.id.listElement2)
     val icon: ImageView = itemView.findViewById(R.id.ListElementIcon)
     fun bindExercise(exercise: Exercise){
+
         nameTextView.text=exercise.getName()
         nameTextView2.text=exercise.getPart().toString()
+        icon.setImageURI(Uri.parse(exercise.getPart()?.getImg()))
     }
-
-
 }

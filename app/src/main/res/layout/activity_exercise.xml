@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/graphite"
-            android:text="Series"
+            android:text="@string/series"
             android:textAlignment="center"
 
             android:textSize="25sp">
@@ -97,7 +97,7 @@
                 android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
         </HorizontalScrollView>
 
 
@@ -109,7 +109,7 @@
 
             <Button
                 android:id="@+id/deleteSeries"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="5dp"
@@ -118,7 +118,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/entry_shape"
                 android:backgroundTint="@color/red"
-                android:text="DELETE" />
+                android:text="@string/DELETE" />
 
         </LinearLayout>
 
@@ -141,7 +141,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/graphite"
-                    android:text="Reps"
+                    android:text="@string/reps"
                     android:textAlignment="center"
                     android:textSize="25sp">
 
@@ -152,7 +152,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/graphite"
-                    android:text="Weight"
+                    android:text="@string/weight"
                     android:textAlignment="center"
                     android:textSize="25sp">
 
@@ -216,7 +216,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/entry_shape"
                 android:backgroundTint="@color/green"
-                android:text="SAVE" />
+                android:text="@string/save" />
 
         </LinearLayout>
 

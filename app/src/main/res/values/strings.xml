@@ -27,5 +27,8 @@
     <string name="addNewExercise">Add new exercise</string>
     <string name="actPlannerCreateTraning">Create Traning</string>
     <string name="actPlannerTraningList">Traning List</string>
-
+    <string name="DELETE">Delete</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
+    <string name="series">Series</string>
 </resources>
