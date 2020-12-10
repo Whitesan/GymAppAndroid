@@ -2,21 +2,12 @@
 package com.example.myapplication.activities
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
-import android.view.View
-import android.view.WindowManager
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import android.widget.HorizontalScrollView
 import android.widget.NumberPicker.OnValueChangeListener
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
-import androidx.core.view.size
 import com.example.myapplication.R
 import com.example.myapplication.exercises.Exercise
-import com.example.myapplication.exercises.Part
 import com.example.myapplication.exercises.Series
 import java.io.Serializable
 
@@ -64,6 +55,8 @@ class ExerciseActivity : AppWindowActivity() {
         repsPicker.minValue = 0
         repsPicker.setOnValueChangedListener { picker, oldVal, newVal ->
             exercise.list[selectedSeries - 1].reps = newVal
+
+
         }
 
 
@@ -76,23 +69,23 @@ class ExerciseActivity : AppWindowActivity() {
         })
         //Create first series
          val firstButton = createSeriesButton("1")
-         addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
+         addButtonToList(firstButton, seriesPicker, seriesScroll, weightPicker, repsPicker)
         val secondButton = createSeriesButton("+")
-        addButtonToList(secondButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
+        addButtonToList(secondButton, seriesPicker, seriesScroll, weightPicker, repsPicker)
         if(edit)
         {
             for(i in 0 until exercise.list.size)
             {
                 if(exercise.list[i].seriesNumber == 1)
                 {
-                    weightPicker.value = exercise.list[selectedSeries -1].weight
-                    repsPicker.value = exercise.list[selectedSeries -1].reps
+                    weightPicker.value = exercise.list[selectedSeries - 1].weight
+                    repsPicker.value = exercise.list[selectedSeries - 1].reps
                 }
                 else
                 {
                     seriesCounter++
                     val button2 = createSeriesButton(seriesCounter.toString())
-                    addButtonToList(button2,seriesPicker,seriesScroll,weightPicker,repsPicker)
+                    addButtonToList(button2, seriesPicker, seriesScroll, weightPicker, repsPicker)
                     val b = seriesPicker[seriesCounter - 1]
                     seriesPicker.removeViewAt(seriesCounter - 1)
                     seriesPicker.addView(b)
@@ -101,6 +94,17 @@ class ExerciseActivity : AppWindowActivity() {
         }
         seriesPicker[0].callOnClick()
         ready = true
+        if(exercise.getPart()?.getName().equals("cardio"))
+        {
+            val pickerText1 = findViewById<TextView>(R.id.pickerText1)
+            val pickerText2 = findViewById<TextView>(R.id.pickerText2)
+            pickerText1.text = "Minutes"
+            pickerText2.text = "Meters"
+            weightPicker.minValue = 0
+            weightPicker.maxValue = (createMetersArray().size-1)
+            weightPicker.displayedValues = createMetersArray()
+
+        }
 
         val endButton = findViewById<Button>(R.id.endWindow)
         endButton.setOnClickListener{
@@ -121,18 +125,19 @@ class ExerciseActivity : AppWindowActivity() {
                 exercise.list.removeAt(seriesCounter)
                 seriesPicker.removeViewAt(seriesCounter)
                 selectedSeries = seriesCounter
-                val b = seriesPicker[seriesCounter-1] as Button
+                val b = seriesPicker[seriesCounter - 1] as Button
                 weightPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].weight
                 repsPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].reps
                 b.setBackgroundDrawable(resources.getDrawable(R.color.blue))
             }
         }
     }
-    private fun createSeriesButton(text : String) : Button
+    private fun createSeriesButton(text: String) : Button
     {
         val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT)
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
         params.setMargins(10, 10, 10, 10)
         val button = Button(this)
         button.text = text
@@ -140,7 +145,13 @@ class ExerciseActivity : AppWindowActivity() {
         button.layoutParams = params
         return button
     }
-    private fun addButtonToList(button: Button, list : LinearLayout, seriesScroll : HorizontalScrollView, weightPicker:NumberPicker, repsPicker:NumberPicker)
+    private fun addButtonToList(
+        button: Button,
+        list: LinearLayout,
+        seriesScroll: HorizontalScrollView,
+        weightPicker: NumberPicker,
+        repsPicker: NumberPicker
+    )
     {
         //Make all button gray
         for(i in 0..list.childCount -2)
@@ -154,7 +165,7 @@ class ExerciseActivity : AppWindowActivity() {
              button.setOnClickListener{
                  seriesCounter++
                  val button2 = createSeriesButton(seriesCounter.toString())
-                 addButtonToList(button2,list,seriesScroll,weightPicker,repsPicker)
+                 addButtonToList(button2, list, seriesScroll, weightPicker, repsPicker)
                  val b = list[seriesCounter - 1]
                  list.removeViewAt(seriesCounter - 1)
                  list.addView(b)
@@ -188,7 +199,7 @@ class ExerciseActivity : AppWindowActivity() {
             val buttonText = button.text as String
             if(!edit || ready)
             {
-                val series = Series(Integer.valueOf(buttonText),0,0)
+                val series = Series(Integer.valueOf(buttonText), 0, 0)
                 exercise.addSeries(series)
             }
 
@@ -197,12 +208,23 @@ class ExerciseActivity : AppWindowActivity() {
             {
                 if(!edit || ready)
                 {
-                    exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(button.text as String) - 2].weight
-                    exercise.list[Integer.valueOf(button.text as String) - 1].reps = exercise.list[Integer.valueOf(button.text as String) - 2].reps
+                    exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(
+                        button.text as String
+                    ) - 2].weight
+                    exercise.list[Integer.valueOf(button.text as String) - 1].reps = exercise.list[Integer.valueOf(
+                        button.text as String
+                    ) - 2].reps
 
                 }
 
             }
         }
+    }
+    fun createMetersArray():Array<out String>
+    {
+        val list:Array<out String> = Array(100){i -> (i *100).toString()}
+
+        return list;
+
     }
 }

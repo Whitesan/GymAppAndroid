@@ -124,7 +124,9 @@
             android:layout_weight="1"
             android:background="@drawable/entry_shape"
             android:backgroundTint="@color/green"
-            android:text="@string/save" />
+            android:text="@string/save"
+            android:textSize="30sp"
+            />
     </LinearLayout>
 
     <RelativeLayout

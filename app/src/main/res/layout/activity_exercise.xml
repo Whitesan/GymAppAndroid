@@ -137,6 +137,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/pickerText1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -148,6 +149,7 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/pickerText2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
