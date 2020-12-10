@@ -21,6 +21,7 @@ class SimpleItemTouchHelperCallback(private var adapter:ItemTouchHelperAdapter) 
     override fun isItemViewSwipeEnabled(): Boolean {
         return false
     }
+    //TODO add on swipe delete and edit button
    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
        adapter.onItemDismiss(viewHolder.adapterPosition)
     }

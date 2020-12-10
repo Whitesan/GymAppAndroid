@@ -9,15 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".activities.TrainingsListActivity" />
-        <activity android:name=".activities.EnterExerciseNameActivity" />
-        <activity android:name=".activities.ExerciseActivity" />
-        <activity android:name=".activities.CreateTrainingActivity" />
-        <activity android:name=".activities.CalendarActivity" />
-        <activity android:name=".activities.StatisticsActivity" />
-        <activity android:name=".activities.PlannerActivity" />
-        <activity android:name=".activities.TrainingActivity" />
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name=".activities.TrainingsListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EnterExerciseNameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ExerciseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CreateTrainingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CalendarActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.StatisticsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PlannerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TrainingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

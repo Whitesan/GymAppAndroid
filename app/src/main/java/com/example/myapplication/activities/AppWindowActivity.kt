@@ -1,6 +1,9 @@
 package com.example.myapplication.activities
 
+import android.content.pm.ActivityInfo
 import android.content.res.Resources
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -8,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 open class AppWindowActivity : AppCompatActivity() {
-
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onCreate(savedInstanceState, persistentState)
+//        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+    }
     final override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {
