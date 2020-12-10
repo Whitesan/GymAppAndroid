@@ -17,6 +17,10 @@ class SimpleItemTouchHelperCallback(
     ) :
     ItemTouchHelper.Callback() {
 
+    private  var prevdx:Float = 0f
+    private  val leftSwipeThreshold=0.9f
+    private  val rightSwipeThreshold=0.4f
+    private  var activeThreshold=leftSwipeThreshold
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
@@ -42,7 +46,7 @@ class SimpleItemTouchHelperCallback(
     }
 
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
-        return 0.9f
+        return activeThreshold
     }
 
 
@@ -61,10 +65,10 @@ class SimpleItemTouchHelperCallback(
 
     override fun clearView(recyclerView: RecyclerView, vh: RecyclerView.ViewHolder) {
         //TODO there'ss something wrong, hide options
-        super.clearView(recyclerView, vh)
         val viewHolder = vh as ExerciseViewHolder
-//        hideOptions(vh)
+        //hideOptions(viewHolder,ItemTouchHelper.ACTION_STATE_SWIPE)
         getDefaultUIUtil().clearView(viewHolder.foreground)
+        //super.clearView(recyclerView, viewHolder)
     }
 
     override fun onMove(
@@ -74,7 +78,6 @@ class SimpleItemTouchHelperCallback(
         adapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
         return true
     }
-    private  var prevdx:Float = 0f
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -88,12 +91,14 @@ class SimpleItemTouchHelperCallback(
         if (dX < 0) {
             if(prevdx < dX){
                 hideOptions(viewHolder,actionState)
+                activeThreshold=leftSwipeThreshold
+
             }
             else if(prevdx != dX)
                 showOptions(viewHolder, actionState)
             Log.println(Log.INFO,null,dX.toString()+" precDx:"+prevdx)
             prevdx=dX
-
+            activeThreshold=rightSwipeThreshold
             getDefaultUIUtil().onDraw(
                 c, recyclerView, viewHolder.foreground, dX / 3, dY,
                 actionState, isCurrentlyActive
@@ -121,16 +126,19 @@ class SimpleItemTouchHelperCallback(
         if (dX < 0) {
             if(prevdx < dX){
                 hideOptions(viewHolder,actionState)
+                activeThreshold=leftSwipeThreshold
+
             }
             else if(prevdx!=dX)
                 showOptions(viewHolder, actionState)
             prevdx=dX
+            activeThreshold=rightSwipeThreshold
+
             getDefaultUIUtil().onDrawOver(
                 c, recyclerView, viewHolder.foreground, dX / 3, dY,
                 actionState, isCurrentlyActive
             )
         }
-
         else{
             super.onChildDrawOver(
                 c,
