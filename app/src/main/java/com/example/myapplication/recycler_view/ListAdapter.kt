@@ -58,10 +58,12 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener, private v
         if (fromPosition < toPosition) {
             for (i in fromPosition until toPosition) {
                 Collections.swap(items, i, i + 1)
+                Collections.swap(trainingItems, i, i + 1)
             }
         } else {
             for (i in fromPosition downTo toPosition + 1) {
                 Collections.swap(items, i, i - 1)
+                Collections.swap(trainingItems, i, i - 1)
             }
         }
         notifyItemMoved(fromPosition, toPosition)

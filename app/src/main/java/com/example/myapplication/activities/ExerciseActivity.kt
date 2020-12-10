@@ -13,6 +13,7 @@ import android.widget.HorizontalScrollView
 import android.widget.NumberPicker.OnValueChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import androidx.core.view.size
 import com.example.myapplication.R
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Part
@@ -27,6 +28,7 @@ class ExerciseActivity : AppWindowActivity() {
     var seriesCounter = 1
     var selectedSeries = 1
     private var edit = false
+    private var ready = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
@@ -74,12 +76,32 @@ class ExerciseActivity : AppWindowActivity() {
             exercise.list[selectedSeries - 1].weight = newVal
         })
         //Create first series
-
-        val firstButton = createSeriesButton("1")
-        addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
+         val firstButton = createSeriesButton("1")
+         addButtonToList(firstButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
         val secondButton = createSeriesButton("+")
         addButtonToList(secondButton,seriesPicker,seriesScroll,weightPicker,repsPicker)
-
+        if(edit)
+        {
+            for(i in 0 until exercise.list.size)
+            {
+                if(exercise.list[i].seriesNumber == 1)
+                {
+                    weightPicker.value = exercise.list[selectedSeries -1].weight
+                    repsPicker.value = exercise.list[selectedSeries -1].reps
+                }
+                else
+                {
+                    seriesCounter++
+                    val button2 = createSeriesButton(seriesCounter.toString())
+                    addButtonToList(button2,seriesPicker,seriesScroll,weightPicker,repsPicker)
+                    val b = seriesPicker[seriesCounter - 1]
+                    seriesPicker.removeViewAt(seriesCounter - 1)
+                    seriesPicker.addView(b)
+                }
+            }
+        }
+        seriesPicker[0].callOnClick()
+        ready = true
 
         val endButton = findViewById<Button>(R.id.endWindow)
         endButton.setOnClickListener{
@@ -87,6 +109,8 @@ class ExerciseActivity : AppWindowActivity() {
             val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
             if(!edit)
                 intent.putExtra("Exercise", exercise)
+            else
+                intent.putExtra("editedExercise", exercise)
             startActivity(intent)
         }
         val deleteSeries = findViewById<Button>(R.id.deleteSeries)
@@ -163,13 +187,21 @@ class ExerciseActivity : AppWindowActivity() {
             button.setBackgroundDrawable(resources.getDrawable(R.color.blue))
             selectedSeries = Integer.valueOf(button.text as String)
             val buttonText = button.text as String
-            val series = Series(Integer.valueOf(buttonText),0,0)
-            exercise.addSeries(series)
+            if(!edit || ready)
+            {
+                val series = Series(Integer.valueOf(buttonText),0,0)
+                exercise.addSeries(series)
+            }
+
             list.addView(button)
             if(seriesCounter > 1)
             {
-                exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(button.text as String) - 2].weight
-                exercise.list[Integer.valueOf(button.text as String) - 1].reps = exercise.list[Integer.valueOf(button.text as String) - 2].reps
+                if(!edit || ready)
+                {
+                    exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(button.text as String) - 2].weight
+                    exercise.list[Integer.valueOf(button.text as String) - 1].reps = exercise.list[Integer.valueOf(button.text as String) - 2].reps
+
+                }
 
             }
         }

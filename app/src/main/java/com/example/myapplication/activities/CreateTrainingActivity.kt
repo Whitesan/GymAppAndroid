@@ -29,6 +29,7 @@ import kotlin.collections.ArrayList
     companion object{
         var exerciseList= ArrayList<Exercise>()
         private var enteredText:String=""
+        var editedIndex = -1
     }
     private val adapter= ListAdapter(this,exerciseList)
     private lateinit var entry:EditText
@@ -40,6 +41,23 @@ import kotlin.collections.ArrayList
         val temp : Serializable? = super.getIntent().getSerializableExtra("Exercise")
         if (temp != null){
             exerciseList.add(temp as Exercise)
+        }
+        val temp2 : Serializable? = super.getIntent().getSerializableExtra("editedExercise")
+        if (temp2 != null){
+            for(i in 0 until exerciseList.size)
+            {
+                if(exerciseList[i].getId() == editedIndex)
+                {
+                    exerciseList.removeAt(i)
+                    editedIndex = -1
+                    if(i>0)
+                        exerciseList.add(i,temp2 as Exercise)
+                    else
+                        exerciseList.add(i,temp2 as Exercise)
+                    break;
+                }
+            }
+           // exerciseList.add(temp2 as Exercise)
         }
         setTextListener(1)
         createRecyclerView()

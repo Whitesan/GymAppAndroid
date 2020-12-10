@@ -39,7 +39,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 message.visibility = View.VISIBLE;
             }
             else{
-                val exercise =Exercise(enteredText, part)
+                val exercise =Exercise(enteredText, part,CreateTrainingActivity.exerciseList.size)
                 val intent = Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)

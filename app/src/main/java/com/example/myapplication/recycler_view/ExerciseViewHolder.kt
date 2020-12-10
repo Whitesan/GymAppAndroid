@@ -8,6 +8,7 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activities.CreateTrainingActivity
 import com.example.myapplication.activities.ExerciseActivity
 import com.example.myapplication.activities.TrainingsListActivity
 import com.example.myapplication.exercises.Exercise
@@ -25,7 +26,7 @@ class ExerciseViewHolder(view:View) : RecyclerView.ViewHolder(view) {
             val intent =  Intent(itemView.context, ExerciseActivity::class.java)
             intent.putExtra("editExercise",exercise)
             itemView.context.startActivity(intent)
-
+            CreateTrainingActivity.editedIndex = exercise.getId()!!
         }
     }
 
