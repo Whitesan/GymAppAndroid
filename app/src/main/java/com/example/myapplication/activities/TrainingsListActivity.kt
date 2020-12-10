@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
+import com.example.myapplication.exercises.Trainings
 
 @Suppress("DEPRECATION")
 class TrainingsListActivity : AppWindowActivity() {
@@ -22,7 +23,12 @@ class TrainingsListActivity : AppWindowActivity() {
         }
         val json : TrainingJsonConverter = TrainingJsonConverter()
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
-        val trainings= json.fromJson(yourFilePath)!!
+        var trainings : Trainings? = json.fromJson(yourFilePath)
+        if(trainings == null)
+        {
+            trainings = Trainings(ArrayList())
+            json.toJson(trainings,yourFilePath)
+        }
         Toast.makeText(this, trainings.showTrainings() +" " , Toast.LENGTH_LONG).show()
         val trainingList = findViewById<LinearLayout>(R.id.trainingList)
         for(t in trainings.trainingList)
