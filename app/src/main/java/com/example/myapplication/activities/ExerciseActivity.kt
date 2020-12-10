@@ -42,7 +42,6 @@ class ExerciseActivity : AppWindowActivity() {
             exercise = serializable as Exercise
             edit=true
         }
-
         val title  = findViewById<TextView>(R.id.plannerTitle)
         title.text = exercise.getName()
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)

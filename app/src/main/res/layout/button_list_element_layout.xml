@@ -26,8 +26,6 @@
             android:text="@string/addNewExercise"
             android:layout_marginHorizontal="20dp"
             android:layout_centerVertical="true"
-
-
             />
     </RelativeLayout>
 
