@@ -14,18 +14,19 @@
         android:layout_height="60dp"
         android:layout_marginHorizontal="15dp"
         android:background="@drawable/entry_shape"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/green"
         >
         <TextView
             android:id="@+id/AddNewExerciseButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:padding="10dp"
+            android:textSize="40sp"
+            android:padding="1dp"
             android:textAlignment="center"
             android:text="@string/addNewExercise"
             android:layout_marginHorizontal="20dp"
             android:layout_centerVertical="true"
+
             />
     </RelativeLayout>
 

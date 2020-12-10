@@ -15,6 +15,7 @@ class ButtonViewHolder(view:View) : RecyclerView.ViewHolder(view){
     val newExerciseButton: TextView = itemView.findViewById(R.id.AddNewExerciseButton)
      fun bindButton(itemTouchListener:View.OnTouchListener){
          newExerciseButton.visibility=View.VISIBLE
+         layout.alpha = 0.6F
          layout.setOnTouchListener(itemTouchListener)
 
     }

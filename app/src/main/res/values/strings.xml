@@ -24,7 +24,7 @@
     <string name="back">Back</string>
     <string name="shoulders">Shoulders</string>
     <string name="cardio">Cardio</string>
-    <string name="addNewExercise">Add new exercise</string>
+    <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraning">Create Traning</string>
     <string name="actPlannerTraningList">Traning List</string>
     <string name="DELETE">Delete</string>
