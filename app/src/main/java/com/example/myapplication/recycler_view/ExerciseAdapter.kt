@@ -6,7 +6,7 @@ import com.example.myapplication.exercises.Exercise
 import java.util.*
 
 
-class ExerciseAdapter(private val viewType: Int) {
+class ExerciseAdapter(private val viewType: Int, trainingItems:ArrayList<Exercise>) {
     fun getViewType(): Int {
         return viewType
     }
@@ -28,4 +28,7 @@ class ExerciseAdapter(private val viewType: Int) {
         val vh: ExerciseViewHolder = holder as ExerciseViewHolder
         vh.bindExercise(exercise)
     }
+
+
+
 }

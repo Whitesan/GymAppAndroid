@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.recycler_view.ButtonAdapter
 import com.example.myapplication.recycler_view.ExerciseAdapter
+import com.example.myapplication.recycler_view.ExerciseViewHolder
 import java.util.*
 class ListAdapter(private val itemTouchListener: View.OnTouchListener, private val trainingItems:ArrayList<Exercise>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
@@ -14,7 +15,7 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener, private v
     private val VIEW_TYPE_EXERCISE = 0
     private val VIEW_TYPE_BUTTON = 1
     private val buttonAdapter: ButtonAdapter = ButtonAdapter(VIEW_TYPE_BUTTON)
-    private val exerciseAdapter: ExerciseAdapter = ExerciseAdapter(VIEW_TYPE_EXERCISE)
+    private val exerciseAdapter: ExerciseAdapter = ExerciseAdapter(VIEW_TYPE_EXERCISE,trainingItems)
 
     override fun getItemViewType(position: Int): Int {
         print(position)
@@ -95,4 +96,6 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener, private v
         }
         recycler.scrollToPosition(items.size-1)
     }
+
+
 }

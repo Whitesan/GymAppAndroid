@@ -1,17 +1,22 @@
 package com.example.myapplication.recycler_view
 
+import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.Paint
+import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ItemTouchHelperAdapter
+import kotlin.math.max
 
 
-class SimpleItemTouchHelperCallback(private var adapter: ItemTouchHelperAdapter) :
+class SimpleItemTouchHelperCallback(
+    private var adapter: ItemTouchHelperAdapter,
+
+    ) :
     ItemTouchHelper.Callback() {
-    private val background = ColorDrawable()
-    private val backgroundColor = Color.parseColor("#f44336")
+
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
@@ -36,9 +41,30 @@ class SimpleItemTouchHelperCallback(private var adapter: ItemTouchHelperAdapter)
         return true
     }
 
-    //TODO add on swipe delete and edit button
+    override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
+        return 0.9f
+    }
+
+
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//        adapter.onItemDismiss(viewHolder.adapterPosition)
+   ;
+
+    }
+
+    override fun onSelectedChanged(vh: RecyclerView.ViewHolder?, actionState: Int) {
+        if (vh != null) {
+            val viewHolder = vh as ExerciseViewHolder
+            getDefaultUIUtil().onSelected(viewHolder.background)
+        }
+        super.onSelectedChanged(vh, actionState)
+    }
+
+    override fun clearView(recyclerView: RecyclerView, vh: RecyclerView.ViewHolder) {
+        //TODO there'ss something wrong, hide options
+        super.clearView(recyclerView, vh)
+        val viewHolder = vh as ExerciseViewHolder
+//        hideOptions(vh)
+        getDefaultUIUtil().clearView(viewHolder.foreground)
     }
 
     override fun onMove(
@@ -48,6 +74,7 @@ class SimpleItemTouchHelperCallback(private var adapter: ItemTouchHelperAdapter)
         adapter.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
         return true
     }
+    private  var prevdx:Float = 0f
     override fun onChildDraw(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -58,22 +85,23 @@ class SimpleItemTouchHelperCallback(private var adapter: ItemTouchHelperAdapter)
         isCurrentlyActive: Boolean
     ) {
         val myViewHolder: ExerciseViewHolder = viewHolder as ExerciseViewHolder
-
         if (dX < 0) {
-            val myViewHolder: ExerciseViewHolder = viewHolder as ExerciseViewHolder
-            getDefaultUIUtil().onDraw(
-                c,
-                recyclerView,
-                myViewHolder.foreground,
-                dX / 3f,
-                dY,
-                actionState,
-                isCurrentlyActive
+            if(prevdx < dX){
+                hideOptions(viewHolder,actionState)
+            }
+            else if(prevdx != dX)
+                showOptions(viewHolder, actionState)
+            Log.println(Log.INFO,null,dX.toString()+" precDx:"+prevdx)
+            prevdx=dX
 
+            getDefaultUIUtil().onDraw(
+                c, recyclerView, viewHolder.foreground, dX / 3, dY,
+                actionState, isCurrentlyActive
             )
-        }
-        else
+        } else{
             super.onChildDraw(c, recyclerView, myViewHolder, dX, dY, actionState, isCurrentlyActive)
+
+        }
 
 
     }
@@ -88,22 +116,52 @@ class SimpleItemTouchHelperCallback(private var adapter: ItemTouchHelperAdapter)
         isCurrentlyActive: Boolean
     ) {
         val myViewHolder: ExerciseViewHolder = viewHolder as ExerciseViewHolder
+
+
         if (dX < 0) {
+            if(prevdx < dX){
+                hideOptions(viewHolder,actionState)
+            }
+            else if(prevdx!=dX)
+                showOptions(viewHolder, actionState)
+            prevdx=dX
             getDefaultUIUtil().onDrawOver(
+                c, recyclerView, viewHolder.foreground, dX / 3, dY,
+                actionState, isCurrentlyActive
+            )
+        }
+
+        else{
+            super.onChildDrawOver(
                 c,
                 recyclerView,
-                myViewHolder.foreground,
-                dX / 3f,
+                myViewHolder,
+                dX,
                 dY,
                 actionState,
                 isCurrentlyActive
             )
         }
-        else
-            super.onChildDrawOver(c, recyclerView, myViewHolder, dX, dY, actionState, isCurrentlyActive)
-    }
-    fun showOptions(){
+
+
 
     }
+
+
+    private fun showOptions(vh: RecyclerView.ViewHolder, actionState: Int) {
+        val viewHolder = vh as ExerciseViewHolder
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            viewHolder.background.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideOptions(vh: RecyclerView.ViewHolder, actionState: Int) {
+        val viewHolder = vh as ExerciseViewHolder
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+            viewHolder.background.visibility = View.GONE
+
+        }
+    }
+
 
 }

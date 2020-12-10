@@ -28,7 +28,7 @@ import kotlin.collections.ArrayList
  class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
     companion object{
         var exerciseList= ArrayList<Exercise>()
-        private var enteredText:String=""
+        var enteredText:String=""
         var editedIndex = -1
     }
     private val adapter= ListAdapter(this,exerciseList)
