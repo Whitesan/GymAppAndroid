@@ -13,13 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ListAdapter
 import com.example.myapplication.R
-import com.example.myapplication.SimpleItemTouchHelperCallback
+import com.example.myapplication.recycler_view.SimpleItemTouchHelperCallback
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Training
 import com.example.myapplication.exercises.Trainings
 import com.example.myapplication.recycler_view.AddButton
 import java.io.Serializable
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 @Suppress("DEPRECATION")
@@ -28,7 +30,7 @@ import java.io.Serializable
         var exerciseList= ArrayList<Exercise>()
         private var enteredText:String=""
     }
-    private val adapter= ListAdapter(this)
+    private val adapter= ListAdapter(this,exerciseList)
     private lateinit var entry:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,7 +109,7 @@ import java.io.Serializable
     }
 
     private fun onExit(){
-        val training = Training(enteredText, exerciseList)
+       val training = Training(enteredText, exerciseList)
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
         val json :TrainingJsonConverter = TrainingJsonConverter()
         var trainings :Trainings? = json.fromJson(yourFilePath)

@@ -8,7 +8,7 @@ import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.recycler_view.ButtonAdapter
 import com.example.myapplication.recycler_view.ExerciseAdapter
 import java.util.*
-class ListAdapter(private val itemTouchListener: View.OnTouchListener) :
+class ListAdapter(private val itemTouchListener: View.OnTouchListener, private val trainingItems:ArrayList<Exercise>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
     private val items: LinkedList<Exercise> = LinkedList<Exercise>()
     private val VIEW_TYPE_EXERCISE = 0
@@ -78,6 +78,7 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener) :
 
     override fun onItemDismiss(position: Int) {
         items.removeAt(position)
+        trainingItems.removeAt(position)
         notifyItemRemoved(position)
     }
 
