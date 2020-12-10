@@ -77,12 +77,12 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         val typePicker = findViewById<LinearLayout>(R.id.typePicker)
         for(i in typePicker)
         {
-            i.alpha = 0.5F
+            i.alpha = 0.3F
             i.setOnClickListener{
                 for(j in typePicker)
                 {
                     if(j != i)
-                        j.alpha = 0.5F
+                        j.alpha = 0.3F
                 }
                 i.alpha = 1F
                 selectedTypeView = i as LinearLayout

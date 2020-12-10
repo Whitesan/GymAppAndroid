@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.EnterExerciseNameActivity"
-    android:background="@color/black"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:layout_weight="15"
     android:clickable="true"
@@ -17,7 +17,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:background="@color/black"
+
         >
 
         <ImageView
@@ -59,6 +59,7 @@
         android:layout_height="0dp"
         android:layout_weight="13"
         android:orientation="vertical"
+        android:background="@drawable/background"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -70,12 +71,12 @@
         <EditText
             android:id="@+id/enterExerciseNameEntry"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:layout_marginHorizontal="60dp"
             android:background="@drawable/entry_shape"
-            android:backgroundTint="@color/almost_transparent"
+            android:backgroundTint="@color/whiteTransparent"
             android:cursorVisible="false"
             android:hint="@string/enterExerciseName"
             android:inputType="text"
@@ -83,7 +84,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/text_transpatentish"
-            android:textSize="17sp"
+            android:textSize="25sp"
             />
         <TextView
             android:id="@+id/TrainingNameEmpty"
@@ -111,7 +112,7 @@
             android:layout_gravity="start"
             android:layout_weight="2"
             android:accessibilityLiveRegion="assertive"
-            android:background="@color/black"
+
             android:focusable="true"
 
             android:layout_marginBottom="80dp"
