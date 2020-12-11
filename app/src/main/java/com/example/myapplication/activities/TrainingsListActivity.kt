@@ -37,25 +37,15 @@ class TrainingsListActivity : AppWindowActivity() {
         trainingsList = loadTrainingJson()
         trainingsGuiList = trainingsList.trainingList
 
-        testFunc()
-        //createVisualList()
+        createVisualList()
     }
 
-    private  fun testFunc(){
+    private  fun createVisualList(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = TrainingListAdapter(trainingsGuiList)
     }
 
-//    private  fun createVisualList(){
-//        val trainingList = findViewById<LinearLayout>(R.id.trainingList)
-//        for(t in trainingsGuiList)
-//        {
-//            val textView = TextView(this)
-//            textView.text = t.getName()
-//            trainingList.addView(textView)
-//        }
-//    }
 
     private fun loadTrainingJson ():Trainings{
         val yourFilePath = "$filesDir/Training.json"
