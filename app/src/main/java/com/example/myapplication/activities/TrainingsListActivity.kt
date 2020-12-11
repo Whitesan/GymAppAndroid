@@ -3,16 +3,26 @@ package com.example.myapplication.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.util.Log
+import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.ListAdapter
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Training
 import com.example.myapplication.exercises.Trainings
+import com.example.myapplication.recycler_view.TrainingListAdapter
 
 @Suppress("DEPRECATION")
 class TrainingsListActivity : AppWindowActivity() {
+    companion object{
+        var trainingsGuiList = ArrayList<Training>()
+        var trainingsList:Trainings = Trainings(ArrayList())
+        var editedIndex = -1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainings_list)
@@ -21,28 +31,40 @@ class TrainingsListActivity : AppWindowActivity() {
             val intent = Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-        val json : TrainingJsonConverter = TrainingJsonConverter()
-        val yourFilePath = filesDir.toString() + "/" + "Training.json"
-        var trainings : Trainings? = json.fromJson(yourFilePath)
-        if(trainings == null)
-        {
-            trainings = Trainings(ArrayList())
-            json.toJson(trainings,yourFilePath)
-        }
-        Toast.makeText(this, trainings.showTrainings() +" " , Toast.LENGTH_LONG).show()
-        val trainingList = findViewById<LinearLayout>(R.id.trainingList)
-        for(t in trainings.trainingList)
-        {
-           val textWiew = TextView(this)
-            var name :String = ""
-            name +=t.getName() + " : "
-            for(e in t.exerciseList)
-            {
-                name += e.getName()+","
-            }
-            textWiew.text = name
 
-            trainingList.addView(textWiew)
-        }
+        //Loading list from JSON file
+        //List is using by recycle_viewer
+        trainingsList = loadTrainingJson()
+        trainingsGuiList = trainingsList.trainingList
+
+        testFunc()
+        //createVisualList()
+    }
+
+    private  fun testFunc(){
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
+        recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList)
+    }
+
+//    private  fun createVisualList(){
+//        val trainingList = findViewById<LinearLayout>(R.id.trainingList)
+//        for(t in trainingsGuiList)
+//        {
+//            val textView = TextView(this)
+//            textView.text = t.getName()
+//            trainingList.addView(textView)
+//        }
+//    }
+
+    private fun loadTrainingJson ():Trainings{
+        val yourFilePath = "$filesDir/Training.json"
+        val json :TrainingJsonConverter = TrainingJsonConverter()
+        var trainings :Trainings? = json.fromJson(yourFilePath)
+        if(trainings == null)
+            trainings = Trainings(ArrayList())
+        else
+            Log.i("loadTrainingJson", trainings.showTrainings())
+        return trainings
     }
 }

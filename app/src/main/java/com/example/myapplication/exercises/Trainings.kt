@@ -12,4 +12,5 @@ class Trainings (var trainingList :ArrayList<Training>):Serializable{
         }
         return list;
     }
+
 }

@@ -42,6 +42,7 @@ import kotlin.collections.ArrayList
         if (temp != null){
             exerciseList.add(temp as Exercise)
         }
+
         val temp2 : Serializable? = super.getIntent().getSerializableExtra("editedExercise")
         if (temp2 != null){
             for(i in 0 until exerciseList.size)
@@ -59,6 +60,8 @@ import kotlin.collections.ArrayList
             }
            // exerciseList.add(temp2 as Exercise)
         }
+
+
         setTextListener(1)
         createRecyclerView()
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
