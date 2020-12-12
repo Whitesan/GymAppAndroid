@@ -67,7 +67,7 @@
             android:layout_height="0dp"
             android:layout_weight="5"
             android:layout_margin="35dp"
-            app:cardBackgroundColor="@color/whiteTransparent"
+            app:cardBackgroundColor="@color/transparent"
             app:cardCornerRadius="30dp"
             >
 
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-
+                android:background="@drawable/card_view_gradient_planner1"
                 >
                 <TextView
                     android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-
+                android:background="@drawable/card_view_gradient_planner2"
                 >
                 <TextView
                     android:layout_width="wrap_content"
