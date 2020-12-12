@@ -11,13 +11,14 @@
         android:layout_height="60dp"
         android:layout_marginHorizontal="15dp"
         android:background="@drawable/entry_shape"
-        android:backgroundTint="@color/almost_transparent">
+        android:backgroundTint="@color/almost_transparent"
+        android:elevation="20dp"
+        >
 
         <TextView
             android:id="@+id/listElement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/editButton"
             android:layout_alignEnd="@id/ListElementIcon"
             android:layout_alignParentTop="true"
             android:layout_marginHorizontal="20dp"
@@ -30,7 +31,6 @@
             android:id="@+id/listElement2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@id/editButton"
             android:layout_alignEnd="@id/ListElementIcon"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="20dp"
@@ -48,7 +48,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
-            android:src="@drawable/barbell" />
+          />
 
     </RelativeLayout>
     <RelativeLayout
@@ -64,25 +64,27 @@
             android:layout_alignParentEnd="true"
             android:orientation="horizontal"
             android:gravity="end"
+            android:elevation="40dp"
             >
 
-        <ImageView
-            android:id="@+id/editButton"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/edit_icon"
-            android:layout_marginVertical="10dp"
+            <ImageButton
+                android:id="@+id/editButton"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/edit_icon"
+                android:layout_marginVertical="10dp"
+                android:background="@color/transparent"
 
+                />
+            <ImageButton
+                android:id="@+id/deleteListItem"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/delete_icon"
+                android:layout_marginVertical="10dp"
+                android:background="@color/transparent"
 
-            />
-        <ImageView
-            android:id="@+id/deleteListItem"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/delete_icon"
-            android:layout_marginVertical="10dp"
-
-            />
+                />
         </LinearLayout>
 
 

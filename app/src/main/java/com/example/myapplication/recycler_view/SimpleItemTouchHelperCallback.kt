@@ -1,25 +1,33 @@
 package com.example.myapplication.recycler_view
 
-import android.graphics.Bitmap
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ItemTouchHelperAdapter
-import kotlin.math.max
+import com.example.myapplication.activities.CreateTrainingActivity
+import com.example.myapplication.activities.ExerciseActivity
 
 
 class SimpleItemTouchHelperCallback(
     private var adapter: ItemTouchHelperAdapter,
-    ) :
-    ItemTouchHelper.Callback() {
+) :View.OnTouchListener,
+    ItemTouchHelper.Callback(){
 
     private  var prevdx:Float = 0f
     private  val leftSwipeThreshold=0.9f
     private  val rightSwipeThreshold=0.6f
     private  var activeThreshold=leftSwipeThreshold
+    private var showed:Boolean=false
+    var clicked_x = 0f;
+    var clicked_y = 0f;
+     var activeViewHolder:ExerciseViewHolder? = null;
+
+
 
     override fun getMovementFlags(
         recyclerView: RecyclerView,
@@ -47,10 +55,7 @@ class SimpleItemTouchHelperCallback(
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
         return activeThreshold
     }
-    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-   ;
 
-    }
     override fun onSelectedChanged(vh: RecyclerView.ViewHolder?, actionState: Int) {
         if (vh != null) {
             val viewHolder = vh as ExerciseViewHolder
@@ -58,13 +63,28 @@ class SimpleItemTouchHelperCallback(
         }
         super.onSelectedChanged(vh, actionState)
     }
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+        Log.println(Log.INFO, null, " Swiped !!! ")
+        showOptions(viewHolder, ItemTouchHelper.ACTION_STATE_SWIPE)
+        showed=true;
 
+    }
     override fun clearView(recyclerView: RecyclerView, vh: RecyclerView.ViewHolder) {
         //TODO there'ss something wrong, hide options
-        val viewHolder = vh as ExerciseViewHolder
-        //hideOptions(viewHolder,ItemTouchHelper.ACTION_STATE_SWIPE)
-        getDefaultUIUtil().clearView(viewHolder.foreground)
-        //super.clearView(recyclerView, viewHolder)
+
+        Log.println(Log.INFO, null, "[prevdx:  " + prevdx)
+        super.clearView(recyclerView, vh)
+
+        if(showed && prevdx >=-10.0f){
+            val viewHolder = vh as ExerciseViewHolder
+//        //hideOptions(viewHolder,ItemTouchHelper.ACTION_STATE_SWIPE)
+            getDefaultUIUtil().clearView(viewHolder.foreground)
+//            super.clearView(recyclerView, vh)
+            hideOptions(viewHolder, ItemTouchHelper.ACTION_STATE_SWIPE)
+        }
+//        else {
+//            super.clearView(recyclerView, vh)
+//        }
     }
 
     override fun onMove(
@@ -83,16 +103,15 @@ class SimpleItemTouchHelperCallback(
         actionState: Int,
         isCurrentlyActive: Boolean
     ) {
+        activeViewHolder=viewHolder as ExerciseViewHolder
+        Log.println(Log.INFO, null, "OnChildDraw")
         val myViewHolder: ExerciseViewHolder = viewHolder as ExerciseViewHolder
         if (dX < 0) {
             if(prevdx < dX){
-                hideOptions(viewHolder,actionState)
+
                 activeThreshold=leftSwipeThreshold
 
             }
-            else if(prevdx != dX)
-                showOptions(viewHolder, actionState)
-            Log.println(Log.INFO,null,dX.toString()+" precDx:"+prevdx)
             prevdx=dX
             activeThreshold=rightSwipeThreshold
             getDefaultUIUtil().onDraw(
@@ -118,12 +137,12 @@ class SimpleItemTouchHelperCallback(
 
         if (dX < 0) {
             if(prevdx < dX){
-                hideOptions(viewHolder,actionState)
+//                hideOptions(viewHolder,actionState)
                 activeThreshold=leftSwipeThreshold
 
             }
             else if(prevdx!=dX)
-                showOptions(viewHolder, actionState)
+//                showOptions(viewHolder, actionState)
             prevdx=dX
             activeThreshold=rightSwipeThreshold
 
@@ -137,7 +156,7 @@ class SimpleItemTouchHelperCallback(
                 c,
                 recyclerView,
                 myViewHolder,
-                dX,
+                dX / 3,
                 dY,
                 actionState,
                 isCurrentlyActive
@@ -148,6 +167,7 @@ class SimpleItemTouchHelperCallback(
         val viewHolder = vh as ExerciseViewHolder
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             viewHolder.background.visibility = View.VISIBLE
+            showed=true
         }
     }
 
@@ -155,9 +175,36 @@ class SimpleItemTouchHelperCallback(
         val viewHolder = vh as ExerciseViewHolder
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             viewHolder.background.visibility = View.GONE
-
+            showed=false
         }
     }
 
+    override fun onTouch(p0: View?, p1: MotionEvent): Boolean {
+         clicked_x = p1.x
+         clicked_y = p1.y
+        if(p1.action==MotionEvent.ACTION_DOWN && showed){
+            if(activeViewHolder?.editButtonClicked(clicked_x,clicked_y) == true){
+                activeViewHolder?.editExercise()
+                Log.println(Log.INFO,null,"BUTTON EDIT PRESSED!")
+                return true;
+            }
+            else if(activeViewHolder?.deleteButtonClicked(clicked_x,clicked_y) == true){
+               deleteExercise()
+                Log.println(Log.INFO,null,"DELETE BUTTON PRESSED!")
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun setListener(recycler: RecyclerView) {
+        recycler.setOnTouchListener(this)
+    }
+    private fun deleteExercise(){
+        activeViewHolder?.position?.let { adapter.onItemDismiss(it) }
+    }
 
 }

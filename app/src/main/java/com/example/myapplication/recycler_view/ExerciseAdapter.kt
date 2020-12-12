@@ -12,7 +12,7 @@ class ExerciseAdapter(private val viewType: Int, trainingItems:ArrayList<Exercis
     }
 
     fun isForViewType(items: LinkedList<Exercise>, position: Int): Boolean {
-        return !(items[position] is  AddButton)
+        return items[position] !is AddButton
     }
 
     fun onCreateViewHolder(view: View): RecyclerView.ViewHolder {

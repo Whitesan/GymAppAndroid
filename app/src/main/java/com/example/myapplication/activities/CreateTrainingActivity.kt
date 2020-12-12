@@ -25,7 +25,7 @@ import kotlin.collections.ArrayList
 
 
 @Suppress("DEPRECATION")
- class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
+class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
     companion object{
         var exerciseList= ArrayList<Exercise>()
         var enteredText:String=""
@@ -58,7 +58,7 @@ import kotlin.collections.ArrayList
                     break;
                 }
             }
-           // exerciseList.add(temp2 as Exercise)
+            // exerciseList.add(temp2 as Exercise)
         }
 
 
@@ -74,7 +74,7 @@ import kotlin.collections.ArrayList
             if (enteredText.isEmpty()) {
                 showErrorMessage()
             } else {
-               onExit()
+                onExit()
             }
         }
     }
@@ -111,10 +111,11 @@ import kotlin.collections.ArrayList
     }
 
     private fun createRecyclerView(){
-         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
+        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
-        val callback: ItemTouchHelper.Callback = SimpleItemTouchHelperCallback(adapter)
+        val callback = SimpleItemTouchHelperCallback(adapter)
+        callback.setListener(recycler)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recycler)
         adapter.appendItem(AddButton(), recycler)
@@ -130,7 +131,7 @@ import kotlin.collections.ArrayList
     }
 
     private fun onExit(){
-       val training = Training(enteredText, exerciseList)
+        val training = Training(enteredText, exerciseList)
         val yourFilePath = filesDir.toString() + "/" + "Training.json"
         val json :TrainingJsonConverter = TrainingJsonConverter()
         var trainings :Trainings? = json.fromJson(yourFilePath)
