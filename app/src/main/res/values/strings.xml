@@ -21,8 +21,13 @@
     <string name="chest">Chest</string>
     <string name="legs">Legs</string>
     <string name="triceps">Triceps</string>
+    <string name="thighs">Thighs</string>
+    <string name="forearms">Forearms</string>
+    <string name="calves">Calves</string>
     <string name="back">Back</string>
+    <string name="neck">Neck</string>
     <string name="shoulders">Shoulders</string>
+    <string name="abs">Abs</string>
     <string name="cardio">Cardio</string>
     <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraning">Create Traning</string>

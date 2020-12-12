@@ -1,6 +1,5 @@
 package com.example.myapplication.exercises
 
-import android.net.Uri
 import com.example.myapplication.R
 import java.io.Serializable
 
@@ -18,8 +17,12 @@ class Part : Serializable {
             map.put("cardio", Part().setName("cardio"))
             map.put("triceps", Part().setName("triceps"))
             map.put("biceps", Part().setName("biceps"))
-            map.put("legs", Part().setName("legs"))
-            map.put("stomach", Part().setName("stomach"))
+            map.put("abs", Part().setName("abs"))
+            map.put("calves", Part().setName("calves"))
+            map.put("neck", Part().setName("neck"))
+            map.put("thighs", Part().setName("thighs"))
+            map.put("forearms", Part().setName("forearms"))
+
 
         }
 
@@ -37,8 +40,11 @@ class Part : Serializable {
             "cardio" -> img="android.resource://com.example.myapplication/" + R.drawable.cardio
             "triceps" -> img="android.resource://com.example.myapplication/" + R.drawable.triceps
             "biceps" -> img="android.resource://com.example.myapplication/" + R.drawable.biceps
-            "legs" -> img="android.resource://com.example.myapplication/" + R.drawable.legs
-            "stomach" -> img="android.resource://com.example.myapplication/" + R.drawable.stomach
+            "neck" -> img="android.resource://com.example.myapplication/" + R.drawable.neck
+            "forearms" -> img="android.resource://com.example.myapplication/" + R.drawable.forearm
+            "thighs" -> img="android.resource://com.example.myapplication/" + R.drawable.thighs
+            "calves" -> img="android.resource://com.example.myapplication/" + R.drawable.calves
+            "abs" -> img="android.resource://com.example.myapplication/" + R.drawable.abs
         }
         return this
     }
