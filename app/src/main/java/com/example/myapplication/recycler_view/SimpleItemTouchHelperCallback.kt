@@ -18,7 +18,7 @@ class SimpleItemTouchHelperCallback(
 
     private  var prevdx:Float = 0f
     private  val leftSwipeThreshold=0.9f
-    private  val rightSwipeThreshold=0.4f
+    private  val rightSwipeThreshold=0.6f
     private  var activeThreshold=leftSwipeThreshold
 
     override fun getMovementFlags(
@@ -47,13 +47,10 @@ class SimpleItemTouchHelperCallback(
     override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
         return activeThreshold
     }
-
-
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
    ;
 
     }
-
     override fun onSelectedChanged(vh: RecyclerView.ViewHolder?, actionState: Int) {
         if (vh != null) {
             val viewHolder = vh as ExerciseViewHolder
@@ -106,10 +103,7 @@ class SimpleItemTouchHelperCallback(
             super.onChildDraw(c, recyclerView, myViewHolder, dX, dY, actionState, isCurrentlyActive)
 
         }
-
-
     }
-
     override fun onChildDrawOver(
         c: Canvas,
         recyclerView: RecyclerView,
@@ -149,12 +143,7 @@ class SimpleItemTouchHelperCallback(
                 isCurrentlyActive
             )
         }
-
-
-
     }
-
-
     private fun showOptions(vh: RecyclerView.ViewHolder, actionState: Int) {
         val viewHolder = vh as ExerciseViewHolder
         if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
