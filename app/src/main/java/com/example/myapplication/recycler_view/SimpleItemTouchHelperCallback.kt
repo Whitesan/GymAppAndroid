@@ -13,7 +13,6 @@ import kotlin.math.max
 
 class SimpleItemTouchHelperCallback(
     private var adapter: ItemTouchHelperAdapter,
-
     ) :
     ItemTouchHelper.Callback() {
 
