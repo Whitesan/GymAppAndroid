@@ -1,13 +1,15 @@
 package com.example.myapplication.recycler_view
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.view.GestureDetector.SimpleOnGestureListener
 import android.widget.TextView
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.exercises.Training
+import java.util.*
+
 
 class TrainingListAdapter(private val trainingList: ArrayList<Training>) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
 
@@ -20,6 +22,21 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: TrainingListAdapter.ViewHolder, position: Int) {
         holder.bindItems(trainingList[position])
+
+
+
+        holder.itemView.setOnClickListener{
+            val id = holder.adapterPosition
+            Collections.swap(trainingList, id, 0)
+            notifyItemMoved(0, id)
+            Log.i("recycle", "clicked " + id.toString())
+        }
+
+        holder.itemView.setOnLongClickListener{
+            val id = holder.adapterPosition
+            Log.i("recycle", "long clicked " + id.toString())
+            return@setOnLongClickListener true
+        }
     }
 
     //this method is giving the size of the list
