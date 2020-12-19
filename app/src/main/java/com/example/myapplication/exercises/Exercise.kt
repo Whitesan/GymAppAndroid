@@ -5,6 +5,13 @@ import java.io.Serializable
 open class Exercise(private var exerciseName:String, private var part: Part?,private var id:Int?):Serializable{
     constructor( ) : this("",null,0)
 
+    companion object{
+        var static_id:Long=0
+    }
+    private val PID= static_id++
+    fun getPID(): Long{
+        return PID
+    }
     val list = ArrayList<Series>()
     fun addSeries(series: Series)
     {

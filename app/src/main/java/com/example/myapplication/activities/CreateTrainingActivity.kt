@@ -3,14 +3,13 @@ package com.example.myapplication.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.service.voice.AlwaysOnHotwordDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
 import com.example.myapplication.ListAdapter
 import com.example.myapplication.R
 import com.example.myapplication.recycler_view.SimpleItemTouchHelperCallback
@@ -33,9 +32,10 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
     }
     private val adapter= ListAdapter(this,exerciseList)
     private lateinit var entry:EditText
-
+    private lateinit var itemTouchHelpter:ItemTouchHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        adapter.setHasStableIds(true)
         setContentView(R.layout.activity_create_training)
         entry = findViewById<EditText>(R.id.enterTrainingName)
         val temp : Serializable? = super.getIntent().getSerializableExtra("Exercise")
@@ -114,10 +114,22 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
-        val callback = SimpleItemTouchHelperCallback(adapter)
+        //TODO ANIMATOR
+//        recycler.itemAnimator=object : DefaultItemAnimator(){
+//
+//            override fun canReuseUpdatedViewHolder(viewHolder: RecyclerView.ViewHolder): Boolean {
+//                return true
+//            }
+//            override fun canReuseUpdatedViewHolder(viewHolder: RecyclerView.ViewHolder,payloads: MutableList<Any>): Boolean {
+//                return true
+//            }
+//        }
+
+        val callback = SimpleItemTouchHelperCallback(adapter,recycler)
         callback.setListener(recycler)
-        val touchHelper = ItemTouchHelper(callback)
-        touchHelper.attachToRecyclerView(recycler)
+        itemTouchHelpter = ItemTouchHelper(callback)
+        itemTouchHelpter.attachToRecyclerView(recycler)
+//        callback.setItemTouchHelper(itemTouchHelpter)
         adapter.appendItem(AddButton(), recycler)
         for(e : Exercise in exerciseList){
             adapter.appendItem(e, recycler)
@@ -150,5 +162,6 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         message.text=getString(R.string.empty_name)
         message.setTextColor(resources.getColor(R.color.red))
     }
+
 
 }

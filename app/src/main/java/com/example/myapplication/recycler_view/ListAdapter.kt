@@ -98,5 +98,9 @@ class ListAdapter(private val itemTouchListener: View.OnTouchListener, private v
         recycler.scrollToPosition(items.size-1)
     }
 
+    override fun getItemId(position: Int): Long {
+        return items[position].getPID()
+    }
+
 
 }

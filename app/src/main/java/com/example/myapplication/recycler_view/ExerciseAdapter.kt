@@ -24,7 +24,7 @@ class ExerciseAdapter(private val viewType: Int, trainingItems:ArrayList<Exercis
         position: Int,
         holder: RecyclerView.ViewHolder
     ) {
-        val exercise: Exercise = items[position] as Exercise
+        val exercise: Exercise = items[position]
         val vh: ExerciseViewHolder = holder as ExerciseViewHolder
         vh.bindExercise(exercise)
     }
