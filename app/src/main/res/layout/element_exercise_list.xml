@@ -1,21 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:layout_marginHorizontal="15dp"
-    android:background="@drawable/entry_shape"
+    android:layout_height="80dp"
     android:layout_margin="5dp"
-    android:backgroundTint="@color/almost_transparent">
+    android:layout_marginHorizontal="15dp"
+    android:columnCount="2"
+    android:background="@drawable/exercise_list_shape"
+    android:backgroundTint="@color/mild_transparent"
+    >
 
+    <ImageView
+        android:id="@+id/icon_exercise"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/blue"
+        />
 
     <TextView
         android:id="@+id/tv_exercise"
-        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginHorizontal="20dp"
-        android:padding="15dp"
+        android:layout_width="wrap_content"
+        android:maxLines="1"
+
+        android:width="50dp"
+        android:backgroundTint="@color/red"
+
         android:singleLine="true"
         android:textAlignment="center"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tes_id"
+
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:maxLines="1"
+
+        android:width="50dp"
+        android:backgroundTint="@color/black"
+
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textSize="18sp"
+         />
+
 </RelativeLayout>

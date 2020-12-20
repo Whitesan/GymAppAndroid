@@ -31,9 +31,12 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     //the class is holding the list view
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(exercise : Exercise) {
-            val xmlId = R.id.tv_exercise
-            val element = itemView.findViewById(xmlId) as TextView
-            element.text = exercise.getName()
+            val xmlName = R.id.tv_exercise
+            (itemView.findViewById(xmlName) as TextView).text = exercise.getName()
+
+            val xmlTes = R.id.tes_id
+            (itemView.findViewById(xmlTes) as TextView).text = exercise.getPart()?.getName() ?: "null"
+
         }
     }
 }

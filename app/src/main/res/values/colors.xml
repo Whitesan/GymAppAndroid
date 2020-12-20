@@ -12,6 +12,7 @@
     <color name="whiteTransparent">#1AFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="almost_transparent">#10FFFFFF</color>
+    <color name="mild_transparent">#90FFFFFF</color>
     <color name="text_transpatentish">#40FFFFFF</color>
     <color name="light_gray">#545350</color>
     <color name="orange">#E0f09502</color>color>
