@@ -3,6 +3,7 @@ package com.example.myapplication.recycler_view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -31,11 +32,25 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     //the class is holding the list view
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(exercise : Exercise) {
-            val xmlName = R.id.tv_exercise
-            (itemView.findViewById(xmlName) as TextView).text = exercise.getName()
+            (itemView.findViewById(R.id.tv_exercise) as TextView).text = exercise.getName()
+            (itemView.findViewById(R.id.tv_type) as TextView).text = exercise.getPart()?.getName() ?: "null"
 
-            val xmlTes = R.id.tes_id
-            (itemView.findViewById(xmlTes) as TextView).text = exercise.getPart()?.getName() ?: "null"
+            val id = exercise.getPart()?.getName() ?: "null"
+            var draw = R.drawable.chest
+            when(id){
+                "chest" -> draw=R.drawable.chest
+                "back" -> draw= R.drawable.back
+                "shoulders" -> draw= R.drawable.shoulders
+                "cardio" -> draw=R.drawable.cardio
+                "triceps" -> draw=R.drawable.triceps
+                "biceps" -> draw=R.drawable.biceps
+                "neck" -> draw=R.drawable.neck
+                "forearms" -> draw= R.drawable.forearm
+                "thighs" -> draw= R.drawable.thighs
+                "calves" -> draw=R.drawable.calves
+                "abs" -> draw=R.drawable.abs
+            }
+            (itemView.findViewById(R.id.iv_exercise) as ImageView).setImageResource(draw)
 
         }
     }

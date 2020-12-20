@@ -9,40 +9,52 @@
     android:backgroundTint="@color/mild_transparent"
     >
 
-    <ImageView
-        android:id="@+id/icon_exercise"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/blue"
-        />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_exercise"
+        <ImageView
+            android:id="@+id/iv_exercise"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:width="50dp"
+            />
 
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:maxLines="1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        android:width="50dp"
-        android:backgroundTint="@color/red"
+            <TextView
+                android:id="@+id/tv_exercise"
 
-        android:singleLine="true"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="100in"
 
-    <TextView
-        android:id="@+id/tes_id"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="test_1"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:maxLines="1"
+            <TextView
+                android:id="@+id/tv_type"
 
-        android:width="50dp"
-        android:backgroundTint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="100in"
 
-        android:singleLine="true"
-        android:textAlignment="center"
-        android:textSize="18sp"
-         />
+                android:maxLines="1"
+
+                android:singleLine="true"
+                android:text="test_2"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
