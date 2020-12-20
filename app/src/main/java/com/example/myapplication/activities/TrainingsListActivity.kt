@@ -23,6 +23,7 @@ class TrainingsListActivity : AppWindowActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_trainings_list)
         val button = findViewById<ImageView>(R.id.backTrainingsList)
         button.setOnClickListener {
@@ -35,16 +36,18 @@ class TrainingsListActivity : AppWindowActivity() {
         trainingsList = loadTrainingJson()
         trainingsGuiList = trainingsList.trainingList
 
-        createVisualList()
+        createVisualTrainingsList()
     }
 
-    private  fun createVisualList(){
+    private  fun createVisualTrainingsList(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = TrainingListAdapter(trainingsGuiList)
-
     }
 
+    private  fun createVisualExercisesList(){
+
+    }
 
     private fun loadTrainingJson ():Trainings{
         val yourFilePath = "$filesDir/Training.json"

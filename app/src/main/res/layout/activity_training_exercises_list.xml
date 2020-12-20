@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.TrainingsListActivity"
+    tools:context=".activities.ExerciseListActivity"
     android:background="@drawable/background"
     android:orientation="vertical"
     android:layout_weight="15"
@@ -57,7 +57,7 @@
         android:layout_weight="10">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_training_list"
+            android:id="@+id/rv_training_exercise_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
@@ -66,5 +66,3 @@
     </RelativeLayout>
 
 </LinearLayout>
-
-

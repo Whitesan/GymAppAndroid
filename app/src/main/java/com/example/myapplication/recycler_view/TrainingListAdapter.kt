@@ -1,17 +1,22 @@
 package com.example.myapplication.recycler_view
 
+import android.content.Intent
 import android.util.Log
-import android.view.*
-import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activities.ExerciseListActivity
 import com.example.myapplication.exercises.Training
 import java.util.*
 
 
 class TrainingListAdapter(private val trainingList: ArrayList<Training>) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
+    companion object{
+        var currentTraining = Training("", ArrayList())
+    }
 
     //this method is returning the view for each item in the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingListAdapter.ViewHolder {
@@ -27,17 +32,24 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
 
         holder.itemView.setOnClickListener{
             val id = holder.adapterPosition
-            Collections.swap(trainingList, id, 0)
-            notifyItemMoved(0, id)
+            currentTraining = trainingList[id]
+
+            val context = holder.itemView.context
+            val intent = Intent(context, ExerciseListActivity::class.java)
+            context.startActivity(intent)
+
             Log.i("recycle", "clicked " + id.toString())
         }
 
         holder.itemView.setOnLongClickListener{
             val id = holder.adapterPosition
-            Log.i("recycle", "long clicked " + id.toString())
+            Collections.swap(trainingList, id, 0)
+            notifyItemMoved(id, 0)
+            Log.i("recycle", "swaped clicked " + id.toString())
             return@setOnLongClickListener true
         }
     }
+
 
     //this method is giving the size of the list
     override fun getItemCount(): Int {
