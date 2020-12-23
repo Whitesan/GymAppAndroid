@@ -37,10 +37,10 @@ class SeriesAdapter(private val ex : Exercise) : RecyclerView.Adapter<SeriesAdap
             Log.i("SeriesAdapter", text)
             (itemView.findViewById(R.id.tv_sub_series) as TextView).text = text
         }
-        fun bindCardio(series: Series){
+        fun bindCardio(series: Series){ //ex.type
 
         }
-        private fun bindNormal(series: Series) :String{
+        private fun bindNormal(series: Series) :String{ //ex.type
             return  "Series: " + series.seriesNumber + " | Reps: " + series.reps + " | Weight: " + series.weight + " kg"
         }
     }
