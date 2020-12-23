@@ -34,6 +34,9 @@
             android:name=".activities.TrainingActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activities.ExerciseListActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
