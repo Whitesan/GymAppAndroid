@@ -3,7 +3,6 @@ package com.example.myapplication.activities
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.service.voice.AlwaysOnHotwordDetector
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -12,12 +11,12 @@ import android.widget.*
 import androidx.recyclerview.widget.*
 import com.example.myapplication.ListAdapter
 import com.example.myapplication.R
-import com.example.myapplication.recycler_view.SimpleItemTouchHelperCallback
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Training
 import com.example.myapplication.exercises.Trainings
 import com.example.myapplication.recycler_view.AddButton
+import com.example.myapplication.recycler_view.SimpleItemTouchHelperCallback
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,7 +29,7 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         var enteredText:String=""
         var editedIndex = -1
     }
-    private val adapter= ListAdapter(this,exerciseList)
+    private val adapter= ListAdapter(this, exerciseList)
     private lateinit var entry:EditText
     private lateinit var itemTouchHelpter:ItemTouchHelper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,13 +51,12 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
                     exerciseList.removeAt(i)
                     editedIndex = -1
                     if(i>0)
-                        exerciseList.add(i,temp2 as Exercise)
+                        exerciseList.add(i, temp2 as Exercise)
                     else
-                        exerciseList.add(i,temp2 as Exercise)
+                        exerciseList.add(i, temp2 as Exercise)
                     break;
                 }
             }
-            // exerciseList.add(temp2 as Exercise)
         }
 
 
@@ -115,17 +113,7 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
         //TODO ANIMATOR
-//        recycler.itemAnimator=object : DefaultItemAnimator(){
-//
-//            override fun canReuseUpdatedViewHolder(viewHolder: RecyclerView.ViewHolder): Boolean {
-//                return true
-//            }
-//            override fun canReuseUpdatedViewHolder(viewHolder: RecyclerView.ViewHolder,payloads: MutableList<Any>): Boolean {
-//                return true
-//            }
-//        }
-
-        val callback = SimpleItemTouchHelperCallback(adapter,recycler)
+        val callback = SimpleItemTouchHelperCallback(adapter, recycler)
         callback.setListener(recycler)
         itemTouchHelpter = ItemTouchHelper(callback)
         itemTouchHelpter.attachToRecyclerView(recycler)
@@ -150,7 +138,7 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         if(trainings ==null )
             trainings = Trainings(ArrayList())
         trainings.trainingList.add(training)
-        json.toJson(trainings,yourFilePath)
+        json.toJson(trainings, yourFilePath)
 
         enteredText= ""
         exerciseList.clear()

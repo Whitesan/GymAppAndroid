@@ -205,6 +205,9 @@ class SimpleItemTouchHelperCallback(
                         null,
                         "DELETE BUTTON PRESSED! " + activeView.nameTextView.text
                     )
+
+
+//                   recycler.scheduleLayoutAnimation();
                     removed = true
                     adapter.onItemDismiss(temp)
                     return true
