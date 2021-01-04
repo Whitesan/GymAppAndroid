@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/black"
     tools:context=".activities.MainActivity"
     android:orientation="vertical"
     >
@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_weight="1.4"
-
         >
             <ImageView
                 android:layout_width="280dp"

@@ -85,7 +85,7 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
             enteredText= entry.text.toString()
 
         }
-        entry.setOnFocusChangeListener{ v, focus ->
+        entry.setOnFocusChangeListener{ _, focus ->
             if(focus==false){
                 enteredText = entry.text.toString()
                 entry.hideKeyboard()
@@ -96,7 +96,7 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
             entry.isCursorVisible = focus
 
         }
-        entry.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        entry.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
                 enteredText = entry.text.toString()
                 entry.hideKeyboard()
@@ -112,7 +112,6 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         val recycler=findViewById<RecyclerView>(R.id.recyclerView)
         recycler.adapter=adapter
         recycler.layoutManager=LinearLayoutManager(this)
-        //TODO ANIMATOR
         val callback = SimpleItemTouchHelperCallback(adapter, recycler)
         callback.setListener(recycler)
         itemTouchHelpter = ItemTouchHelper(callback)
