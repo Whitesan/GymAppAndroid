@@ -1,11 +1,14 @@
 package com.example.myapplication.recycler_view
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.activities.ExerciseListActivity
@@ -27,6 +30,29 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
     //this method is binding the data on the list
     override fun onBindViewHolder(holder: TrainingListAdapter.ViewHolder, position: Int) {
         holder.bindItems(trainingList[position])
+
+        val edit = holder.itemView.findViewById<ImageView>(R.id.editButton)
+        val delete = holder.itemView.findViewById<ImageView>(R.id.deleteListItem)
+
+        edit.setOnClickListener{
+            Log.i("edit", "clicked edit")
+        }
+
+        val builder = AlertDialog.Builder(holder.itemView.context, R.style.AlertDialog)
+        delete.setOnClickListener{
+            builder.setTitle("Delete training")
+            builder.setMessage("Are you sure you want to remove training: " + trainingList[position].getName() + "?")
+
+            builder.setPositiveButton("YES") { dialog, which ->
+                Log.i("delete", "delete edit yes")
+            }
+
+            builder.setNegativeButton("NO") { dialog, which ->
+                return@setNegativeButton
+            }
+
+            builder.show()
+        }
 
 
 
