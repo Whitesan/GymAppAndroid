@@ -14,9 +14,14 @@ import com.example.myapplication.R
 import com.example.myapplication.activities.ExerciseListActivity
 import com.example.myapplication.exercises.Training
 import java.util.*
+import kotlin.collections.ArrayList
+import android.content.ContextWrapper
+import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.TrainingJsonConverter
+import com.example.myapplication.activities.AppWindowActivity
+import com.example.myapplication.exercises.Trainings
 
-
-class TrainingListAdapter(private val trainingList: ArrayList<Training>) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
+class TrainingListAdapter(private val trainingList: ArrayList<Training>, private val savePath:String) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
     companion object{
         var currentTraining = Training("", ArrayList())
     }
@@ -41,16 +46,15 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
         val builder = AlertDialog.Builder(holder.itemView.context, R.style.AlertDialog)
         delete.setOnClickListener{
             builder.setTitle("Delete training")
-            builder.setMessage("Are you sure you want to remove training: " + trainingList[position].getName() + "?")
+            builder.setMessage("Are you sure you want to remove training: " + trainingList[holder.adapterPosition].getName() + "?")
 
             builder.setPositiveButton("YES") { dialog, which ->
-                Log.i("delete", "delete edit yess")
+                removeItemPermanent(holder.adapterPosition)
             }
 
             builder.setNegativeButton("NO") { dialog, which ->
                 return@setNegativeButton
             }
-
             builder.show()
         }
 
@@ -63,19 +67,26 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
             val context = holder.itemView.context
             val intent = Intent(context, ExerciseListActivity::class.java)
             context.startActivity(intent)
-
-            Log.i("recycle", "clicked " + id.toString())
         }
 
         holder.itemView.setOnLongClickListener{
             val id = holder.adapterPosition
             Collections.swap(trainingList, id, 0)
             notifyItemMoved(id, 0)
-            Log.i("recycle", "swaped clicked " + id.toString())
             return@setOnLongClickListener true
         }
     }
 
+    private fun removeItemPermanent(position:Int){
+        trainingList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, itemCount)
+
+        //Save to JSON
+        val trainings = Trainings(trainingList)
+        val json : TrainingJsonConverter = TrainingJsonConverter()
+        json.toJson(trainings, savePath)
+    }
 
     //this method is giving the size of the list
     override fun getItemCount(): Int {

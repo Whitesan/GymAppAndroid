@@ -42,7 +42,7 @@ class TrainingsListActivity : AppWindowActivity() {
     private  fun createVisualTrainingsList(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = TrainingListAdapter(trainingsGuiList)
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json")
     }
 
     private  fun createVisualExercisesList(){
