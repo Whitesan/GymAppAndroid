@@ -1,6 +1,7 @@
 package com.example.myapplication.recycler_view
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,18 +18,29 @@ import java.util.*
 import kotlin.collections.ArrayList
 import android.content.ContextWrapper
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.activities.AppWindowActivity
+import com.example.myapplication.activities.CreateTrainingActivity
+import com.example.myapplication.activities.TrainingsListActivity
 import com.example.myapplication.exercises.Trainings
 
-class TrainingListAdapter(private val trainingList: ArrayList<Training>, private val savePath:String) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
-    companion object{
+class TrainingListAdapter(
+    private val trainingList: ArrayList<Training>,
+    private val savePath: String,
+    private val parentView: TrainingsListActivity
+) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
+    companion object {
         var currentTraining = Training("", ArrayList())
     }
 
     //this method is returning the view for each item in the list
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingListAdapter.ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.element_trainings_list, parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): TrainingListAdapter.ViewHolder {
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.element_trainings_list, parent, false)
         return ViewHolder(v)
     }
 
@@ -39,12 +51,12 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>, private
         val edit = holder.itemView.findViewById<ImageView>(R.id.editButton)
         val delete = holder.itemView.findViewById<ImageView>(R.id.deleteListItem)
 
-        edit.setOnClickListener{
-            Log.i("edit", "clicked edit")
+        edit.setOnClickListener {
+            runEditTrainingWindow(trainingList[holder.adapterPosition], holder.itemView.context)
         }
 
         val builder = AlertDialog.Builder(holder.itemView.context, R.style.AlertDialog)
-        delete.setOnClickListener{
+        delete.setOnClickListener {
             builder.setTitle("Delete training")
             builder.setMessage("Are you sure you want to remove training: " + trainingList[holder.adapterPosition].getName() + "?")
 
@@ -60,7 +72,7 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>, private
 
 
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             val id = holder.adapterPosition
             currentTraining = trainingList[id]
 
@@ -69,23 +81,31 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>, private
             context.startActivity(intent)
         }
 
-        holder.itemView.setOnLongClickListener{
-            val id = holder.adapterPosition
-            Collections.swap(trainingList, id, 0)
-            notifyItemMoved(id, 0)
+        holder.itemView.setOnLongClickListener {
+//            val id = holder.adapterPosition
+//            Collections.swap(trainingList, id, 0)
+//            notifyItemMoved(id, 0)
             return@setOnLongClickListener true
         }
     }
 
-    private fun removeItemPermanent(position:Int){
+    private fun removeItemPermanent(position: Int) {
         trainingList.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, itemCount)
 
         //Save to JSON
         val trainings = Trainings(trainingList)
-        val json : TrainingJsonConverter = TrainingJsonConverter()
+        val json: TrainingJsonConverter = TrainingJsonConverter()
         json.toJson(trainings, savePath)
+    }
+
+    private fun runEditTrainingWindow(training:Training, context: Context){
+        CreateTrainingActivity.exerciseList = training.exerciseList
+        CreateTrainingActivity.enteredText = training.getName()
+        val intent =  Intent(context, CreateTrainingActivity::class.java)
+        parentView.startActivity(intent)
+        Log.i("edit", "clicked edit")
     }
 
     //this method is giving the size of the list

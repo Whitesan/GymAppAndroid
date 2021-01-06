@@ -15,9 +15,9 @@ import com.example.myapplication.recycler_view.TrainingListAdapter
 
 @Suppress("DEPRECATION")
 class TrainingsListActivity : AppWindowActivity() {
-    companion object{
+    companion object {
         var trainingsGuiList = ArrayList<Training>()
-        var trainingsList:Trainings = Trainings(ArrayList())
+        var trainingsList: Trainings = Trainings(ArrayList())
         var editedIndex = -1
     }
 
@@ -39,21 +39,21 @@ class TrainingsListActivity : AppWindowActivity() {
         createVisualTrainingsList()
     }
 
-    private  fun createVisualTrainingsList(){
+    private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json")
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json", this)
     }
 
-    private  fun createVisualExercisesList(){
+    private fun createVisualExercisesList() {
 
     }
 
-    private fun loadTrainingJson ():Trainings{
+    private fun loadTrainingJson(): Trainings {
         val yourFilePath = "$filesDir/Training.json"
-        val json :TrainingJsonConverter = TrainingJsonConverter()
-        var trainings :Trainings? = json.fromJson(yourFilePath)
-        if(trainings == null)
+        val json: TrainingJsonConverter = TrainingJsonConverter()
+        var trainings: Trainings? = json.fromJson(yourFilePath)
+        if (trainings == null)
             trainings = Trainings(ArrayList())
         else
             Log.i("loadTrainingJson", trainings.showTrainings())

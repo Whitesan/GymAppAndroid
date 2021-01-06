@@ -23,34 +23,33 @@ import kotlin.collections.ArrayList
 
 
 @Suppress("DEPRECATION")
-class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
-    companion object{
-        var exerciseList= ArrayList<Exercise>()
-        var enteredText:String=""
+class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
+    companion object {
+        var exerciseList = ArrayList<Exercise>()
+        var enteredText: String = ""
         var editedIndex = -1
     }
-    private val adapter= ListAdapter(this, exerciseList)
-    private lateinit var entry:EditText
-    private lateinit var itemTouchHelpter:ItemTouchHelper
+
+    private val adapter = ListAdapter(this, exerciseList)
+    private lateinit var entry: EditText
+    private lateinit var itemTouchHelpter: ItemTouchHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter.setHasStableIds(true)
         setContentView(R.layout.activity_create_training)
         entry = findViewById<EditText>(R.id.enterTrainingName)
-        val temp : Serializable? = super.getIntent().getSerializableExtra("Exercise")
-        if (temp != null){
+        val temp: Serializable? = super.getIntent().getSerializableExtra("Exercise")
+        if (temp != null) {
             exerciseList.add(temp as Exercise)
         }
 
-        val temp2 : Serializable? = super.getIntent().getSerializableExtra("editedExercise")
-        if (temp2 != null){
-            for(i in 0 until exerciseList.size)
-            {
-                if(exerciseList[i].getId() == editedIndex)
-                {
+        val temp2: Serializable? = super.getIntent().getSerializableExtra("editedExercise")
+        if (temp2 != null) {
+            for (i in 0 until exerciseList.size) {
+                if (exerciseList[i].getId() == editedIndex) {
                     exerciseList.removeAt(i)
                     editedIndex = -1
-                    if(i>0)
+                    if (i > 0)
                         exerciseList.add(i, temp2 as Exercise)
                     else
                         exerciseList.add(i, temp2 as Exercise)
@@ -63,12 +62,12 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         setTextListener(1)
         createRecyclerView()
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
-        button.setOnClickListener{
-            val intent =  Intent(applicationContext, PlannerActivity::class.java)
+        button.setOnClickListener {
+            val intent = Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
         }
-        val endButton=findViewById<Button>(R.id.endCreatingExercises)
-        endButton.setOnClickListener{
+        val endButton = findViewById<Button>(R.id.endCreatingExercises)
+        endButton.setOnClickListener {
             if (enteredText.isEmpty()) {
                 showErrorMessage()
             } else {
@@ -76,21 +75,21 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
             }
         }
     }
+
     @SuppressLint("SetTextI18n")
     private fun setTextListener(number: Int) {
-        if(enteredText.isNotEmpty())
+        if (enteredText.isNotEmpty())
             entry.setText(enteredText)
-        else{
+        else {
             entry.setText(getString(R.string.defaultName) + number.toString())
-            enteredText= entry.text.toString()
+            enteredText = entry.text.toString()
 
         }
-        entry.setOnFocusChangeListener{ _, focus ->
-            if(focus==false){
+        entry.setOnFocusChangeListener { _, focus ->
+            if (focus == false) {
                 enteredText = entry.text.toString()
                 entry.hideKeyboard()
-            }
-            else if(entry.getText().toString().contains(getString(R.string.defaultName))){
+            } else if (entry.getText().toString().contains(getString(R.string.defaultName))) {
                 entry.setText("")
             }
             entry.isCursorVisible = focus
@@ -108,20 +107,21 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
 
     }
 
-    private fun createRecyclerView(){
-        val recycler=findViewById<RecyclerView>(R.id.recyclerView)
-        recycler.adapter=adapter
-        recycler.layoutManager=LinearLayoutManager(this)
+    private fun createRecyclerView() {
+        val recycler = findViewById<RecyclerView>(R.id.recyclerView)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(this)
         val callback = SimpleItemTouchHelperCallback(adapter, recycler)
         callback.setListener(recycler)
         itemTouchHelpter = ItemTouchHelper(callback)
         itemTouchHelpter.attachToRecyclerView(recycler)
 //        callback.setItemTouchHelper(itemTouchHelpter)
         adapter.appendItem(AddButton(), recycler)
-        for(e : Exercise in exerciseList){
+        for (e: Exercise in exerciseList) {
             adapter.appendItem(e, recycler)
         }
     }
+
     override fun onTouch(p0: View?, p1: MotionEvent?): Boolean {
         enteredText = entry.text.toString()
         val intent = Intent(applicationContext, EnterExerciseNameActivity::class.java)
@@ -129,24 +129,25 @@ class CreateTrainingActivity : AppWindowActivity(),View.OnTouchListener {
         return false;
     }
 
-    private fun onExit(){
+    private fun onExit() {
         val training = Training(enteredText, exerciseList)
-        val yourFilePath = filesDir.toString() + "/" + "Training.json"
-        val json :TrainingJsonConverter = TrainingJsonConverter()
-        var trainings :Trainings? = json.fromJson(yourFilePath)
-        if(trainings ==null )
+        val yourFilePath = "$filesDir/Training.json"
+        val json: TrainingJsonConverter = TrainingJsonConverter()
+        var trainings: Trainings? = json.fromJson(yourFilePath)
+        if (trainings == null)
             trainings = Trainings(ArrayList())
         trainings.trainingList.add(training)
         json.toJson(trainings, yourFilePath)
 
-        enteredText= ""
+        enteredText = ""
         exerciseList.clear()
-        val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
+        val intent = Intent(applicationContext, TrainingsListActivity::class.java)
         startActivity(intent)
     }
+
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)
-        message.text=getString(R.string.empty_name)
+        message.text = getString(R.string.empty_name)
         message.setTextColor(resources.getColor(R.color.red))
     }
 
