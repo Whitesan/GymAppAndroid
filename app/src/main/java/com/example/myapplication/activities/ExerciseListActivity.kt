@@ -35,7 +35,7 @@ class ExerciseListActivity : AppWindowActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = ExerciseListAdapter(training.exerciseList)
 
-        val title = findViewById<TextView>(R.id.trainingName)
+        val title = findViewById<TextView>(R.id.plannerTitle)
         title.text = training.getName()
     }
 }
