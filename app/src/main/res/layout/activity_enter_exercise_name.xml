@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.EnterExerciseNameActivity"
-    android:background="@drawable/background"
+    android:background="@color/black"
     android:orientation="vertical"
     android:layout_weight="15"
     android:clickable="true"
@@ -58,9 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="13"
-        android:orientation="vertical"
-        android:background="@drawable/background"
-        >
+        android:background="@color/black"
+        android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -68,13 +68,14 @@
 
 
         </RelativeLayout>
+
         <EditText
             android:id="@+id/enterExerciseNameEntry"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp"
             android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/entry_shape"
             android:backgroundTint="@color/whiteTransparent"
             android:cursorVisible="false"
@@ -84,38 +85,38 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/text_transpatentish"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
+
         <TextView
             android:id="@+id/TrainingNameEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/empty_name"
             android:layout_marginVertical="2dp"
+            android:text="@string/empty_name"
             android:textAlignment="center"
             android:textColor="@color/red"
-            android:visibility="invisible"
-            />
+            android:visibility="invisible" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chose type"
             android:layout_marginVertical="20dp"
+            android:text="Chose type"
             android:textAlignment="center"
-            android:textSize="25sp"
             android:textColor="@color/white"
-            />
+            android:textSize="25sp" />
+
         <HorizontalScrollView
             android:id="@+id/typeScroll"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="start"
+            android:layout_marginBottom="80dp"
             android:layout_weight="2"
+
             android:accessibilityLiveRegion="assertive"
 
             android:focusable="true"
-
-            android:layout_marginBottom="80dp"
             android:focusableInTouchMode="true"
 
             >
@@ -132,299 +133,262 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/chest"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/chest"
-                        >
-                    </ImageView>
+                        android:src="@drawable/chest"></ImageView>
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/back"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/back"
-                        >
-                    </ImageView>
+                        android:src="@drawable/back"></ImageView>
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/shoulders"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/shoulders"
-                        >
-                    </ImageView>
+                        android:src="@drawable/shoulders"></ImageView>
                 </LinearLayout>
 
 
-
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/cardio"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/cardio"
-                        >
-                    </ImageView>
+                        android:src="@drawable/cardio"></ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/triceps"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/biceps"
-                        >
-                    </ImageView>
+                        android:src="@drawable/biceps"></ImageView>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/butt"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/butt"
-                        >
-                    </ImageView>
+                        android:src="@drawable/butt"></ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/biceps"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/biceps"
-                        >
-                    </ImageView>
+                        android:src="@drawable/biceps"></ImageView>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/abs"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/abs"
-                        >
-                    </ImageView>
+                        android:src="@drawable/abs"></ImageView>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/calves"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/calves"
-                        >
-                    </ImageView>
+                        android:src="@drawable/calves"></ImageView>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/thighs"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/thighs"
-                        >
-                    </ImageView>
+                        android:src="@drawable/thighs"></ImageView>
                 </LinearLayout>
+
                 <LinearLayout
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:background="@drawable/rounded_view"
                     android:backgroundTint="@color/light_gray"
-                    >
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:text="@string/neck"
                         android:textAlignment="center"
-                        android:textSize="30sp"
-                        >
-                    </TextView>
+                        android:textSize="30sp"></TextView>
+
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/neck"
-                        >
-                    </ImageView>
+                        android:src="@drawable/neck"></ImageView>
                 </LinearLayout>
-
-
-
 
 
             </LinearLayout>
         </HorizontalScrollView>
-
-
 
 
     </LinearLayout>

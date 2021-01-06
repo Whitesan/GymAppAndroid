@@ -5,7 +5,7 @@
     android:layout_marginHorizontal="15dp"
     android:background="@drawable/entry_shape"
     android:layout_margin="5dp"
-    android:backgroundTint="@color/almost_transparent">
+    android:backgroundTint="@color/white">
 
 
     <TextView
@@ -17,5 +17,7 @@
         android:padding="15dp"
         android:singleLine="true"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        />
 </RelativeLayout>

@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".activities.ExerciseActivity"
-        android:background="@drawable/background"
+        android:background="@color/black"
         android:orientation="vertical"
         android:layout_weight="15"
         android:clickable="true"

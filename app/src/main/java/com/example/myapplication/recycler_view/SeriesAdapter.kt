@@ -16,7 +16,7 @@ class SeriesAdapter(private val ex : Exercise) : RecyclerView.Adapter<SeriesAdap
 
     //this method is returning the view for each item in the list
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.sub_element_exercise_list, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.sub_element_exercise_list, parent, false), ex)
     }
 
     //this method is binding the data on the list
@@ -31,14 +31,19 @@ class SeriesAdapter(private val ex : Exercise) : RecyclerView.Adapter<SeriesAdap
     }
 
     //the class is holding the list view
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val exercise :Exercise) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(series : Series) {
-            val text =  bindNormal(series)
+            val part = exercise.getPart()?.getName() ?: "null"
+
+            var text = ""
+            if (part.equals("cardio")) text = bindCardio(series)
+            else text = bindNormal(series)
+
             Log.i("SeriesAdapter", text)
             (itemView.findViewById(R.id.tv_sub_series) as TextView).text = text
         }
-        fun bindCardio(series: Series){ //ex.type
-
+        fun bindCardio(series: Series):String{ //ex.type
+            return "Series: " + series.seriesNumber + " | Minutes: " + series.reps + " | Meters: " + series.weight + " m"
         }
         private fun bindNormal(series: Series) :String{ //ex.type
             return  "Series: " + series.seriesNumber + " | Reps: " + series.reps + " | Weight: " + series.weight + " kg"

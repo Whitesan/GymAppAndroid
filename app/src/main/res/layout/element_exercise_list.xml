@@ -6,17 +6,18 @@
     android:layout_marginHorizontal="15dp"
 
     android:background="@drawable/exercise_list_shape"
-    android:backgroundTint="@color/mild_transparent"
+    android:backgroundTint="@color/white"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -41,7 +42,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
 
                 <TextView
                     android:id="@+id/tv_type"
@@ -53,7 +56,9 @@
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
 
                 <TextView
                     android:id="@+id/tv_info"
@@ -64,8 +69,9 @@
 
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="20sp" />
-
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    />
             </LinearLayout>
         </LinearLayout>
 

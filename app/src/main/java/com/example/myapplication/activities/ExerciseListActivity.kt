@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -33,5 +34,8 @@ class ExerciseListActivity : AppWindowActivity(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_exercise_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = ExerciseListAdapter(training.exerciseList)
+
+        val title = findViewById<TextView>(R.id.trainingName)
+        title.text = training.getName()
     }
 }

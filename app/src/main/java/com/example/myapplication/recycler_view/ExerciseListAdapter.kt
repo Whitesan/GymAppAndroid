@@ -22,6 +22,7 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
         val layout = R.layout.element_exercise_list
         val v = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return ViewHolder(v, viewPool)
+
     }
 
     //this method is binding the data on the list
@@ -39,13 +40,9 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     //the class is holding the list view
     class ViewHolder(itemView: View, private val viewPool : RecyclerView.RecycledViewPool) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(exercise : Exercise) {
-            (itemView.findViewById(R.id.tv_exercise) as TextView).text = exercise.getName()
-            (itemView.findViewById(R.id.tv_type) as TextView).text = exercise.getPart()?.getName() ?: "null"
-            //(itemView.findViewById(R.id.tv_info) as TextView).text = "tenp\ntemp"
-
-            val id = exercise.getPart()?.getName() ?: "null"
+            val part = exercise.getPart()?.getName() ?: "null"
             var draw = R.drawable.chest
-            when(id){
+            when(part){
                 "chest" -> draw=R.drawable.chest
                 "back" -> draw= R.drawable.back
                 "shoulders" -> draw= R.drawable.shoulders
@@ -59,6 +56,8 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
                 "abs" -> draw=R.drawable.abs
             }
             (itemView.findViewById(R.id.iv_exercise) as ImageView).setImageResource(draw)
+            (itemView.findViewById(R.id.tv_exercise) as TextView).text = exercise.getName()
+            (itemView.findViewById(R.id.tv_type) as TextView).text = part
 
         }
 

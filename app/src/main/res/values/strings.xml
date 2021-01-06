@@ -2,6 +2,7 @@
     <string name="app_name">GymApp</string>
     <string name="calendar">Calendar</string>
     <string name="training">Training</string>
+    <string name="trainings">Trainings</string>
     <string name="statistics">Statistics</string>
     <string name="planner">Planner</string>
     <string name="trainingCreator">Creator</string>
@@ -11,6 +12,7 @@
     <string name="add">Add</string>
     <string name="save">Save</string>
     <string name="exercise">Exercise</string>
+    <string name="exercises">Exercises</string>
     <string name="title_activity_main2">MainActivity</string>
     <string name="enter_name"> Create Exercise</string>
     <string name="Continue">Continue</string>
