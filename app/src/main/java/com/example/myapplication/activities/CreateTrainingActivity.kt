@@ -1,6 +1,7 @@
 package com.example.myapplication.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
@@ -18,7 +19,6 @@ import com.example.myapplication.exercises.Trainings
 import com.example.myapplication.recycler_view.AddButton
 import com.example.myapplication.recycler_view.SimpleItemTouchHelperCallback
 import java.io.Serializable
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -32,7 +32,8 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
 
     private val adapter = ListAdapter(this, exerciseList)
     private lateinit var entry: EditText
-    private lateinit var itemTouchHelpter: ItemTouchHelper
+    private lateinit var itemTouchHelper: ItemTouchHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter.setHasStableIds(true)
@@ -61,19 +62,29 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
 
         setTextListener(1)
         createRecyclerView()
+
         val button = findViewById<ImageView>(R.id.backTrainingCreator)
         button.setOnClickListener {
-            val intent = Intent(applicationContext, PlannerActivity::class.java)
-            startActivity(intent)
+            addButtonAction()
         }
+
         val endButton = findViewById<Button>(R.id.endCreatingExercises)
         endButton.setOnClickListener {
-            if (enteredText.isEmpty()) {
-                showErrorMessage()
-            } else {
-                onExit()
-            }
+            saveButtonAction()
         }
+    }
+
+    private fun saveButtonAction() {
+        if (enteredText.isEmpty()) {
+            showErrorMessage()
+        } else {
+            onExit()
+        }
+    }
+
+    private fun addButtonAction() {
+        val intent = Intent(applicationContext, PlannerActivity::class.java)
+        startActivity(intent)
     }
 
     @SuppressLint("SetTextI18n")
@@ -113,8 +124,8 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         recycler.layoutManager = LinearLayoutManager(this)
         val callback = SimpleItemTouchHelperCallback(adapter, recycler)
         callback.setListener(recycler)
-        itemTouchHelpter = ItemTouchHelper(callback)
-        itemTouchHelpter.attachToRecyclerView(recycler)
+        itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(recycler)
 //        callback.setItemTouchHelper(itemTouchHelpter)
         adapter.appendItem(AddButton(), recycler)
         for (e: Exercise in exerciseList) {
@@ -129,13 +140,51 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         return false;
     }
 
+    private fun trainingWithNameExistDialog(trainings :Trainings, path:String) {
+        val context = this
+        val builder = AlertDialog.Builder(context, R.style.AlertDialog)
+        builder.setTitle("Overwrite training")
+        builder.setMessage("Training with name: $enteredText already exists. Do you want overwrite it?")
+
+        builder.setPositiveButton("YES") { dialog, which ->
+            val list = trainings.trainingList
+            for(i in list.indices){
+                if(enteredText == list[i].getName()){
+                    list[i].exerciseList = exerciseList
+                    break
+                }
+            }
+            val json: TrainingJsonConverter = TrainingJsonConverter()
+            json.toJson(trainings, path)
+
+            enteredText = ""
+            exerciseList.clear()
+            val intent = Intent(applicationContext, TrainingsListActivity::class.java)
+            startActivity(intent)
+        }
+
+        builder.setNegativeButton("NO") { dialog, which ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
+
     private fun onExit() {
         val training = Training(enteredText, exerciseList)
         val yourFilePath = "$filesDir/Training.json"
+
         val json: TrainingJsonConverter = TrainingJsonConverter()
         var trainings: Trainings? = json.fromJson(yourFilePath)
         if (trainings == null)
             trainings = Trainings(ArrayList())
+
+        for(t in trainings.trainingList){
+            if(t.getName() == enteredText){
+                trainingWithNameExistDialog(trainings, yourFilePath)
+                return
+            }
+        }
+
         trainings.trainingList.add(training)
         json.toJson(trainings, yourFilePath)
 
@@ -150,6 +199,4 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         message.text = getString(R.string.empty_name)
         message.setTextColor(resources.getColor(R.color.red))
     }
-
-
 }

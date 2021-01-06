@@ -55,38 +55,42 @@ class TrainingListAdapter(
             runEditTrainingWindow(trainingList[holder.adapterPosition], holder.itemView.context)
         }
 
+
         val builder = AlertDialog.Builder(holder.itemView.context, R.style.AlertDialog)
         delete.setOnClickListener {
-            builder.setTitle("Delete training")
-            builder.setMessage("Are you sure you want to remove training: " + trainingList[holder.adapterPosition].getName() + "?")
-
-            builder.setPositiveButton("YES") { dialog, which ->
-                removeItemPermanent(holder.adapterPosition)
-            }
-
-            builder.setNegativeButton("NO") { dialog, which ->
-                return@setNegativeButton
-            }
-            builder.show()
+            deleteDialogAction(builder, holder.adapterPosition)
         }
 
-
-
         holder.itemView.setOnClickListener {
-            val id = holder.adapterPosition
-            currentTraining = trainingList[id]
-
-            val context = holder.itemView.context
-            val intent = Intent(context, ExerciseListActivity::class.java)
-            context.startActivity(intent)
+            onClickTraining(holder)
         }
 
         holder.itemView.setOnLongClickListener {
-//            val id = holder.adapterPosition
-//            Collections.swap(trainingList, id, 0)
-//            notifyItemMoved(id, 0)
             return@setOnLongClickListener true
         }
+    }
+
+    private  fun onClickTraining(holder: ViewHolder){
+        val id = holder.adapterPosition
+        currentTraining = trainingList[id]
+
+        val context = holder.itemView.context
+        val intent = Intent(context, ExerciseListActivity::class.java)
+        context.startActivity(intent)
+    }
+
+    private  fun deleteDialogAction(builder: AlertDialog.Builder, position: Int){
+        builder.setTitle("Delete training")
+        builder.setMessage("Are you sure you want to remove training: " + trainingList[position].getName() + "?")
+
+        builder.setPositiveButton("YES") { dialog, which ->
+            removeItemPermanent(position)
+        }
+
+        builder.setNegativeButton("NO") { dialog, which ->
+            return@setNegativeButton
+        }
+        builder.show()
     }
 
     private fun removeItemPermanent(position: Int) {

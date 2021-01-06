@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import com.example.myapplication.R
+import com.example.myapplication.exercises.Exercise
 
 @Suppress("DEPRECATION")
 class PlannerActivity : AppWindowActivity() {
@@ -22,6 +23,9 @@ class PlannerActivity : AppWindowActivity() {
         val createTraining = findViewById<CardView>(R.id.createTrainingCardView)
         createTraining.setOnClickListener{
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
+            CreateTrainingActivity.exerciseList = ArrayList<Exercise>()
+            CreateTrainingActivity.enteredText = ""
+            CreateTrainingActivity.editedIndex = -1
             startActivity(intent)
         }
         val createTrainingsListActivity = findViewById<CardView>(R.id.createTrainingsListCardViev)
@@ -29,6 +33,5 @@ class PlannerActivity : AppWindowActivity() {
             val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
             startActivity(intent)
         }
-
     }
 }
