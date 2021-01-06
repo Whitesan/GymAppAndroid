@@ -44,7 +44,7 @@ class TrainingListAdapter(private val trainingList: ArrayList<Training>) : Recyc
             builder.setMessage("Are you sure you want to remove training: " + trainingList[position].getName() + "?")
 
             builder.setPositiveButton("YES") { dialog, which ->
-                Log.i("delete", "delete edit yes")
+                Log.i("delete", "delete edit yess")
             }
 
             builder.setNegativeButton("NO") { dialog, which ->
