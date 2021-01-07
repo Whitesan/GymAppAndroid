@@ -259,29 +259,6 @@
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/butt"
-                        android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/butt"></ImageView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/rounded_view"
-                    android:backgroundTint="@color/light_gray"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
                         android:text="@string/biceps"
                         android:textAlignment="center"
                         android:textSize="30sp"></TextView>
