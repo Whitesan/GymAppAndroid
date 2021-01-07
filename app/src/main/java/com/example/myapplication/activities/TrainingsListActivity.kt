@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Training
@@ -34,7 +33,7 @@ class TrainingsListActivity : AppWindowActivity() {
 
         //Loading list from JSON file
         //List is using by recycle_viewer
-        trainingsList = loadTrainingJson()
+        trainingsList = TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
         trainingsGuiList = trainingsList.trainingList
 
         createVisualTrainingsList()
@@ -43,19 +42,12 @@ class TrainingsListActivity : AppWindowActivity() {
     private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/$TRAINING_FILE", this)
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json", this)
     }
 
     private fun createVisualExercisesList() {
 
     }
 
-    private fun loadTrainingJson(): Trainings {
-        val yourFilePath = "$filesDir/$TRAINING_FILE"
-        val json = TrainingJsonConverter()
-        var trainings: Trainings? = json.fromJson(yourFilePath)
-        if (trainings == null)
-            trainings = Trainings(ArrayList())
-        return trainings
-    }
+
 }
