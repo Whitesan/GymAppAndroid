@@ -44,10 +44,4 @@ class TrainingsListActivity : AppWindowActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json", this)
     }
-
-    private fun createVisualExercisesList() {
-
-    }
-
-
 }

@@ -10,6 +10,9 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import com.example.myapplication.R
+import com.example.myapplication.TrainingJsonConverter
+import java.time.DayOfWeek
+import java.util.*
 
 
 //TODO import training list from json, according to week day
@@ -46,6 +49,10 @@ class TrainingActivity : AppWindowActivity() {
         }
          selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
         onStartAnimateCard()
+        val trainings=TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
+        val todayTraining=trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+
+
     }
 
     private fun onStartAnimateCard() {
@@ -65,7 +72,7 @@ class TrainingActivity : AppWindowActivity() {
                     }
 
                     override fun onAnimationRepeat(p0: Animation?) {
-//                not implemented
+                    //                not implemented
                     }
 
                     override fun onAnimationEnd(p0: Animation?) {
@@ -77,7 +84,5 @@ class TrainingActivity : AppWindowActivity() {
             cardView.startAnimation(anim)
 
         }
-
-
     }
 }

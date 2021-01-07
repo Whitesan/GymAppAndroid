@@ -64,6 +64,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
+            android:layoutAnimation="@anim/recycler_layout_animation"
             android:focusableInTouchMode="true">
 
         </androidx.recyclerview.widget.RecyclerView>
