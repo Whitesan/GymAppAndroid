@@ -8,38 +8,31 @@
     <string name="trainingCreator">Creator</string>
     <string name="enterTrainingName">Enter training name</string>
     <string name="enterExerciseName">Enter exercise name</string>
-    <string name="plus">+</string>
-    <string name="add">Add</string>
     <string name="save">Save</string>
     <string name="exercise">Exercise</string>
     <string name="exercises">Exercises</string>
-    <string name="title_activity_main2">MainActivity</string>
-    <string name="enter_name"> Create Exercise</string>
     <string name="Continue">Continue</string>
-    <string name="defaultName">Training #</string>
-    <string name="butt">Butt</string>
+
+    <string name="addNewExercise">+</string>
+    <string name="actPlannerCreateTraining">Create Training</string>
+    <string name="actPlannerTrainingList">Trainings List</string>
+    <string name="DELETE">Delete</string>
+
+    <string name="selectAnotherTraining">Select another</string>
+    <string name="selectPartError">"Select part!"</string>
+
+    <!-- activity_enter_exercise_name.xml -->
+    <string name="trainingNameHint">Enter name</string>
     <string name="biceps">Biceps</string>
     <string name="chest">Chest</string>
-    <string name="legs">Legs</string>
     <string name="triceps">Triceps</string>
     <string name="thighs">Thighs</string>
-    <string name="forearms">Forearms</string>
     <string name="calves">Calves</string>
     <string name="back">Back</string>
     <string name="neck">Neck</string>
     <string name="shoulders">Shoulders</string>
     <string name="abs">Abs</string>
     <string name="cardio">Cardio</string>
-    <string name="addNewExercise">+</string>
-    <string name="actPlannerCreateTraining">Create Training</string>
-    <string name="actPlannerTrainingList">Trainings List</string>
-    <string name="DELETE">Delete</string>
-
-    <string name="edit">Edit</string>
-    <string name="selectAnotherTraining">Select another</string>
-    <string name="selectPartError">"Select part!"</string>
-
-    <string name="trainingNameHint">Enter name</string>
 
     <!-- Series adapter -->
     <string name="series">Series</string>

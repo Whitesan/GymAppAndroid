@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">GymApp</string>
+    <string name="calendar">Kalendarz</string>
+    <string name="training">Trening</string>
+    <string name="trainings">Treningi</string>
+    <string name="statistics">Statystyki</string>
+    <string name="planner">Harmonogram</string>
+    <string name="trainingCreator">Kreator</string>
+    <string name="enterTrainingName">Wpisz nazwę treningu</string>
+    <string name="enterExerciseName">Wpisz nazwę ćwiczenia</string>
+    <string name="save">Zapisz</string>
+    <string name="exercise">Ćwiczenie</string>
+    <string name="exercises">Ćwiczenia</string>
+    <string name="Continue">Kontynuuj</string>
+
+    <string name="addNewExercise">+</string>
+    <string name="actPlannerCreateTraining">Stwórz trening</string>
+    <string name="actPlannerTrainingList">Lista treningów</string>
+    <string name="DELETE">Usuń</string>
+
+    <string name="selectAnotherTraining">Wybierz inny</string>
+    <string name="selectPartError">"Wybierz partię!"</string>
+
+    <!-- activity_enter_exercise_name.xml -->
+    <string name="trainingNameHint">Wpisz nazwę</string>
+    <string name="biceps">Biceps</string>
+    <string name="chest">Klatka</string>
+    <string name="triceps">Triceps</string>
+    <string name="thighs">Uda</string>
+    <string name="calves">Łydka</string>
+    <string name="back">Plecy</string>
+    <string name="neck">Szyja</string>
+    <string name="shoulders">Ramiona</string>
+    <string name="abs">Abs</string>
+    <string name="cardio">Cardio</string>
+
+    <!-- Series adapter -->
+    <string name="series">Serie</string>
+    <string name="reps">Powtórzenia</string>
+    <string name="weight">Ciężar</string>
+    <string name="minutes">Minuty</string>
+    <string name="meters">Metry</string>
+
+    <!-- TrainingListAdapter - TLA -->
+    <string name="TLA_Title_Dialog">Usuń trening</string>
+    <string name="TLA_Msg_Dialog">Jesteś pewien, że chcesz usunąć trening:</string>
+    <string name="TLA_YES">TAK</string>
+    <string name="TLA_NO">NIE</string>
+
+    <!-- CreateTrainingActivity - CTA -->
+    <string name="CTA_Title_Dialog">Nadpisz trening</string>
+    <string name="CTA_Msg_1_Dialog">Trening o nazwie:</string>
+    <string name="CTA_Msg_2_Dialog">już istnieje. Czy chcesz go nadpisać?</string>
+    <string name="CTA_YES">TAK</string>
+    <string name="CTA_NO">NIE</string>
+    <string name="CTA_Empty_Name_Err">Nazwa nie może być pusta!</string>
+</resources>
