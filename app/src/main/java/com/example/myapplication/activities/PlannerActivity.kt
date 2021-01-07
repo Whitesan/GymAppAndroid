@@ -20,6 +20,7 @@ class PlannerActivity : AppWindowActivity() {
                 val intent =  Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
         }
+
         val createTraining = findViewById<CardView>(R.id.createTrainingCardView)
         createTraining.setOnClickListener{
             val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
@@ -28,6 +29,7 @@ class PlannerActivity : AppWindowActivity() {
             CreateTrainingActivity.editedIndex = -1
             startActivity(intent)
         }
+
         val createTrainingsListActivity = findViewById<CardView>(R.id.createTrainingsListCardViev)
         createTrainingsListActivity.setOnClickListener{
             val intent =  Intent(applicationContext, TrainingsListActivity::class.java)

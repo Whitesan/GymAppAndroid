@@ -20,6 +20,8 @@ class ExerciseActivity : AppWindowActivity() {
     var selectedSeries = 1
     private var edit = false
     private var ready = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
@@ -98,8 +100,8 @@ class ExerciseActivity : AppWindowActivity() {
         {
             val pickerText1 = findViewById<TextView>(R.id.pickerText1)
             val pickerText2 = findViewById<TextView>(R.id.pickerText2)
-            pickerText1.text = "Minutes"
-            pickerText2.text = "Meters"
+            pickerText1.text = resources.getString(R.string.minutes)
+            pickerText2.text = resources.getString(R.string.meters)
             weightPicker.minValue = 0
             weightPicker.maxValue = (createMetersArray().size-1)
             weightPicker.displayedValues = createMetersArray()
@@ -220,11 +222,8 @@ class ExerciseActivity : AppWindowActivity() {
             }
         }
     }
-    fun createMetersArray():Array<out String>
+    private fun createMetersArray():Array<out String>
     {
-        val list:Array<out String> = Array(100){i -> (i *100).toString()}
-
-        return list;
-
+        return Array(100){ i -> (i *100).toString()};
     }
 }

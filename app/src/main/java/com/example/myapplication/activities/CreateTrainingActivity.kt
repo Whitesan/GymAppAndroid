@@ -10,6 +10,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.recyclerview.widget.*
+import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.ListAdapter
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
@@ -91,20 +92,13 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     private fun setTextListener(number: Int) {
         if (enteredText.isNotEmpty())
             entry.setText(enteredText)
-        else {
-            entry.setText(getString(R.string.defaultName) + number.toString())
-            enteredText = entry.text.toString()
 
-        }
         entry.setOnFocusChangeListener { _, focus ->
             if (focus == false) {
                 enteredText = entry.text.toString()
                 entry.hideKeyboard()
-            } else if (entry.getText().toString().contains(getString(R.string.defaultName))) {
-                entry.setText("")
             }
             entry.isCursorVisible = focus
-
         }
         entry.setOnKeyListener(View.OnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == EditorInfo.IME_ACTION_DONE || keyCode == EditorInfo.IME_ACTION_SEARCH) {
@@ -171,7 +165,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
 
     private fun onExit() {
         val training = Training(enteredText, exerciseList)
-        val yourFilePath = "$filesDir/Training.json"
+        val yourFilePath = "$filesDir/$TRAINING_FILE"
 
         val json: TrainingJsonConverter = TrainingJsonConverter()
         var trainings: Trainings? = json.fromJson(yourFilePath)

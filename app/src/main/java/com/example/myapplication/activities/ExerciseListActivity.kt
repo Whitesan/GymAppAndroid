@@ -25,9 +25,7 @@ class ExerciseListActivity : AppWindowActivity(){
         }
 
         val training = TrainingListAdapter.currentTraining
-
         createExercisesList(training)
-        Log.i("ExerciseListActivity", training.showExercise())
     }
 
     private fun createExercisesList(training : Training){

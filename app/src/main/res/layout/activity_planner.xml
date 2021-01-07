@@ -87,7 +87,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="10dp"
                     android:textStyle="bold"
-                    android:text="@string/actPlannerCreateTraning"/>
+                    android:text="@string/actPlannerCreateTraining"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
@@ -128,7 +128,7 @@
                     android:layout_gravity="center"
                     android:paddingTop="10dp"
                     android:textStyle="bold"
-                    android:text="@string/actPlannerTraningList"/>
+                    android:text="@string/actPlannerTrainingList"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"

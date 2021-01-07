@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Training
@@ -42,7 +43,7 @@ class TrainingsListActivity : AppWindowActivity() {
     private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json", this)
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/$TRAINING_FILE", this)
     }
 
     private fun createVisualExercisesList() {
@@ -50,13 +51,11 @@ class TrainingsListActivity : AppWindowActivity() {
     }
 
     private fun loadTrainingJson(): Trainings {
-        val yourFilePath = "$filesDir/Training.json"
-        val json: TrainingJsonConverter = TrainingJsonConverter()
+        val yourFilePath = "$filesDir/$TRAINING_FILE"
+        val json = TrainingJsonConverter()
         var trainings: Trainings? = json.fromJson(yourFilePath)
         if (trainings == null)
             trainings = Trainings(ArrayList())
-        else
-            Log.i("loadTrainingJson", trainings.showTrainings())
         return trainings
     }
 }

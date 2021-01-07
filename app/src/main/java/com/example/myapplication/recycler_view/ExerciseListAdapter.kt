@@ -1,12 +1,9 @@
 package com.example.myapplication.recycler_view
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.LinearLayout.*
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -67,7 +64,7 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
 
             child.apply {
                 layoutManager = childLayoutManager
-                adapter = SeriesAdapter(exercise)
+                adapter = SeriesAdapter(exercise, resources)
                 setRecycledViewPool(viewPool)
             }
         }
