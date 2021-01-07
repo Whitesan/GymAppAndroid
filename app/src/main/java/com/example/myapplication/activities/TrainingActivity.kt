@@ -1,13 +1,15 @@
 package com.example.myapplication.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Button
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import com.example.myapplication.R
-
 
 
 //TODO import training list from json, according to week day
@@ -19,6 +21,8 @@ TODO     layout
 3.show planned reps and weight  + enter done reps and weight
 4.skip/end series (?)
 5.allow user to change expected training for another (maybe open calendar?)
+
+
  */
 /*TODO save stats to JSON
 1.day
@@ -28,16 +32,52 @@ TODO     layout
 */
 //TODO On finish training show summary stats and congratulations (or not)
 //TODO maybe on finish ask for user weight, if he'd like to share save that for future statistics
-
+//TODO !! Update predicted training according to actual progress (Never regress !!)
 @Suppress("DEPRECATION")
 class TrainingActivity : AppWindowActivity() {
+    private lateinit var selectAnotherButton:Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
         val button = findViewById<ImageView>(R.id.backTraining)
-        button.setOnClickListener{
-            val intent =  Intent(applicationContext, MainActivity::class.java)
+        button.setOnClickListener {
+            val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
         }
+         selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
+        onStartAnimateCard()
+    }
+
+    private fun onStartAnimateCard() {
+        val cardView: CardView = findViewById(R.id.TrainingInfoCard)
+
+        cardView.setOnClickListener {
+            Log.println(
+                Log.INFO,
+                null,
+                "LISTENER CLICKED!"
+            )
+            val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down_animation)
+            val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_animation)
+                anim.setAnimationListener(object : Animation.AnimationListener {
+                    override fun onAnimationStart(p0: Animation?) {
+                        selectAnotherButton.startAnimation(buttonAnim)
+                    }
+
+                    override fun onAnimationRepeat(p0: Animation?) {
+//                not implemented
+                    }
+
+                    override fun onAnimationEnd(p0: Animation?) {
+                        cardView.visibility = View.GONE
+                        selectAnotherButton.visibility = View.GONE
+                    }
+                })
+
+            cardView.startAnimation(anim)
+
+        }
+
+
     }
 }

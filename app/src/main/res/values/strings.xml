@@ -39,5 +39,6 @@
     <string name="weight">Weight</string>
     <string name="series">Series</string>
     <string name="edit">Edit</string>
+    <string name="selectAnotherTraining">Select another</string>
     <string name="selectPartError">"Select part!"</string>
 </resources>
