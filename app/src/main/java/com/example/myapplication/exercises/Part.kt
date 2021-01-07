@@ -11,23 +11,21 @@ class Part : Serializable {
         private var map: HashMap<String, Part> = HashMap()
 
         init {
-            map.put("chest", Part().setName("chest"))
-            map.put("back", Part().setName("back"))
-            map.put("shoulders", Part().setName("shoulders"))
-            map.put("cardio", Part().setName("cardio"))
-            map.put("triceps", Part().setName("triceps"))
-            map.put("biceps", Part().setName("biceps"))
-            map.put("abs", Part().setName("abs"))
-            map.put("calves", Part().setName("calves"))
-            map.put("neck", Part().setName("neck"))
-            map.put("thighs", Part().setName("thighs"))
-            map.put("forearms", Part().setName("forearms"))
-
-
+            map["chest"] = Part().setName("chest")
+            map["back"] = Part().setName("back")
+            map["shoulders"] = Part().setName("shoulders")
+            map["cardio"] = Part().setName("cardio")
+            map["triceps"] = Part().setName("triceps")
+            map["biceps"] = Part().setName("biceps")
+            map["abs"] = Part().setName("abs")
+            map["calves"] = Part().setName("calves")
+            map["neck"] = Part().setName("neck")
+            map["thighs"] = Part().setName("thighs")
+            map["forearms"] = Part().setName("forearms")
         }
 
         fun getPart(name: String): Part? {
-            return map.get(name.toLowerCase())
+            return map[name.toLowerCase()]
         }
     }
 
