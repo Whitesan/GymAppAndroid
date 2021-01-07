@@ -12,7 +12,7 @@ import com.example.myapplication.recycler_view.ExerciseViewHolder
 import java.util.*
 class ListAdapter(private val itemTouchListener: View.OnTouchListener, private val trainingItems:ArrayList<Exercise>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
-    private val items: LinkedList<Exercise> = LinkedList<Exercise>()
+    private val items: LinkedList<Exercise> = LinkedList()
     private val VIEW_TYPE_EXERCISE = 0
     private val VIEW_TYPE_BUTTON = 1
     private val buttonAdapter: ButtonAdapter = ButtonAdapter(VIEW_TYPE_BUTTON)

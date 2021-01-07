@@ -80,14 +80,21 @@ class TrainingListAdapter(
     }
 
     private  fun deleteDialogAction(builder: AlertDialog.Builder, position: Int){
-        builder.setTitle("Delete training")
-        builder.setMessage("Are you sure you want to remove training: " + trainingList[position].getName() + "?")
+        val res = parentView.resources
+        val title = res.getString(R.string.TLA_Title_Dialog)
+        val msg = res.getString(R.string.TLA_Msg_Dialog)
+        val name = trainingList[position].getName()
+        val yes = res.getString(R.string.TLA_YES)
+        val no = res.getString(R.string.TLA_NO)
 
-        builder.setPositiveButton("YES") { dialog, which ->
+        builder.setTitle(title)
+        builder.setMessage("$msg $name?")
+
+        builder.setPositiveButton(yes) { dialog, which ->
             removeItemPermanent(position)
         }
 
-        builder.setNegativeButton("NO") { dialog, which ->
+        builder.setNegativeButton(no) { dialog, which ->
             return@setNegativeButton
         }
         builder.show()
@@ -105,11 +112,10 @@ class TrainingListAdapter(
     }
 
     private fun runEditTrainingWindow(training:Training, context: Context){
-        CreateTrainingActivity.exerciseList = training.exerciseList
+        CreateTrainingActivity.exerciseList = ArrayList(training.exerciseList)
         CreateTrainingActivity.enteredText = training.getName()
         val intent =  Intent(context, CreateTrainingActivity::class.java)
         parentView.startActivity(intent)
-        Log.i("edit", "clicked edit")
     }
 
     //this method is giving the size of the list

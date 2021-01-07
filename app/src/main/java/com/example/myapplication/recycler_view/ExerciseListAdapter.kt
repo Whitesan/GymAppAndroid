@@ -38,20 +38,7 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     class ViewHolder(itemView: View, private val viewPool : RecyclerView.RecycledViewPool) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(exercise : Exercise) {
             val part = exercise.getPart()?.getName() ?: "null"
-            var draw = R.drawable.chest
-            when(part){
-                "chest" -> draw=R.drawable.chest
-                "back" -> draw= R.drawable.back
-                "shoulders" -> draw= R.drawable.shoulders
-                "cardio" -> draw=R.drawable.cardio
-                "triceps" -> draw=R.drawable.triceps
-                "biceps" -> draw=R.drawable.biceps
-                "neck" -> draw=R.drawable.neck
-                "forearms" -> draw= R.drawable.forearm
-                "thighs" -> draw= R.drawable.thighs
-                "calves" -> draw=R.drawable.calves
-                "abs" -> draw=R.drawable.abs
-            }
+            var draw = exercise.getPart()?.getImg() ?: 0
             (itemView.findViewById(R.id.iv_exercise) as ImageView).setImageResource(draw)
             (itemView.findViewById(R.id.tv_exercise) as TextView).text = exercise.getName()
             (itemView.findViewById(R.id.tv_type) as TextView).text = part

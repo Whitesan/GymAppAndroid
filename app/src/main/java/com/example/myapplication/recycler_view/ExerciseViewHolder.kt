@@ -30,9 +30,10 @@ class ExerciseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     @SuppressLint("ClickableViewAccessibility")
     fun bindExercise(exercise: Exercise) {
+        val draw = exercise.getPart()?.getImg() ?: 0
         nameTextView.text = exercise.getName()
         nameTextView2.text = exercise.getPart().toString()
-        icon.setImageURI(Uri.parse(exercise.getPart()?.getImg()))
+        icon.setImageResource(draw)
         this.exercise = exercise
     }
 

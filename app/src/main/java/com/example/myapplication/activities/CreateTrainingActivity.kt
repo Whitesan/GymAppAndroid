@@ -40,6 +40,8 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         adapter.setHasStableIds(true)
         setContentView(R.layout.activity_create_training)
         entry = findViewById<EditText>(R.id.enterTrainingName)
+
+
         val temp: Serializable? = super.getIntent().getSerializableExtra("Exercise")
         if (temp != null) {
             exerciseList.add(temp as Exercise)
@@ -137,10 +139,17 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     private fun trainingWithNameExistDialog(trainings :Trainings, path:String) {
         val context = this
         val builder = AlertDialog.Builder(context, R.style.AlertDialog)
-        builder.setTitle("Overwrite training")
-        builder.setMessage("Training with name: $enteredText already exists. Do you want overwrite it?")
+        val title = getString(R.string.CTA_Title_Dialog)
+        val msg1 = getString(R.string.CTA_Msg_1_Dialog)
+        val msg2 = getString(R.string.CTA_Msg_2_Dialog)
+        val yes = getString(R.string.CTA_YES)
+        val no = getString(R.string.CTA_NO)
 
-        builder.setPositiveButton("YES") { dialog, which ->
+
+        builder.setTitle(title)
+        builder.setMessage("$msg1 $enteredText $msg2")
+
+        builder.setPositiveButton(yes) { dialog, which ->
             val list = trainings.trainingList
             for(i in list.indices){
                 if(enteredText == list[i].getName()){
@@ -157,7 +166,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
             startActivity(intent)
         }
 
-        builder.setNegativeButton("NO") { dialog, which ->
+        builder.setNegativeButton(no) { dialog, which ->
             return@setNegativeButton
         }
         builder.show()
@@ -190,7 +199,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
 
     private fun showErrorMessage() {
         val message = findViewById<TextView>(R.id.EnterTraining2)
-        message.text = getString(R.string.empty_name)
+        message.text = getString(R.string.CTA_Empty_Name_Err)
         message.setTextColor(resources.getColor(R.color.red))
     }
 }

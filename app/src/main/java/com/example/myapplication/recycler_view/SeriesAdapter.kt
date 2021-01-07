@@ -42,7 +42,6 @@ class SeriesAdapter(
             if (part == "cardio") text = bindCardio(series)
             else text = bindNormal(series)
 
-
             (itemView.findViewById(R.id.tv_sub_series) as TextView).text = text
         }
         private fun bindCardio(series: Series):String{

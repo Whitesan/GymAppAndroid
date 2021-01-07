@@ -5,7 +5,7 @@ import java.io.Serializable
 
 class Part : Serializable {
     private lateinit var name: String
-    private lateinit var img: String
+    private var drawId: Int = 0
 
     companion object Factory {
         private var map: HashMap<String, Part> = HashMap()
@@ -33,18 +33,19 @@ class Part : Serializable {
 
     private fun setName(name: String): Part {
         this.name = name.toLowerCase()
+
         when (this.name) {
-            "chest" -> img="android.resource://com.example.myapplication/" + R.drawable.chest
-            "back" -> img="android.resource://com.example.myapplication/" + R.drawable.back
-            "shoulders" -> img="android.resource://com.example.myapplication/"+ R.drawable.shoulders
-            "cardio" -> img="android.resource://com.example.myapplication/" + R.drawable.cardio
-            "triceps" -> img="android.resource://com.example.myapplication/" + R.drawable.triceps
-            "biceps" -> img="android.resource://com.example.myapplication/" + R.drawable.biceps
-            "neck" -> img="android.resource://com.example.myapplication/" + R.drawable.neck
-            "forearms" -> img="android.resource://com.example.myapplication/" + R.drawable.forearm
-            "thighs" -> img="android.resource://com.example.myapplication/" + R.drawable.thighs
-            "calves" -> img="android.resource://com.example.myapplication/" + R.drawable.calves
-            "abs" -> img="android.resource://com.example.myapplication/" + R.drawable.abs
+            "chest" -> drawId = R.drawable.chest
+            "back" -> drawId = R.drawable.back
+            "shoulders" -> drawId = R.drawable.shoulders
+            "cardio" -> drawId = R.drawable.cardio
+            "triceps" -> drawId = R.drawable.triceps
+            "biceps" -> drawId = R.drawable.biceps
+            "neck" -> drawId = R.drawable.neck
+            "forearms" -> drawId = R.drawable.forearm
+            "thighs" -> drawId = R.drawable.thighs
+            "calves" -> drawId = R.drawable.calves
+            "abs" -> drawId = R.drawable.abs
         }
         return this
     }
@@ -53,8 +54,8 @@ class Part : Serializable {
         return name
     }
 
-    fun getImg(): String {
-        return img
+    fun getImg(): Int {
+        return drawId
     }
 
     override fun toString(): String {

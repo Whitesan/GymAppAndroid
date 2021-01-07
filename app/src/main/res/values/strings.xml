@@ -16,7 +16,6 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="enter_name"> Create Exercise</string>
     <string name="Continue">Continue</string>
-    <string name="empty_name">Name cannot be empty!</string>
     <string name="defaultName">Training #</string>
     <string name="butt">Butt</string>
     <string name="biceps">Biceps</string>
@@ -49,7 +48,17 @@
     <string name="minutes">Minutes</string>
     <string name="meters">Meters</string>
 
-    <!-- TrainingListAdapter -->
+    <!-- TrainingListAdapter - TLA -->
+    <string name="TLA_Title_Dialog">Delete training</string>
+    <string name="TLA_Msg_Dialog">Are you sure you want to remove training: </string>
+    <string name="TLA_YES">YES</string>
+    <string name="TLA_NO">NO</string>
 
-
+    <!-- CreateTrainingActivity - CTA -->
+    <string name="CTA_Title_Dialog">Overwrite training</string>
+    <string name="CTA_Msg_1_Dialog">Training with name:</string>
+    <string name="CTA_Msg_2_Dialog">already exists. Do you want overwrite it?</string>
+    <string name="CTA_YES">YES</string>
+    <string name="CTA_NO">NO</string>
+    <string name="CTA_Empty_Name_Err">Name cannot be empty!</string>
 </resources>

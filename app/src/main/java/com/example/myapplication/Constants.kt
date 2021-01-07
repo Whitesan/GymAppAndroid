@@ -5,9 +5,5 @@ class Constants{
         const val TRAINING_FILE = "Training.json"
         const val CONFIG_FILE = "Config.json"
 
-
-        fun getString(){
-
-        }
     }
 }
