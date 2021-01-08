@@ -36,6 +36,6 @@ class SelectAnotherTrainingActivity : AppWindowActivity() {
     private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = SelectAnotherTrainingAdapter(trainingsGuiList)
+        recyclerView.adapter = SelectAnotherTrainingAdapter(trainingsGuiList, this)
     }
 }

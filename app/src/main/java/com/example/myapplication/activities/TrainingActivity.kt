@@ -76,7 +76,7 @@ class TrainingActivity : AppWindowActivity() {
     private fun setListView(training: Training) {
         val set: MutableSet<String> = linkedSetOf()
         for (exercise: Exercise in training.getExercises()) {
-            exercise.getPart()?.getName()?.let { set.add(it) }
+            exercise.getPart()?.getStringId()?.let { set.add(this.getString(it)) }
         }
         val listView: ListView = findViewById(R.id.ListOfParts)
         listView.adapter = ArrayAdapter(
