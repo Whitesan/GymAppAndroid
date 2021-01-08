@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
 import com.example.myapplication.R
 import com.example.myapplication.activities.AppWindowActivity
 import com.example.myapplication.activities.SelectAnotherTrainingActivity
@@ -53,8 +54,12 @@ class SelectAnotherTrainingAdapter(
                 exercise.getPart()?.getStringId()?.let { set.add(parentElement.getString(it))
                 }
             }
-            for(s in set){
-                temp+=" $s"
+
+
+            var size=if(set.size > PARTS_PER_LIST) PARTS_PER_LIST else set.size
+            var i=-1
+            while(++i < size){
+                temp+=" ${set.elementAt(i)}"
             }
             val text:TextView = itemView.findViewById(R.id.ListOfParts2)
             text.text = temp

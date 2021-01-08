@@ -55,38 +55,46 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="13">
+        android:layout_weight="11">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="350dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="60dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+
+            >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/TrainingInfoCard"
+                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
-                app:cardCornerRadius="30dp">
+                app:cardCornerRadius="30dp"
+                android:layoutAnimation="@anim/slide_in_layout_animation"
+                app:cardBackgroundColor="@color/transparent"
+                >
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
 
                 <LinearLayout
+                    android:id="@+id/TrainingInfoLayout"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/card_view_gradient_planner2"
                     android:orientation="vertical"
+
                     >
                     <TextView
                         android:id="@+id/TitleTrainingName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="35dp"
-                        android:text="TrainingName"
                         android:textAlignment="center"
                         android:textSize="26sp" />
                     <ListView
@@ -104,32 +112,54 @@
                         android:textColor="@color/mild_transparent"
                         android:textSize="12sp" />
                 </LinearLayout>
+<!--                    Error Empty training-->
+                <LinearLayout
+                    android:id="@+id/errorLayout"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/card_view_gradient_planner2"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="center"
+                        android:paddingVertical="30dp"
+                        android:textSize="30sp"
+                        android:text="Sorry, there is no training for today!"/>
+
+
+
+                </LinearLayout>
+
+
+
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_alignParentBottom="true"
                 android:animateLayoutChanges="true"
                 android:background="@color/transparent"
                 android:layoutAnimation="@anim/slide_up_layout_animation">
+
 
                 <Button
                     android:id="@+id/selectAnotherExerciseButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
                     android:background="@drawable/button_rounded_gradient"
                     android:text="@string/selectAnotherTraining"
                     android:textSize="16sp" />
             </RelativeLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="3"
         android:background="@color/transparent" />
 </LinearLayout>

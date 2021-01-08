@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.core.view.size
 import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
@@ -43,7 +44,7 @@ TODO     layout
 //sadasd
 class TrainingActivity : AppWindowActivity() {
     private lateinit var selectAnotherButton: Button
-    private lateinit var todayTraining: Training
+    private  var todayTraining: Training? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,14 +66,16 @@ class TrainingActivity : AppWindowActivity() {
             serializable as Training
         } else {
             val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
-//              trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))!!
-            trainings.getTrainingByDay(null)!!
+              trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+//            trainings.getTrainingByDay(null)
         }
-
-        val title: TextView = findViewById(R.id.TitleTrainingName)
-        title.text = todayTraining.getName()
-        setListView(todayTraining)
-
+        if (todayTraining == null) {
+            showError()
+        } else {
+            val title: TextView = findViewById(R.id.TitleTrainingName)
+            title.text = todayTraining?.getName()
+            setListView(todayTraining!!)
+        }
     }
 
 
@@ -87,11 +90,11 @@ class TrainingActivity : AppWindowActivity() {
             exercise.getPart()?.getStringId()?.let { set.add(this.getString(it)) }
         }
         val list = set.toTypedArray().toList()
-        var size = if(list.size<PARTS_PER_LIST) list.size else PARTS_PER_LIST
+        var size = if (list.size < PARTS_PER_LIST) list.size else PARTS_PER_LIST
         val listView: ListView = findViewById(R.id.ListOfParts)
         listView.adapter = ArrayAdapter(
             this,
-            R.layout.list_of_parts,list.subList(0,size)
+            R.layout.list_of_parts, list.subList(0, size)
         )
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         listView.setSelector(R.color.transparent)
@@ -122,11 +125,26 @@ class TrainingActivity : AppWindowActivity() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
+                val errorLayout: LinearLayout = findViewById(R.id.errorLayout)
+                if(errorLayout.visibility == View.VISIBLE){
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                }
                 cardView.visibility = View.GONE
                 selectAnotherButton.visibility = View.GONE
+
             }
         })
         cardView.startAnimation(anim)
+    }
+
+    private fun showError() {
+        val trainingInfoLayout: LinearLayout = findViewById(R.id.TrainingInfoLayout)
+        val  size = trainingInfoLayout.layoutParams
+        trainingInfoLayout.visibility = View.GONE
+        val errorLayout: LinearLayout = findViewById(R.id.errorLayout)
+        errorLayout.layoutParams = size
+        errorLayout.visibility = View.VISIBLE
     }
 
 }
