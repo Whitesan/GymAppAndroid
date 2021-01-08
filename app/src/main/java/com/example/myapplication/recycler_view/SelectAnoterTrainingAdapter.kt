@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activities.AppWindowActivity
 import com.example.myapplication.activities.SelectAnotherTrainingActivity
 import com.example.myapplication.activities.TrainingActivity
 import com.example.myapplication.exercises.Exercise
@@ -14,6 +15,7 @@ import com.example.myapplication.exercises.Training
 
 class SelectAnotherTrainingAdapter(
     private val trainingList: ArrayList<Training>,
+    private val parentElement: AppWindowActivity
 ) : RecyclerView.Adapter<SelectAnotherTrainingAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -22,7 +24,7 @@ class SelectAnotherTrainingAdapter(
     ): ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.select_another_training_list_element, parent, false)
-        return ViewHolder(v)
+        return ViewHolder(v, parentElement)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -39,7 +41,7 @@ class SelectAnotherTrainingAdapter(
         return trainingList.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View, private val parentElement :AppWindowActivity) : RecyclerView.ViewHolder(itemView) {
         private lateinit var training: Training
         fun bindItems(training: Training) {
             this.training= training
@@ -48,7 +50,7 @@ class SelectAnotherTrainingAdapter(
             var temp =""
             val set: MutableSet<String> = linkedSetOf()
             for (exercise: Exercise in training.getExercises()) {
-                exercise.getPart()?.getName()?.let { set.add(it)
+                exercise.getPart()?.getStringId()?.let { set.add(parentElement.getString(it))
                 }
             }
             for(s in set){
