@@ -42,7 +42,6 @@ class MainActivity : AppWindowActivity() {
             startActivity(intent)
         }
 
-
         getLangPref()
         if(Constants.LANG_CURRENT != Constants.LANG_OLD)
             restartActivity()

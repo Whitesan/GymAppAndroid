@@ -21,6 +21,7 @@
 
     <string name="selectAnotherTraining">Wybierz inny</string>
     <string name="selectPartError">"Wybierz partię!"</string>
+    <string name="chooseType">Wybierz partię</string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Wpisz nazwę</string>

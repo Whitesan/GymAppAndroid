@@ -2,7 +2,6 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,7 +30,7 @@ class ExerciseListActivity : AppWindowActivity(){
     private fun createExercisesList(training : Training){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_exercise_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = ExerciseListAdapter(training.getExercises())
+        recyclerView.adapter = ExerciseListAdapter(training.getExercises(), this)
 
         val title = findViewById<TextView>(R.id.plannerTitle)
         title.text = training.getName()

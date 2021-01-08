@@ -56,6 +56,21 @@ class Part : Serializable {
         return drawId
     }
 
+    fun getStringId(): Int{
+        when(name){
+            "biceps" -> return R.string.biceps
+            "chest"-> return R.string.chest
+            "triceps"-> return R.string.triceps
+            "thighs"-> return R.string.thighs
+            "calves"-> return R.string.calves
+            "neck"-> return R.string.neck
+            "shoulders"-> return R.string.shoulders
+            "abs"-> return R.string.abs
+            "cardio"-> return R.string.cardio
+        }
+        return  0
+    }
+
     override fun toString(): String {
         return name[0].toUpperCase().toString() + name.subSequence(1, name.length)
     }

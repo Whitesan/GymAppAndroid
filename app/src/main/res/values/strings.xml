@@ -21,6 +21,7 @@
 
     <string name="selectAnotherTraining">Select another</string>
     <string name="selectPartError">"Select part!"</string>
+    <string name="chooseType">Select type</string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Enter name</string>
@@ -55,4 +56,16 @@
     <string name="CTA_YES">YES</string>
     <string name="CTA_NO">NO</string>
     <string name="CTA_Empty_Name_Err">Name cannot be empty!</string>
+
+    <!-- activity_enter_exercise_name.xml -->
+    <string name="bicepsTag" translatable="false">Biceps</string>
+    <string name="chestTag" translatable="false">Chest</string>
+    <string name="tricepsTag" translatable="false">Triceps</string>
+    <string name="thighsTag" translatable="false">Thighs</string>
+    <string name="calvesTag" translatable="false">Calves</string>
+    <string name="backTag" translatable="false">Back</string>
+    <string name="neckTag" translatable="false">Neck</string>
+    <string name="shouldersTag" translatable="false">Shoulders</string>
+    <string name="absTag" translatable="false">Abs</string>
+    <string name="cardioTag" translatable="false">Cardio</string>
 </resources>

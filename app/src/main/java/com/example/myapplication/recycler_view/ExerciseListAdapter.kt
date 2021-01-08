@@ -1,5 +1,6 @@
 package com.example.myapplication.recycler_view
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constants
 import com.example.myapplication.R
+import com.example.myapplication.activities.AppWindowActivity
+import com.example.myapplication.activities.ExerciseListActivity
 import com.example.myapplication.exercises.Exercise
 
-class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
+class ExerciseListAdapter(
+    private val list: ArrayList<Exercise>,
+    private val context : AppWindowActivity
+) : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -18,7 +25,7 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseListAdapter.ViewHolder {
         val layout = R.layout.element_exercise_list
         val v = LayoutInflater.from(parent.context).inflate(layout, parent, false)
-        return ViewHolder(v, viewPool)
+        return ViewHolder(v, viewPool, context)
 
     }
 
@@ -35,14 +42,15 @@ class ExerciseListAdapter(private val list : ArrayList<Exercise>) : RecyclerView
     }
 
     //the class is holding the list view
-    class ViewHolder(itemView: View, private val viewPool : RecyclerView.RecycledViewPool) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View,
+                     private val viewPool : RecyclerView.RecycledViewPool,
+                     private val context : AppWindowActivity) : RecyclerView.ViewHolder(itemView) {
         fun bindItems(exercise : Exercise) {
-            val part = exercise.getPart()?.getName() ?: "null"
+            val part = exercise.getPart()?.getStringId() ?: 0
             var draw = exercise.getPart()?.getImg() ?: 0
             (itemView.findViewById(R.id.iv_exercise) as ImageView).setImageResource(draw)
             (itemView.findViewById(R.id.tv_exercise) as TextView).text = exercise.getName()
-            (itemView.findViewById(R.id.tv_type) as TextView).text = part
-
+            (itemView.findViewById(R.id.tv_type) as TextView).text = context.getString(part)
         }
 
         fun bindChild(exercise : Exercise){

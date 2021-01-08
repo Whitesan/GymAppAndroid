@@ -19,5 +19,8 @@ class Constants{
         const val LANG_PL:String = "pl"
         var LANG_CURRENT = "en"
         var LANG_OLD = "en"
+
+        //Main context
+        var CONTEXT : AppWindowActivity ? = null
     }
 }

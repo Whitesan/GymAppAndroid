@@ -2,6 +2,7 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -86,9 +87,10 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 }
                 i.alpha = 1F
                 selectedTypeView = i as LinearLayout
-                val textField =i.getChildAt(0) as TextView
-                part = Part.getPart(textField.text.toString()) !!
 
+                val selectedTextView = i.getChildAt(0) as TextView
+                val tag = selectedTextView.tag.toString()
+                part = Part.getPart(tag) !!
             }
         }
     }
