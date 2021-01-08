@@ -61,7 +61,7 @@ class TrainingActivity : AppWindowActivity() {
         todayTraining = if (serializable != null) {
             serializable as Training
         } else {
-            val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE.json")
+            val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
 //              trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))!!
             trainings.getTrainingByDay(null)!!
         }
