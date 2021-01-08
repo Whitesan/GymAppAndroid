@@ -153,7 +153,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
             val list = trainings.trainingList
             for(i in list.indices){
                 if(enteredText == list[i].getName()){
-                    list[i].exerciseList = exerciseList
+                    list[i].setExercises(exerciseList)
                     break
                 }
             }
