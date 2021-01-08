@@ -39,6 +39,7 @@ TODO     layout
 //TODO !! Update predicted training according to actual progress (Never regress !!)
 @Suppress("DEPRECATION")
 class TrainingActivity : AppWindowActivity() {
+
     private lateinit var selectAnotherButton: Button
     private lateinit var todayTraining: Training
 
@@ -76,12 +77,16 @@ class TrainingActivity : AppWindowActivity() {
     private fun setListView(training: Training) {
         val set: MutableSet<String> = linkedSetOf()
         for (exercise: Exercise in training.getExercises()) {
-            exercise.getPart()?.getName()?.let { set.add(it) }
+            exercise.getPart()?.getName()?.let {
+                set.add(it)
+            }
         }
         val listView: ListView = findViewById(R.id.ListOfParts)
+        val list = set.toTypedArray().toList()
+        var size = if(list.size<3) list.size  else 3
         listView.adapter = ArrayAdapter(
             this,
-            R.layout.list_of_parts, set.toTypedArray().toList()
+            R.layout.list_of_parts,list.subList(0,size)
         )
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         listView.setSelector(R.color.transparent)

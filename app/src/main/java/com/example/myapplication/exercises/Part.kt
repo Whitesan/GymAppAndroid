@@ -1,5 +1,6 @@
 package com.example.myapplication.exercises
 
+import android.content.res.Resources
 import com.example.myapplication.R
 import java.io.Serializable
 
@@ -9,7 +10,6 @@ class Part : Serializable {
 
     companion object Factory {
         private var map: HashMap<String, Part> = HashMap()
-
         init {
             map["chest"] = Part().setName("chest")
             map["back"] = Part().setName("back")
@@ -23,7 +23,6 @@ class Part : Serializable {
             map["thighs"] = Part().setName("thighs")
             map["forearms"] = Part().setName("forearms")
         }
-
         fun getPart(name: String): Part? {
             return map[name.toLowerCase()]
         }
@@ -31,7 +30,6 @@ class Part : Serializable {
 
     private fun setName(name: String): Part {
         this.name = name.toLowerCase()
-
         when (this.name) {
             "chest" -> drawId = R.drawable.chest
             "back" -> drawId = R.drawable.back
@@ -47,8 +45,8 @@ class Part : Serializable {
         }
         return this
     }
-
     fun getName(): String {
+
         return name
     }
 

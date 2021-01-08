@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.activities.SelectAnotherTrainingActivity
 import com.example.myapplication.activities.TrainingActivity
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Training
