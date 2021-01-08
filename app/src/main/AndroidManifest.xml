@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name=".activities.SelectAnotherTrainingActivity"></activity>
         <activity
             android:name=".activities.TrainingsListActivity"
             android:screenOrientation="portrait" />
