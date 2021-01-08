@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
+import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
@@ -60,7 +61,7 @@ class TrainingActivity : AppWindowActivity() {
         todayTraining = if (serializable != null) {
             serializable as Training
         } else {
-            val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
+            val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE.json")
 //              trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))!!
             trainings.getTrainingByDay(null)!!
         }
