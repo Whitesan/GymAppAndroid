@@ -2,11 +2,13 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
+import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
@@ -58,7 +60,7 @@ class TrainingActivity : AppWindowActivity() {
         }
         cardAnimateOutListener()
 
-        var serializable: Serializable? = super.getIntent().getSerializableExtra("Training")
+        val serializable: Serializable? = super.getIntent().getSerializableExtra("Training")
         todayTraining = if (serializable != null) {
             serializable as Training
         } else {
@@ -77,12 +79,19 @@ class TrainingActivity : AppWindowActivity() {
     private fun setListView(training: Training) {
         val set: MutableSet<String> = linkedSetOf()
         for (exercise: Exercise in training.getExercises()) {
+            Log.println(
+                Log.INFO,
+                null,
+                exercise.getPart().toString()
+            )
             exercise.getPart()?.getStringId()?.let { set.add(this.getString(it)) }
         }
+        val list = set.toTypedArray().toList()
+        var size = if(list.size<PARTS_PER_LIST) list.size else PARTS_PER_LIST
         val listView: ListView = findViewById(R.id.ListOfParts)
         listView.adapter = ArrayAdapter(
             this,
-            R.layout.list_of_parts, set.toTypedArray().toList()
+            R.layout.list_of_parts,list.subList(0,size)
         )
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         listView.setSelector(R.color.transparent)

@@ -11,7 +11,7 @@ class Constants{
     companion object{
         const val TRAINING_FILE = "Training.json"
         const val CONFIG_FILE = "Config.json"
-
+        const val PARTS_PER_LIST = 3
         //Language
         const val PREFERENCE = "preference.pre";
         const val LANG:String = "lang"
@@ -20,7 +20,7 @@ class Constants{
         var LANG_CURRENT = "en"
         var LANG_OLD = "en"
 
-        //Main context
-        var CONTEXT : AppWindowActivity ? = null
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication.exercises
 
 import android.content.res.Resources
+import android.util.Log
 import com.example.myapplication.R
 import java.io.Serializable
 
@@ -38,7 +39,6 @@ class Part : Serializable {
             "triceps" -> drawId = R.drawable.triceps
             "biceps" -> drawId = R.drawable.biceps
             "neck" -> drawId = R.drawable.neck
-            "forearms" -> drawId = R.drawable.forearm
             "thighs" -> drawId = R.drawable.thighs
             "calves" -> drawId = R.drawable.calves
             "abs" -> drawId = R.drawable.abs
@@ -46,7 +46,6 @@ class Part : Serializable {
         return this
     }
     fun getName(): String {
-
         return name
     }
 
@@ -55,6 +54,7 @@ class Part : Serializable {
     }
 
     fun getStringId(): Int{
+
         when(name){
             "biceps" -> return R.string.biceps
             "chest"-> return R.string.chest
@@ -65,6 +65,7 @@ class Part : Serializable {
             "shoulders"-> return R.string.shoulders
             "abs"-> return R.string.abs
             "cardio"-> return R.string.cardio
+            "back"-> return R.string.back
         }
         return  0
     }
