@@ -7,12 +7,12 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
-import com.example.myapplication.Constants
-import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
 import com.example.myapplication.exercises.Training
+import java.io.Serializable
+import java.util.*
 
 
 //TODO import training list from json, according to week day
@@ -39,6 +39,8 @@ TODO     layout
 @Suppress("DEPRECATION")
 class TrainingActivity : AppWindowActivity() {
     private lateinit var selectAnotherButton: Button
+    private lateinit var todayTraining: Training
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
@@ -48,11 +50,21 @@ class TrainingActivity : AppWindowActivity() {
             startActivity(intent)
         }
         selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
-
+        selectAnotherButton.setOnClickListener {
+            val intent = Intent(applicationContext, SelectAnotherTrainingActivity::class.java)
+            startActivity(intent)
+        }
         cardAnimateOutListener()
-        val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
-//        val todayTraining=trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
-        val todayTraining: Training = trainings.getTrainingByDay(null)!!
+
+        var serializable: Serializable? = super.getIntent().getSerializableExtra("Training")
+        todayTraining = if (serializable != null) {
+            serializable as Training
+        } else {
+            val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
+//              trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))!!
+            trainings.getTrainingByDay(null)!!
+        }
+
         val title: TextView = findViewById(R.id.TitleTrainingName)
         title.text = todayTraining.getName()
         setListView(todayTraining)
@@ -72,18 +84,20 @@ class TrainingActivity : AppWindowActivity() {
         )
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         listView.setSelector(R.color.transparent)
-        listView.setOnItemClickListener{ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
+        listView.setOnItemClickListener { adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
             animateOut()
         }
         listView.divider = null
     }
-    private fun cardAnimateOutListener(){
+
+    private fun cardAnimateOutListener() {
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         cardView.setOnClickListener {
             animateOut()
         }
     }
-    private fun animateOut(){
+
+    private fun animateOut() {
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down_animation)
         val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_animation)
