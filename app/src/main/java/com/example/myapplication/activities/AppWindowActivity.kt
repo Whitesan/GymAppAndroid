@@ -1,20 +1,35 @@
 package com.example.myapplication.activities
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.Constants
+import java.util.*
 
 
 open class AppWindowActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-//        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+    init {
+        updateConfig(this)
     }
+
+    private fun updateConfig(wrapper: ContextThemeWrapper) {
+        val dLocale = Locale(Constants.LANG_CURRENT)
+        Locale.setDefault(dLocale)
+        val configuration = Configuration()
+        configuration.setLocale(dLocale)
+        wrapper.applyOverrideConfiguration(configuration)
+    }
+
     final override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if (hasFocus) {
