@@ -63,14 +63,14 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:orientation="vertical"
+            android:layout_marginHorizontal="60dp"
 
             >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/TrainingInfoCard"
-                android:layout_width="300dp"
-
-                android:layout_height="300dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:animateLayoutChanges="true"
                 android:layoutAnimation="@anim/slide_in_layout_animation"
                 app:cardBackgroundColor="@color/transparent"
@@ -83,19 +83,32 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/TitleTrainingName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
+                        android:layout_marginVertical="35dp"
                         android:text="TrainingName"
                         android:textAlignment="center"
                         android:textSize="26sp" />
 
                     <ListView
+                        android:id="@+id/ListOfParts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
+                        android:layout_marginBottom="40dp"
 
-                    </ListView>
+                        />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/clickToContinue"
+                            android:textAlignment="center"
+                            android:textColor="@color/mild_transparent"
+
+                            android:textSize="12sp"
+                            android:layout_marginBottom="30dp"
+                            />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -114,7 +127,7 @@
 
                     android:background="@drawable/button_rounded_gradient"
                     android:text="@string/selectAnotherTraining"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -12,6 +12,7 @@
     <string name="exercise">Ćwiczenie</string>
     <string name="exercises">Ćwiczenia</string>
     <string name="Continue">Kontynuuj</string>
+    <string name="clickToContinue">"Dotknij aby kontynuować"</string>
 
     <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraining">Stwórz trening</string>

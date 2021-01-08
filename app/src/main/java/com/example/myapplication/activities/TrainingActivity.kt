@@ -2,17 +2,15 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.ImageView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
-import java.time.DayOfWeek
-import java.util.*
+import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Training
 
 
 //TODO import training list from json, according to week day
@@ -38,7 +36,7 @@ TODO     layout
 //TODO !! Update predicted training according to actual progress (Never regress !!)
 @Suppress("DEPRECATION")
 class TrainingActivity : AppWindowActivity() {
-    private lateinit var selectAnotherButton:Button
+    private lateinit var selectAnotherButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
@@ -47,42 +45,61 @@ class TrainingActivity : AppWindowActivity() {
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
         }
-         selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
-        onStartAnimateCard()
-        val trainings=TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
-        val todayTraining=trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+        selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
 
+        cardAnimateOutListener()
+        val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
+//        val todayTraining=trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+        val todayTraining: Training = trainings.getTrainingByDay(null)!!
+        val title: TextView = findViewById(R.id.TitleTrainingName)
+        title.text = todayTraining.getName()
+        setListView(todayTraining)
 
     }
 
-    private fun onStartAnimateCard() {
+
+    private fun setListView(training: Training) {
+        val set: MutableSet<String> = linkedSetOf()
+        for (exercise: Exercise in training.getExercises()) {
+            exercise.getPart()?.getName()?.let { set.add(it) }
+        }
+        val listView: ListView = findViewById(R.id.ListOfParts)
+        listView.adapter = ArrayAdapter(
+            this,
+            R.layout.list_of_parts, set.toTypedArray().toList()
+        )
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
-
+        listView.setSelector(R.color.transparent)
+        listView.setOnItemClickListener{ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
+            animateOut()
+        }
+        listView.divider = null
+    }
+    private fun cardAnimateOutListener(){
+        val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         cardView.setOnClickListener {
-            Log.println(
-                Log.INFO,
-                null,
-                "LISTENER CLICKED!"
-            )
-            val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down_animation)
-            val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_animation)
-                anim.setAnimationListener(object : Animation.AnimationListener {
-                    override fun onAnimationStart(p0: Animation?) {
-                        selectAnotherButton.startAnimation(buttonAnim)
-                    }
-
-                    override fun onAnimationRepeat(p0: Animation?) {
-                    //                not implemented
-                    }
-
-                    override fun onAnimationEnd(p0: Animation?) {
-                        cardView.visibility = View.GONE
-                        selectAnotherButton.visibility = View.GONE
-                    }
-                })
-
-            cardView.startAnimation(anim)
-
+            animateOut()
         }
     }
+    private fun animateOut(){
+        val cardView: CardView = findViewById(R.id.TrainingInfoCard)
+        val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down_animation)
+        val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_animation)
+        anim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(p0: Animation?) {
+                selectAnotherButton.startAnimation(buttonAnim)
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+                //                not implemented
+            }
+
+            override fun onAnimationEnd(p0: Animation?) {
+                cardView.visibility = View.GONE
+                selectAnotherButton.visibility = View.GONE
+            }
+        })
+        cardView.startAnimation(anim)
+    }
+
 }

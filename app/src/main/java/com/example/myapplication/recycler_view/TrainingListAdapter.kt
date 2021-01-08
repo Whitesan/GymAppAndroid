@@ -112,7 +112,7 @@ class TrainingListAdapter(
     }
 
     private fun runEditTrainingWindow(training:Training, context: Context){
-        CreateTrainingActivity.exerciseList = ArrayList(training.exerciseList)
+        CreateTrainingActivity.exerciseList = ArrayList(training.getExercises())
         CreateTrainingActivity.enteredText = training.getName()
         val intent =  Intent(context, CreateTrainingActivity::class.java)
         parentView.startActivity(intent)

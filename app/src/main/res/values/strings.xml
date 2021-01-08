@@ -12,6 +12,7 @@
     <string name="exercise">Exercise</string>
     <string name="exercises">Exercises</string>
     <string name="Continue">Continue</string>
+    <string name="clickToContinue">"Click to continue"</string>
 
     <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraining">Create Training</string>
