@@ -38,6 +38,7 @@ TODO     layout
 //TODO maybe on finish ask for user weight, if he'd like to share save that for future statistics
 //TODO !! Update predicted training according to actual progress (Never regress !!)
 @Suppress("DEPRECATION")
+//sadasd
 class TrainingActivity : AppWindowActivity() {
     private lateinit var selectAnotherButton: Button
     private lateinit var todayTraining: Training
