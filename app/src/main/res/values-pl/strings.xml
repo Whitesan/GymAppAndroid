@@ -56,4 +56,12 @@
     <string name="CTA_YES">TAK</string>
     <string name="CTA_NO">NIE</string>
     <string name="CTA_Empty_Name_Err">Nazwa nie może być pusta!</string>
+
+    <!-- settings_dialog.xml | MainActivity.kt -->
+    <string name="SD_language">Język</string>
+    <string name="SD_polish">Polski</string>
+    <string name="SD_english">Angielski</string>
+    <string name="MA_name">Ustawienia</string>
+    <string name="MA_save">Zapisz</string>
+    <string name="MA_cancel">Anuluj</string>
 </resources>

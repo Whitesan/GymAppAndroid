@@ -57,6 +57,14 @@
     <string name="CTA_NO">NO</string>
     <string name="CTA_Empty_Name_Err">Name cannot be empty!</string>
 
+    <!-- settings_dialog.xml -->
+    <string name="SD_language">Language</string>
+    <string name="SD_polish">Polish</string>
+    <string name="SD_english">English</string>
+    <string name="MA_name">Settings</string>
+    <string name="MA_save">Save</string>
+    <string name="MA_cancel">Cancel</string>
+
     <!-- activity_enter_exercise_name.xml -->
     <string name="bicepsTag" translatable="false">Biceps</string>
     <string name="chestTag" translatable="false">Chest</string>
