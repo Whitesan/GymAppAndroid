@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GymApp</string>
     <string name="calendar">Kalendarz</string>
-    <string name="training">Trening</string>
+
     <string name="trainings">Treningi</string>
     <string name="statistics">Statystyki</string>
     <string name="planner">Harmonogram</string>
@@ -12,17 +12,22 @@
     <string name="exercise">Ćwiczenie</string>
     <string name="exercises">Ćwiczenia</string>
     <string name="Continue">Kontynuuj</string>
-    <string name="clickToContinue">"Dotknij aby kontynuować"</string>
+
 
     <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraining">Stwórz trening</string>
     <string name="actPlannerTrainingList">Lista treningów</string>
     <string name="DELETE">Usuń</string>
 
-    <string name="selectAnotherTraining">Wybierz inny</string>
+
     <string name="selectPartError">"Wybierz partię!"</string>
     <string name="chooseType">Wybierz partię</string>
-
+    <!-- activity_training.xml -->
+    <string name="clickToContinue">"Dotknij aby kontynuować"</string>
+    <string name="training">Trening</string>
+    <string name="selectAnotherTraining">Wybierz inny</string>
+    <string name="errorTitle">Przykro nam, </string>
+    <string name="errorBody">brak treningu na dzisiaj</string>
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Wpisz nazwę</string>
     <string name="biceps">Biceps</string>

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">GymApp</string>
     <string name="calendar">Calendar</string>
-    <string name="training">Training</string>
     <string name="trainings">Trainings</string>
     <string name="statistics">Statistics</string>
     <string name="planner">Planner</string>
@@ -12,16 +11,19 @@
     <string name="exercise">Exercise</string>
     <string name="exercises">Exercises</string>
     <string name="Continue">Continue</string>
-    <string name="clickToContinue">"Click to continue"</string>
 
     <string name="addNewExercise">+</string>
     <string name="actPlannerCreateTraining">Create Training</string>
     <string name="actPlannerTrainingList">Trainings List</string>
     <string name="DELETE">Delete</string>
-
-    <string name="selectAnotherTraining">Select another</string>
     <string name="selectPartError">"Select part!"</string>
     <string name="chooseType">Select type</string>
+    <!-- activity_training.xml -->
+    <string name="clickToContinue">"Click to continue"</string>
+    <string name="training">Training</string>
+    <string name="selectAnotherTraining">Select another</string>
+    <string name="errorTitle">Sorry, </string>
+    <string name="errorBody">there is no training for today </string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Enter name</string>
