@@ -10,6 +10,7 @@
     android:layout_weight="15"
 
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,33 +23,29 @@
             android:id="@+id/backCalendar"
             android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:src="@drawable/backward"
             android:layout_gravity="start"
             android:layout_weight="1"
             android:padding="10dp"
-            />
+            android:src="@drawable/backward" />
+
         <TextView
             android:id="@+id/calendarTitle"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_weight="5"
+            android:fontFamily="serif-monospace"
             android:text="@string/calendar"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="5dp"
-            android:layout_weight="5"
 
             />
-        <ImageView
-            android:id="@+id/settingsCalendar"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/settings"
-            android:layout_gravity="start"
-            android:layout_weight="1"
-            android:padding="10dp"
-            />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
 

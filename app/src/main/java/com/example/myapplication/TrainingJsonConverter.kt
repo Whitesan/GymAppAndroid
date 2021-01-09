@@ -37,7 +37,7 @@ class TrainingJsonConverter {
             val stringBuilder = StringBuilder()
             val inputStreamReader = InputStreamReader(inputStream)
             val bufferedReader = BufferedReader(inputStreamReader)
-            var receiveString: String? = ""
+            var receiveString: String?
             while (bufferedReader.readLine().also { receiveString = it } != null) {
                 stringBuilder.append(receiveString)
             }
