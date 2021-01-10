@@ -7,7 +7,6 @@
         android:endColor="#dc2430"
         android:dither="true"
         />
-    android:padding="10dp"
-    android:shape="rectangle">
+
     <corners android:radius="60dp" />
 </shape>

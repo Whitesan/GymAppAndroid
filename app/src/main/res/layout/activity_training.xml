@@ -5,10 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="15"
-    android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".activities.StatisticsActivity"
-    >
+    android:orientation="vertical"
+    tools:context=".activities.StatisticsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +36,10 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
-
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:marqueeRepeatLimit="marquee_forever"
             />
 
         <Space
@@ -50,7 +52,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11">
+        android:layout_weight="13">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -58,116 +60,154 @@
             android:layout_centerInParent="true"
             android:layout_marginHorizontal="60dp"
             android:orientation="vertical"
-
             >
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/TrainingInfoCard"
-                android:layout_centerInParent="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:animateLayoutChanges="true"
-                app:cardCornerRadius="30dp"
-                android:layoutAnimation="@anim/slide_in_layout_animation"
+                android:layoutAnimation="@anim/slide_in_left_layout_animation"
                 app:cardBackgroundColor="@color/transparent"
-                >
+                app:cardCornerRadius="30dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/TrainingInfoLayout"
-                    android:visibility="visible"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/card_view_gradient_planner2"
-                    android:orientation="vertical"
-
-                    >
-                    <TextView
-                        android:id="@+id/TitleTrainingName"
+                    <LinearLayout
+                        android:id="@+id/TrainingInfoLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="35dp"
-                        android:textAlignment="center"
-                        android:textSize="26sp" />
-                    <ListView
-                        android:id="@+id/ListOfParts"
+                        android:background="@drawable/card_view_gradient_planner2"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/TitleTrainingName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="35dp"
+                            android:textAlignment="center"
+                            android:textSize="26sp" />
+
+                        <ListView
+                            android:id="@+id/ListOfParts"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="40dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:text="@string/clickToContinue"
+                            android:textAlignment="center"
+                            android:textColor="@color/mild_transparent"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                    <!--                    Error Empty training-->
+                    <LinearLayout
+                        android:id="@+id/errorLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="40dp"
-                        />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="30dp"
-                        android:text="@string/clickToContinue"
-                        android:textAlignment="center"
-                        android:textColor="@color/mild_transparent"
-                        android:textSize="12sp" />
-                </LinearLayout>
-<!--                    Error Empty training-->
-                <LinearLayout
-                    android:id="@+id/errorLayout"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/card_view_gradient_planner2"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                      android:layout_marginBottom="15dp"
-                      android:layout_marginHorizontal= "25dp"
-                        android:textSize="30sp"
-                        android:id="@+id/ErrorTitle"
-                        android:text="@string/errorTitle"
-                        />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="24sp"
-                        android:id="@+id/ErrorBody"
-                        android:text="@string/errorBody"
-                        android:layout_marginHorizontal= "25dp"
-                        android:paddingBottom="15dp"
-                        />
+                        android:background="@drawable/card_view_gradient_planner2"
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
+                        <TextView
+                            android:id="@+id/ErrorTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="25dp"
+                            android:layout_marginBottom="15dp"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:text="@string/errorTitle"
+                            android:textSize="30sp" />
 
-                </LinearLayout>
-
+                        <TextView
+                            android:id="@+id/ErrorBody"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="25dp"
+                            android:paddingBottom="15dp"
+                            android:text="@string/errorBody"
+                            android:textSize="24sp" />
+                    </LinearLayout>
 
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:animateLayoutChanges="true"
                 android:background="@color/transparent"
-                android:layoutAnimation="@anim/slide_up_layout_animation">
-
+                android:layoutAnimation="@anim/slide_in_bottom_layout_animation">
 
                 <Button
                     android:id="@+id/selectAnotherExerciseButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginBottom="80dp"
                     android:background="@drawable/button_rounded_gradient"
                     android:text="@string/selectAnotherTraining"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+
+                    />
             </RelativeLayout>
         </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/training_shape"
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/TrainingScreen"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/actualExercise"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+
+                    android:focusableInTouchMode="true"
+                    android:scrollHorizontally="true"
+                    android:textSize="30sp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/mild_transparent" />
+                <TextView
+                    android:id="@+id/actualPart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textSize="22sp"/>
+
+
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="1"
         android:background="@color/transparent" />
-
 
 
 </LinearLayout>

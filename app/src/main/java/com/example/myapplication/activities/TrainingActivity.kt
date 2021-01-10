@@ -2,19 +2,19 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.core.view.size
 import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Exercise
+import com.example.myapplication.exercises.Part
 import com.example.myapplication.exercises.Training
 import java.io.Serializable
 import java.util.*
@@ -28,7 +28,7 @@ TODO     layout
 2.clock + start/stop button
 3.show planned reps and weight  + enter done reps and weight
 4.skip/end series (?)
-5.allow user to change expected training for another (maybe open calendar?)
+
 
 
  */
@@ -46,6 +46,8 @@ TODO     layout
 class TrainingActivity : AppWindowActivity() {
     private lateinit var selectAnotherButton: Button
     private  var todayTraining: Training? = null
+    private var actualExerciseIndex:Int = 0
+    private lateinit var actualExercise:Exercise
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +78,10 @@ class TrainingActivity : AppWindowActivity() {
             val title: TextView = findViewById(R.id.TitleTrainingName)
             title.text = todayTraining?.getName()
             setListView(todayTraining!!)
+            actualExercise  = (todayTraining as Training).getExercises()[actualExerciseIndex++]
+
+
+
         }
     }
 
@@ -114,16 +120,26 @@ class TrainingActivity : AppWindowActivity() {
 
     private fun animateOut() {
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
-        val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_down_animation)
-        val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_animation)
-        val titleAnimOut= AnimationUtils.loadAnimation(this, R.anim.slide_out_up)
+        val buttonAnim = AnimationUtils.loadAnimation(this, R.anim.slide_out_down_animation)
+        val anim = AnimationUtils.loadAnimation(this, R.anim.slide_out_left_animation)
+        val titleAnimOut= AnimationUtils.loadAnimation(this, R.anim.slide_out_top)
         val titleAnimIn= AnimationUtils.loadAnimation(this, R.anim.slide_in_from_top)
         val title:TextView=findViewById(R.id.plannerTitle)
-
+        val errorLayout: LinearLayout = findViewById(R.id.errorLayout)
         anim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
                 selectAnotherButton.startAnimation(buttonAnim)
-                title.startAnimation(titleAnimOut)
+
+                if(errorLayout.visibility == View.VISIBLE){
+                    title.startAnimation(anim)
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(R.anim.slide_in_left_animation,R.anim.slide_out_left_animation)
+                }
+                else{
+                    title.startAnimation(titleAnimOut)
+                }
+
             }
 
             override fun onAnimationRepeat(p0: Animation?) {
@@ -131,19 +147,26 @@ class TrainingActivity : AppWindowActivity() {
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                val errorLayout: LinearLayout = findViewById(R.id.errorLayout)
-                if(errorLayout.visibility == View.VISIBLE){
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                else{
+                if(errorLayout.visibility != View.VISIBLE){
                     cardView.visibility = View.GONE
                     selectAnotherButton.visibility = View.GONE
                     title.text = todayTraining?.getName()
+
+                    titleAnimIn.setAnimationListener(object : Animation.AnimationListener {
+                        override fun onAnimationStart(p0: Animation?) {
+                        }
+
+                        override fun onAnimationEnd(p0: Animation?) {
+                           title.isSelected = true
+                        }
+
+                        override fun onAnimationRepeat(p0: Animation?) {
+                        }
+
+                    } )
                     title.startAnimation(titleAnimIn)
+                    openTrainingWindow()
                 }
-
-
             }
         })
         cardView.startAnimation(anim)
@@ -158,5 +181,18 @@ class TrainingActivity : AppWindowActivity() {
             errorLayout.layoutParams = size
         errorLayout.visibility = View.VISIBLE
     }
+    private fun openTrainingWindow(){
+        val screen:LinearLayout = findViewById(R.id.TrainingScreen)
+        val animIn= AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom_animation)
+        val textAnim= AnimationUtils.loadAnimation(this, R.anim.text_animation
+        )
+        screen.visibility= View.VISIBLE
+        screen.startAnimation(animIn)
+        val actualExerciseView:TextView = findViewById(R.id.actualExercise)
+        actualExerciseView.text = actualExercise.getName()
+        actualExerciseView.isSelected = true
 
+        val actualPartView:TextView = findViewById(R.id.actualPart)
+        actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
+    }
 }
