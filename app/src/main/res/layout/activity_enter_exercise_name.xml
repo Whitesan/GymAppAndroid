@@ -22,7 +22,7 @@
 
         <ImageView
             android:id="@+id/backEnterName"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:src="@drawable/backward"
             android:layout_gravity="start"
@@ -31,7 +31,7 @@
             />
         <TextView
             android:id="@+id/enterExerciseNameTitle"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:text="@string/exercise"
             android:textAlignment="center"
@@ -43,7 +43,7 @@
 
             />
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>

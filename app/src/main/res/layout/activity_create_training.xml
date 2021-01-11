@@ -23,7 +23,7 @@
 
         <ImageView
             android:id="@+id/backTrainingCreator"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:layout_weight="1"
@@ -32,7 +32,7 @@
 
         <TextView
             android:id="@+id/trainingCreatorTitle"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_weight="5"
@@ -45,7 +45,7 @@
             />
 
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
