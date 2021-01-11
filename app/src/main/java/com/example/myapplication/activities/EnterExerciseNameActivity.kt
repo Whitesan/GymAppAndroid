@@ -44,6 +44,9 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 val intent = Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)
+                overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+
+
             }
         }
         selectPartListener()

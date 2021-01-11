@@ -77,6 +77,8 @@ class TrainingListAdapter(
         val context = holder.itemView.context
         val intent = Intent(context, ExerciseListActivity::class.java)
         context.startActivity(intent)
+        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+
     }
 
     private  fun deleteDialogAction(builder: AlertDialog.Builder, position: Int){
@@ -116,6 +118,8 @@ class TrainingListAdapter(
         CreateTrainingActivity.enteredText = training.getName()
         val intent =  Intent(context, CreateTrainingActivity::class.java)
         parentView.startActivity(intent)
+        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation)
+
     }
 
     //this method is giving the size of the list

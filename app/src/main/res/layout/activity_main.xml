@@ -250,7 +250,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="17">
+            android:layout_weight="17"
+            android:layoutAnimation="@anim/rotate_layout_animation"
+            android:animateLayoutChanges="true"
+
+
+            >
 
 
             <ImageView

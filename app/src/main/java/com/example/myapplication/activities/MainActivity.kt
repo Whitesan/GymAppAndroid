@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -24,23 +25,33 @@ class MainActivity : AppWindowActivity() {
         settings.setOnClickListener {
             settingsWindowDialog()
         }
-            val planer = findViewById<CardView>(R.id.cardViewPlanner)
+
+
+        val planer = findViewById<CardView>(R.id.cardViewPlanner)
         planer.setOnClickListener {
             startActivity(Intent(applicationContext, PlannerActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
         }
         val statistics = findViewById<CardView>(R.id.cardViewStatistics)
         statistics.setOnClickListener {
             startActivity(Intent(applicationContext, StatisticsActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+
         }
 
         val training = findViewById<CardView>(R.id.cardViewTraining)
         training.setOnClickListener {
             startActivity(Intent(applicationContext, TrainingActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+
         }
 
         val calendar = findViewById<CardView>(R.id.cardViewCalendar)
         calendar.setOnClickListener {
             startActivity(Intent(applicationContext, CalendarActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+
+
         }
         getLangPref()
     }

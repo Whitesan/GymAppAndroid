@@ -140,6 +140,8 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         enteredText = entry.text.toString()
         val intent = Intent(applicationContext, EnterExerciseNameActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation)
+
         return false;
     }
 

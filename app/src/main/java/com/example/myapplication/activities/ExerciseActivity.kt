@@ -1,7 +1,10 @@
 
 package com.example.myapplication.activities
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.*
 import android.widget.HorizontalScrollView
 import android.widget.NumberPicker.OnValueChangeListener
@@ -117,6 +120,7 @@ class ExerciseActivity : AppWindowActivity() {
             else
                 intent.putExtra("editedExercise", exercise)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation)
         }
         val deleteSeries = findViewById<Button>(R.id.deleteSeries)
         deleteSeries.setOnClickListener{
@@ -145,8 +149,10 @@ class ExerciseActivity : AppWindowActivity() {
         button.text = text
 
         button.layoutParams = params
+
         return button
     }
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun addButtonToList(
         button: Button,
         list: LinearLayout,
@@ -155,6 +161,8 @@ class ExerciseActivity : AppWindowActivity() {
         repsPicker: NumberPicker
     )
     {
+        val animation: Animation = AnimationUtils.loadAnimation(this,R.anim.slide_in_left_animation)
+
         //Make all button gray
         for(i in 0..list.childCount -2)
         {
@@ -172,9 +180,12 @@ class ExerciseActivity : AppWindowActivity() {
                  list.removeViewAt(seriesCounter - 1)
                  list.addView(b)
 
+                 b.startAnimation(animation)
+
                  seriesScroll.post(Runnable { seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT) })
              }
             button.setBackgroundDrawable(resources.getDrawable(R.color.green))
+
             list.addView(button)
 
         }
@@ -192,6 +203,7 @@ class ExerciseActivity : AppWindowActivity() {
 
                 }
                 button.setBackgroundDrawable(resources.getDrawable(R.color.blue))
+
                 selectedSeries = Integer.valueOf(button.text as String)
                 weightPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].weight
                 repsPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].reps
@@ -206,8 +218,11 @@ class ExerciseActivity : AppWindowActivity() {
             }
 
             list.addView(button)
+
+
             if(seriesCounter > 1)
             {
+                button.startAnimation(animation)
                 if(!edit || ready)
                 {
                     exercise.list[Integer.valueOf(button.text as String) - 1].weight = exercise.list[Integer.valueOf(

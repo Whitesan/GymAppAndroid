@@ -28,12 +28,15 @@ class PlannerActivity : AppWindowActivity() {
             CreateTrainingActivity.enteredText = ""
             CreateTrainingActivity.editedIndex = -1
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+
         }
 
         val createTrainingsListActivity = findViewById<CardView>(R.id.createTrainingsListCardViev)
         createTrainingsListActivity.setOnClickListener{
             val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
         }
     }
 }
