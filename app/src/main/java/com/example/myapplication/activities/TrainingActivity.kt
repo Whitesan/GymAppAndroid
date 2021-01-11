@@ -128,20 +128,18 @@ class TrainingActivity : AppWindowActivity() {
         val errorLayout: LinearLayout = findViewById(R.id.errorLayout)
         anim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
-                selectAnotherButton.startAnimation(buttonAnim)
-
                 if(errorLayout.visibility == View.VISIBLE){
                     title.startAnimation(anim)
+                    selectAnotherButton.startAnimation(anim)
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_left_animation,R.anim.slide_out_left_animation)
                 }
                 else{
+                    selectAnotherButton.startAnimation(buttonAnim)
                     title.startAnimation(titleAnimOut)
                 }
-
             }
-
             override fun onAnimationRepeat(p0: Animation?) {
                 //                not implemented
             }

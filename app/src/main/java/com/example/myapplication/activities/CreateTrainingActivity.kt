@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import androidx.recyclerview.widget.*
@@ -80,7 +82,12 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     private fun saveButtonAction() {
         if (enteredText.isEmpty()) {
             showErrorMessage()
-        } else {
+        }
+        else if(exerciseList.isEmpty()){
+            errorEmptyTraining()
+        }
+
+        else {
             onExit()
         }
     }
@@ -201,5 +208,14 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         val message = findViewById<TextView>(R.id.EnterTraining2)
         message.text = getString(R.string.CTA_Empty_Name_Err)
         message.setTextColor(resources.getColor(R.color.red))
+    }
+    private fun errorEmptyTraining() {
+        val message = findViewById<TextView>(R.id.EnterTraining2)
+        message.text = getString(R.string.CTA_Empty_Training_Err)
+        message.setTextColor(resources.getColor(R.color.red))
+        val highlight: Animation = AnimationUtils.loadAnimation(this, R.anim.highlight_animation)
+        val recyclerButton:RelativeLayout = findViewById(R.id.listButtonElementLayout)
+        recyclerButton.startAnimation(highlight)
+
     }
 }

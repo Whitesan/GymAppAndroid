@@ -24,6 +24,7 @@
     <string name="selectAnotherTraining">Select another</string>
     <string name="errorTitle">Sorry, </string>
     <string name="errorBody">there is no training for today </string>
+    <string name="seriesNumber">series</string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Enter name</string>
@@ -58,6 +59,7 @@
     <string name="CTA_YES">YES</string>
     <string name="CTA_NO">NO</string>
     <string name="CTA_Empty_Name_Err">Name cannot be empty!</string>
+    <string name="CTA_Empty_Training_Err">Training cannot be empty!</string>
 
     <!-- settings_dialog.xml -->
     <string name="SD_language">Language</string>

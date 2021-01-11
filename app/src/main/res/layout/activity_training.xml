@@ -197,6 +197,31 @@
                     android:layout_marginTop="5dp"
                     android:textAlignment="center"
                     android:textSize="22sp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text = "@string/seriesNumber"
+                    android:textAlignment="viewStart"
+                    android:textSize="22sp"/>
+                <TextView
+                    android:id="@+id/seriesNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text = "1 of 3"
+                    android:textAlignment="center"
+                    android:textSize="22sp"/>
+
+
+            </RelativeLayout>
+
 
 
 
