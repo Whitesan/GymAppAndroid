@@ -28,6 +28,7 @@
     <string name="selectAnotherTraining">Wybierz inny</string>
     <string name="errorTitle">Przykro nam, </string>
     <string name="errorBody">brak treningu na dzisiaj</string>
+    <string name="seriesNumber">seria</string>
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Wpisz nazwę</string>
     <string name="biceps">Biceps</string>
@@ -61,6 +62,7 @@
     <string name="CTA_YES">TAK</string>
     <string name="CTA_NO">NIE</string>
     <string name="CTA_Empty_Name_Err">Nazwa nie może być pusta!</string>
+    <string name="CTA_Empty_Training_Err">Trening nie może być pusty!</string>
 
     <!-- settings_dialog.xml | MainActivity.kt -->
     <string name="SD_language">Język</string>
