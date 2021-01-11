@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -19,13 +20,11 @@ class MainActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val settings = findViewById<ImageView>(R.id.settings)
         settings.setOnClickListener {
             settingsWindowDialog()
         }
-
-        val planer = findViewById<CardView>(R.id.cardViewPlanner)
+            val planer = findViewById<CardView>(R.id.cardViewPlanner)
         planer.setOnClickListener {
             startActivity(Intent(applicationContext, PlannerActivity::class.java))
         }
@@ -33,16 +32,16 @@ class MainActivity : AppWindowActivity() {
         statistics.setOnClickListener {
             startActivity(Intent(applicationContext, StatisticsActivity::class.java))
         }
+
         val training = findViewById<CardView>(R.id.cardViewTraining)
         training.setOnClickListener {
             startActivity(Intent(applicationContext, TrainingActivity::class.java))
         }
-        val calendar = findViewById<CardView>(R.id.cardViewCalendar)
 
+        val calendar = findViewById<CardView>(R.id.cardViewCalendar)
         calendar.setOnClickListener {
             startActivity(Intent(applicationContext, CalendarActivity::class.java))
         }
-
         getLangPref()
     }
 
