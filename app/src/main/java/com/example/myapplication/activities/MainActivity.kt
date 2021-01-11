@@ -1,11 +1,9 @@
 package com.example.myapplication.activities
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,40 +21,43 @@ class MainActivity : AppWindowActivity() {
         setContentView(R.layout.activity_main)
 
         val settings = findViewById<ImageView>(R.id.settings)
-        settings.setOnClickListener{
+        settings.setOnClickListener {
             settingsWindowDialog()
         }
 
         val planer = findViewById<CardView>(R.id.cardViewPlanner)
-        planer.setOnClickListener{
+        planer.setOnClickListener {
             startActivity(Intent(applicationContext, PlannerActivity::class.java))
         }
         val statistics = findViewById<CardView>(R.id.cardViewStatistics)
-        statistics.setOnClickListener{
+        statistics.setOnClickListener {
             startActivity(Intent(applicationContext, StatisticsActivity::class.java))
         }
         val training = findViewById<CardView>(R.id.cardViewTraining)
-        training.setOnClickListener{
+        training.setOnClickListener {
             startActivity(Intent(applicationContext, TrainingActivity::class.java))
         }
         val calendar = findViewById<CardView>(R.id.cardViewCalendar)
-        calendar.setOnClickListener{
+
+        calendar.setOnClickListener {
             startActivity(Intent(applicationContext, CalendarActivity::class.java))
         }
 
         getLangPref()
     }
+
     private fun restartActivity() {
         val intent = intent
         finish()
         startActivity(intent)
     }
-    private fun setLangPref(localeCode : String){
-        if(Constants.LANG_CURRENT == localeCode)
+
+    private fun setLangPref(localeCode: String) {
+        if (Constants.LANG_CURRENT == localeCode)
             return
 
         val pref = this.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
-        with (pref.edit()) {
+        with(pref.edit()) {
             putString(Constants.LANG, localeCode)
             apply()
         }
@@ -64,29 +65,31 @@ class MainActivity : AppWindowActivity() {
         Constants.LANG_CURRENT = localeCode
         restartActivity()
     }
+
     private fun getLangPref() {
         val pref = this.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
         Constants.LANG_OLD = Constants.LANG_CURRENT
         Constants.LANG_CURRENT = pref.getString(Constants.LANG, Constants.LANG_EN).toString()
-        if(Constants.LANG_CURRENT != Constants.LANG_OLD)
+        if (Constants.LANG_CURRENT != Constants.LANG_OLD)
             restartActivity()
     }
 
-    private fun getLangIdByStr(localeCode : String):Int{
-        when(localeCode){
+    private fun getLangIdByStr(localeCode: String): Int {
+        when (localeCode) {
             "en" -> return R.id.en
             "pl" -> return R.id.pl
         }
-        return  R.id.en
+        return R.id.en
     }
 
-    private fun prepareView(view : View){
+    private fun prepareView(view: View) {
         val selectedLang = view.findViewById<RadioButton>(getLangIdByStr(Constants.LANG_CURRENT))
         selectedLang.isChecked = true
 
         //night/light mode
     }
-    private fun settingsWindowDialog(){
+
+    private fun settingsWindowDialog() {
         val builder = AlertDialog.Builder(this, R.style.AlertDialog)
         val view = LayoutInflater.from(this).inflate(R.layout.settings_dialog, null)
         prepareView(view)
@@ -111,4 +114,5 @@ class MainActivity : AppWindowActivity() {
         }
         builder.show()
     }
+
 }
