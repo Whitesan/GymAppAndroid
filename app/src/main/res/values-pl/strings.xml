@@ -71,4 +71,13 @@
     <string name="MA_name">Ustawienia</string>
     <string name="MA_save">Zapisz</string>
     <string name="MA_cancel">Anuluj</string>
+
+    <!-- Calendar -->
+    <string name="monday">Pn</string>
+    <string name="tuesday">Wt</string>
+    <string name="wednesday">Śr</string>
+    <string name="thursday">Czw</string>
+    <string name="friday">Pt</string>
+    <string name="saturday">Sob</string>
+    <string name="sunday">Niedz</string>
 </resources>

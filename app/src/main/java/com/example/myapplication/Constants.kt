@@ -10,6 +10,7 @@ import java.util.*
 class Constants{
     companion object{
         const val TRAINING_FILE = "Training.json"
+        const val CALENDAR_FILE = "Calendar.json"
         const val CONFIG_FILE = "Config.json"
         const val PARTS_PER_LIST = 3
         //Language

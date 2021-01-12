@@ -1,15 +1,22 @@
 package com.example.myapplication.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.View
-import android.view.WindowManager
-import android.widget.ImageView
+import android.widget.*
+import com.example.myapplication.CalendarJsonConverter
+import com.example.myapplication.Constants
 import com.example.myapplication.R
+import com.example.myapplication.exercises.Calendar
+import com.example.myapplication.Constants.Companion.CALENDAR_FILE
+import com.example.myapplication.TrainingJsonConverter
 
 @Suppress("DEPRECATION")
 class CalendarActivity : AppWindowActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
@@ -17,6 +24,109 @@ class CalendarActivity : AppWindowActivity() {
         button.setOnClickListener{
             val intent =  Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        val listOfDays = findViewById<LinearLayout>(R.id.listOfDays)
+        val json: CalendarJsonConverter = CalendarJsonConverter()
+        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
+
+
+        /*
+        var calendar : Calendar = Calendar()
+        calendar.init()
+        json.toJson(calendar,yourFilePath)
+*/
+
+
+        var calendar : Calendar = json.fromJson(yourFilePath)!!
+        loadCalendar(calendar,listOfDays)
+        applyClickListener(calendar,listOfDays,json)
+
+
+    }
+    //fill all training
+    fun initDays(listOfDays : LinearLayout)
+    {
+        for (i in 0 until listOfDays.getChildCount()) {
+            val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
+
+            for(j in 0 until v.childCount)
+            {
+                if(j == 1)
+                {
+                    val c: TextView = v.getChildAt(j) as TextView
+                    c.text = "Add training"
+                    c.setTextColor(Color.parseColor("#510aad3f"))
+                    c.textSize = 30.0f;
+
+                }
+            }
+        }
+    }
+    fun applyClickListener(calendar : Calendar , listOfDays : LinearLayout,json: CalendarJsonConverter)
+    {
+        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
+        for (i in 0 until listOfDays.getChildCount()) {
+            val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
+
+            for(j in 0 until v.childCount)
+            {
+                val name: TextView = v.getChildAt(1) as TextView
+                val button: Button = v.getChildAt(2) as Button
+                if(j == 1)
+                {
+                    name.setOnClickListener(object : View.OnClickListener {
+                        override fun onClick(view: View?) {
+                            if(calendar.dayList[i].trainingName == "empty")
+                            {
+                                name.text = "Clicked"
+                                button.text = "DELETE"
+                                calendar.dayList[i].trainingName = "clicked"
+                                json.toJson(calendar,yourFilePath)
+                            }
+                        }
+                    })
+                }
+                if(j == 2)
+                {
+                    button.setOnClickListener(object : View.OnClickListener {
+                        override fun onClick(view: View?) {
+                            if(button.text == "DELETE")
+                            {
+                                calendar.dayList[i].trainingName = "empty"
+                                button.text = ""
+                                name.text = "Add training"
+                                json.toJson(calendar,yourFilePath)
+                            }
+                        }
+
+                    })
+                }
+            }
+        }
+    }
+    fun loadCalendar(calendar : Calendar,listOfDays : LinearLayout)
+    {
+        for (i in 0 until listOfDays.getChildCount()) {
+            val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
+
+            for(j in 0 until v.childCount)
+            {
+                if(j == 1)
+                {
+                    val c: TextView = v.getChildAt(j) as TextView
+                    var trainingName = calendar.dayList[i].trainingName
+                    if(trainingName == "empty")
+                        c.text = "Add training"
+                    else
+                    {
+                        c.text = trainingName
+                        val button: Button = v.getChildAt(j+1) as Button
+                        button.text = "DELETE"
+                    }
+
+                }
+            }
         }
     }
 }

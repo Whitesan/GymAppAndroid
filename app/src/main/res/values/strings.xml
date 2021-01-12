@@ -80,4 +80,13 @@
     <string name="shouldersTag" translatable="false">Shoulders</string>
     <string name="absTag" translatable="false">Abs</string>
     <string name="cardioTag" translatable="false">Cardio</string>
+
+    <!-- Calendar -->
+    <string name="monday">Mon</string>
+    <string name="tuesday">Tue</string>
+    <string name="wednesday">Wed</string>
+    <string name="thursday">Thu</string>
+    <string name="friday">Fr</string>
+    <string name="saturday">Sat</string>
+    <string name="sunday">Sun</string>
 </resources>
