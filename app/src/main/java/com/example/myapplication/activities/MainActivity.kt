@@ -7,8 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -25,7 +24,6 @@ class MainActivity : AppWindowActivity() {
         settings.setOnClickListener {
             settingsWindowDialog()
         }
-
 
         val planer = findViewById<CardView>(R.id.cardViewPlanner)
         planer.setOnClickListener {
@@ -110,7 +108,7 @@ class MainActivity : AppWindowActivity() {
 
         builder.setTitle(title)
         builder.setView(view)
-        builder.setPositiveButton(save) { dialog, which ->
+        builder.setPositiveButton(save) { _, _ ->
             val radioGroup = view.findViewById<RadioGroup>(R.id.languageRadios)
             val id = radioGroup.checkedRadioButtonId
             val radioButton = view.findViewById<RadioButton>(id)
@@ -118,7 +116,7 @@ class MainActivity : AppWindowActivity() {
             Log.i("settings", "saved")
         }
 
-        builder.setNegativeButton(cancel) { dialog, which ->
+        builder.setNegativeButton(cancel) { _, _ ->
             Log.i("settings", "cancelled")
             return@setNegativeButton
         }
