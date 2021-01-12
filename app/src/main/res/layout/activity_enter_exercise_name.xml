@@ -139,14 +139,14 @@
                         android:text="@string/chest"
                         android:tag="@string/chestTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/chest"></ImageView>
+                        android:src="@drawable/chest"/>
                 </LinearLayout>
 
 
@@ -164,14 +164,14 @@
                         android:text="@string/back"
                         android:tag="@string/backTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/back"></ImageView>
+                        android:src="@drawable/back"/>
                 </LinearLayout>
 
 
@@ -189,14 +189,14 @@
                         android:text="@string/shoulders"
                         android:tag="@string/shouldersTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/shoulders"></ImageView>
+                        android:src="@drawable/shoulders"/>
                 </LinearLayout>
 
 
@@ -214,14 +214,14 @@
                         android:text="@string/cardio"
                         android:tag="@string/cardioTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/cardio"></ImageView>
+                        android:src="@drawable/cardio"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,14 +238,14 @@
                         android:text="@string/triceps"
                         android:tag="@string/tricepsTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/biceps"></ImageView>
+                        android:src="@drawable/biceps"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -262,14 +262,14 @@
                         android:text="@string/biceps"
                         android:tag="@string/bicepsTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/biceps"></ImageView>
+                        android:src="@drawable/biceps"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -286,14 +286,14 @@
                         android:text="@string/abs"
                         android:tag="@string/absTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/abs"></ImageView>
+                        android:src="@drawable/abs"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -310,14 +310,14 @@
                         android:text="@string/calves"
                         android:tag="@string/calvesTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/calves"></ImageView>
+                        android:src="@drawable/calves"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -334,14 +334,14 @@
                         android:text="@string/thighs"
                         android:tag="@string/thighsTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/thighs"></ImageView>
+                        android:src="@drawable/thighs"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -358,14 +358,14 @@
                         android:text="@string/neck"
                         android:tag="@string/neckTag"
                         android:textAlignment="center"
-                        android:textSize="30sp"></TextView>
+                        android:textSize="30sp"/>
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
-                        android:src="@drawable/neck"></ImageView>
+                        android:src="@drawable/neck"/>
                 </LinearLayout>
 
 

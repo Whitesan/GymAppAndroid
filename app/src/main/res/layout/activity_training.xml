@@ -67,8 +67,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:animateLayoutChanges="true"
-                android:layoutAnimation="@anim/slide_in_left_layout_animation"
                 app:cardBackgroundColor="@color/transparent"
                 app:cardCornerRadius="30dp">
 
@@ -80,9 +78,10 @@
                         android:id="@+id/TrainingInfoLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/graphite"
+                        android:background="@color/gray"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone"
+                        >
 
                         <TextView
                             android:id="@+id/TitleTrainingName"
@@ -113,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/card_view_gradient_planner2"
-                        android:backgroundTint="@color/cardview_dark_background"
+                        android:backgroundTint="@color/gray"
                         android:orientation="vertical"
                         android:visibility="gone">
 
@@ -142,21 +141,23 @@
             </androidx.cardview.widget.CardView>
 
             <RelativeLayout
+                android:id="@+id/selectAnotherExerciseLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:animateLayoutChanges="true"
                 android:background="@color/transparent"
-                android:layoutAnimation="@anim/slide_in_bottom_layout_animation">
+
+                >
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/selectAnotherExerciseButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="80dp"
                     android:background="@drawable/button_rounded_gradient"
-                    android:backgroundTint="@color/cardview_dark_background"
+                    android:backgroundTint="@color/green"
                     android:text="@string/selectAnotherTraining"
                     android:textSize="16sp"
 
@@ -167,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/training_shape"
-            android:backgroundTint="@color/graphite"
+            android:backgroundTint="@color/gray"
             android:layout_marginHorizontal="10dp"
             android:id="@+id/TrainingScreen"
             android:visibility="gone"
@@ -192,7 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="5dp"
-                android:background="@color/mild_transparent" />
+                android:background="@color/gray" />
                 <TextView
                     android:id="@+id/actualPart"
                     android:layout_width="match_parent"
