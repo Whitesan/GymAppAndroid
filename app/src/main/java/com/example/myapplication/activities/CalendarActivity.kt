@@ -28,7 +28,7 @@ class CalendarActivity : AppWindowActivity() {
 
         val listOfDays = findViewById<LinearLayout>(R.id.listOfDays)
         val json: CalendarJsonConverter = CalendarJsonConverter()
-        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
+        val yourFilePath = "$filesDir/${Constants.CALENDAR_FILE}"
 
 
         /*
@@ -38,7 +38,13 @@ class CalendarActivity : AppWindowActivity() {
 */
 
 
-        var calendar : Calendar = json.fromJson(yourFilePath)!!
+        var calendar : Calendar? = json.fromJson(yourFilePath)
+        if(calendar == null)
+        {
+            calendar = Calendar()
+            calendar.init()
+            json.toJson(calendar,yourFilePath)
+        }
         loadCalendar(calendar,listOfDays)
         applyClickListener(calendar,listOfDays,json)
 
@@ -65,7 +71,7 @@ class CalendarActivity : AppWindowActivity() {
     }
     fun applyClickListener(calendar : Calendar , listOfDays : LinearLayout,json: CalendarJsonConverter)
     {
-        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
+        val yourFilePath = "$filesDir/${Constants.CALENDAR_FILE}"
         for (i in 0 until listOfDays.getChildCount()) {
             val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
 

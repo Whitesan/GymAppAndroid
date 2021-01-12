@@ -17,8 +17,7 @@ class CalendarJsonConverter {
                 calendar = Calendar()
                 calendar.init()
             }
-            //else
-               // Log.i("loadTrainingJson", trainings.showTrainings())
+
             return calendar
         }
     }
