@@ -15,18 +15,22 @@
 
     </style>
 
-    <style name="Theme.MyApplication.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
         <item name="android:textColor">#000000</item>
         <item name="android:textColorPrimary">#595959</item>
         <item name="android:colorAccent">#1b5e20</item>
+    </style>
+
+    <!-- main_activity.xml cardview -->
+    <style name="Theme.Material_Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="mainBackground">@style/main_background_white</item>
+        <item name="navStyle">@style/nav_style_white</item>
+        <item name="navTextViewStyle">@style/nav_text_view_white</item>
+        <item name="navImageViewStyle">@style/nav_image_view_white</item>
+
+        <!-- activity_main -->
+        <item name="aMainCardView">@style/a_main_cardview_white</item>
+        <item name="aMainTextView">@style/a_main_text_view_white</item>
+        <item name="aMainImageView">@style/a_main_image_view_white</item>
     </style>
 </resources>

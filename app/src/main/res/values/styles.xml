@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ================================================= -->
+                    <!-- Global white theme -->
+    <!-- ================================================= -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+    </style>
+    <style name="main_background_white">
+        <item name="android:background">#f8f8f8</item>
+    </style>
+    <style name="nav_style_white">
+        <item name="android:background">#1452f5</item>
+    </style>
+    <style name="nav_text_view_white">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+    <style name="nav_image_view_white">
+        <item name="android:layout_gravity">start</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:tint">#ffffff</item>
+    </style>
+
+    <!-- activity_main.xml -->
+    <style name="a_main_cardview_white">
+        <item name="cardCornerRadius">25dp</item>
+        <item name="android:layout_margin">5dp</item>
+
+    </style>
+    <style name="a_main_text_view_white">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+    <style name="a_main_image_view_white">
+        <item name="android:layout_margin">30dp</item>
+    </style>
+
+    <!-- activity_planner.xml -->
+
+
+</resources>

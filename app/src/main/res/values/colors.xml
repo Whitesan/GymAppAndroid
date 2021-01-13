@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_color">#000000</color>
-    <color name="font_color">#FFFFFF</color>
     <color name="graphite">#0C0C0C</color>
     <color name="gray">#80222222</color>
     <color name="black">#FF000000</color>
     <color name="green">#52AF52</color>
-    <color name="darkgreen">#265e35</color>
     <color name="red">#FF0000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#375bed</color>
     <color name="whiteTransparent">#1AFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="almost_transparent">#10FFFFFF</color>
-    <color name="almost_transparent2">#20FFFFFF</color>
     <color name="mild_transparent">#90FFFFFF</color>
     <color name="text_transpatentish">#40FFFFFF</color>
-    <color name="light_gray">#545350</color>
-    <color name="orange">#E0f09502</color>color>
+    <color name="light_gray">#545350</color><![CDATA[
+    color>
+]]>
+
+    <!-- Light mode design -->
+    <color name="light_nav_background">#1452f5</color>
+    <color name="light_main_background">#f8f9fa</color>
+    <color name="light_card_background">#ffffff</color>
+
 </resources>

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
 
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -18,9 +19,10 @@ import com.example.myapplication.R
 @Suppress("DEPRECATION")
 class MainActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val settings = findViewById<ImageView>(R.id.settings)
+        val settings = findViewById<ImageView>(R.id.navBarAction)
         settings.setOnClickListener {
             settingsWindowDialog()
         }

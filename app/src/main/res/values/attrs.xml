@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="mainBackground" format="reference" />
+    <attr name="navStyle" format="reference" />
+    <attr name="navTextViewStyle" format="reference" />
+    <attr name="navImageViewStyle" format="reference" />
+
+    <!-- activity_main -->
+    <attr name="aMainCardView" format="reference" />
+    <attr name="aMainTextView" format="reference" />
+    <attr name="aMainImageView" format="reference" />
+</resources>
