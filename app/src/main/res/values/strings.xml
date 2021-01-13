@@ -90,4 +90,7 @@
     <string name="saturday">Sat</string>
     <string name="sunday">Sun</string>
     <string name="gymapp">Gymapp</string>
+    
+    <string name="nameEx">Name</string>
+    <string name="typeEx">Type</string>
 </resources>

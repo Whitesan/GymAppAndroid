@@ -6,40 +6,33 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.PlannerActivity"
-    android:background="@color/black"
+    style="?mainBackground"
     android:orientation="vertical"
-    android:layout_weight="15"
+    android:layout_weight="100"
 
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:orientation="horizontal"
-
+        android:layout_weight="8"
+        style="?navStyle"
         >
-
         <ImageView
-            android:id="@+id/backPlanner"
+            android:id="@+id/navBarAction"
+            android:src="@drawable/ic_launcher_back_icon_foreground"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/backward"
-            android:layout_gravity="start"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:layout_height="wrap_content"
+            style="?navImageViewStyle"
             />
         <TextView
-            android:id="@+id/plannerTitle"
+            android:id="@+id/navBarTitle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/planner"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="5dp"
             android:layout_weight="5"
-
+            android:text="@string/planner"
+            style="?navTextViewStyle"
             />
         <Space
             android:layout_width="0dp"
@@ -51,10 +44,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
-
+        android:layout_weight="92"
         android:orientation="vertical"
-
         >
 
         <androidx.cardview.widget.CardView
@@ -62,37 +53,27 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:layout_margin="35dp"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="30dp"
+            style="?aPlannerCardView"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/card_view_gradient_planner1"
+                style="?cardViewElementBackground"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:textColor="@color/white"
-                    android:textSize="26sp"
-                    android:layout_gravity="center"
-                    android:paddingTop="10dp"
-                    android:textStyle="bold"
-                    android:text="@string/actPlannerCreateTraining"/>
+                    android:text="@string/actPlannerCreateTraining"
+                    style="?aPlannerTextView"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="5"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/carpenter" />
+                    android:src="@drawable/carpenter"
+                    style="?aPlannerImageView"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -102,38 +83,27 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="5"
-            android:layout_marginRight="35dp"
-            android:layout_marginLeft="35dp"
-            app:cardBackgroundColor="@color/whiteTransparent"
-            app:cardCornerRadius="30dp"
+            style="?aPlannerCardView"
             >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/card_view_gradient_planner2"
+                style="?cardViewElementBackground"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:textColor="@color/white"
-                    android:textSize="26sp"
-                    android:layout_gravity="center"
-                    android:paddingTop="10dp"
-                    android:textStyle="bold"
-                    android:text="@string/actPlannerTrainingList"/>
+                    android:text="@string/actPlannerTrainingList"
+                    style="?aPlannerTextView"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="5"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/check" />
+                    android:src="@drawable/check"
+                    style="?aPlannerImageView"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

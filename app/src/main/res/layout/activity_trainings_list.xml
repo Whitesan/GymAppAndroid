@@ -6,41 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.TrainingsListActivity"
-    android:background="@color/black"
+    style="?mainBackground"
     android:orientation="vertical"
-    android:layout_weight="15"
+    android:layout_weight="100"
 
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:orientation="horizontal"
+        android:layout_weight="8"
+        style="?navStyle"
         >
-
         <ImageView
-            android:id="@+id/backTrainingsList"
+            android:id="@+id/navBarAction"
+            android:src="@drawable/ic_launcher_back_icon_foreground"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/backward"
-            android:layout_gravity="start"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:layout_height="wrap_content"
+            style="?navImageViewStyle"
             />
         <TextView
-            android:id="@+id/plannerTitle"
+            android:id="@+id/navBarTitle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/trainings"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="5dp"
             android:layout_weight="5"
-
+            android:text="@string/trainings"
+            style="?navTextViewStyle"
             />
-
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -50,26 +43,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="92"
         >
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/rv_training_list"
             android:layoutAnimation="@anim/recycler_layout_animation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
-            android:focusableInTouchMode="true"
-
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+            android:focusableInTouchMode="true" />
     </RelativeLayout>
 </LinearLayout>
 

@@ -21,16 +21,36 @@
         <item name="android:colorAccent">#1b5e20</item>
     </style>
 
+
+
     <!-- main_activity.xml cardview -->
     <style name="Theme.Material_Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="mainBackground">@style/main_background_white</item>
         <item name="navStyle">@style/nav_style_white</item>
         <item name="navTextViewStyle">@style/nav_text_view_white</item>
         <item name="navImageViewStyle">@style/nav_image_view_white</item>
+        <item name="cardViewElementBackground">@style/card_view_element_background_white</item>
 
         <!-- activity_main -->
         <item name="aMainCardView">@style/a_main_cardview_white</item>
         <item name="aMainTextView">@style/a_main_text_view_white</item>
         <item name="aMainImageView">@style/a_main_image_view_white</item>
+
+        <!-- activity_planner.xml -->
+        <item name="aPlannerCardView">@style/a_planner_card_view_white</item>
+        <item name="aPlannerTextView">@style/a_planner_text_view_white</item>
+        <item name="aPlannerImageView">@style/a_planner_image_view_white</item>
+
+        <!-- element_trainings_list.xml -->
+        <item name="aElementTrainingsListTextView">@style/a_element_trainings_list_text_view_white</item>
+        <item name="aElementTrainingsListImageView">@style/a_element_trainings_list_image_view_white</item>
+
+        <!-- element_exercises_list.xml -->
+        <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_white</item>
+        <item name="aElementExercisesListTextOpView">@style/a_element_exercises_list_text_view_op_white</item>
+
+        <!-- sub_element_exercises_list.xml -->
+        <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_white</item>
+        <item name="aSubElementExercisesListDivider">@style/a_sub_element_exercises_list_divider_white</item>
     </style>
 </resources>

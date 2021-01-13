@@ -38,6 +38,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
         adapter.setHasStableIds(true)
         setContentView(R.layout.activity_create_training)
@@ -68,7 +69,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         setTextListener(1)
         createRecyclerView()
 
-        val button = findViewById<ImageView>(R.id.backTrainingCreator)
+        val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
             addButtonAction()
         }

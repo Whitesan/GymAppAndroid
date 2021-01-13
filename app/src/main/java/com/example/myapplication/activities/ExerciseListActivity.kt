@@ -14,10 +14,11 @@ import com.example.myapplication.recycler_view.TrainingListAdapter
 @Suppress("DEPRECATION")
 class ExerciseListActivity : AppWindowActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_training_exercises_list)
-        val button = findViewById<ImageView>(R.id.backTrainingsList)
+        val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
             val intent = Intent(applicationContext, TrainingsListActivity::class.java)
             startActivity(intent)
@@ -32,7 +33,7 @@ class ExerciseListActivity : AppWindowActivity(){
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = ExerciseListAdapter(training.getExercises(), this)
 
-        val title = findViewById<TextView>(R.id.plannerTitle)
+        val title = findViewById<TextView>(R.id.navBarTitle)
         title.text = training.getName()
     }
 }

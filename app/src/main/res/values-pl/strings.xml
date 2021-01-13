@@ -81,4 +81,7 @@
     <string name="saturday">Sob</string>
     <string name="sunday">Niedz</string>
     <string name="gymapp">Gymapp</string>
+
+    <string name="nameEx">Nazwa</string>
+    <string name="typeEx">Partia</string>
 </resources>

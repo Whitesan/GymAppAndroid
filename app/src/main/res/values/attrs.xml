@@ -4,9 +4,26 @@
     <attr name="navStyle" format="reference" />
     <attr name="navTextViewStyle" format="reference" />
     <attr name="navImageViewStyle" format="reference" />
+    <attr name="cardViewElementBackground" format="reference" />
 
     <!-- activity_main -->
     <attr name="aMainCardView" format="reference" />
     <attr name="aMainTextView" format="reference" />
     <attr name="aMainImageView" format="reference" />
+
+    <!-- activity_planner.xml -->
+    <attr name="aPlannerCardView" format="reference" />
+    <attr name="aPlannerTextView" format="reference" />
+    <attr name="aPlannerImageView" format="reference" />
+
+    <!-- element_trainings_list.xml -->
+    <attr name="aElementTrainingsListTextView" format="reference" />
+    <attr name="aElementTrainingsListImageView" format="reference" />
+
+    <!-- element_exercises_list.xml -->
+    <attr name="aElementExercisesListTextView" format="reference" />
+    <attr name="aElementExercisesListTextOpView" format="reference" />
+
+    <attr name="aSubElementExercisesListTextView" format="reference" />
+    <attr name="aSubElementExercisesListDivider" format="reference" />
 </resources>

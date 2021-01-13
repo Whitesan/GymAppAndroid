@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Constants
 import com.example.myapplication.R
 import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.exercises.Training
@@ -22,10 +23,11 @@ class TrainingsListActivity : AppWindowActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_trainings_list)
-        val button = findViewById<ImageView>(R.id.backTrainingsList)
+        val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
             val intent = Intent(applicationContext, PlannerActivity::class.java)
             startActivity(intent)
@@ -42,6 +44,6 @@ class TrainingsListActivity : AppWindowActivity() {
     private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/Training.json", this)
+        recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/${Constants.TRAINING_FILE}", this)
     }
 }

@@ -13,9 +13,10 @@ import com.example.myapplication.exercises.Exercise
 @Suppress("DEPRECATION")
 class PlannerActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planner)
-        val back = findViewById<ImageView>(R.id.backPlanner)
+        val back = findViewById<ImageView>(R.id.navBarAction)
         back.setOnClickListener{
                 val intent =  Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
