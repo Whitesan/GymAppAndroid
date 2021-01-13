@@ -52,5 +52,15 @@
         <!-- sub_element_exercises_list.xml -->
         <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_white</item>
         <item name="aSubElementExercisesListDivider">@style/a_sub_element_exercises_list_divider_white</item>
+
+        <!-- activity_create_training.xml -->
+        <item name="aCreateTrainingButton">@style/a_create_training_button_white</item>
+        <item name="aCreateTrainingEditText">@style/a_create_training_edit_text_white</item>
+        <item name="aCreateTrainingTextView">@style/a_create_training_text_view_white</item>
+
+        <!-- list_element_layout.xml / button_list_element_layout.xml -->
+        <item name="aListElementLayoutTextView">@style/a_list_element_layout_text_view_white</item>
+        <item name="aListElementLayoutImageView">@style/a_list_element_layout_image_view_white</item>
+        <item name="aListElementLayoutAddButton">@style/a_list_element_layout_add_button_white</item>
     </style>
 </resources>

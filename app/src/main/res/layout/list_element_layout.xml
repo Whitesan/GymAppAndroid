@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    >
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/listElementLayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/entry_shape"
-        android:backgroundTint="@color/almost_transparent"
-        android:elevation="20dp">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="35dp"
+        android:layout_margin="15dp">
 
-        <TextView
-            android:id="@+id/listElement"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/ListElementIcon"
-            android:layout_alignParentTop="true"
-            android:layout_marginHorizontal="20dp"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/listElement2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/ListElementIcon"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="20dp"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:textSize="14sp"
+            <ImageView
+                android:id="@+id/ListElementIcon"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:layout_weight="20"
+                />
 
-            />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="60"
+                >
 
-        <ImageView
-            android:id="@+id/ListElementIcon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp" />
+                <TextView
+                    android:id="@+id/listElement"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:singleLine="true"
+                    style="?aListElementLayoutTextView"
+                    />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/listElement2"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:singleLine="true"
+                    style="?aListElementLayoutTextView"
+                    />
+            </LinearLayout>
+            <Space
+                android:layout_margin="10dp"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="20"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:id="@+id/listElementLayoutBackground"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginHorizontal="15dp"
+        android:layout_margin="15dp"
         android:visibility="gone">
 
         <LinearLayout
@@ -73,7 +83,8 @@
                 android:layout_marginVertical="10dp"
                 android:background="@color/transparent"
                 android:clickable="false"
-                android:src="@drawable/edit_icon" />
+                android:src="@drawable/edit_icon"
+                style="?aListElementLayoutImageView"/>
 
             <ImageView
                 android:id="@+id/deleteListItem"
@@ -82,7 +93,8 @@
                 android:layout_marginVertical="10dp"
                 android:background="@color/transparent"
                 android:clickable="false"
-                android:src="@drawable/delete_icon" />
+                android:src="@drawable/delete_icon"
+                style="?aListElementLayoutImageView"/>
         </LinearLayout>
 
 

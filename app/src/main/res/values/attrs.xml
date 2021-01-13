@@ -24,6 +24,17 @@
     <attr name="aElementExercisesListTextView" format="reference" />
     <attr name="aElementExercisesListTextOpView" format="reference" />
 
+    <!-- sub_element_exercises_list.xml -->
     <attr name="aSubElementExercisesListTextView" format="reference" />
     <attr name="aSubElementExercisesListDivider" format="reference" />
+
+    <!-- activity_create_training.xml -->
+    <attr name="aCreateTrainingButton" format="reference" />
+    <attr name="aCreateTrainingEditText" format="reference" />
+    <attr name="aCreateTrainingTextView" format="reference" />
+
+    <!-- list_element_layout.xml / button_list_element_layout.xml -->
+    <attr name="aListElementLayoutTextView" format="reference" />
+    <attr name="aListElementLayoutImageView" format="reference" />
+    <attr name="aListElementLayoutAddButton" format="reference" />
 </resources>

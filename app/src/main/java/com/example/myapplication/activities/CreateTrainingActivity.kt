@@ -11,6 +11,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.*
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.ListAdapter
@@ -217,7 +218,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         message.text = getString(R.string.CTA_Empty_Training_Err)
         message.setTextColor(resources.getColor(R.color.red))
         val highlight: Animation = AnimationUtils.loadAnimation(this, R.anim.highlight_animation)
-        val recyclerButton:RelativeLayout = findViewById(R.id.listButtonElementLayout)
+        val recyclerButton: CardView = findViewById(R.id.listButtonElementLayout)
         recyclerButton.startAnimation(highlight)
 
     }
