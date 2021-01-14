@@ -41,4 +41,7 @@
     <attr name="aEnterExerciseNameTextView" format="reference" />
     <attr name="aEnterExerciseNameImageView" format="reference" />
     <attr name="aEnterExerciseNameLinearLayout" format="reference" />
+
+    <attr name="aExerciseTextView" format="reference" />
+    <attr name="aExercisePicker" format="reference" />
 </resources>

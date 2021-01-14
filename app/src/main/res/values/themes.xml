@@ -66,5 +66,9 @@
         <item name="aEnterExerciseNameTextView">@style/a_enter_exercise_name_text_view_white</item>
         <item name="aEnterExerciseNameImageView">@style/a_enter_exercise_name_image_view_white</item>
         <item name="aEnterExerciseNameLinearLayout">@style/a_enter_exercise_name_linear_layout_white</item>
+
+
+        <item name="aExerciseTextView">@style/a_activity_exercise_white</item>
+        <item name="aExercisePicker">@style/a_activity_exercise_picker_white</item>
     </style>
 </resources>

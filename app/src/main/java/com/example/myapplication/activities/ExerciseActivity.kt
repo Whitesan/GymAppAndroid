@@ -39,11 +39,11 @@ class ExerciseActivity : AppWindowActivity() {
             exercise = serializable as Exercise
             edit=true
         }
-        val title  = findViewById<TextView>(R.id.plannerTitle)
+        val title  = findViewById<TextView>(R.id.navBarTitle)
         title.text = exercise.getName()
         val seriesPicker = findViewById<LinearLayout>(R.id.seriesPicker)
         // Back to previous window button
-        val backButton = findViewById<ImageView>(R.id.backExercise)
+        val backButton = findViewById<ImageView>(R.id.navBarAction)
         backButton.setOnClickListener{
             val intent = if(edit){
                 Intent(applicationContext, CreateTrainingActivity::class.java)
