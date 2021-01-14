@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.core.view.iterator
 import com.example.myapplication.R
 import com.example.myapplication.exercises.Exercise
@@ -19,16 +20,17 @@ class EnterExerciseNameActivity : AppWindowActivity() {
     private var part:Part?=null
     private lateinit var selectedTypeView : LinearLayout // selected type Container
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Material_Light)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_exercise_name)
 
-        val backButton = findViewById<ImageView>(R.id.backEnterName)
+        val backButton = findViewById<ImageView>(R.id.navBarAction)
         backButton.setOnClickListener {
             val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
             startActivity(intent)
         }
         setTextListener()
-        val buttonContinue = findViewById<Button>(R.id.ContinueCreatingButton)
+        val buttonContinue = findViewById<TextView>(R.id.ContinueCreatingButton)
         buttonContinue.setOnClickListener {
             if (enteredText.isEmpty()) {
                 val message = findViewById<TextView>(R.id.TrainingNameEmpty)

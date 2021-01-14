@@ -62,5 +62,9 @@
         <item name="aListElementLayoutTextView">@style/a_list_element_layout_text_view_white</item>
         <item name="aListElementLayoutImageView">@style/a_list_element_layout_image_view_white</item>
         <item name="aListElementLayoutAddButton">@style/a_list_element_layout_add_button_white</item>
+
+        <item name="aEnterExerciseNameTextView">@style/a_enter_exercise_name_text_view_white</item>
+        <item name="aEnterExerciseNameImageView">@style/a_enter_exercise_name_image_view_white</item>
+        <item name="aEnterExerciseNameLinearLayout">@style/a_enter_exercise_name_linear_layout_white</item>
     </style>
 </resources>

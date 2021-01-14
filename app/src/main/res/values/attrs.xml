@@ -37,4 +37,8 @@
     <attr name="aListElementLayoutTextView" format="reference" />
     <attr name="aListElementLayoutImageView" format="reference" />
     <attr name="aListElementLayoutAddButton" format="reference" />
+
+    <attr name="aEnterExerciseNameTextView" format="reference" />
+    <attr name="aEnterExerciseNameImageView" format="reference" />
+    <attr name="aEnterExerciseNameLinearLayout" format="reference" />
 </resources>
