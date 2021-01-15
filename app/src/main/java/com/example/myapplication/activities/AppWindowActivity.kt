@@ -12,6 +12,7 @@ import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Constants
 import com.example.myapplication.R
@@ -72,5 +73,12 @@ open class AppWindowActivity : AppCompatActivity() {
         if(Constants.THEME_CURRENT == -1)
             Constants.THEME_CURRENT = theme
         this.setTheme(theme)
+    }
+    protected fun View.setBackListener(enterAnim:Int?,exitAnim:Int?){
+        setOnClickListener{
+            onBackPressed();
+            if(enterAnim!= null && exitAnim!=null)
+                overridePendingTransition(enterAnim,exitAnim)
+        }
     }
 }

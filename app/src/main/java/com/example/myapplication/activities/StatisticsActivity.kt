@@ -14,9 +14,11 @@ class StatisticsActivity : AppWindowActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
         val button = findViewById<ImageView>(R.id.backStatistics)
-        button.setOnClickListener{
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-        }
+        button.setBackListener(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
     }
 }

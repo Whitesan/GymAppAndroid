@@ -39,4 +39,9 @@ class SelectAnotherTrainingActivity : AppWindowActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = SelectAnotherTrainingAdapter(trainingsGuiList, this)
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, TrainingActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+    }
 }

@@ -69,16 +69,16 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
 
         setTextListener(1)
         createRecyclerView()
-
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
-            addButtonAction()
+            startActivity(  Intent(applicationContext, CreateTrainingActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
         }
+            val endButton = findViewById<Button>(R.id.endCreatingExercises)
+            endButton.setOnClickListener {
+                saveButtonAction()
+            }
 
-        val endButton = findViewById<Button>(R.id.endCreatingExercises)
-        endButton.setOnClickListener {
-            saveButtonAction()
-        }
     }
 
     private fun saveButtonAction() {
@@ -93,12 +93,6 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
             onExit()
         }
     }
-
-    private fun addButtonAction() {
-        val intent = Intent(applicationContext, PlannerActivity::class.java)
-        startActivity(intent)
-    }
-
     @SuppressLint("SetTextI18n")
     private fun setTextListener(number: Int) {
         if (enteredText.isNotEmpty())
@@ -131,7 +125,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         callback.setListener(recycler)
         itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(recycler)
-//        callback.setItemTouchHelper(itemTouchHelpter)
+
         adapter.appendItem(AddButton(), recycler)
         for (e: Exercise in exerciseList) {
             adapter.appendItem(e, recycler)
@@ -142,8 +136,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         enteredText = entry.text.toString()
         val intent = Intent(applicationContext, EnterExerciseNameActivity::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation)
-
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
         return false;
     }
 
@@ -221,5 +214,10 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         val recyclerButton: CardView = findViewById(R.id.listButtonElementLayout)
         recyclerButton.startAnimation(highlight)
 
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, PlannerActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

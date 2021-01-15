@@ -19,10 +19,7 @@ class ExerciseListActivity : AppWindowActivity(){
 
         setContentView(R.layout.activity_training_exercises_list)
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener {
-            val intent = Intent(applicationContext, TrainingsListActivity::class.java)
-            startActivity(intent)
-        }
+        button.setBackListener(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
 
         val training = TrainingListAdapter.currentTraining
         createExercisesList(training)
@@ -35,5 +32,10 @@ class ExerciseListActivity : AppWindowActivity(){
 
         val title = findViewById<TextView>(R.id.navBarTitle)
         title.text = training.getName()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

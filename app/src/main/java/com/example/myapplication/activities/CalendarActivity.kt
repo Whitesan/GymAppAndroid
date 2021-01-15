@@ -22,11 +22,7 @@ class CalendarActivity : AppWindowActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener{
-            val intent =  Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-        }
-
+        button.setBackListener(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
         val listOfDays = findViewById<LinearLayout>(R.id.listOfDays)
         val json: CalendarJsonConverter = CalendarJsonConverter()
         val yourFilePath = "$filesDir/${Constants.CALENDAR_FILE}"
@@ -51,6 +47,12 @@ class CalendarActivity : AppWindowActivity() {
 
 
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+    }
+
     //fill all training
     fun initDays(listOfDays : LinearLayout)
     {
@@ -82,32 +84,25 @@ class CalendarActivity : AppWindowActivity() {
                 val button: Button = v.getChildAt(2) as Button
                 if(j == 1)
                 {
-                    name.setOnClickListener(object : View.OnClickListener {
-                        override fun onClick(view: View?) {
-                            if(calendar.dayList[i].trainingName == "empty")
-                            {
-                                name.text = "Clicked"
-                                button.text = "DELETE"
-                                calendar.dayList[i].trainingName = "clicked"
-                                json.toJson(calendar,yourFilePath)
-                            }
+                    name.setOnClickListener {
+                        if (calendar.dayList[i].trainingName == "empty") {
+                            name.text = "Clicked"
+                            button.text = "DELETE"
+                            calendar.dayList[i].trainingName = "clicked"
+                            json.toJson(calendar, yourFilePath)
                         }
-                    })
+                    }
                 }
                 if(j == 2)
                 {
-                    button.setOnClickListener(object : View.OnClickListener {
-                        override fun onClick(view: View?) {
-                            if(button.text == "DELETE")
-                            {
-                                calendar.dayList[i].trainingName = "empty"
-                                button.text = ""
-                                name.text = "Add training"
-                                json.toJson(calendar,yourFilePath)
-                            }
+                    button.setOnClickListener {
+                        if (button.text == "DELETE") {
+                            calendar.dayList[i].trainingName = "empty"
+                            button.text = ""
+                            name.text = "Add training"
+                            json.toJson(calendar, yourFilePath)
                         }
-
-                    })
+                    }
                 }
             }
         }

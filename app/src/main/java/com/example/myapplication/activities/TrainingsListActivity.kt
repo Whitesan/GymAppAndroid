@@ -28,10 +28,7 @@ class TrainingsListActivity : AppWindowActivity() {
 
         setContentView(R.layout.activity_trainings_list)
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener {
-            val intent = Intent(applicationContext, PlannerActivity::class.java)
-            startActivity(intent)
-        }
+        button.setOnClickListener{onBackPressed()}
 
         //Loading list from JSON file
         //List is using by recycle_viewer
@@ -45,5 +42,10 @@ class TrainingsListActivity : AppWindowActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = TrainingListAdapter(trainingsGuiList, "$filesDir/${Constants.TRAINING_FILE}", this)
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, PlannerActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

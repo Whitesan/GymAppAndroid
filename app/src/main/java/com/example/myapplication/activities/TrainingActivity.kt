@@ -53,10 +53,7 @@ class TrainingActivity : AppWindowActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener {
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-        }
+        button.setOnClickListener { onBackPressed() }
 
         getTraining(super.getIntent().getSerializableExtra("Training"))
         Log.i("training", (todayTraining != null).toString())
@@ -138,10 +135,14 @@ class TrainingActivity : AppWindowActivity() {
                     val intent =
                         Intent(applicationContext, SelectAnotherTrainingActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_top)
+
+
                 }
                 val animationDown =
                     AnimationUtils.loadAnimation(context, R.anim.slide_in_left_animation)
                 button.startAnimation(animationDown)
+
             }
 
             override fun onAnimationEnd(p0: Animation?) {}
@@ -156,7 +157,7 @@ class TrainingActivity : AppWindowActivity() {
                 selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
                 selectAnotherButton.visibility = View.GONE
                 val animationDown =
-                    AnimationUtils.loadAnimation(context, R.anim.slide_out_right_animation)
+                    AnimationUtils.loadAnimation(context, R.anim.slide_out_left_animation)
                 button.startAnimation(animationDown)
             }
 
@@ -206,7 +207,7 @@ class TrainingActivity : AppWindowActivity() {
 
     private fun hideCardView() {
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
-        val animation = AnimationUtils.loadAnimation(this, R.anim.slide_out_left_animation)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.slide_out_right_animation)
         animation.onStartHideButton(this, cardView)
         cardView.startAnimation(animation)
 
@@ -224,13 +225,7 @@ class TrainingActivity : AppWindowActivity() {
             errorLayout.layoutParams = size
         errorLayout.visibility = View.VISIBLE
         errorLayout.setOnClickListener {
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_left_animation,
-                R.anim.slide_out_left_animation
-            )
-
+          onBackPressed()
         }
     }
 
@@ -248,5 +243,10 @@ class TrainingActivity : AppWindowActivity() {
         actualExerciseView.isSelected = true
         val actualPartView: TextView = findViewById(R.id.actualPart)
         actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

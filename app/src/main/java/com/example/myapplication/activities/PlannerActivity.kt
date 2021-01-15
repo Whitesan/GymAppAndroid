@@ -17,27 +17,31 @@ class PlannerActivity : AppWindowActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planner)
         val back = findViewById<ImageView>(R.id.navBarAction)
-        back.setOnClickListener{
-                val intent =  Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
+        back.setOnClickListener {
+            onBackPressed()
         }
-
         val createTraining = findViewById<CardView>(R.id.createTrainingCardView)
-        createTraining.setOnClickListener{
-            val intent =  Intent(applicationContext, CreateTrainingActivity::class.java)
+        createTraining.setOnClickListener {
+            val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
             CreateTrainingActivity.exerciseList = ArrayList<Exercise>()
             CreateTrainingActivity.enteredText = ""
             CreateTrainingActivity.editedIndex = -1
             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+            overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
 
         }
 
         val createTrainingsListActivity = findViewById<CardView>(R.id.createTrainingsListCardViev)
-        createTrainingsListActivity.setOnClickListener{
-            val intent =  Intent(applicationContext, TrainingsListActivity::class.java)
+        createTrainingsListActivity.setOnClickListener {
+            val intent = Intent(applicationContext, TrainingsListActivity::class.java)
             startActivity(intent)
-            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+            overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
         }
+
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
     }
 }

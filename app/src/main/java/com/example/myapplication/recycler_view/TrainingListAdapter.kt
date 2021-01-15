@@ -77,7 +77,7 @@ class TrainingListAdapter(
         val context = holder.itemView.context
         val intent = Intent(context, ExerciseListActivity::class.java)
         context.startActivity(intent)
-        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
 
     }
 

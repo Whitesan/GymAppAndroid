@@ -25,10 +25,13 @@ class EnterExerciseNameActivity : AppWindowActivity() {
         setContentView(R.layout.activity_enter_exercise_name)
 
         val backButton = findViewById<ImageView>(R.id.navBarAction)
-        backButton.setOnClickListener {
-            val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
-            startActivity(intent)
+        backButton.setOnClickListener{
+            startActivity(Intent(applicationContext, CreateTrainingActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+
         }
+
+
         setTextListener()
         val buttonContinue = findViewById<TextView>(R.id.ContinueCreatingButton)
         buttonContinue.setOnClickListener {
@@ -46,9 +49,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 val intent = Intent(applicationContext, ExerciseActivity::class.java)
                 intent.putExtra("Exercise", exercise)
                 startActivity(intent)
-                overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
-
-
+                overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
             }
         }
         selectPartListener()
@@ -98,5 +99,10 @@ class EnterExerciseNameActivity : AppWindowActivity() {
                 part = Part.getPart(tag) !!
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, CreateTrainingActivity::class.java))
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

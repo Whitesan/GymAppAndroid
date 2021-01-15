@@ -45,12 +45,14 @@ class ExerciseActivity : AppWindowActivity() {
         // Back to previous window button
         val backButton = findViewById<ImageView>(R.id.navBarAction)
         backButton.setOnClickListener{
-            val intent = if(edit){
-                Intent(applicationContext, CreateTrainingActivity::class.java)
+         if(edit){
+                startActivity(  Intent(applicationContext, CreateTrainingActivity::class.java))
+                overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+
             } else{
-                Intent(applicationContext, EnterExerciseNameActivity::class.java)
+                startActivity( Intent(applicationContext, EnterExerciseNameActivity::class.java))
+                overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
             }
-            startActivity(intent)
         }
         //Setting series scrollView
         val seriesScroll = findViewById<HorizontalScrollView>(R.id.seriesScroll)
@@ -241,5 +243,17 @@ class ExerciseActivity : AppWindowActivity() {
     private fun createMetersArray():Array<out String>
     {
         return Array(100){ i -> (i *100).toString()};
+    }
+
+    override fun onBackPressed() {
+        if(edit){
+            startActivity(  Intent(applicationContext, CreateTrainingActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+
+        } else{
+            startActivity( Intent(applicationContext, EnterExerciseNameActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+        }
+
     }
 }
