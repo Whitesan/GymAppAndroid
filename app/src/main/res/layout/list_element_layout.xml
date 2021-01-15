@@ -11,13 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="35dp"
-        android:layout_margin="15dp">
+        android:layout_margin="15dp"
+        app:cardElevation="10dp"
+        style="?aElementTrainingsCardView"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="100"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="?cardViewElementBackground"
+            >
 
             <ImageView
                 android:id="@+id/ListElementIcon"

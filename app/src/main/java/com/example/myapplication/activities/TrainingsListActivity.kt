@@ -23,7 +23,7 @@ class TrainingsListActivity : AppWindowActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_trainings_list)

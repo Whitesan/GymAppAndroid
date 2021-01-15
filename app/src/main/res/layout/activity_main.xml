@@ -62,8 +62,7 @@
                 android:id="@+id/cardViewCalendar"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:layoutAnimation="@anim/slide_in_top_left_layout_animation"
+
                 style="?aMainCardView"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
@@ -99,8 +98,6 @@
                 android:id="@+id/cardViewTraining"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:layoutAnimation="@anim/slide_in_top_right_layout_animation"
                 style="?aMainCardView"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1">
@@ -136,8 +133,6 @@
                 android:id="@+id/cardViewStatistics"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:layoutAnimation="@anim/slide_in_bottom_left_layout_animation"
                 android:textAlignment="center"
                 style="?aMainCardView"
                 app:layout_columnWeight="1"
@@ -173,8 +168,6 @@
                 android:id="@+id/cardViewPlanner"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:cardBackgroundColor="@android:color/transparent"
-                android:layoutAnimation="@anim/slide_in_bottom_right_layout_animation"
                 android:textAlignment="center"
                 style="?aMainCardView"
                 app:layout_columnWeight="1"

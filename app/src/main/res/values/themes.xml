@@ -45,6 +45,7 @@
         <!-- element_trainings_list.xml -->
         <item name="aElementTrainingsListTextView">@style/a_element_trainings_list_text_view_white</item>
         <item name="aElementTrainingsListImageView">@style/a_element_trainings_list_image_view_white</item>
+        <item name="aElementTrainingsCardView">@style/a_element_trainings_card_view_white</item>
 
         <!-- element_exercises_list.xml -->
         <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_white</item>
@@ -89,38 +90,39 @@
         <item name="aMainImageView">@style/a_main_image_view_dark</item>
 
         <!-- activity_planner.xml -->
-        <item name="aPlannerCardView">@style/a_planner_card_view_white</item>
-        <item name="aPlannerTextView">@style/a_planner_text_view_white</item>
-        <item name="aPlannerImageView">@style/a_planner_image_view_white</item>
+        <item name="aPlannerCardView">@style/a_planner_card_view_dark</item>
+        <item name="aPlannerTextView">@style/a_planner_text_view_dark</item>
+        <item name="aPlannerImageView">@style/a_planner_image_view_dark</item>
 
         <!-- element_trainings_list.xml -->
-        <item name="aElementTrainingsListTextView">@style/a_element_trainings_list_text_view_white</item>
-        <item name="aElementTrainingsListImageView">@style/a_element_trainings_list_image_view_white</item>
+        <item name="aElementTrainingsListTextView">@style/a_element_trainings_list_text_view_dark</item>
+        <item name="aElementTrainingsListImageView">@style/a_element_trainings_list_image_view_dark</item>
+        <item name="aElementTrainingsCardView">@style/a_element_trainings_card_view_dark</item>
 
         <!-- element_exercises_list.xml -->
-        <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_white</item>
-        <item name="aElementExercisesListTextOpView">@style/a_element_exercises_list_text_view_op_white</item>
+        <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_dark</item>
+        <item name="aElementExercisesListTextOpView">@style/a_element_exercises_list_text_view_op_dark</item>
 
         <!-- sub_element_exercises_list.xml -->
-        <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_white</item>
-        <item name="aSubElementExercisesListDivider">@style/a_sub_element_exercises_list_divider_white</item>
+        <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_dark</item>
+        <item name="aSubElementExercisesListDivider">@style/a_sub_element_exercises_list_divider_dark</item>
 
         <!-- activity_create_training.xml -->
-        <item name="aCreateTrainingButton">@style/a_create_training_button_white</item>
-        <item name="aCreateTrainingEditText">@style/a_create_training_edit_text_white</item>
-        <item name="aCreateTrainingTextView">@style/a_create_training_text_view_white</item>
+        <item name="aCreateTrainingButton">@style/a_create_training_button_dark</item>
+        <item name="aCreateTrainingEditText">@style/a_create_training_edit_text_dark</item>
+        <item name="aCreateTrainingTextView">@style/a_create_training_text_view_dark</item>
 
         <!-- list_element_layout.xml / button_list_element_layout.xml -->
-        <item name="aListElementLayoutTextView">@style/a_list_element_layout_text_view_white</item>
-        <item name="aListElementLayoutImageView">@style/a_list_element_layout_image_view_white</item>
-        <item name="aListElementLayoutAddButton">@style/a_list_element_layout_add_button_white</item>
+        <item name="aListElementLayoutTextView">@style/a_list_element_layout_text_view_dark</item>
+        <item name="aListElementLayoutImageView">@style/a_list_element_layout_image_view_dark</item>
+        <item name="aListElementLayoutAddButton">@style/a_list_element_layout_add_button_dark</item>
 
-        <item name="aEnterExerciseNameTextView">@style/a_enter_exercise_name_text_view_white</item>
-        <item name="aEnterExerciseNameImageView">@style/a_enter_exercise_name_image_view_white</item>
-        <item name="aEnterExerciseNameLinearLayout">@style/a_enter_exercise_name_linear_layout_white</item>
+        <item name="aEnterExerciseNameTextView">@style/a_enter_exercise_name_text_view_dark</item>
+        <item name="aEnterExerciseNameImageView">@style/a_enter_exercise_name_image_view_dark</item>
+        <item name="aEnterExerciseNameLinearLayout">@style/a_enter_exercise_name_linear_layout_dark</item>
 
 
-        <item name="aExerciseTextView">@style/a_activity_exercise_white</item>
-        <item name="aExercisePicker">@style/a_activity_exercise_picker_white</item>
+        <item name="aExerciseTextView">@style/a_activity_exercise_dark</item>
+        <item name="aExercisePicker">@style/a_activity_exercise_picker_dark</item>
     </style>
 </resources>

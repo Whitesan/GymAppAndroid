@@ -19,6 +19,7 @@
     <!-- element_trainings_list.xml -->
     <attr name="aElementTrainingsListTextView" format="reference" />
     <attr name="aElementTrainingsListImageView" format="reference" />
+    <attr name="aElementTrainingsCardView" format="reference" />
 
     <!-- element_exercises_list.xml -->
     <attr name="aElementExercisesListTextView" format="reference" />
