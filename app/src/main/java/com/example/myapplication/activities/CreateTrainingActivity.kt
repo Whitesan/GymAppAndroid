@@ -71,8 +71,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
         createRecyclerView()
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
-            startActivity(  Intent(applicationContext, CreateTrainingActivity::class.java))
-            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+           onBackPressed()
         }
             val endButton = findViewById<Button>(R.id.endCreatingExercises)
             endButton.setOnClickListener {
