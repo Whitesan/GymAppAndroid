@@ -18,9 +18,10 @@ class CalendarActivity : AppWindowActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
-        val button = findViewById<ImageView>(R.id.backCalendar)
+        val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener{
             val intent =  Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)

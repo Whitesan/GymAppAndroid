@@ -49,9 +49,10 @@ class TrainingActivity : AppWindowActivity() {
     private lateinit var actualExercise: Exercise
     private var firstWindow = true
     override fun onCreate(savedInstanceState: Bundle?) {
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
-        val button = findViewById<ImageView>(R.id.backTraining)
+        val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener {
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
@@ -77,7 +78,7 @@ class TrainingActivity : AppWindowActivity() {
             todayTraining = trainings.getTrainingByDay(null)
         }
         if (todayTraining != null) {
-            val title: TextView = findViewById(R.id.TitleTrainingName)
+            val title: TextView = findViewById(R.id.navBarTitle)
             title.text = todayTraining?.getName()
             actualExercise = (todayTraining as Training).getExercises()[actualExerciseIndex++]
         } else {
