@@ -66,6 +66,9 @@
 
     <!-- settings_dialog.xml | MainActivity.kt -->
     <string name="SD_language">Język</string>
+    <string name="SD_theme">Motyw</string>
+    <string name="SD_dark">Ciemny</string>
+    <string name="SD_light">Jasny</string>
     <string name="SD_polish">Polski</string>
     <string name="SD_english">Angielski</string>
     <string name="MA_name">Ustawienia</string>

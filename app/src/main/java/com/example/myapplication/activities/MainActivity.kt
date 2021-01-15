@@ -19,7 +19,7 @@ import com.example.myapplication.R
 @Suppress("DEPRECATION")
 class MainActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme() /*Exclusive for MainActivity.kt*/
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val settings = findViewById<ImageView>(R.id.navBarAction)
@@ -50,8 +50,6 @@ class MainActivity : AppWindowActivity() {
         calendar.setOnClickListener {
             startActivity(Intent(applicationContext, CalendarActivity::class.java))
             overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
-
-
         }
         getLangPref()
     }
@@ -91,12 +89,22 @@ class MainActivity : AppWindowActivity() {
         }
         return R.id.en
     }
+    private fun getThemeIdByTheme(themeId: Int): Int {
+        when (themeId) {
+            Constants.THEME_LIGHT -> return R.id.light
+            Constants.THEME_DARK -> return R.id.dark
+        }
+        return R.id.light
+    }
 
     private fun prepareView(view: View) {
+        //en/pl lang
         val selectedLang = view.findViewById<RadioButton>(getLangIdByStr(Constants.LANG_CURRENT))
         selectedLang.isChecked = true
 
         //night/light mode
+        val selectedTheme = view.findViewById<RadioButton>(getThemeIdByTheme(Constants.THEME_CURRENT))
+        selectedTheme.isChecked = true
     }
 
     private fun settingsWindowDialog() {
@@ -111,18 +119,27 @@ class MainActivity : AppWindowActivity() {
         builder.setTitle(title)
         builder.setView(view)
         builder.setPositiveButton(save) { _, _ ->
-            val radioGroup = view.findViewById<RadioGroup>(R.id.languageRadios)
-            val id = radioGroup.checkedRadioButtonId
-            val radioButton = view.findViewById<RadioButton>(id)
-            setLangPref(radioButton.tag.toString())
-            Log.i("settings", "saved")
+            //Language
+            var radioGroup = view.findViewById<RadioGroup>(R.id.languageRadios)
+            var id = radioGroup.checkedRadioButtonId
+            var radioButton = view.findViewById<RadioButton>(id)
+            var tag = radioButton.tag.toString()
+            setLangPref(tag)
+
+            //Theme
+            radioGroup = view.findViewById<RadioGroup>(R.id.themeRadios)
+            id = radioGroup.checkedRadioButtonId
+            radioButton = view.findViewById<RadioButton>(id)
+            tag = radioButton.tag.toString()
+            when(tag) {
+                "dark" -> if(setThemePref(Constants.THEME_DARK)) restartActivity()
+                "light" -> if(setThemePref(Constants.THEME_LIGHT)) restartActivity()
+            }
         }
 
         builder.setNegativeButton(cancel) { _, _ ->
-            Log.i("settings", "cancelled")
             return@setNegativeButton
         }
         builder.show()
     }
-
 }

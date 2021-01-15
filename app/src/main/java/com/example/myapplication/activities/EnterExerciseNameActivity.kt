@@ -20,7 +20,7 @@ class EnterExerciseNameActivity : AppWindowActivity() {
     private var part:Part?=null
     private lateinit var selectedTypeView : LinearLayout // selected type Container
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_enter_exercise_name)
 

@@ -18,6 +18,7 @@ class SelectAnotherTrainingActivity : AppWindowActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setActivityTheme()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_select_another_training)

@@ -50,4 +50,27 @@ open class AppWindowActivity : AppCompatActivity() {
         val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(this.windowToken, 0)
     }
+
+    /* ----------- Theme ----------- */
+    protected fun setThemePref(theme: Int): Boolean{
+        if(theme == Constants.THEME_CURRENT)
+            return false
+        val pref = this.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
+        with(pref.edit()) {
+            putInt(Constants.THEME, theme)
+            apply()
+        }
+        Constants.THEME_CURRENT = theme
+        return  true
+    }
+    private fun getThemePref(): Int{
+        val pref = this.getSharedPreferences(Constants.PREFERENCE, Context.MODE_PRIVATE)
+        return pref.getInt(Constants.THEME, Constants.THEME_LIGHT)
+    }
+    protected fun setActivityTheme(){
+        val theme = getThemePref()
+        if(Constants.THEME_CURRENT == -1)
+            Constants.THEME_CURRENT = theme
+        this.setTheme(theme)
+    }
 }

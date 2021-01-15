@@ -39,7 +39,7 @@ class CreateTrainingActivity : AppWindowActivity(), View.OnTouchListener {
     private lateinit var itemTouchHelper: ItemTouchHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         adapter.setHasStableIds(true)
         setContentView(R.layout.activity_create_training)

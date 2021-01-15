@@ -13,15 +13,18 @@ class Constants{
         const val CALENDAR_FILE = "Calendar.json"
         const val CONFIG_FILE = "Config.json"
         const val PARTS_PER_LIST = 3
-        //Language
+
         const val PREFERENCE = "preference.pre";
+        //Language
         const val LANG:String = "lang"
         const val LANG_EN:String = "en"
         const val LANG_PL:String = "pl"
         var LANG_CURRENT = "en"
         var LANG_OLD = "en"
-
-
-
+        //Theme
+        const val THEME = "theme"
+        var THEME_CURRENT = -1
+        const val THEME_LIGHT = R.style.Theme_Material_Light
+        const val THEME_DARK = R.style.Theme_Material_Dark
     }
 }

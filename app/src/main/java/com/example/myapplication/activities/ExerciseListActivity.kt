@@ -14,7 +14,7 @@ import com.example.myapplication.recycler_view.TrainingListAdapter
 @Suppress("DEPRECATION")
 class ExerciseListActivity : AppWindowActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_training_exercises_list)

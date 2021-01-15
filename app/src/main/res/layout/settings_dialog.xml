@@ -37,4 +37,36 @@
         />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SD_theme"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:layout_below="@id/languageRadios"
+        />
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/themeRadios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/theme"
+        >
+        <RadioButton
+            android:id="@+id/dark"
+            android:tag="dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/SD_dark"
+            />
+
+        <RadioButton
+            android:id="@+id/light"
+            android:tag="light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/SD_light"
+            />
+    </RadioGroup>
 </RelativeLayout>

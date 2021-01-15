@@ -13,7 +13,7 @@ import com.example.myapplication.exercises.Exercise
 @Suppress("DEPRECATION")
 class PlannerActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_Material_Light)
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_planner)
         val back = findViewById<ImageView>(R.id.navBarAction)
