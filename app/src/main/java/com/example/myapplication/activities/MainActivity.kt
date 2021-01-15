@@ -144,6 +144,6 @@ class MainActivity : AppWindowActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
+        finishAffinity()
     }
 }
