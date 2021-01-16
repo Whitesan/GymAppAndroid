@@ -72,7 +72,7 @@ class TrainingActivity : AppWindowActivity() {
             firstWindow = false
         } else {
             val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
-            todayTraining = trainings.getTrainingByDay(null)
+            //todayTraining = trainings.getTrainingByDay(null)
         }
         if (todayTraining != null) {
             val title: TextView = findViewById(R.id.TitleTrainingName)

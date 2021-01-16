@@ -3,6 +3,9 @@ package com.example.myapplication.recycler_view
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
+import android.util.Log.INFO
+import android.util.Log.WARN
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,18 +13,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.exercises.Training
-import kotlin.collections.ArrayList
-import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication.TrainingJsonConverter
-import com.example.myapplication.activities.*
+import com.example.myapplication.activities.CalendarActivity
+import com.example.myapplication.activities.CalendarTrainingListActivity
+import com.example.myapplication.activities.CreateTrainingActivity
+import com.example.myapplication.activities.ExerciseListActivity
+import com.example.myapplication.exercises.CurrentDay
+import com.example.myapplication.exercises.Training
 import com.example.myapplication.exercises.Trainings
 
-class TrainingListAdapter(
+class CalendarTrainingListAdapter(
     private val trainingList: ArrayList<Training>,
     private val savePath: String,
-    private val parentView: CalendarTrainingListActivity
-) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
+    private val parentView: CalendarTrainingListActivity,
+    private val currentDay: CurrentDay
+) : RecyclerView.Adapter<CalendarTrainingListAdapter.ViewHolder>() {
     companion object {
         var currentTraining = Training("", ArrayList())
     }
@@ -30,14 +36,14 @@ class TrainingListAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): TrainingListAdapter.ViewHolder {
+    ): CalendarTrainingListAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.element_trainings_list, parent, false)
         return ViewHolder(v)
     }
 
     //this method is binding the data on the list
-    override fun onBindViewHolder(holder: TrainingListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CalendarTrainingListAdapter.ViewHolder, position: Int) {
         holder.bindItems(trainingList[position])
 
         val edit = holder.itemView.findViewById<ImageView>(R.id.editButton)
@@ -67,9 +73,14 @@ class TrainingListAdapter(
         currentTraining = trainingList[id]
 
         val context = holder.itemView.context
-        val intent = Intent(context, ExerciseListActivity::class.java)
+        trainingList[id].getDays().add(currentDay.day!!);
+
+        val trainings = Trainings(trainingList)
+        val json: TrainingJsonConverter = TrainingJsonConverter()
+        json.toJson(trainings, savePath)
+        val intent = Intent(context, CalendarActivity::class.java)
         context.startActivity(intent)
-        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+        parentView.overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
 
     }
 
@@ -105,12 +116,12 @@ class TrainingListAdapter(
         json.toJson(trainings, savePath)
     }
 
-    private fun runEditTrainingWindow(training:Training, context: Context){
+    private fun runEditTrainingWindow(training: Training, context: Context){
         CreateTrainingActivity.exerciseList = ArrayList(training.getExercises())
         CreateTrainingActivity.enteredText = training.getName()
         val intent =  Intent(context, CreateTrainingActivity::class.java)
         parentView.startActivity(intent)
-        parentView.overridePendingTransition(R.anim.fade_in_animation,R.anim.fade_out_animation)
+        parentView.overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation)
 
     }
 
@@ -126,4 +137,6 @@ class TrainingListAdapter(
             trainingName.text = training.getName()
         }
     }
+
+
 }

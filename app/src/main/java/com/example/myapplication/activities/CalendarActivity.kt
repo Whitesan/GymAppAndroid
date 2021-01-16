@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.myapplication.CalendarJsonConverter
@@ -12,6 +13,8 @@ import com.example.myapplication.R
 import com.example.myapplication.exercises.Calendar
 import com.example.myapplication.Constants.Companion.CALENDAR_FILE
 import com.example.myapplication.TrainingJsonConverter
+import com.example.myapplication.exercises.CurrentDay
+import com.example.myapplication.exercises.Trainings
 
 @Suppress("DEPRECATION")
 class CalendarActivity : AppWindowActivity() {
@@ -24,57 +27,29 @@ class CalendarActivity : AppWindowActivity() {
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setBackListener(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
         val listOfDays = findViewById<LinearLayout>(R.id.listOfDays)
-        val json: CalendarJsonConverter = CalendarJsonConverter()
-        val yourFilePath = "$filesDir/${Constants.CALENDAR_FILE}"
+        val json: TrainingJsonConverter = TrainingJsonConverter()
+        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
 
 
-        /*
-        var calendar : Calendar = Calendar()
-        calendar.init()
-        json.toJson(calendar,yourFilePath)
-*/
+        var trainings : Trainings? = json.fromJson(yourFilePath)
 
 
-        var calendar : Calendar? = json.fromJson(yourFilePath)
-        if(calendar == null)
-        {
-            calendar = Calendar()
-            calendar.init()
-            json.toJson(calendar,yourFilePath)
-        }
-        loadCalendar(calendar,listOfDays)
-        applyClickListener(calendar,listOfDays,json)
-
+        loadCalendar(trainings!!,listOfDays)
+        applyClickListener(trainings,listOfDays,json)
 
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        val intent = Intent(applicationContext, MainActivity::class.java)
+
+        startActivity(intent)
         overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
     }
 
-    //fill all training
-    fun initDays(listOfDays : LinearLayout)
-    {
-        for (i in 0 until listOfDays.getChildCount()) {
-            val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
 
-            for(j in 0 until v.childCount)
-            {
-                if(j == 1)
-                {
-                    val c: TextView = v.getChildAt(j) as TextView
-                    c.text = "Add training"
-                    c.setTextColor(Color.parseColor("#510aad3f"))
-                    c.textSize = 30.0f;
-
-                }
-            }
-        }
-    }
-    fun applyClickListener(calendar : Calendar , listOfDays : LinearLayout,json: CalendarJsonConverter)
+    fun applyClickListener(trainings: Trainings, listOfDays : LinearLayout,json: TrainingJsonConverter)
     {
-        val yourFilePath = "$filesDir/${Constants.CALENDAR_FILE}"
+        val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
         for (i in 0 until listOfDays.getChildCount()) {
             val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
 
@@ -84,30 +59,39 @@ class CalendarActivity : AppWindowActivity() {
                 val button: Button = v.getChildAt(2) as Button
                 if(j == 1)
                 {
+                    //Add training onClick
                     name.setOnClickListener {
-                        if (calendar.dayList[i].trainingName == "empty") {
+                        if (name.text == "Add training") {
+                            val currentDay :CurrentDay = CurrentDay()
+                            currentDay.day = i
+                            val intent = Intent(applicationContext, CalendarTrainingListActivity::class.java)
+                            intent.putExtra("extra_object", currentDay)
+                            startActivity(intent)
+
+
                             name.text = "Clicked"
                             button.text = "DELETE"
-                            calendar.dayList[i].trainingName = "clicked"
-                            json.toJson(calendar, yourFilePath)
+
+                            //json.toJson(calendar, yourFilePath)
                         }
                     }
                 }
                 if(j == 2)
                 {
+                    //Delete onCLick
                     button.setOnClickListener {
                         if (button.text == "DELETE") {
-                            calendar.dayList[i].trainingName = "empty"
                             button.text = ""
+                            trainings.getTrainingByDay(i)?.getDays()?.remove(i);
                             name.text = "Add training"
-                            json.toJson(calendar, yourFilePath)
+                            json.toJson(trainings, yourFilePath)
                         }
                     }
                 }
             }
         }
     }
-    fun loadCalendar(calendar : Calendar,listOfDays : LinearLayout)
+    fun loadCalendar(trainings : Trainings,listOfDays : LinearLayout)
     {
         for (i in 0 until listOfDays.getChildCount()) {
             val v: LinearLayout = listOfDays.getChildAt(i) as LinearLayout
@@ -117,15 +101,23 @@ class CalendarActivity : AppWindowActivity() {
                 if(j == 1)
                 {
                     val c: TextView = v.getChildAt(j) as TextView
-                    var trainingName = calendar.dayList[i].trainingName
-                    if(trainingName == "empty")
+                    if(trainings == null)
+                    {
                         c.text = "Add training"
+                    }
                     else
                     {
-                        c.text = trainingName
-                        val button: Button = v.getChildAt(j+1) as Button
-                        button.text = "DELETE"
+                        var training = trainings.getTrainingByDay(i)
+                        if(training== null)
+                            c.text = "Add training"
+                        else
+                        {
+                            c.text = training.getName()
+                            val button: Button = v.getChildAt(j+1) as Button
+                            button.text = "DELETE"
+                        }
                     }
+
 
                 }
             }
