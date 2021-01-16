@@ -67,8 +67,6 @@ class CalendarActivity : AppWindowActivity() {
                             startActivity(intent)
 
 
-                            name.text = "Clicked"
-                            button.text = "DELETE"
 
                             //json.toJson(calendar, yourFilePath)
                         }
