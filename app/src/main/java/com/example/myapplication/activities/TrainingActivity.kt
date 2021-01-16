@@ -75,7 +75,7 @@ class TrainingActivity : AppWindowActivity() {
             todayTraining = trainings.getTrainingByDay(null)
         }
         if (todayTraining != null) {
-            val title: TextView = findViewById(R.id.navBarTitle)
+            val title: TextView = findViewById(R.id.TitleTrainingName)
             title.text = todayTraining?.getName()
             actualExercise = (todayTraining as Training).getExercises()[actualExerciseIndex++]
         } else {
@@ -132,12 +132,8 @@ class TrainingActivity : AppWindowActivity() {
                 selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
                 selectAnotherButton.visibility = View.VISIBLE
                 selectAnotherButton.setOnClickListener {
-                    val intent =
-                        Intent(applicationContext, SelectAnotherTrainingActivity::class.java)
-                    startActivity(intent)
+                    startActivity(Intent(applicationContext, SelectAnotherTrainingActivity::class.java))
                     overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_top)
-
-
                 }
                 val animationDown =
                     AnimationUtils.loadAnimation(context, R.anim.slide_in_left_animation)
@@ -173,7 +169,7 @@ class TrainingActivity : AppWindowActivity() {
     private fun Animation.setLabelAnimListener(context: Context) {
         setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(p0: Animation?) {
-                val title: TextView = findViewById(R.id.plannerTitle)
+                val title: TextView = findViewById(R.id.navBarTitle)
                 val animIn = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_top)
 
                 val animOut = AnimationUtils.loadAnimation(context, R.anim.slide_out_top)
