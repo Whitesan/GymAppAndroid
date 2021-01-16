@@ -153,14 +153,13 @@
                     android:layout_marginRight="50dp"
                     android:layout_marginBottom="20dp"
                     app:cardCornerRadius="50dp"
+                    app:cardBackgroundColor="@color/red"
                     android:layout_weight="3"
-                    android:background="#2c2f33"
                     >
                     <NumberPicker
                         android:id="@+id/repsPicker"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:backgroundTint="@color/whiteTransparent"
                         style="?aExercisePicker"
                         >
                     </NumberPicker>
@@ -175,6 +174,7 @@
                     android:layout_marginRight="50dp"
                     android:layout_marginBottom="20dp"
                     app:cardCornerRadius="50dp"
+                    app:cardBackgroundColor="@color/red"
                     android:layout_weight="3">
 
                     <NumberPicker
