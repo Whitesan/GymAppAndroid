@@ -100,6 +100,7 @@
     <!-- activity_training.xml    -->
     <string name="begin">Begin</string>
     <string name="currentExercise">Current Exercise</string>
-
+    <string name="todo">To do:</string>
+    <string name="done">Done!</string>
 
 </resources>
