@@ -209,6 +209,7 @@
     <!--    activity_training-->
     <style name="a_activity_training_picker_white">
         <item name="android:solidColor">#000000</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:scaleY">1.25</item>
         <item name="android:scaleX">1.25</item>
     </style>
@@ -418,10 +419,12 @@
 
     <!--    activity_training-->
     <style name="a_activity_training_picker_dark">
-        <item name="android:solidColor">#ffffff</item>
-        <item name="android:scaleY">1.15</item>
-        <item name="android:scaleX">1.15</item>
+
+        <item name="android:solidColor">#23272a</item>
+        <item name="android:scaleY">1</item>
+        <item name="android:scaleX">1</item>
     </style>
+
     <!--
 ####################################################################################################
     -->

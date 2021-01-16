@@ -1,5 +1,6 @@
 package com.example.myapplication.activities
 
+import android.R.color
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
+import com.example.myapplication.Constants.Companion.MAX_REPS_PERCENTAGE
 import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
@@ -132,8 +134,13 @@ class TrainingActivity : AppWindowActivity() {
                 selectAnotherButton = findViewById(R.id.selectAnotherExerciseButton)
                 selectAnotherButton.visibility = View.VISIBLE
                 selectAnotherButton.setOnClickListener {
-                    startActivity(Intent(applicationContext, SelectAnotherTrainingActivity::class.java))
-                    overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_top)
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            SelectAnotherTrainingActivity::class.java
+                        )
+                    )
+                    overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_top)
                 }
                 val animationDown =
                     AnimationUtils.loadAnimation(context, R.anim.slide_in_left_animation)
@@ -173,30 +180,33 @@ class TrainingActivity : AppWindowActivity() {
                 val animIn = AnimationUtils.loadAnimation(context, R.anim.slide_in_from_top)
 
                 val animOut = AnimationUtils.loadAnimation(context, R.anim.slide_out_top)
-                animOut.duration = animOut.duration/2
+                animOut.duration = animOut.duration / 2
                 animOut.setAnimationListener(object : Animation.AnimationListener {
                     override fun onAnimationEnd(p0: Animation?) {
                         title.text = todayTraining?.getName()
-                        animIn.duration = animIn.duration/2
+                        animIn.duration = animIn.duration / 2
                         title.startAnimation(animIn)
                         title.isSelected = true
 
                     }
+
                     override fun onAnimationStart(p0: Animation?) {}
                     override fun onAnimationRepeat(p0: Animation?) {}
                 })
-                if(firstWindow){
+                if (firstWindow) {
                     title.startAnimation(animOut)
 
-                }else{
+                } else {
                     title.text = todayTraining?.getName()
                     title.startAnimation(animIn)
                 }
                 title.isSelected = true
 
             }
+
             override fun onAnimationEnd(p0: Animation?) {
             }
+
             override fun onAnimationRepeat(p0: Animation?) {}
         })
     }
@@ -239,10 +249,29 @@ class TrainingActivity : AppWindowActivity() {
         actualExerciseView.isSelected = true
         val actualPartView: TextView = findViewById(R.id.actualPart)
         actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
+        initNumberPickers()
     }
 
     override fun onBackPressed() {
         startActivity(Intent(applicationContext, MainActivity::class.java))
-        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+        overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
     }
+    fun initNumberPickers(){
+        val weightPicker:NumberPicker =  findViewById(R.id.weightPicker)
+        weightPicker.minValue = 0
+        weightPicker.maxValue =MAX_REPS_PERCENTAGE * actualExercise.list[0].reps
+        weightPicker.value= actualExercise.list[0].reps
+
+
+        val repsPicker:NumberPicker =  findViewById(R.id.repsPicker)
+
+        repsPicker.minValue = 0
+        repsPicker.maxValue =MAX_REPS_PERCENTAGE * actualExercise.list[0].weight
+
+        repsPicker.value= actualExercise.list[0].weight
+
+    }
+
+
+
 }
