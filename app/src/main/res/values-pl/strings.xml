@@ -87,4 +87,9 @@
 
     <string name="nameEx">Nazwa</string>
     <string name="typeEx">Partia</string>
+
+    <!-- activity_training.xml    -->
+    <string name="begin">Rozpocznij</string>
+    <string name="currentExercise">Aktualne ćwiczenie</string>
+
 </resources>

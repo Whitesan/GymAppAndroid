@@ -250,27 +250,29 @@ class TrainingActivity : AppWindowActivity() {
         val actualPartView: TextView = findViewById(R.id.actualPart)
         actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
         initNumberPickers()
+
+        val beginButton:Button = findViewById(R.id.beginButton)
+        beginButton.setOnClickListener {
+            startActivity(Intent(applicationContext, BeginExerciseActivity::class.java))
+            overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
+        }
     }
 
     override fun onBackPressed() {
         startActivity(Intent(applicationContext, MainActivity::class.java))
         overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
     }
-    fun initNumberPickers(){
+    private fun initNumberPickers(){
         val weightPicker:NumberPicker =  findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
         weightPicker.maxValue =MAX_REPS_PERCENTAGE * actualExercise.list[0].reps
         weightPicker.value= actualExercise.list[0].reps
-
-
         val repsPicker:NumberPicker =  findViewById(R.id.repsPicker)
-
         repsPicker.minValue = 0
         repsPicker.maxValue =MAX_REPS_PERCENTAGE * actualExercise.list[0].weight
-
         repsPicker.value= actualExercise.list[0].weight
-
     }
+
 
 
 

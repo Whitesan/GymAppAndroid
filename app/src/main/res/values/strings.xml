@@ -93,7 +93,13 @@
     <string name="saturday">Sat</string>
     <string name="sunday">Sun</string>
     <string name="gymapp">Gymapp</string>
-    
+
     <string name="nameEx">Name</string>
     <string name="typeEx">Type</string>
+
+    <!-- activity_training.xml    -->
+    <string name="begin">Begin</string>
+    <string name="currentExercise">Current Exercise</string>
+
+
 </resources>

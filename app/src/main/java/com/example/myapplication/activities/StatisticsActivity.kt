@@ -11,6 +11,7 @@ import com.example.myapplication.R
 @Suppress("DEPRECATION")
 class StatisticsActivity : AppWindowActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setActivityTheme()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
         val button = findViewById<ImageView>(R.id.backStatistics)
