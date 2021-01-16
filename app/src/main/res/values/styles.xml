@@ -206,7 +206,12 @@
         <item name="android:scaleY">1.25</item>
         <item name="android:scaleX">1.25</item>
     </style>
-
+    <!--    activity_training-->
+    <style name="a_activity_training_picker_white">
+        <item name="android:solidColor">#000000</item>
+        <item name="android:scaleY">1.25</item>
+        <item name="android:scaleX">1.25</item>
+    </style>
 
     <!-- ================================================= -->
     <!--                Global dark theme                  -->
@@ -406,6 +411,13 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
     <style name="a_activity_exercise_picker_dark">
+        <item name="android:solidColor">#ffffff</item>
+        <item name="android:scaleY">1.15</item>
+        <item name="android:scaleX">1.15</item>
+    </style>
+
+    <!--    activity_training-->
+    <style name="a_activity_training_picker_dark">
         <item name="android:solidColor">#ffffff</item>
         <item name="android:scaleY">1.15</item>
         <item name="android:scaleX">1.15</item>

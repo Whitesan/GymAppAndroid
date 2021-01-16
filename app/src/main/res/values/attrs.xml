@@ -45,4 +45,7 @@
 
     <attr name="aExerciseTextView" format="reference" />
     <attr name="aExercisePicker" format="reference" />
+    <!-- activity_create_training.xml -->
+    <attr name="aTrainingPicker" format="reference" />
+
 </resources>
