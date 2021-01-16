@@ -30,9 +30,7 @@ class CalendarActivity : AppWindowActivity() {
         val json: TrainingJsonConverter = TrainingJsonConverter()
         val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
 
-
         var trainings : Trainings? = json.fromJson(yourFilePath)
-
 
         loadCalendar(trainings!!,listOfDays)
         applyClickListener(trainings,listOfDays,json)

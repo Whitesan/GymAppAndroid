@@ -3,24 +3,32 @@ package com.example.myapplication.recycler_view
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.activities.ExerciseListActivity
 import com.example.myapplication.exercises.Training
+import java.util.*
 import kotlin.collections.ArrayList
+import android.content.ContextWrapper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import com.example.myapplication.TrainingJsonConverter
-import com.example.myapplication.activities.*
+import com.example.myapplication.activities.AppWindowActivity
+import com.example.myapplication.activities.CreateTrainingActivity
+import com.example.myapplication.activities.TrainingsListActivity
 import com.example.myapplication.exercises.Trainings
 
 class TrainingListAdapter(
     private val trainingList: ArrayList<Training>,
     private val savePath: String,
-    private val parentView: CalendarTrainingListActivity
+    private val parentView: TrainingsListActivity
 ) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
     companion object {
         var currentTraining = Training("", ArrayList())
