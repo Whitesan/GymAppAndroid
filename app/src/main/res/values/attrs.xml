@@ -24,6 +24,7 @@
     <!-- element_exercises_list.xml -->
     <attr name="aElementExercisesListTextView" format="reference" />
     <attr name="aElementExercisesListTextOpView" format="reference" />
+    <attr name="aElementExercisesListImageView" format="reference" />
 
     <!-- sub_element_exercises_list.xml -->
     <attr name="aSubElementExercisesListTextView" format="reference" />
@@ -43,8 +44,10 @@
     <attr name="aEnterExerciseNameImageView" format="reference" />
     <attr name="aEnterExerciseNameLinearLayout" format="reference" />
 
+    <!-- activity_exercise.xml -->
     <attr name="aExerciseTextView" format="reference" />
     <attr name="aExercisePicker" format="reference" />
+    <attr name="aExercisePickerCardView" format="reference" />
 
     <!-- activity_calendar_trainings_list.xml element_calendar_trainings_list.xml -->
     <attr name="aCalendarTextView" format="reference" />

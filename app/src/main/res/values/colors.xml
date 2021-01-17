@@ -12,19 +12,30 @@
     <color name="almost_transparent">#10FFFFFF</color>
     <color name="mild_transparent">#90FFFFFF</color>
     <color name="text_transpatentish">#40FFFFFF</color>
-    <color name="light_gray">#545350</color><![CDATA[
-    color>
+    <color name="light_gray">#545350</color>
+
+    <!-- ExerciseActivity.kt -->
+    <color name="newBlue">#7289da</color>
+    <color name="newGreen">#00af91</color>
+    <color name="newBlack">#2c2f33</color>
+    <color name="newRed">#ef4f4f</color>
+    <![CDATA[color>
 ]]>
+
+
 
     <!-- Light/Dark mode design -->
     <color name="theme_white">#ffffff</color>
     <color name="theme_black">#000000</color>
+
     <color name="theme_background_white">#E6E6E6</color>
+    <color name="theme_background_dark">#23272a</color>
+
     <color name="theme_background_nav_white">#7289da</color>
+    <color name="theme_background_nav_dark">#2c2f33</color>
+
     <color name="theme_white_text">#707070</color>
     <color name="theme_white_text_hint">#404040</color>
-    <color name="theme_background_dark">#23272a</color>
-    <color name="theme_background_nav_dark">#2c2f33</color>
     <color name="theme_dark_text">#99aab5</color>
 
 

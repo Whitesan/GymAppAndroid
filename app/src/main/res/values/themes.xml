@@ -50,6 +50,7 @@
         <!-- element_exercises_list.xml -->
         <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_white</item>
         <item name="aElementExercisesListTextOpView">@style/a_element_exercises_list_text_view_op_white</item>
+        <item name="aElementExercisesListImageView">@style/a_element_exercises_list_image_view_white</item>
 
         <!-- sub_element_exercises_list.xml -->
         <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_white</item>
@@ -72,6 +73,7 @@
 
         <item name="aExerciseTextView">@style/a_activity_exercise_white</item>
         <item name="aExercisePicker">@style/a_activity_exercise_picker_white</item>
+        <item name="aExercisePickerCardView">@style/a_activity_exercise_picker_card_view_white</item>
 
         <!-- activity_calendar_trainings_list.xml element_calendar_trainings_list.xml -->
         <item name="aCalendarTextView">@style/a_calendar_text_view_white</item>
@@ -107,6 +109,7 @@
         <!-- element_exercises_list.xml -->
         <item name="aElementExercisesListTextView">@style/a_element_exercises_list_text_view_dark</item>
         <item name="aElementExercisesListTextOpView">@style/a_element_exercises_list_text_view_op_dark</item>
+        <item name="aElementExercisesListImageView">@style/a_element_exercises_list_image_view_dark</item>
 
         <!-- sub_element_exercises_list.xml -->
         <item name="aSubElementExercisesListTextView">@style/a_sub_element_exercises_list_text_view_dark</item>
@@ -126,9 +129,10 @@
         <item name="aEnterExerciseNameImageView">@style/a_enter_exercise_name_image_view_dark</item>
         <item name="aEnterExerciseNameLinearLayout">@style/a_enter_exercise_name_linear_layout_dark</item>
 
-
+        <!-- activity_exercise.xml -->
         <item name="aExerciseTextView">@style/a_activity_exercise_dark</item>
         <item name="aExercisePicker">@style/a_activity_exercise_picker_dark</item>
+        <item name="aExercisePickerCardView">@style/a_activity_exercise_picker_card_view_dark</item>
 
         <!-- activity_calendar_trainings_list.xml element_calendar_trainings_list.xml -->
         <item name="aCalendarTextView">@style/a_calendar_text_view_dark</item>

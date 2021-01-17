@@ -137,7 +137,7 @@ class ExerciseActivity : AppWindowActivity() {
                 val b = seriesPicker[seriesCounter - 1] as Button
                 weightPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].weight
                 repsPicker.value = exercise.list[Integer.valueOf(b.text as String) - 1].reps
-                b.setBackgroundDrawable(resources.getDrawable(R.color.blue))
+                b.setBackgroundDrawable(resources.getDrawable(R.color.newBlue))
             }
         }
     }
@@ -170,7 +170,7 @@ class ExerciseActivity : AppWindowActivity() {
         for(i in 0..list.childCount -2)
         {
             val temp = list.getChildAt(i) as Button
-            temp.setBackgroundDrawable(resources.getDrawable(R.color.graphite))
+            temp.setBackgroundDrawable(resources.getDrawable(R.color.newBlack))
         }
         //setting onCLick listener
         if(button.text == "+")
@@ -187,7 +187,7 @@ class ExerciseActivity : AppWindowActivity() {
 
                  seriesScroll.post(Runnable { seriesScroll.fullScroll(HorizontalScrollView.FOCUS_RIGHT) })
              }
-            button.setBackgroundDrawable(resources.getDrawable(R.color.green))
+            button.setBackgroundDrawable(resources.getDrawable(R.color.newGreen))
 
             list.addView(button)
 
@@ -202,16 +202,16 @@ class ExerciseActivity : AppWindowActivity() {
                     if(button.text == temp.text)
                         continue
                     else
-                        temp.setBackgroundDrawable(resources.getDrawable(R.color.graphite))
+                        temp.setBackgroundDrawable(resources.getDrawable(R.color.newBlack))
 
                 }
-                button.setBackgroundDrawable(resources.getDrawable(R.color.blue))
+                button.setBackgroundDrawable(resources.getDrawable(R.color.newBlue))
 
                 selectedSeries = Integer.valueOf(button.text as String)
                 weightPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].weight
                 repsPicker.value = exercise.list[Integer.valueOf(button.text as String) - 1].reps
             }
-            button.setBackgroundDrawable(resources.getDrawable(R.color.blue))
+            button.setBackgroundDrawable(resources.getDrawable(R.color.newBlue))
             selectedSeries = Integer.valueOf(button.text as String)
             val buttonText = button.text as String
             if(!edit || ready)

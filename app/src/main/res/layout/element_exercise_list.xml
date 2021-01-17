@@ -29,7 +29,8 @@
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:width="50dp"
-                    android:padding="5dp" />
+                    android:padding="5dp"
+                    style="?aElementExercisesListImageView"/>
 
                 <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
