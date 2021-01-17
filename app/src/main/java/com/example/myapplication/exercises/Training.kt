@@ -1,11 +1,13 @@
 package com.example.myapplication.exercises
 
 import java.io.Serializable
+import java.time.LocalDate
 
 
 class Training(private var name:String, private var exerciseList :ArrayList<Exercise>) : Serializable
 {
     private var day: Int? = null
+    private var dateInMillis:Long? = null
     fun getName (): String
     {
         return name;
@@ -14,11 +16,11 @@ class Training(private var name:String, private var exerciseList :ArrayList<Exer
     {
         return exerciseList.toString()
     }
-    fun setDay(day:Int?){
-        this.day=day
+    fun setDate(){
+        this.dateInMillis=System.currentTimeMillis()
     }
-    fun getDay():Int?{
-        return day;
+    fun getDate():Long?{
+        return dateInMillis
     }
     fun getExercises():ArrayList<Exercise>{
         return exerciseList
