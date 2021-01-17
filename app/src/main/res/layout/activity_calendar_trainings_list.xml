@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Planner -> Trainings List -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CalendarActivity"
+    tools:context=".activities.TrainingsListActivity"
     style="?mainBackground"
     android:orientation="vertical"
     android:layout_weight="100"
 
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -31,38 +31,33 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:text="@string/calendar"
+            android:text="@string/trainings"
             style="?navTextViewStyle"
             />
-        <Space
+        <ImageView
+            android:id="@+id/navBarRemove"
+            android:src="@drawable/delete_icon"
             android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="?navImageViewStyle"
+            />
     </LinearLayout>
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="92"
-        android:orientation="vertical">
-
+        >
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_days"
+            android:id="@+id/rv_training_list"
+            android:layoutAnimation="@anim/recycler_layout_animation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true" />
-
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_weight="1"
-
-        >
     </RelativeLayout>
 </LinearLayout>
+
+

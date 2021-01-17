@@ -26,38 +26,23 @@ class CalendarTrainingListAdapter(
     private val trainingList: ArrayList<Training>,
     private val savePath: String,
     private val parentView: CalendarTrainingListActivity,
-    private val currentDay: CurrentDay
+    private val currentDay: Int
 ) : RecyclerView.Adapter<CalendarTrainingListAdapter.ViewHolder>() {
-    companion object {
-        var currentTraining = Training("", ArrayList())
-    }
 
     //this method is returning the view for each item in the list
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CalendarTrainingListAdapter.ViewHolder {
+    ): ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.element_trainings_list, parent, false)
+            .inflate(R.layout.element_calendar_trainings_list, parent, false)
         return ViewHolder(v)
     }
 
     //this method is binding the data on the list
-    override fun onBindViewHolder(holder: CalendarTrainingListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(trainingList[position])
 
-        val edit = holder.itemView.findViewById<ImageView>(R.id.editButton)
-        val delete = holder.itemView.findViewById<ImageView>(R.id.deleteListItem)
-
-        edit.setOnClickListener {
-            runEditTrainingWindow(trainingList[holder.adapterPosition], holder.itemView.context)
-        }
-
-
-        val builder = AlertDialog.Builder(holder.itemView.context, R.style.AlertDialog)
-        delete.setOnClickListener {
-            deleteDialogAction(builder, holder.adapterPosition)
-        }
 
         holder.itemView.setOnClickListener {
             onClickTraining(holder)
@@ -70,59 +55,22 @@ class CalendarTrainingListAdapter(
 
     private  fun onClickTraining(holder: ViewHolder){
         val id = holder.adapterPosition
-        currentTraining = trainingList[id]
 
         val context = holder.itemView.context
-        trainingList[id].getDays().add(currentDay.day!!);
+
+        for(t : Training in trainingList)
+            if(t.hasDay(currentDay))
+                t.getDays().remove(currentDay);
+
+        trainingList[id].getDays().add(currentDay);
 
         val trainings = Trainings(trainingList)
-        val json: TrainingJsonConverter = TrainingJsonConverter()
+        val json = TrainingJsonConverter()
         json.toJson(trainings, savePath)
+
         val intent = Intent(context, CalendarActivity::class.java)
         context.startActivity(intent)
         parentView.overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
-
-    }
-
-    private  fun deleteDialogAction(builder: AlertDialog.Builder, position: Int){
-        val res = parentView.resources
-        val title = res.getString(R.string.TLA_Title_Dialog)
-        val msg = res.getString(R.string.TLA_Msg_Dialog)
-        val name = trainingList[position].getName()
-        val yes = res.getString(R.string.TLA_YES)
-        val no = res.getString(R.string.TLA_NO)
-
-        builder.setTitle(title)
-        builder.setMessage("$msg $name?")
-
-        builder.setPositiveButton(yes) { dialog, which ->
-            removeItemPermanent(position)
-        }
-
-        builder.setNegativeButton(no) { dialog, which ->
-            return@setNegativeButton
-        }
-        builder.show()
-    }
-
-    private fun removeItemPermanent(position: Int) {
-        trainingList.removeAt(position)
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, itemCount)
-
-        //Save to JSON
-        val trainings = Trainings(trainingList)
-        val json: TrainingJsonConverter = TrainingJsonConverter()
-        json.toJson(trainings, savePath)
-    }
-
-    private fun runEditTrainingWindow(training: Training, context: Context){
-        CreateTrainingActivity.exerciseList = ArrayList(training.getExercises())
-        CreateTrainingActivity.enteredText = training.getName()
-        val intent =  Intent(context, CreateTrainingActivity::class.java)
-        parentView.startActivity(intent)
-        parentView.overridePendingTransition(R.anim.fade_in_animation, R.anim.fade_out_animation)
-
     }
 
     //this method is giving the size of the list

@@ -45,4 +45,9 @@
 
     <attr name="aExerciseTextView" format="reference" />
     <attr name="aExercisePicker" format="reference" />
+
+    <!-- activity_calendar_trainings_list.xml element_calendar_trainings_list.xml -->
+    <attr name="aCalendarTextView" format="reference" />
+    <attr name="aCalendarTextViewTwo" format="reference" />
+    <attr name="aCalendarCardView" format="reference" />
 </resources>

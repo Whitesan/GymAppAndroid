@@ -19,27 +19,26 @@ import com.example.myapplication.recycler_view.TrainingListAdapter
 
 @Suppress("DEPRECATION")
 class CalendarTrainingListActivity : AppWindowActivity() {
-    companion object {
-        var trainingsGuiList = ArrayList<Training>()
-        var trainingsList: Trainings = Trainings(ArrayList())
-        var editedIndex = -1
-        lateinit var currentDay : CurrentDay
-    }
+    private var day: Int = -1
+    private lateinit var trainingsList : Trainings
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setActivityTheme()
         super.onCreate(savedInstanceState)
-        currentDay = intent.extras?.get("extra_object") as CurrentDay
-        Log.d("Tag", Integer.toString(currentDay.day!!))
 
-        setContentView(R.layout.activity_trainings_list)
+        day = intent.extras?.get("day") as Int
+        Log.d("Tag", day.toString())
+
+        setContentView(R.layout.activity_calendar_trainings_list)
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener{onBackPressed()}
 
+        val buttonDel = findViewById<ImageView>(R.id.navBarRemove)
+        buttonDel.setOnClickListener{onDeletePressed()}
+
         //Loading list from JSON file
         //List is using by recycle_viewer
-        trainingsList = TrainingJsonConverter.loadTrainingJson("$filesDir/Training.json")
-        trainingsGuiList = trainingsList.trainingList
+        trainingsList = TrainingJsonConverter.loadTrainingJson("$filesDir/${Constants.TRAINING_FILE}")
 
         createVisualTrainingsList()
     }
@@ -47,12 +46,28 @@ class CalendarTrainingListActivity : AppWindowActivity() {
     private fun createVisualTrainingsList() {
         val recyclerView = findViewById<RecyclerView>(R.id.rv_training_list)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = CalendarTrainingListAdapter(trainingsGuiList, "$filesDir/${Constants.TRAINING_FILE}", this,currentDay)
+        recyclerView.adapter = CalendarTrainingListAdapter(trainingsList.trainingList, "$filesDir/${Constants.TRAINING_FILE}", this, day)
     }
 
-    override fun onBackPressed() {
+    /*Remove current day from trainings just by iterate over all of them*/
+    private fun onDeletePressed(){
+        val tl : ArrayList<Training> = trainingsList.trainingList
 
-        startActivity(Intent(applicationContext, CalendarActivity::class.java))
-        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+        for(t : Training in tl){
+            if(t.hasDay(day))
+                t.getDays().remove(day);
+        }
+
+        val trainings = Trainings(tl)
+        val json: TrainingJsonConverter = TrainingJsonConverter()
+        json.toJson(trainings, "$filesDir/${Constants.TRAINING_FILE}")
+
+        //Remove and back to calendar
+        onBackPressed()
+    }
+    override fun onBackPressed() {
+        val intent =Intent(applicationContext, CalendarActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
     }
 }

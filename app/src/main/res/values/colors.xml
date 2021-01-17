@@ -16,9 +16,19 @@
     color>
 ]]>
 
-    <!-- Light mode design -->
-    <color name="light_nav_background">#1452f5</color>
-    <color name="light_main_background">#f8f9fa</color>
-    <color name="light_card_background">#ffffff</color>
+    <!-- Light/Dark mode design -->
+    <color name="theme_white">#ffffff</color>
+    <color name="theme_black">#000000</color>
+    <color name="theme_background_white">#E6E6E6</color>
+    <color name="theme_background_nav_white">#7289da</color>
+    <color name="theme_white_text">#707070</color>
+    <color name="theme_white_text_hint">#404040</color>
+    <color name="theme_background_dark">#23272a</color>
+    <color name="theme_background_nav_dark">#2c2f33</color>
+    <color name="theme_dark_text">#99aab5</color>
+
+
+
+
 
 </resources>
