@@ -2,6 +2,7 @@ import android.content.Intent
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,13 +63,8 @@ class CalendarAdapter(
                 }
             }
             if(id == -1L){
-                var params = d.layoutParams
-                params.height = 70
-                d.layoutParams = params
-
-                params = tr.layoutParams
+                d.height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 70f, context.resources.displayMetrics).toInt()
                 tr.height = 0
-                tr.layoutParams = params
             }
 
             (itemView.findViewById(R.id.mainCard) as CardView).setOnClickListener{
