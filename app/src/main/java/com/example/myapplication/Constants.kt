@@ -14,6 +14,8 @@ class Constants{
         const val CONFIG_FILE = "Config.json"
         const val PARTS_PER_LIST = 3
 
+        const val MAX_REPS_PERCENTAGE = 2
+
         const val PREFERENCE = "preference.pre";
         //Language
         const val LANG:String = "lang"

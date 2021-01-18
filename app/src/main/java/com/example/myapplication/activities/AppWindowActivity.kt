@@ -1,21 +1,15 @@
 package com.example.myapplication.activities
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
-import android.content.res.Resources
-import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
+import android.os.Build
 import android.view.ContextThemeWrapper
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Constants
-import com.example.myapplication.R
 import java.util.*
 
 
@@ -39,8 +33,10 @@ open class AppWindowActivity : AppCompatActivity() {
         }
     }
      private fun hideSystemUI() {
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+         window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        )
     }
     final override fun onResume() {
         super.onResume()
@@ -74,11 +70,11 @@ open class AppWindowActivity : AppCompatActivity() {
             Constants.THEME_CURRENT = theme
         this.setTheme(theme)
     }
-    protected fun View.setBackListener(enterAnim:Int?,exitAnim:Int?){
+    protected fun View.setBackListener(enterAnim: Int?, exitAnim: Int?){
         setOnClickListener{
             onBackPressed();
             if(enterAnim!= null && exitAnim!=null)
-                overridePendingTransition(enterAnim,exitAnim)
+                overridePendingTransition(enterAnim, exitAnim)
         }
     }
 }

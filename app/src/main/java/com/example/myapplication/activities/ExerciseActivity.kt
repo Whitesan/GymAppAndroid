@@ -249,7 +249,6 @@ class ExerciseActivity : AppWindowActivity() {
         if(edit){
             startActivity(  Intent(applicationContext, CreateTrainingActivity::class.java))
             overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
-
         } else{
             startActivity( Intent(applicationContext, EnterExerciseNameActivity::class.java))
             overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
