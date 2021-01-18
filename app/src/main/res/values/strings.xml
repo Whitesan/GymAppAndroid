@@ -107,4 +107,5 @@
     <string name="of"> of </string>
     <string name="exerciseTime"> exercise time </string>
     <string name="restTime"> rest time </string>
+    <string name="finish">finish</string>
 </resources>

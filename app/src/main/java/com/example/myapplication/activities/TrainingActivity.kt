@@ -55,7 +55,7 @@ class TrainingActivity : AppWindowActivity() {
          var firstOpen= true
          var finish = false
     }
-    private lateinit var actualExercise: Exercise
+    private  var actualExercise: Exercise? = null
     private lateinit var actualSet: Series
     private lateinit var selectAnotherButton: Button
     private var todayTraining: Training? = null
@@ -286,18 +286,26 @@ class TrainingActivity : AppWindowActivity() {
         screen.visibility = View.VISIBLE
         screen.startAnimation(animIn)
         val actualExerciseView: TextView = findViewById(R.id.actualExercise)
-        actualExerciseView.text = actualExercise.getName()
+        actualExerciseView.text = actualExercise?.getName()
         actualExerciseView.isSelected = true
         val actualPartView: TextView = findViewById(R.id.actualPart)
-        actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
+        actualPartView.text = this.getText((actualExercise?.getPart() as Part).getStringId())
         initNumberPickers()
         startClock(null)
+        if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 == todayTraining!!.getExercises().size
+            && BeginExerciseActivity.actualSetIndex  >= actualExercise!!.list.size) {
+            beginButton.text = getText(R.string.finish)
+        }
+
+
     }
 
 
     private fun openBeginExerciseActivity(){
+        if(actualExercise == null)
+                actualExercise= todayTraining!!.getExercises()[0]
         if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 == todayTraining!!.getExercises().size
-            && BeginExerciseActivity.actualSetIndex  == actualExercise.list.size){
+            && BeginExerciseActivity.actualSetIndex  == actualExercise?.list?.size){
             trainingFinished()
             val intent = Intent(applicationContext, TrainingActivity::class.java)
             startActivity(intent)
@@ -324,12 +332,12 @@ class TrainingActivity : AppWindowActivity() {
     private fun initNumberPickers() {
         val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
-        weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise.list[0].reps
-        weightPicker.value = actualExercise.list[0].reps
+        weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
+        weightPicker.value = actualExercise!!.list[0].reps
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         repsPicker.minValue = 0
-        repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise.list[0].weight
-        repsPicker.value = actualExercise.list[0].weight
+        repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].weight
+        repsPicker.value = actualExercise!!.list[0].weight
     }
 
     private fun startClock(descStartTime: Int?) {
@@ -344,52 +352,14 @@ class TrainingActivity : AppWindowActivity() {
     }
     private fun setSeriesText(){
         val seriesNumber :TextView = findViewById(R.id.seriesNumber)
-        val str = "${BeginExerciseActivity.actualSetIndex} ${resources.getString(R.string.of)} ${actualExercise.list.size}"
+        val str = "${BeginExerciseActivity.actualSetIndex} ${resources.getString(R.string.of)} ${actualExercise!!.list.size}"
         seriesNumber.text = str
-        if(actualExercise.getPart()!!.isCardio()){
+        if(actualExercise!!.getPart()!!.isCardio()){
             val weightDesc :TextView = findViewById(R.id.weightDesc)
             weightDesc.text = getText(R.string.meters)
         }
 
     }
-//    private fun Training.getCurrentExerciseAndSet(){
-//        if(actualExerciseIndex < getExercises().size){
-//            if(firstOpen){
-//                actualExercise=getExercises()[actualExerciseIndex]
-//                prevExercise= actualExercise
-//            }else
-//            {
-//                prevExercise= actualExercise
-//                actualExercise=getExercises()[actualExerciseIndex]
-//            }
-//
-//
-//        }else{
-//            finish = true
-//            return
-//        }
-//        if(actualSetIndex < actualExercise.list.size){
-//            prevSetIndex = actualSetIndex
-//
-//            if(firstOpen){
-//                actualSet = actualExercise.list[actualSetIndex++]
-//                prevSet = actualSet
-//            }else
-//            {
-//                prevSet = actualSet
-//                actualSet = actualExercise.list[actualSetIndex++]
-//            }
-//
-//        }else{
-//            actualSetIndex=0
-//            prevExerciseIndex = actualExerciseIndex
-//            actualExerciseIndex++
-//            return  getCurrentExerciseAndSet()
-//        }
-//        if(firstOpen){
-//            openBeginExerciseActivity()
-//        }
-//    }
 
     private fun trainingFinished(){
         Log.i("FINISHED","FINISHED!!")

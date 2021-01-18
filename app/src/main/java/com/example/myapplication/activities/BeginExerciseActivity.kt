@@ -41,6 +41,7 @@ class BeginExerciseActivity : AppWindowActivity() {
     }
     private fun getTraining(){
         todayTraining = super.getIntent().getSerializableExtra("todayTraining") as Training
+        actualExercise = todayTraining.getExercises()[0]
         todayTraining.getCurrentExerciseAndSet()
 
     }
@@ -75,11 +76,9 @@ class BeginExerciseActivity : AppWindowActivity() {
             .start(100,clock)
     }
     private fun Training.getCurrentExerciseAndSet(){
-        Log.i("TESTTSATSDASDASD","$actualExerciseIndex $actualSetIndex ${getExercises().size}")
+
         if(actualExerciseIndex < getExercises().size){
             actualExercise=getExercises()[actualExerciseIndex]
-        }else{
-
         }
         if(actualSetIndex < actualExercise.list.size){
             actualSet = actualExercise.list[actualSetIndex++]

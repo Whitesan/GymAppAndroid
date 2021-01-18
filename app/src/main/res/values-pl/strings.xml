@@ -98,4 +98,5 @@
     <string name="of"> z </string>
     <string name="exerciseTime"> czas ćwiczenia </string>
     <string name="restTime"> czas odpoczynku </string>
+    <string name="finish">Zakoncz</string>
 </resources>
