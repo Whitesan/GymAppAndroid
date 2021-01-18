@@ -93,4 +93,7 @@
     <string name="currentExercise">Aktualne ćwiczenie</string>
     <string name="todo">Do zrobienia:</string>
     <string name="done">Zrobione!</string>
+    <string name="congratulations">Gratulacje!</string>
+    <string name="trainingFinished">trening zakończony!</string>
+    <string name="of"> z </string>
 </resources>

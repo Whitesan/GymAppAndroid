@@ -15,7 +15,7 @@ class Trainings (var trainingList :ArrayList<Training>):Serializable{
     }
     fun getTrainingByDay(day: Int?):Training?{
         for(training in trainingList){
-           if(!training.getDays().isEmpty())
+           if(training.getDays().isNotEmpty())
            {
                for(d in training.getDays())
                {

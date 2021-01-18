@@ -24,7 +24,7 @@
     <string name="selectAnotherTraining">Select another</string>
     <string name="errorTitle">Sorry, </string>
     <string name="errorBody">there is no training for today </string>
-    <string name="seriesNumber">series</string>
+    <string name="seriesNumber">sets</string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Enter name</string>
@@ -40,7 +40,7 @@
     <string name="cardio">Cardio</string>
 
     <!-- Series adapter -->
-    <string name="series">Series</string>
+    <string name="series">Sets</string>
     <string name="reps">Reps</string>
     <string name="weight">Weight</string>
     <string name="minutes">Minutes</string>
@@ -102,5 +102,7 @@
     <string name="currentExercise">Current Exercise</string>
     <string name="todo">To do:</string>
     <string name="done">Done!</string>
-
+    <string name="congratulations">Congratulations!</string>
+    <string name="trainingFinished">training finished!</string>
+    <string name="of"> of </string>
 </resources>

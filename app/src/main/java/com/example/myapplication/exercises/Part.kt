@@ -69,7 +69,9 @@ class Part : Serializable {
         }
         return  0
     }
-
+    fun isCardio():Boolean{
+        return name == "cardio"
+    }
     override fun toString(): String {
         return name[0].toUpperCase().toString() + name.subSequence(1, name.length)
     }

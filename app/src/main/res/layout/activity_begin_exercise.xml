@@ -55,6 +55,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/exerciseName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -130,7 +131,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
-
+                        android:id="@+id/weightDesc"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="@string/weight"
