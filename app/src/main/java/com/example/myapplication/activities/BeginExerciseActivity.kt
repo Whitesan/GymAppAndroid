@@ -2,6 +2,7 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,7 +16,11 @@ class BeginExerciseActivity : AppWindowActivity() {
     private lateinit var actualExercise: Exercise
     private lateinit var actualSet: Series
     private lateinit var todayTraining: Training
+    companion object{
+         var actualExerciseIndex: Int = 0
+         var actualSetIndex: Int = 0
 
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         setActivityTheme()
         super.onCreate(savedInstanceState)
@@ -35,9 +40,9 @@ class BeginExerciseActivity : AppWindowActivity() {
         }
     }
     private fun getTraining(){
-        actualExercise = super.getIntent().getSerializableExtra("Exercise") as Exercise
-        actualSet = super.getIntent().getSerializableExtra("Series")as Series
-        todayTraining = super.getIntent().getSerializableExtra("Training")as Training
+        todayTraining = super.getIntent().getSerializableExtra("todayTraining") as Training
+        todayTraining.getCurrentExerciseAndSet()
+
     }
     private fun setRepsAndWeight(){
         val name:TextView = findViewById(R.id.exerciseName)
@@ -58,6 +63,9 @@ class BeginExerciseActivity : AppWindowActivity() {
     override fun onBackPressed() {
         intent = Intent(applicationContext, TrainingActivity::class.java)
         intent.putExtra("EditTraining",todayTraining)
+        intent.putExtra("Exercise", actualExercise)
+        intent.putExtra("Series", actualSet)
+
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
@@ -65,5 +73,20 @@ class BeginExerciseActivity : AppWindowActivity() {
         val clock: TextView = findViewById(R.id.clock)
         Stopwatch(0,null)
             .start(100,clock)
+    }
+    private fun Training.getCurrentExerciseAndSet(){
+        Log.i("TESTTSATSDASDASD","$actualExerciseIndex $actualSetIndex ${getExercises().size}")
+        if(actualExerciseIndex < getExercises().size){
+            actualExercise=getExercises()[actualExerciseIndex]
+        }else{
+
+        }
+        if(actualSetIndex < actualExercise.list.size){
+            actualSet = actualExercise.list[actualSetIndex++]
+        }else{
+            actualSetIndex=0
+            actualExerciseIndex++
+            return  getCurrentExerciseAndSet()
+        }
     }
 }
