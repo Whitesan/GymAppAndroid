@@ -51,18 +51,21 @@ TODO     layout
 @Suppress("DEPRECATION")
 
 class TrainingActivity : AppWindowActivity() {
-
     companion object{
         var actualExerciseIndex: Int = 0
         var actualSetIndex: Int = 0
-
+        var prevExerciseIndex: Int = 0
+        var prevSetIndex: Int = 0
+         var firstOpen= true
+        var  prevExercise: Exercise? =null
+        var  prevSet: Series? = null
+         lateinit var actualExercise: Exercise
+         lateinit var actualSet: Series
 
     }
-
     private lateinit var selectAnotherButton: Button
     private var todayTraining: Training? = null
-    private lateinit var actualExercise: Exercise
-    private lateinit var actualSet: Series
+
     private var firstWindow = true
     private var finish = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,13 +74,21 @@ class TrainingActivity : AppWindowActivity() {
         setContentView(R.layout.activity_training)
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener { onBackPressed() }
-
         getTraining()
+
+
 
         if (todayTraining != null && firstWindow && !finish) {  //first show training info
             openTrainingInfo()
-        } else if (!firstWindow && !finish) {
-            openTrainingWindow()
+        } else if (!firstWindow ) {
+            if(firstOpen){
+                firstOpen = false
+            }
+            else{
+                openTrainingWindow()
+
+            }
+
         }
     }
 
@@ -88,26 +99,30 @@ class TrainingActivity : AppWindowActivity() {
             trainingFromSelectAnother != null -> {
                 todayTraining = trainingFromSelectAnother as Training
                 firstWindow = false
+                firstOpen = true
                 actualExerciseIndex = 0
+                prevExerciseIndex = 0
                 actualSetIndex = 0
+                prevSetIndex = 0
             }
             editTrainingCopy !=null -> {
                 todayTraining = editTrainingCopy as Training
                 firstWindow = false
-
             }
             else -> {
                 val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
                 todayTraining = trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))?.deepCopy()
                 actualExerciseIndex = 0
                 actualSetIndex = 0
+                prevExerciseIndex = 0
+                prevSetIndex = 0
+                firstOpen = true
             }
         }
         if (todayTraining != null) {
+            todayTraining?.getCurrentExerciseAndSet()
             val title: TextView = findViewById(R.id.TitleTrainingName)
             title.text = todayTraining?.getName()
-            todayTraining?.getCurrentExerciseAndSet()
-
         } else {
             showError()
         }
@@ -262,6 +277,9 @@ class TrainingActivity : AppWindowActivity() {
     }
 
     private fun openTrainingWindow() {
+
+        val beginButton: Button = findViewById(R.id.beginButton)
+        beginButton.beginExerciseListener()
         hideCardView()
         val screen: LinearLayout = findViewById(R.id.TrainingScreen)
         val animIn = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom_animation)
@@ -271,27 +289,28 @@ class TrainingActivity : AppWindowActivity() {
         screen.visibility = View.VISIBLE
         screen.startAnimation(animIn)
         val actualExerciseView: TextView = findViewById(R.id.actualExercise)
-        actualExerciseView.text = actualExercise.getName()
+        actualExerciseView.text = prevExercise!!.getName()
         actualExerciseView.isSelected = true
         val actualPartView: TextView = findViewById(R.id.actualPart)
-        actualPartView.text = this.getText((actualExercise.getPart() as Part).getStringId())
+        actualPartView.text = this.getText((prevExercise!!.getPart() as Part).getStringId())
         initNumberPickers()
-
-        val beginButton: Button = findViewById(R.id.beginButton)
-        beginButton.beginExerciseListener()
-
-
-
         startClock(null)
     }
-    private fun Button.beginExerciseListener(){
-        setOnClickListener{
+
+
+    private fun openBeginExerciseActivity(){
+        if(finish )
+            trainingFinished()
         val intent = Intent(applicationContext, BeginExerciseActivity::class.java)
         intent.putExtra("Exercise",actualExercise)
         intent.putExtra("Series",actualSet)
         intent.putExtra("Training",todayTraining)
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
+    }
+    private fun Button.beginExerciseListener(){
+        setOnClickListener{
+             openBeginExerciseActivity()
         }
     }
     override fun onBackPressed() {
@@ -302,12 +321,12 @@ class TrainingActivity : AppWindowActivity() {
     private fun initNumberPickers() {
         val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
-        weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise.list[0].reps
-        weightPicker.value = actualExercise.list[0].reps
+        weightPicker.maxValue = MAX_REPS_PERCENTAGE * prevExercise!!.list[0].reps
+        weightPicker.value = prevExercise!!.list[0].reps
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         repsPicker.minValue = 0
-        repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise.list[0].weight
-        repsPicker.value = actualExercise.list[0].weight
+        repsPicker.maxValue = MAX_REPS_PERCENTAGE * prevExercise!!.list[0].weight
+        repsPicker.value = prevExercise!!.list[0].weight
     }
 
     private fun startClock(descStartTime: Int?) {
@@ -322,35 +341,61 @@ class TrainingActivity : AppWindowActivity() {
     }
     private fun setSeriesText(){
         val seriesNumber :TextView = findViewById(R.id.seriesNumber)
-        val str:String = "$actualSetIndex ${resources.getString(R.string.of)} ${actualExercise.list.size}"
+        Log.i("QWQWQW","${prevSetIndex+1}")
+        val str = "${prevSetIndex} ${resources.getString(R.string.of)} ${prevExercise!!.list.size}"
         seriesNumber.text = str
+        if(prevExercise!!.getPart()!!.isCardio()){
+            val weightDesc :TextView = findViewById(R.id.weightDesc)
+            weightDesc.text = getText(R.string.meters)
+        }
+
     }
     private fun Training.getCurrentExerciseAndSet(){
-        Log.i("TESTTSATSDASDASD","$actualExerciseIndex $actualSetIndex ${getExercises().size}")
         if(actualExerciseIndex < getExercises().size){
-            actualExercise=getExercises()[actualExerciseIndex]
+            if(firstOpen){
+                actualExercise=getExercises()[actualExerciseIndex]
+                prevExercise= actualExercise
+            }else
+            {
+                prevExercise= actualExercise
+                actualExercise=getExercises()[actualExerciseIndex]
+            }
+
+
         }else{
-            trainingFinished()
+            finish = true
+            return
         }
         if(actualSetIndex < actualExercise.list.size){
-            actualSet = actualExercise.list[actualSetIndex++]
+            prevSetIndex = actualSetIndex
+
+            if(firstOpen){
+                actualSet = actualExercise.list[actualSetIndex++]
+                prevSet = actualSet
+            }else
+            {
+                prevSet = actualSet
+                actualSet = actualExercise.list[actualSetIndex++]
+            }
+
         }else{
             actualSetIndex=0
+            prevExerciseIndex = actualExerciseIndex
             actualExerciseIndex++
-           return  getCurrentExerciseAndSet()
+            return  getCurrentExerciseAndSet()
         }
-
-
+        if(firstOpen){
+            openBeginExerciseActivity()
+        }
     }
 
     private fun trainingFinished(){
-        Log.i("FINISH","$actualExerciseIndex $actualSetIndex ")
         finish = true
         showError()
         val title :TextView = findViewById(R.id.ErrorTitle)
         title.text = resources.getString(R.string.congratulations)
         val body :TextView = findViewById(R.id.ErrorBody)
-        title.text = resources.getString(R.string.trainingFinished)
+        body.text = resources.getString(R.string.trainingFinished)
         todayTraining = null
     }
 }

@@ -23,7 +23,7 @@ class Stopwatch(startTimeSec: Long?, private val maxTimeSec: Long? ) {
     }
 
     private fun addMin(time: Long) {
-        this.min += this.min + time
+        this.min += time
     }
 
     private fun addMillis(time: Long) {

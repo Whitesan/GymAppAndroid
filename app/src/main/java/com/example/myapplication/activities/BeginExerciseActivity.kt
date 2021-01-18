@@ -50,7 +50,7 @@ class BeginExerciseActivity : AppWindowActivity() {
         weight.text = actualSet.weight.toString()
         if(actualExercise.getPart()!!.isCardio()){
             val weightDesc:TextView = findViewById(R.id.weightDesc)
-            weightDesc.text = getString(R.string.cardio)
+            weightDesc.text = getString(R.string.meters)
         }
 
 
