@@ -53,4 +53,7 @@
     <attr name="aCalendarTextView" format="reference" />
     <attr name="aCalendarTextViewTwo" format="reference" />
     <attr name="aCalendarCardView" format="reference" />
+
+    <!-- activity_create_training.xml -->
+    <attr name="aTrainingPicker" format="reference" />
 </resources>

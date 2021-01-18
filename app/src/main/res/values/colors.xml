@@ -14,6 +14,10 @@
     <color name="text_transpatentish">#40FFFFFF</color>
     <color name="light_gray">#545350</color>
 
+    <color name="nav_color_white">#7289da</color>
+    <color name="nav_color_dark">#2c2f33</color>
+    <color name="background_dark">#23272a</color>
+
     <!-- ExerciseActivity.kt -->
     <color name="newBlue">#7289da</color>
     <color name="newGreen">#00af91</color>

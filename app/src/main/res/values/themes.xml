@@ -79,6 +79,9 @@
         <item name="aCalendarTextView">@style/a_calendar_text_view_white</item>
         <item name="aCalendarTextViewTwo">@style/a_calendar_text_view_two_white</item>
         <item name="aCalendarCardView">@style/a_calendar_card_view_white</item>
+
+        <!--    activity_training-->
+        <item name="aTrainingPicker">@style/a_activity_training_picker_white</item>
     </style>
 
     <!-- ================================================= -->
@@ -138,5 +141,8 @@
         <item name="aCalendarTextView">@style/a_calendar_text_view_dark</item>
         <item name="aCalendarTextViewTwo">@style/a_calendar_text_view_two_dark</item>
         <item name="aCalendarCardView">@style/a_calendar_card_view_dark</item>
+
+        <!--    activity_training-->
+        <item name="aTrainingPicker">@style/a_activity_training_picker_dark</item>
     </style>
 </resources>
