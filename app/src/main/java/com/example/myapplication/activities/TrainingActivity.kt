@@ -333,12 +333,12 @@ class TrainingActivity : AppWindowActivity() {
     private fun initNumberPickers() {
         val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
-        weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
-        weightPicker.value = actualExercise!!.list[0].reps
+        weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].weight
+        weightPicker.value = actualSet.reps
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         repsPicker.minValue = 0
-        repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].weight
-        repsPicker.value = actualExercise!!.list[0].weight
+        repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
+        repsPicker.value = actualSet.weight
     }
 
     private fun startClock(descStartTime: Int?) {
