@@ -23,14 +23,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/navBarTitle"
+        <ImageView
+            android:padding="7dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:text="@string/gymapp"
-            style="?navTextViewStyle"
-            />
+            android:src="@drawable/logo1" />
+
 
         <ImageView
             android:id="@+id/navBarAction"
@@ -51,8 +50,8 @@
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="60dp"
             android:layout_weight="70"
             app:columnCount="2"
             app:rowCount="2"
@@ -195,16 +194,17 @@
                         android:layout_weight="5"
                         android:src="@drawable/pencil"
                         style="?aMainImageView"/>
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </androidx.gridlayout.widget.GridLayout>
-
-        <ImageView
-            android:layout_width="wrap_content"
+        <Space
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="22"
-            android:layout_gravity="center"
+            android:layout_weight="10"
             android:src="@drawable/logo1" />
+
     </LinearLayout>
 
 

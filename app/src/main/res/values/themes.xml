@@ -87,7 +87,7 @@
     <!-- ================================================= -->
     <!--                Global dark theme                  -->
     <!-- ================================================= -->
-    <style name="Theme.Material_Dark" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Material_Dark" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="mainBackground">@style/main_background_dark</item>
         <item name="navStyle">@style/nav_style_dark</item>
         <item name="navTextViewStyle">@style/nav_text_view_dark</item>
