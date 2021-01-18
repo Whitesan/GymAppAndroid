@@ -67,11 +67,9 @@ class TrainingActivity : AppWindowActivity() {
         setContentView(R.layout.activity_training)
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setOnClickListener { onBackPressed() }
-        Log.i("FLAG",finish.toString())
 
         getTraining()
 
-        Log.i("FLAG",finish.toString())
 
         if(finish){
             trainingFinished()
@@ -97,19 +95,22 @@ class TrainingActivity : AppWindowActivity() {
                 todayTraining = trainingFromSelectAnother as Training
                 firstWindow = false
                 firstOpen = true
-
+                BeginExerciseActivity.actualSetIndex = 0
+                BeginExerciseActivity.actualExerciseIndex = 0
             }
             editTrainingCopy !=null -> {
                 todayTraining = editTrainingCopy as Training
                 firstWindow = false
                 actualExercise = super.getIntent().getSerializableExtra("Exercise") as Exercise
                 actualSet = super.getIntent().getSerializableExtra("Series")as Series
-
+                finish = false
             }
             else -> {
                 val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
                 todayTraining = trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))?.deepCopy()
                 firstOpen = true
+                BeginExerciseActivity.actualSetIndex = 0
+                BeginExerciseActivity.actualExerciseIndex = 0
             }
         }
         if (todayTraining != null) {
@@ -292,7 +293,7 @@ class TrainingActivity : AppWindowActivity() {
         actualPartView.text = this.getText((actualExercise?.getPart() as Part).getStringId())
         initNumberPickers()
         startClock(null)
-        if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 == todayTraining!!.getExercises().size
+        if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 >= todayTraining!!.getExercises().size
             && BeginExerciseActivity.actualSetIndex  >= actualExercise!!.list.size) {
             beginButton.text = getText(R.string.finish)
         }
@@ -304,8 +305,8 @@ class TrainingActivity : AppWindowActivity() {
     private fun openBeginExerciseActivity(){
         if(actualExercise == null)
                 actualExercise= todayTraining!!.getExercises()[0]
-        if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 == todayTraining!!.getExercises().size
-            && BeginExerciseActivity.actualSetIndex  == actualExercise?.list?.size){
+        if(!firstOpen && BeginExerciseActivity.actualExerciseIndex +1 >= todayTraining!!.getExercises().size
+            && BeginExerciseActivity.actualSetIndex  >= actualExercise!!.list.size){
             trainingFinished()
             val intent = Intent(applicationContext, TrainingActivity::class.java)
             startActivity(intent)
@@ -362,10 +363,7 @@ class TrainingActivity : AppWindowActivity() {
     }
 
     private fun trainingFinished(){
-        Log.i("FINISHED","FINISHED!!")
-
         finish = true
-        Log.i("FINISHED",finish.toString())
         showError()
         val title :TextView = findViewById(R.id.ErrorTitle)
         title.text = resources.getString(R.string.congratulations)
