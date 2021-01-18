@@ -13,33 +13,10 @@ class Trainings (var trainingList :ArrayList<Training>):Serializable{
         }
         return list;
     }
-    fun getTrainingByDay(day: Int?):Training?{
-        for(training in trainingList){
-           if(training.getDays().isNotEmpty())
-           {
-               for(d in training.getDays())
-               {
-                   if(day == d)
-                   {
-                       return training;
-                   }
-
-               }
-           }
-        }
-        return null
-    }
-/*
-    fun getTrainingByDay(day: Int?):Training?{
-        for(training in trainingList){
-            if(training.getDay()==day)
+    fun getTrainingByDay(day: Int):Training?{
+        for(training in trainingList)
+           if(training.hasDay(day))
                 return training
-        }
         return null
     }
-    */
-
-
-
-
 }

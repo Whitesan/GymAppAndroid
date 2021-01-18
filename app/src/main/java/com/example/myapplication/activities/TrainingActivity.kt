@@ -107,7 +107,7 @@ class TrainingActivity : AppWindowActivity() {
             }
             else -> {
                 val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
-                todayTraining = trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))?.deepCopy()
+                todayTraining = trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1)?.deepCopy()
                 firstOpen = true
                 BeginExerciseActivity.actualSetIndex = 0
                 BeginExerciseActivity.actualExerciseIndex = 0
