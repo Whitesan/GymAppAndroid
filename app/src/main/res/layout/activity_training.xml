@@ -297,11 +297,21 @@
                 android:layout_marginTop="15dp"
                 android:background="@color/almost_transparent" />
             <TextView
+                android:layout_marginTop="20dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textAlignment="center"
+                android:textColor="@color/mild_transparent"
+                android:textSize="16sp"
+                android:text="@string/restTime"
+                />
+            <TextView
                 android:id="@+id/clock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="25dp"
-                android:text="00:00:00"
+                android:layout_marginBottom="15dp"
                 android:textAlignment="center"
                 android:textSize="40sp" />
 

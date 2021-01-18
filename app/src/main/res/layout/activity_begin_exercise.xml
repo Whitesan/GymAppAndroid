@@ -99,7 +99,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="3"
-                        android:text="435"
                         android:textAlignment="center"
                         android:textSize="26sp"
 
@@ -125,7 +124,6 @@
                         android:id="@+id/weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="435"
                         android:textAlignment="center"
                         android:textSize="26sp" />
 
@@ -154,7 +152,16 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="15dp"
                     android:background="@color/almost_transparent" />
-
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/mild_transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:text="@string/exerciseTime"
+                    />
                 <TextView
                     android:id="@+id/clock"
                     android:layout_width="match_parent"

@@ -105,4 +105,6 @@
     <string name="congratulations">Congratulations!</string>
     <string name="trainingFinished">training finished!</string>
     <string name="of"> of </string>
+    <string name="exerciseTime"> exercise time </string>
+    <string name="restTime"> rest time </string>
 </resources>
