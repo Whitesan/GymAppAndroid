@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">GymApp</string>
     <string name="calendar">Schedule</string>
-    <string name="trainings">Trainings</string>
+    <string name="trainings">Workouts</string>
     <string name="statistics">Statistics</string>
     <string name="planner">Creator</string>
     <string name="trainingCreator">Creator</string>
-    <string name="enterTrainingName">Enter training name</string>
+    <string name="enterTrainingName">Enter workout name</string>
     <string name="enterExerciseName">Enter exercise name</string>
     <string name="save">Save</string>
     <string name="exercise">Exercise</string>
@@ -13,17 +13,17 @@
     <string name="Continue">Continue</string>
 
     <string name="addNewExercise">+</string>
-    <string name="actPlannerCreateTraining">Create Training</string>
-    <string name="actPlannerTrainingList">Trainings List</string>
+    <string name="actPlannerCreateTraining">Create Workout</string>
+    <string name="actPlannerTrainingList">Workouts List</string>
     <string name="DELETE">Delete</string>
     <string name="selectPartError">"Select part!"</string>
     <string name="chooseType">Select type</string>
     <!-- activity_training.xml -->
     <string name="clickToContinue">"Click to continue"</string>
-    <string name="training">Training</string>
+    <string name="training">Workout</string>
     <string name="selectAnotherTraining">Select another</string>
     <string name="errorTitle">Sorry, </string>
-    <string name="errorBody">there is no training for today </string>
+    <string name="errorBody">there is no workout for today </string>
     <string name="seriesNumber">sets</string>
 
     <!-- activity_enter_exercise_name.xml -->
@@ -47,19 +47,19 @@
     <string name="meters">Meters</string>
 
     <!-- TrainingListAdapter - TLA -->
-    <string name="TLA_Title_Dialog">Delete training</string>
-    <string name="TLA_Msg_Dialog">Are you sure you want to remove training: </string>
+    <string name="TLA_Title_Dialog">Delete workout</string>
+    <string name="TLA_Msg_Dialog">Are you sure you want to remove workout: </string>
     <string name="TLA_YES">YES</string>
     <string name="TLA_NO">NO</string>
 
     <!-- CreateTrainingActivity - CTA -->
-    <string name="CTA_Title_Dialog">Overwrite training</string>
-    <string name="CTA_Msg_1_Dialog">Training with name:</string>
+    <string name="CTA_Title_Dialog">Overwrite workout</string>
+    <string name="CTA_Msg_1_Dialog">Workout with name:</string>
     <string name="CTA_Msg_2_Dialog">already exists. Do you want overwrite it?</string>
     <string name="CTA_YES">YES</string>
     <string name="CTA_NO">NO</string>
     <string name="CTA_Empty_Name_Err">Name cannot be empty!</string>
-    <string name="CTA_Empty_Training_Err">Training cannot be empty!</string>
+    <string name="CTA_Empty_Training_Err">Workout cannot be empty!</string>
 
     <!-- settings_dialog.xml -->
     <string name="SD_language">Language</string>
@@ -103,11 +103,15 @@
     <string name="todo">To do:</string>
     <string name="done">Done!</string>
     <string name="congratulations">Congratulations!</string>
-    <string name="trainingFinished">training finished!</string>
+    <string name="trainingFinished">workout finished!</string>
     <string name="of"> of </string>
     <string name="exerciseTime"> exercise time </string>
     <string name="restTime"> rest time </string>
     <string name="finish">finish</string>
     <string name="mess">Do you want to back to main menu?</string>
     <string name="goBack">Back</string>
+
+    <!-- CalendarActivity.kt -->
+    <string name="no_workout">No workouts</string>
+    <string name="no_workout_msg">There is no workouts available. Do you want to create one?</string>
 </resources>

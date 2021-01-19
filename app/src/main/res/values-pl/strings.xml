@@ -102,4 +102,7 @@
     <string name="mess">Czy chciałbyś wrócić do menu głównego?</string>
     <string name="goBack">Cofnij</string>
 
+    <!-- CalendarActivity.kt -->
+    <string name="no_workout">Brak treningów</string>
+    <string name="no_workout_msg">Brak dostępnych treningów. Czy chcesz stworzyć własny plan treningowy?</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.myapplication.activities
 
 import CalendarAdapter
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -55,10 +56,34 @@ class CalendarActivity : AppWindowActivity() {
         val yourFilePath = "$filesDir/${Constants.TRAINING_FILE}"
         var trainings : Trainings? = json.fromJson(yourFilePath)
 
+        if(trainings != null && trainings.trainingList.isEmpty())
+            noTrainingsAvailable()
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_days)
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         recyclerView.adapter = CalendarAdapter(days, this, trainings!!.trainingList)
     }
 
+    private  fun noTrainingsAvailable(){
+        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        val res = resources
+        val title = res.getString(R.string.no_workout)
+        val msg = res.getString(R.string.no_workout_msg)
+        val yes = res.getString(R.string.TLA_YES)
+        val no = res.getString(R.string.TLA_NO)
+
+        builder.setTitle(title)
+        builder.setMessage("$msg")
+
+        builder.setPositiveButton(yes) { dialog, which ->
+            val intent = Intent(applicationContext, CreateTrainingActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
+        }
+
+        builder.setNegativeButton(no) { dialog, which ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
 }
