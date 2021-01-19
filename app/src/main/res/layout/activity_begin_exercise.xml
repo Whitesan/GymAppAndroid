@@ -149,7 +149,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="80dp"
                     android:layout_marginBottom="15dp"
                     android:background="@color/almost_transparent" />
                 <TextView
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="60sp" />
+                    android:textSize="40sp" />
 
                 <View
                     android:layout_width="match_parent"

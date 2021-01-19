@@ -272,9 +272,7 @@ class TrainingActivity : AppWindowActivity() {
             backToMenu()
         }
     }
-
     private fun openTrainingWindow() {
-
         val beginButton: Button = findViewById(R.id.beginButton)
         beginButton.beginExerciseListener()
         hideCardView()
