@@ -67,8 +67,6 @@ class TrainingActivity : AppWindowActivity() {
         button.setOnClickListener { onBackPressed() }
 
         getTraining()
-
-
         if (finish) {
             trainingFinished()
             finish = false
@@ -76,7 +74,6 @@ class TrainingActivity : AppWindowActivity() {
             openTrainingInfo()
         } else if (firstOpen && todayTraining != null) {
             firstOpen = false
-
             openBeginExerciseActivity()
         } else if (!firstWindow) {
             openTrainingWindow()
@@ -104,13 +101,9 @@ class TrainingActivity : AppWindowActivity() {
             else -> {
                 val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
                 todayTraining =
-                    trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK) - 1)
+                    trainings.getTrainingByDay(Calendar.getInstance().get(Calendar.DAY_OF_WEEK )-1)
                         ?.deepCopy()
                 firstOpen = true
-                if(todayTraining !=null){
-
-                }
-
                 BeginExerciseActivity.actualSetIndex = 0
                 BeginExerciseActivity.actualExerciseIndex = 0
             }
@@ -120,7 +113,6 @@ class TrainingActivity : AppWindowActivity() {
             title.text = todayTraining?.getName()
             finish = false
         } else {
-
             showError()
         }
 
@@ -146,6 +138,7 @@ class TrainingActivity : AppWindowActivity() {
         val cardView: CardView = findViewById(R.id.TrainingInfoCard)
         listView.setSelector(R.color.transparent)
         listView.setOnItemClickListener { _: AdapterView<*>, _: View, _: Int, _: Long ->
+            firstOpen = false
             openBeginExerciseActivity()
         }
         listView.divider = null
@@ -158,7 +151,8 @@ class TrainingActivity : AppWindowActivity() {
 
         val animationLeft = AnimationUtils.loadAnimation(this, R.anim.slide_in_left_animation)
         cardView.setOnClickListener {
-            openTrainingWindow()
+            firstOpen = false
+            openBeginExerciseActivity()
         }
         if (todayTraining != null) {
             setListView(todayTraining!!)

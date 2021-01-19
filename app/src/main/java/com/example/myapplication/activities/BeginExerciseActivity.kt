@@ -30,8 +30,8 @@ class BeginExerciseActivity : AppWindowActivity() {
         getTraining()
         setRepsAndWeight()
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener { onBackPressed() }
-
+        button.setOnClickListener { onBackPressed()
+        }
 
         val doneButton = findViewById<Button>(R.id.doneButton)
         doneButton.setOnClickListener {
