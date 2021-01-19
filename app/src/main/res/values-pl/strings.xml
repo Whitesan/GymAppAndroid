@@ -99,4 +99,7 @@
     <string name="exerciseTime"> czas ćwiczenia </string>
     <string name="restTime"> czas odpoczynku </string>
     <string name="finish">Zakoncz</string>
+    <string name="mess">Czy chciałbyś wrócić do menu głównego?</string>
+    <string name="goBack">Cofnij</string>
+
 </resources>

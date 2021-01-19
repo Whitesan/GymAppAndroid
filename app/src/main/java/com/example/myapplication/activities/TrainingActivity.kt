@@ -1,5 +1,6 @@
 package com.example.myapplication.activities
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -64,7 +65,9 @@ class TrainingActivity : AppWindowActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training)
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener { onBackPressed() }
+        button.setOnClickListener {
+            showAlert()
+             }
 
         getTraining()
         if (finish) {
@@ -266,7 +269,7 @@ class TrainingActivity : AppWindowActivity() {
             errorLayout.layoutParams = size
         errorLayout.visibility = View.VISIBLE
         errorLayout.setOnClickListener {
-            onBackPressed()
+            backToMenu()
         }
     }
 
@@ -325,8 +328,7 @@ class TrainingActivity : AppWindowActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(applicationContext, MainActivity::class.java))
-        overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
+      showAlert()
     }
 
     private fun initNumberPickers() {
@@ -371,5 +373,27 @@ class TrainingActivity : AppWindowActivity() {
         val body: TextView = findViewById(R.id.ErrorBody)
         body.text = resources.getString(R.string.trainingFinished)
         todayTraining = null
+    }
+    fun showAlert(){
+        val title = resources.getString(R.string.goBack)
+        val yes = resources.getString(R.string.TLA_YES)
+        val no = resources.getString(R.string.TLA_NO)
+        val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        builder.setTitle(title)
+        builder.setMessage(resources.getString(R.string.mess))
+
+        builder.setPositiveButton(yes) { _, _ ->
+            backToMenu()
+        }
+
+        builder.setNegativeButton(no) { _, _ ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
+    private fun backToMenu(){
+        intent = Intent(applicationContext, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
     }
 }

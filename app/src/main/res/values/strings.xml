@@ -108,4 +108,6 @@
     <string name="exerciseTime"> exercise time </string>
     <string name="restTime"> rest time </string>
     <string name="finish">finish</string>
+    <string name="mess">Do you want to back to main menu?</string>
+    <string name="goBack">Back</string>
 </resources>

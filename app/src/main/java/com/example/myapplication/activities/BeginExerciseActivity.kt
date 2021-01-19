@@ -1,5 +1,6 @@
 package com.example.myapplication.activities
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -30,14 +31,13 @@ class BeginExerciseActivity : AppWindowActivity() {
         getTraining()
         setRepsAndWeight()
         val button = findViewById<ImageView>(R.id.navBarAction)
-        button.setOnClickListener { onBackPressed()
+        button.setOnClickListener {
+            onBackPressed()
         }
 
         val doneButton = findViewById<Button>(R.id.doneButton)
-        doneButton.setOnClickListener {
-            onBackPressed()
+        doneButton.doneListener()
 
-        }
     }
     private fun getTraining(){
         todayTraining = super.getIntent().getSerializableExtra("todayTraining") as Training
@@ -58,25 +58,33 @@ class BeginExerciseActivity : AppWindowActivity() {
             val weightDesc:TextView = findViewById(R.id.weightDesc)
             weightDesc.text = getString(R.string.meters)
         }
-
-
     }
     override fun onBackPressed() {
+        showAlert()
+    }
+    private fun backToMenu(){
+        intent = Intent(applicationContext, MainActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+    }
+    private fun Button.doneListener(){
+        setOnClickListener {
+
         intent = Intent(applicationContext, TrainingActivity::class.java)
         intent.putExtra("EditTraining",todayTraining)
         intent.putExtra("Exercise", actualExercise)
         intent.putExtra("Series", actualSet)
-
         startActivity(intent)
-        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
+        overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)        }
+
     }
+
     private fun startClock(descStartTime: Int?) {
         val clock: TextView = findViewById(R.id.clock)
         Stopwatch(0,null)
             .start(100,clock)
     }
     private fun Training.getCurrentExerciseAndSet(){
-
         if(actualExerciseIndex < getExercises().size){
             actualExercise=getExercises()[actualExerciseIndex]
         }
@@ -88,4 +96,22 @@ class BeginExerciseActivity : AppWindowActivity() {
             return  getCurrentExerciseAndSet()
         }
     }
+    fun showAlert(){
+        val title = resources.getString(R.string.goBack)
+        val yes = resources.getString(R.string.TLA_YES)
+        val no = resources.getString(R.string.TLA_NO)
+       val builder = AlertDialog.Builder(this, R.style.AlertDialog)
+        builder.setTitle(title)
+        builder.setMessage(resources.getString(R.string.mess))
+
+        builder.setPositiveButton(yes) { _, _ ->
+            backToMenu()
+        }
+
+        builder.setNegativeButton(no) { _, _ ->
+            return@setNegativeButton
+        }
+        builder.show()
+    }
+
 }
