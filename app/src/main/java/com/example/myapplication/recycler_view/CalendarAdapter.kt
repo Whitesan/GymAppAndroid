@@ -74,7 +74,8 @@ class CalendarAdapter(
 
         private fun onClickCardListener(day : Int){
             val intent = Intent(context, CalendarTrainingListActivity::class.java)
-            intent.putExtra("day", day)
+
+                intent.putExtra("day", day)
             context.startActivity(intent)
         }
     }
