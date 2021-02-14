@@ -34,7 +34,7 @@ class MainActivity : AppWindowActivity() {
         }
         val statistics = findViewById<CardView>(R.id.cardViewStatistics)
         statistics.setOnClickListener {
-            startActivity(Intent(applicationContext, StatisticsActivity::class.java))
+            startActivity(Intent(applicationContext, StatisticsTabActivity::class.java))
             overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_right_animation)
 
         }
