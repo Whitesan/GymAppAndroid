@@ -12,9 +12,14 @@
         <activity
             android:name=".activities.StatisticsTabActivity"
             android:label="@string/title_activity_statistics_tab"
-            android:theme="@style/Theme.MyApplication.NoActionBar"></activity>
-        <activity android:name=".activities.BeginExerciseActivity" />
-        <activity android:name=".activities.SelectAnotherTrainingActivity" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".activities.BeginExerciseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SelectAnotherTrainingActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.TrainingsListActivity"
             android:screenOrientation="portrait" />
@@ -33,9 +38,6 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.CalendarActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.StatisticsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PlannerActivity"
