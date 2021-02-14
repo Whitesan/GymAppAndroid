@@ -100,6 +100,9 @@
 
         <!--    activity_training-->
         <item name="aTrainingPicker">@style/a_activity_training_picker_white</item>
+
+        <!--    activity_statistics-->
+        <item name="aStatisticsTabs">@style/a_activity_statistics_tabs_white</item>
     </style>
 
     <!-- ================================================= -->
@@ -176,6 +179,9 @@
 
         <!--    activity_training-->
         <item name="aTrainingPicker">@style/a_activity_training_picker_dark</item>
+        <!--    activity_statistics-->
+        <item name="aStatisticsTabs">@style/a_activity_statistics_tabs_dark</item>
+
     </style>
 
     <style name="Theme.MyApplication.NoActionBar">

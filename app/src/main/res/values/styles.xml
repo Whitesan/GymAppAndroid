@@ -240,7 +240,10 @@
         <item name="android:scaleY">1</item>
         <item name="android:scaleX">1</item>
     </style>
-
+    <!--    activity_statistics-->
+    <style name="a_activity_statistics_tabs_white">
+        <item name="android:background">@color/theme_background_nav_white</item>
+    </style>
 
     <!-- ================================================= -->
     <!--                Global dark theme                  -->
@@ -476,6 +479,13 @@
         <item name="android:solidColor">#23272a</item>
         <item name="android:scaleY">1</item>
         <item name="android:scaleX">1</item>
+    </style>
+
+
+
+    <!--    activity_statistics-->
+    <style name="a_activity_statistics_tabs_dark">
+        <item name="android:background">@color/theme_background_nav_dark</item>
     </style>
     <!--
 ####################################################################################################

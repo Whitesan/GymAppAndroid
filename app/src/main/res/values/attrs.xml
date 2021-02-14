@@ -56,4 +56,7 @@
 
     <!-- activity_create_training.xml -->
     <attr name="aTrainingPicker" format="reference" />
+
+    <!-- activity_statistics.xml -->
+    <attr name="aStatisticsTabs" format="reference" />
 </resources>
