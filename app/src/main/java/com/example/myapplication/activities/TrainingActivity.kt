@@ -73,7 +73,8 @@ class TrainingActivity : AppWindowActivity() {
         if (finish) {
             trainingFinished()
             finish = false
-        } else if (todayTraining != null && firstWindow) {
+        } else
+        if (todayTraining != null && firstWindow) {
             openTrainingInfo()
         } else if (firstOpen && todayTraining != null) {
             firstOpen = false
@@ -91,6 +92,7 @@ class TrainingActivity : AppWindowActivity() {
                 todayTraining = trainingFromSelectAnother as Training
                 firstWindow = false
                 firstOpen = true
+                finish = false
                 BeginExerciseActivity.actualSetIndex = 0
                 BeginExerciseActivity.actualExerciseIndex = 0
             }
@@ -99,9 +101,13 @@ class TrainingActivity : AppWindowActivity() {
                 firstWindow = false
                 actualExercise = super.getIntent().getSerializableExtra("Exercise") as Exercise
                 actualSet = super.getIntent().getSerializableExtra("Series") as Series
-                finish = false
+
             }
             else -> {
+                if(finish){
+                    return
+                }
+                finish = false
                 val trainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$TRAINING_FILE")
                 var todayDay =  Calendar.getInstance().get(Calendar.DAY_OF_WEEK )-2
                 if(todayDay < 0) todayDay = 6
@@ -303,6 +309,7 @@ class TrainingActivity : AppWindowActivity() {
         if (!firstOpen && BeginExerciseActivity.actualExerciseIndex + 1 >= todayTraining!!.getExercises().size
             && BeginExerciseActivity.actualSetIndex >= actualExercise!!.list.size
         ) {
+            finish = true
             beginButton.text = getText(R.string.finish)
         }
 
@@ -313,10 +320,11 @@ class TrainingActivity : AppWindowActivity() {
     private fun openBeginExerciseActivity() {
         if (actualExercise == null)
             actualExercise = todayTraining!!.getExercises()[0]
-        if (!firstOpen && BeginExerciseActivity.actualExerciseIndex + 1 >= todayTraining!!.getExercises().size
-            && BeginExerciseActivity.actualSetIndex >= actualExercise!!.list.size
-        ) {
-            trainingFinished()
+//        if (!firstOpen && BeginExerciseActivity.actualExerciseIndex + 1 >= todayTraining!!.getExercises().size
+//            && BeginExerciseActivity.actualSetIndex >= actualExercise!!.list.size
+//        ) {
+        if(finish){
+//            trainingFinished()
             val intent = Intent(applicationContext, TrainingActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_left_animation)
@@ -336,7 +344,11 @@ class TrainingActivity : AppWindowActivity() {
     }
 
     override fun onBackPressed() {
-      showAlert()
+        if(firstOpen || finish)
+            backToMenu()
+        else
+            showAlert()
+
     }
 
     private fun initNumberPickers() {
@@ -374,7 +386,8 @@ class TrainingActivity : AppWindowActivity() {
     }
 
     private fun trainingFinished() {
-        finish = true
+//        hideCardView()
+        finish = false
         showError()
         val title: TextView = findViewById(R.id.ErrorTitle)
         title.text = resources.getString(R.string.congratulations)
@@ -382,7 +395,7 @@ class TrainingActivity : AppWindowActivity() {
         body.text = resources.getString(R.string.trainingFinished)
         todayTraining = null
     }
-    fun showAlert(){
+    private fun showAlert(){
         val title = resources.getString(R.string.goBack)
         val yes = resources.getString(R.string.TLA_YES)
         val no = resources.getString(R.string.TLA_NO)
