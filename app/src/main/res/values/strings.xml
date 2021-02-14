@@ -103,7 +103,7 @@
     <string name="todo">To do:</string>
     <string name="done">Done!</string>
     <string name="congratulations">Congratulations!</string>
-    <string name="trainingFinished">workout finished!</string>
+    <string name="trainingFinished">today\'s workout finished!</string>
     <string name="of"> of </string>
     <string name="exerciseTime"> exercise time </string>
     <string name="restTime"> rest time </string>
