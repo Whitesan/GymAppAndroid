@@ -329,11 +329,11 @@ class TrainingActivity : AppWindowActivity() {
         val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
         weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].weight
-        weightPicker.value = actualSet.reps
+        weightPicker.value = actualSet.weight
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         repsPicker.minValue = 0
         repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
-        repsPicker.value = actualSet.weight
+        repsPicker.value = actualSet.reps
 
     }
 
