@@ -132,8 +132,7 @@
                 android:id="@+id/selectAnotherExerciseLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/transparent"
-                >
+                android:background="@color/transparent">
 
 
                 <Button
@@ -176,7 +175,6 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:textSize="30sp" />
-
 
 
             <TextView
@@ -290,22 +288,24 @@
                         android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="15dp"
                 android:background="@color/almost_transparent" />
-            <TextView
-                android:layout_marginTop="20dp"
 
+            <TextView
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:singleLine="true"
+                android:text="@string/restTime"
                 android:textAlignment="center"
                 android:textColor="@color/mild_transparent"
-                android:textSize="16sp"
-                android:text="@string/restTime"
-                />
+                android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/clock"
                 android:layout_width="match_parent"
@@ -314,31 +314,34 @@
                 android:textAlignment="center"
                 android:textSize="40sp" />
 
-            <androidx.cardview.widget.CardView
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
-
-
-                app:cardBackgroundColor="@color/background_dark"
+                android:background="@color/transparent"
                 >
-                <Button
-                    android:id="@+id/beginButton"
+
+                <androidx.cardview.widget.CardView
+                    android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/begin"
-                    android:textSize="22sp"
-                    android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/green"
-                    />
+                    android:layout_margin="15dp"
+                    app:cardBackgroundColor="@color/transparent">
 
-            </androidx.cardview.widget.CardView>
+                    <Button
+                        android:id="@+id/beginButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/entry_shape"
+                        android:backgroundTint="@color/green"
+                        android:text="@string/begin"
+                        android:textSize="22sp" />
 
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
         </LinearLayout>
     </RelativeLayout>
-
-
 
 
 </LinearLayout>
