@@ -3,15 +3,18 @@ package com.example.myapplication.activities
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import com.example.myapplication.Constants.Companion.MAX_REPS_PERCENTAGE
 import com.example.myapplication.Constants.Companion.PARTS_PER_LIST
+import com.example.myapplication.Constants.Companion.SAVED_TRAININGS_FILE
 import com.example.myapplication.Constants.Companion.TRAINING_FILE
 import com.example.myapplication.R
 import com.example.myapplication.Stopwatch
@@ -21,6 +24,7 @@ import com.example.myapplication.exercises.Part
 import com.example.myapplication.exercises.Series
 import com.example.myapplication.exercises.Training
 import com.google.gson.Gson
+import java.time.LocalDateTime
 import java.util.*
 
 
@@ -308,6 +312,7 @@ class TrainingActivity : AppWindowActivity() {
     private fun Button.beginExerciseListener() {
         setOnClickListener {
             openBeginExerciseActivity()
+            updateTraining()
         }
     }
 
@@ -363,6 +368,7 @@ class TrainingActivity : AppWindowActivity() {
         val body: TextView = findViewById(R.id.ErrorBody)
         body.text = resources.getString(R.string.trainingFinished)
         todayTraining = null
+        saveTraining()
     }
 
     private fun showAlert() {
@@ -388,5 +394,29 @@ class TrainingActivity : AppWindowActivity() {
         intent = Intent(applicationContext, MainActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
+    }
+    private fun updateTraining(){
+        val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
+        val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
+        val clock: TextView = findViewById(R.id.clock)
+        if(todayTraining != null){
+            actualSet.doneReps = repsPicker.value
+            actualSet.doneWeight = weightPicker.value
+            actualSet.restTime = Stopwatch.parseSecToInt(clock.text as String)
+        }
+
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun saveTraining(){
+        val allSavedTrainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$SAVED_TRAININGS_FILE")
+        todayTraining?.let {
+            it.setWorkoutDate(LocalDateTime.now())
+            allSavedTrainings.trainingList.add(it)
+
+        }
+        TrainingJsonConverter().toJson(allSavedTrainings,"$filesDir/$SAVED_TRAININGS_FILE")
+
     }
 }

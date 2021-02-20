@@ -13,6 +13,13 @@ import com.example.myapplication.R
 import com.example.myapplication.activities.ui.main.SectionsPagerAdapter
 
 class StatisticsTabActivity : AppWindowActivity() {
+    //TODO Charts from json data
+    //json data -> SAVED_TRAININGS_FILE is a list of all saved trainings (done workouts)
+    //training has a date of workout  :LocalDateTime?
+    //each series contains:
+    // done weight :Int?
+    // done reps   :Int?
+    // rest time   :Int?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

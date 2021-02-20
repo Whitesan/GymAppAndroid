@@ -9,11 +9,13 @@ import java.util.*
 
 class Constants{
     companion object{
+        //Files
         const val TRAINING_FILE = "Training.json"
+        const val SAVED_TRAININGS_FILE = "SavedTrainings.json"
         const val CALENDAR_FILE = "Calendar.json"
         const val CONFIG_FILE = "Config.json"
-        const val PARTS_PER_LIST = 3
 
+        const val PARTS_PER_LIST = 3
         const val MAX_REPS_PERCENTAGE = 2
 
         const val PREFERENCE = "preference.pre";

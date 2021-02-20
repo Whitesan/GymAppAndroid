@@ -5,6 +5,7 @@ import java.io.Serializable
 import java.util.Calendar
 
 class Trainings(var trainingList: ArrayList<Training>) : Serializable {
+
     fun showTrainings(): String {
         var list: String = ""
         for (t in trainingList) {

@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.util.Log
 import android.widget.TextView
 import java.util.*
 import kotlin.concurrent.timerTask
@@ -8,7 +9,17 @@ class Stopwatch(startTimeSec: Long?, private val maxTimeSec: Long? ) {
     private var millis: Long = 0
     private var sec: Long = 0
     private var min: Long = 0
+    companion object{
+        fun parseSecToInt( str:String):Int{
+            var sec:Int = 0
+            val s = StringBuffer(str)
+            s.delete(3,6)
+            sec = Integer.parseInt(s.substring(3,5))
+            sec +=60* Integer.parseInt(s.substring(1,3))
+            return sec
+        }
 
+    }
     init {
         if (startTimeSec != null) {
             addSec(startTimeSec)

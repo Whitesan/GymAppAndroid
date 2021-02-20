@@ -17,6 +17,10 @@ open class Exercise(private var exerciseName:String, private var part: Part?,pri
     {
         list.add(series)
     }
+    fun getSeries(index: Int):Series
+    {
+        return list[index]
+    }
     fun getName():String{
         return exerciseName
     }
