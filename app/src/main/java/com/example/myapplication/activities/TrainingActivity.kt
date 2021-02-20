@@ -268,7 +268,7 @@ class TrainingActivity : AppWindowActivity() {
         beginButton.beginExerciseListener()
         hideCardView()
         val screen: LinearLayout = findViewById(R.id.TrainingScreen)
-        val animIn = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom_animation)
+        val animIn = AnimationUtils.loadAnimation(this, R.anim.slide_in_left_animation)
         animIn.setLabelAnimListener(this)
         setSeriesText()
 
