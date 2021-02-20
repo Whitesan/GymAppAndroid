@@ -329,6 +329,7 @@ class TrainingActivity : AppWindowActivity() {
         repsPicker.minValue = 0
         repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
         repsPicker.value = actualSet.weight
+
     }
 
     private fun startClock(descStartTime: Int?) {

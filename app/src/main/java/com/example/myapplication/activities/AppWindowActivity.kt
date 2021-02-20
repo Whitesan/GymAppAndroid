@@ -2,14 +2,17 @@ package com.example.myapplication.activities
 
 import android.content.Context
 import android.content.res.Configuration
-import android.os.Build
+import android.graphics.Paint
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.View
-import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.NumberPicker
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.Constants
+import java.lang.reflect.Field
 import java.util.*
 
 
@@ -34,9 +37,9 @@ open class AppWindowActivity : AppCompatActivity() {
     }
      private fun hideSystemUI() {
          window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        )
+             WindowManager.LayoutParams.FLAG_FULLSCREEN,
+             WindowManager.LayoutParams.FLAG_FULLSCREEN,
+         )
     }
     final override fun onResume() {
         super.onResume()
@@ -77,4 +80,6 @@ open class AppWindowActivity : AppCompatActivity() {
                 overridePendingTransition(enterAnim, exitAnim)
         }
     }
+
+
 }
