@@ -24,27 +24,7 @@ import com.google.gson.Gson
 import java.util.*
 
 
-//TODO import training list from json, according to week day
 
-/*
-TODO     layout
-1.actual part and exercise
-2.clock + start/stop button
-3.show planned reps and weight  + enter done reps and weight
-4.skip/end series (?)
-
-
-
- */
-/*TODO save stats to JSON
-1.day
-2.exercise
-3.predicted and actual  reps + weight
-4.(?)time:  length of exercise and length if rest
-*/
-//TODO On finish training show summary stats and congratulations (or not)
-//TODO maybe on finish ask for user weight, if he'd like to share save that for future statistics
-//TODO !! Update predicted training according to actual progress (Never regress !!)
 @Suppress("DEPRECATION")
 
 class TrainingActivity : AppWindowActivity() {

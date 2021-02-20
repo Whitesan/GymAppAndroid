@@ -131,16 +131,16 @@
             <RelativeLayout
                 android:id="@+id/selectAnotherExerciseLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_height="match_parent"
                 android:background="@color/transparent">
+
 
                 <Button
                     android:id="@+id/selectAnotherExerciseButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginVertical="15dp"
                     android:background="@drawable/button_rounded_gradient"
                     android:backgroundTint="@color/green"
                     android:text="@string/selectAnotherTraining"
@@ -320,7 +320,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
+                android:layout_margin="15dp"
                 app:cardBackgroundColor="@color/background_dark"
                 >
                 <Button
