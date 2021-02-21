@@ -24,7 +24,7 @@
     <string name="selectAnotherTraining">Select another</string>
     <string name="errorTitle">Sorry, </string>
     <string name="errorBody">there is no workout for today </string>
-    <string name="seriesNumber">sets</string>
+    <string name="seriesNumber">Sets</string>
 
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Enter name</string>

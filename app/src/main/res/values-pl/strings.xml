@@ -28,7 +28,7 @@
     <string name="selectAnotherTraining">Wybierz inny</string>
     <string name="errorTitle">Przykro nam, </string>
     <string name="errorBody">brak treningu na dzisiaj</string>
-    <string name="seriesNumber">seria</string>
+    <string name="seriesNumber">Seria</string>
     <!-- activity_enter_exercise_name.xml -->
     <string name="trainingNameHint">Wpisz nazwę</string>
     <string name="biceps">Biceps</string>

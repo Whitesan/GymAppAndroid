@@ -33,7 +33,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:text="@string/currentExercise" />
+            android:text="@string/currentExercise"
+            />
 
         <Space
             android:layout_width="0dp"
@@ -63,13 +64,15 @@
                 android:maxLines="3"
                 android:text="ExerciseName"
                 android:textAlignment="center"
-                android:textSize="26sp" />
+                android:textSize="26sp"
+                style="?aPlannerTextView"
+                />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="30dp"
-                android:background="@color/almost_transparent" />
+                style="?aStatisticsTabs" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -80,8 +83,9 @@
                 android:maxLines="3"
                 android:text="@string/todo"
                 android:textAlignment="center"
-                android:textColor="@color/mild_transparent"
-                android:textSize="22sp" />
+                android:textSize="22sp"
+                style="?aPlannerTextView"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,7 +105,7 @@
                         android:maxLines="3"
                         android:textAlignment="center"
                         android:textSize="26sp"
-
+                        style="?aPlannerTextView"
                         />
 
                     <TextView
@@ -110,8 +114,9 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/reps"
                         android:textAlignment="center"
-                        android:textColor="@color/mild_transparent"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"
+                        style="?aPlannerTextView"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -125,7 +130,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:textSize="26sp" />
+                        android:textSize="26sp"
+                        style="?aPlannerTextView"
+                        />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -134,8 +141,9 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/weight"
                         android:textAlignment="center"
-                        android:textColor="@color/mild_transparent"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"
+                        style="?aPlannerTextView"
+                        />
                 </LinearLayout>
 
             </LinearLayout>
@@ -151,16 +159,16 @@
                     android:layout_height="2dp"
                     android:layout_marginTop="80dp"
                     android:layout_marginBottom="15dp"
-                    android:background="@color/almost_transparent" />
+                    style="?aStatisticsTabs" />
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:textColor="@color/mild_transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:text="@string/exerciseTime"
+                    style="?aPlannerTextView"
                     />
                 <TextView
                     android:id="@+id/clock"
@@ -168,45 +176,42 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textAlignment="center"
-                    android:textSize="40sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginVertical="15dp"
-                    android:background="@color/almost_transparent" />
+                    android:textSize="40sp"
+                    style="?aPlannerTextView"
+                    />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                style="?aStatisticsTabs"/>
 
-        </LinearLayout>
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20">
-
-            <androidx.cardview.widget.CardView
-                android:layout_alignParentBottom="true"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                app:cardElevation="0dp"
+                android:background="@color/transparent">
 
-                app:cardBackgroundColor="@color/background_dark">
-
-                <Button
-                    android:id="@+id/doneButton"
+                <androidx.cardview.widget.CardView
+                    android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/entry_shape"
-                    android:backgroundTint="@color/red"
-                    android:text="@string/done"
-                    android:textSize="22sp" />
+                    android:layout_margin="15dp"
+                    app:cardElevation="0dp"
+                    style="?aPlannerCardView"
+                    >
 
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
+                    <Button
+                        android:id="@+id/doneButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/done"
+                        android:textSize="22sp"
+                        style="?aCreateTrainingButton"
+                        />
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 

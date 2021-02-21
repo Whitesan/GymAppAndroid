@@ -56,20 +56,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                app:cardBackgroundColor="@color/background_dark"
-                app:cardCornerRadius="50dp">
+                app:cardCornerRadius="50dp"
+                style="?aPlannerCardView"
+                >
+                <!-- app:cardBackgroundColor="@color/background_dark" -->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    style="?cardViewElementBackground"
+                    >
 
                     <LinearLayout
                         android:id="@+id/TrainingInfoLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/nav_color_dark"
                         android:orientation="vertical"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                        style="?cardViewElementBackground"
+                        >
+
 
                         <TextView
                             android:id="@+id/TitleTrainingName"
@@ -77,13 +83,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginVertical="35dp"
                             android:textAlignment="center"
-                            android:textSize="26sp" />
+                            android:textSize="26sp"
+                            style="?aPlannerTextView"
+                            />
+
 
                         <ListView
                             android:id="@+id/ListOfParts"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="40dp" />
+                            android:layout_marginBottom="40dp"
+                            />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -91,15 +101,14 @@
                             android:layout_marginBottom="30dp"
                             android:text="@string/clickToContinue"
                             android:textAlignment="center"
-                            android:textColor="@color/mild_transparent"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"
+                            style="?aPlannerTextView"/>
                     </LinearLayout>
                     <!--                    Error Empty training-->
                     <LinearLayout
                         android:id="@+id/errorLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/card_view_gradient_planner2"
                         android:backgroundTint="@color/gray"
                         android:orientation="vertical"
                         android:visibility="gone">
@@ -112,7 +121,9 @@
                             android:layout_marginBottom="15dp"
                             android:marqueeRepeatLimit="marquee_forever"
                             android:text="@string/errorTitle"
-                            android:textSize="30sp" />
+                            android:textSize="30sp"
+                            style="?aPlannerTextView"
+                            />
 
                         <TextView
                             android:id="@+id/ErrorBody"
@@ -121,7 +132,9 @@
                             android:layout_marginHorizontal="25dp"
                             android:paddingBottom="15dp"
                             android:text="@string/errorBody"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            style="?aPlannerTextView"
+                            />
                     </LinearLayout>
 
 
@@ -142,11 +155,10 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginVertical="15dp"
                     android:background="@drawable/button_rounded_gradient"
-                    android:backgroundTint="@color/green"
                     android:text="@string/selectAnotherTraining"
                     android:textSize="16sp"
                     android:visibility="gone"
-
+                    style="?aCreateTrainingButton"
                     />
             </RelativeLayout>
         </RelativeLayout>
@@ -156,7 +168,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp"
-            android:backgroundTint="@color/gray"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -174,7 +185,9 @@
 
                 android:scrollHorizontally="true"
                 android:singleLine="true"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                style="?aPlannerTextView"
+                />
 
 
             <TextView
@@ -183,14 +196,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
-                android:textColor="@color/mild_transparent"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                style="?aPlannerTextView"
+                />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginVertical="15dp"
-                android:background="@color/almost_transparent" />
+                style="?aStatisticsTabs" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -211,7 +225,9 @@
                         android:text="@string/seriesNumber"
 
                         android:textAlignment="center"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"
+                        style="?aPlannerTextView"
+                        />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -219,15 +235,16 @@
                         android:layout_marginHorizontal="60dp"
                         android:layout_weight="0.25"
 
-                        app:cardBackgroundColor="#2c2f33"
+                        style="?aExercisePickerCardView"
                         app:cardCornerRadius="50dp">
 
                         <NumberPicker
                             android:id="@+id/repsPicker"
                             android:theme="@style/AppTheme.Picker"
-                            style="?aTrainingPicker"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            style="?aExercisePicker"
+                            />
 
                     </androidx.cardview.widget.CardView>
 
@@ -237,8 +254,9 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/reps"
                         android:textAlignment="center"
-                        android:textColor="@color/mild_transparent"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        style="?aPlannerTextView"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -258,7 +276,9 @@
                         android:layout_marginBottom="25dp"
                         android:text="1 of 3"
                         android:textAlignment="center"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"
+                        style="?aPlannerTextView"
+                        />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -266,15 +286,15 @@
                         android:layout_marginHorizontal="60dp"
                         android:layout_weight="0.25"
 
-                        app:cardBackgroundColor="#2c2f33"
-                        app:cardCornerRadius="30dp">
+                        style="?aExercisePickerCardView"
+                        app:cardCornerRadius="50dp">
 
                         <NumberPicker
                             android:id="@+id/weightPicker"
-                            style="?aTrainingPicker"
                             android:theme="@style/AppTheme.Picker"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            style="?aExercisePicker"
 
                             />
                     </androidx.cardview.widget.CardView>
@@ -286,8 +306,8 @@
                         android:layout_marginTop="5dp"
                         android:text="@string/weight"
                         android:textAlignment="center"
-                        android:textColor="@color/mild_transparent"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        style="?aPlannerTextView"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -295,7 +315,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/almost_transparent" />
+                style="?aStatisticsTabs" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -305,7 +325,7 @@
                 android:singleLine="true"
                 android:text="@string/restTime"
                 android:textAlignment="center"
-                android:textColor="@color/mild_transparent"
+                style="?aPlannerTextView"
                 android:textSize="16sp" />
 
             <TextView
@@ -314,32 +334,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:textAlignment="center"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                style="?aPlannerTextView"/>
+
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+
                 android:background="@color/transparent"
                 >
 
                 <androidx.cardview.widget.CardView
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="5dp"
-                    android:layout_marginVertical="15dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
                     app:cardElevation="0dp"
-                    app:cardBackgroundColor="@color/transparent">
+                    style="?aPlannerCardView">
 
                     <Button
                         android:id="@+id/beginButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/entry_shape"
-                        android:backgroundTint="@color/green"
                         android:text="@string/begin"
-                        android:textSize="22sp" />
+                        android:textSize="22sp"
+                        style="?aCreateTrainingButton"/>
 
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>

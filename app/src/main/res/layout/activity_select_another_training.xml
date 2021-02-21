@@ -6,39 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SelectAnotherTrainingActivity"
-    android:background="@color/black"
+    style="?mainBackground"
     android:orientation="vertical"
-    android:layout_weight="15"
+    android:layout_weight="100"
 
     >
     <LinearLayout
+        style="?navStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="8"
         android:orientation="horizontal"
         >
 
         <ImageView
             android:id="@+id/backTrainingsList"
+            style="?navImageViewStyle"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/backward"
-            android:layout_gravity="start"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="10dp"
+            android:src="@drawable/ic_launcher_back_icon_foreground"
             />
         <TextView
             android:id="@+id/plannerTitle"
+            android:text="@string/trainings"
+            style="?navTextViewStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/trainings"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:fontFamily="serif-monospace"
-            android:layout_marginTop="5dp"
             android:layout_weight="5"
-
             />
 
         <Space
@@ -50,7 +45,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
+        android:layout_weight="92"
         >
         <androidx.recyclerview.widget.RecyclerView
 
