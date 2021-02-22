@@ -38,10 +38,10 @@ class TrainingActivity : AppWindowActivity() {
         var finish = false
         var firstWindow = true
         var todayTraining: Training? = null
+        var actualSet: Series? = null
     }
 
     private var actualExercise: Exercise? = null
-    private lateinit var actualSet: Series
     private lateinit var selectAnotherButton: Button
     private var enableBack = false
     private var firstWindow = true
@@ -312,8 +312,8 @@ class TrainingActivity : AppWindowActivity() {
 
     private fun Button.beginExerciseListener() {
         setOnClickListener {
-            openBeginExerciseActivity()
             updateTraining()
+            openBeginExerciseActivity()
         }
     }
 
@@ -330,11 +330,11 @@ class TrainingActivity : AppWindowActivity() {
         val weightPicker: NumberPicker = findViewById(R.id.weightPicker)
         weightPicker.minValue = 0
         weightPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].weight
-        weightPicker.value = actualSet.weight
+        weightPicker.value = actualSet?.weight ?: 0
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         repsPicker.minValue = 0
         repsPicker.maxValue = MAX_REPS_PERCENTAGE * actualExercise!!.list[0].reps
-        repsPicker.value = actualSet.reps
+        repsPicker.value = actualSet?.reps ?: 0
 
     }
 
@@ -401,9 +401,12 @@ class TrainingActivity : AppWindowActivity() {
         val repsPicker: NumberPicker = findViewById(R.id.repsPicker)
         val clock: TextView = findViewById(R.id.clock)
         if(todayTraining != null){
-            actualSet.doneReps = repsPicker.value
-            actualSet.doneWeight = weightPicker.value
-            actualSet.restTime = Stopwatch.parseSecToInt(clock.text as String)
+
+            actualSet?.doneReps = repsPicker.value
+            actualSet?.doneWeight = weightPicker.value
+            actualSet?.restTime = Stopwatch.parseSecToInt(clock.text as String)
+
+            actualSet?.let { todayTraining!!.series.add(it) }
         }
     }
 

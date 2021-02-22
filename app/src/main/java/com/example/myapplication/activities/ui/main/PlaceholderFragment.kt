@@ -48,25 +48,49 @@ class PlaceholderFragment (private val filesDir: String) : Fragment() {
         pageViewModel.text.observe(viewLifecycleOwner) {
 
             val allSavedTrainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$SAVED_TRAININGS_FILE")
-            Log.i("plot", "$it")
-            if("$it" == "1") {
-                val intervalData = (7 downTo 1).map { it }.toMutableList()
-                val chartData = (7 downTo 1).map { 0 }.toMutableList()
 
+            val intervalData = (7 downTo 1).map { it }.toMutableList()
+            val chartData = (7 downTo 1).map { 0 }.toMutableList()
+
+            if("$it" == "1") {
                 for (t in allSavedTrainings.trainingList) {
                     val date = LocalDate.of(t.year, t.month, t.day)
-                    if(checkDateLimit(date)){
-
-                        t
-                        chartData[date.dayOfWeek.value]
-                    }
+                    if (checkDateLimit(date))
+                        for (s in t.series)
+                            s.restTime?.let {
+                                chartData[date.dayOfWeek.value - 1] += it*10
+                            }
                 }
-
-                simpleBarChart.setChartData(chartData, intervalData)
-                simpleBarChart.setMaxValue(chartData.max()!! / 10)
-                simpleBarChart.setMinValue(0)
             }
+
+            if("$it" == "2") {
+                for (t in allSavedTrainings.trainingList){
+                    val date = LocalDate.of(t.year, t.month, t.day)
+                    if(checkDateLimit(date))
+                        for(s in t.series)
+                            s.doneWeight?.let {
+                                chartData[date.dayOfWeek.value - 1] += it
+                            }
+                }
+            }
+
+            if("$it" == "3") {
+                for (t in allSavedTrainings.trainingList){
+                    val date = LocalDate.of(t.year, t.month, t.day)
+                    if(checkDateLimit(date))
+                        for(s in t.series)
+                            s.doneReps?.let {
+                                chartData[date.dayOfWeek.value - 1] += it
+                            }
+                }
+            }
+
+            simpleBarChart.setChartData(chartData, intervalData)
+            simpleBarChart.setMaxValue(chartData.max()!!)
+            simpleBarChart.setMinValue(0)
         }
+
+
         return root
     }
 

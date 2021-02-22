@@ -8,6 +8,7 @@ class Training(private var name:String, private var exerciseList :ArrayList<Exer
 {
     private val id: Long = System.currentTimeMillis()
     private var days: ArrayList<Int> = ArrayList<Int>(7)
+    var series: ArrayList<Series> = ArrayList()
 
     var day: Int = -1
     var month: Int = -1
