@@ -9,7 +9,7 @@ class Trainings(var trainingList: ArrayList<Training>) : Serializable {
     fun showTrainings(): String {
         var list: String = ""
         for (t in trainingList) {
-            list += t.getName()
+            list += t.getName() + "; "
         }
         return list
     }

@@ -25,6 +25,7 @@ import com.example.myapplication.exercises.Series
 import com.example.myapplication.exercises.Training
 import com.google.gson.Gson
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter.ISO_LOCAL_DATE
 import java.util.*
 
 
@@ -36,12 +37,12 @@ class TrainingActivity : AppWindowActivity() {
         var firstOpen = true
         var finish = false
         var firstWindow = true
+        var todayTraining: Training? = null
     }
 
     private var actualExercise: Exercise? = null
     private lateinit var actualSet: Series
     private lateinit var selectAnotherButton: Button
-    private var todayTraining: Training? = null
     private var enableBack = false
     private var firstWindow = true
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -367,7 +368,6 @@ class TrainingActivity : AppWindowActivity() {
         title.text = resources.getString(R.string.congratulations)
         val body: TextView = findViewById(R.id.ErrorBody)
         body.text = resources.getString(R.string.trainingFinished)
-        todayTraining = null
         saveTraining()
     }
 
@@ -391,6 +391,7 @@ class TrainingActivity : AppWindowActivity() {
 
     private fun backToMenu() {
         finish = false
+        todayTraining = null
         intent = Intent(applicationContext, MainActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.fade_in_animation, R.anim.slide_out_right_animation)
@@ -404,19 +405,16 @@ class TrainingActivity : AppWindowActivity() {
             actualSet.doneWeight = weightPicker.value
             actualSet.restTime = Stopwatch.parseSecToInt(clock.text as String)
         }
-
-
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveTraining(){
         val allSavedTrainings = TrainingJsonConverter.loadTrainingJson("$filesDir/$SAVED_TRAININGS_FILE")
-        todayTraining?.let {
-            it.setWorkoutDate(LocalDateTime.now())
-            allSavedTrainings.trainingList.add(it)
 
+        if(todayTraining != null){
+            todayTraining!!.setWorkoutDate(LocalDateTime.now())
+            allSavedTrainings.trainingList.add(todayTraining!!)
         }
         TrainingJsonConverter().toJson(allSavedTrainings,"$filesDir/$SAVED_TRAININGS_FILE")
-
+        todayTraining = null
     }
 }

@@ -105,4 +105,7 @@
     <!-- CalendarActivity.kt -->
     <string name="no_workout">Brak treningów</string>
     <string name="no_workout_msg">Brak dostępnych treningów. Czy chcesz stworzyć własny plan treningowy?</string>
+
+    <string name="tab_text_1">Czas treningu</string>
+    <string name="tab_text_2">Podniesiony ciężar</string>
 </resources>

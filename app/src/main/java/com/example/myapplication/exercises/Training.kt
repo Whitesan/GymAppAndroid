@@ -1,7 +1,6 @@
 package com.example.myapplication.exercises
 
 import java.io.Serializable
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 
@@ -10,13 +9,17 @@ class Training(private var name:String, private var exerciseList :ArrayList<Exer
     private val id: Long = System.currentTimeMillis()
     private var days: ArrayList<Int> = ArrayList<Int>(7)
 
-    private var workoutDate: LocalDateTime? = null
+    var day: Int = -1
+    var month: Int = -1
+    var year: Int = -1
 
-    fun getWorkoutDate(): LocalDateTime? {
-        return workoutDate
+    fun getWorkoutDate(): String {
+        return "$year-$month-$day"
     }
-    fun setWorkoutDate(workoutDate:LocalDateTime?) {
-        this.workoutDate = workoutDate
+    fun setWorkoutDate(workoutDate:LocalDateTime) {
+        day = workoutDate.dayOfMonth
+        month = workoutDate.monthValue
+        year = workoutDate.year
     }
     fun getName (): String
     {

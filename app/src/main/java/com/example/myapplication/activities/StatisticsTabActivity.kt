@@ -1,6 +1,7 @@
 package com.example.myapplication.activities
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -9,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import com.example.myapplication.Constants.Companion.SAVED_TRAININGS_FILE
 import com.example.myapplication.R
+import com.example.myapplication.TrainingJsonConverter
 import com.example.myapplication.activities.ui.main.SectionsPagerAdapter
 
 class StatisticsTabActivity : AppWindowActivity() {
@@ -28,7 +31,7 @@ class StatisticsTabActivity : AppWindowActivity() {
         val button = findViewById<ImageView>(R.id.navBarAction)
         button.setBackListener(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager, "$filesDir")
         val viewPager: ViewPager = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = findViewById(R.id.tabs)
@@ -38,4 +41,5 @@ class StatisticsTabActivity : AppWindowActivity() {
         super.onBackPressed()
         overridePendingTransition(R.anim.fade_in_animation,R.anim.slide_out_left_animation)
     }
+
 }

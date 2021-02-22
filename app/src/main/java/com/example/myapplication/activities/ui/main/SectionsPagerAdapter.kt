@@ -1,6 +1,7 @@
 package com.example.myapplication.activities.ui.main
 
 import android.content.Context
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -16,21 +17,22 @@ private val TAB_TITLES = arrayOf(
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
+class SectionsPagerAdapter(private val context: Context, fm: FragmentManager, private val filesDir: String) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        return PlaceholderFragment.newInstance(position + 1, filesDir)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
+        Log.i("plot", position.toString())
         return context.resources.getString(TAB_TITLES[position])
     }
 
     override fun getCount(): Int {
         // Show 2 total pages.
-        return 2
+        return TAB_TITLES.size
     }
 }
