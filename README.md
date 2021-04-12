@@ -33,6 +33,7 @@ In this window, we choose which training should be assigned to the day of the we
 
 
 ## Training Creator
+### Training creator menu
 Window providing access to the list of created workouts or to the new training creator.
 <p align="center">
 <img src="img/kret_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/kret_white.png" height="600" width="300" >
@@ -57,6 +58,7 @@ The window allows you to describe a given exercise, give it the number of series
 </p>
 
 ## Training 
+### Training menu
 Training window allows you to start training planned for a given day, or if it has not been selected, it allows you to select the training you want to start
 <p align="center">
 <img src="img/tryb_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/tryb_white.png" height="600" width="300" >
