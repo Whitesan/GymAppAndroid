@@ -17,14 +17,15 @@ The main window allows you to go to the 4 main features of the application: sche
 <img src="img/main_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/main_white.png" height="600" width="300" >
 </p>
 
-## Schedule view
+## Schedule
+### Schedule view
 The schedule is used to assign a previously prepared training to the day of the week in which the training is planned to be performed. We do it by pressing on a given day of the week.
 
 <p align="center">
 <img src="img/cal_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/cal_white.png" height="600" width="300" >
 </p>
 
-
+### Training list
 In this window, we choose which training should be assigned to the day of the week selected earlier from the list. We can also remove the previously selected training from the given week by pressing the bin icon in the upper right corner.
 <p align="center">
 <img src="img/tren_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/tren_white.png" height="600" width="300" >
@@ -50,7 +51,7 @@ The window for creating a particular exercise allows you to name an exercise and
 </p>
 
 ### Describe exercise 
-The window allows you to describe a given exercise, give it the number of series, repetitions and weight in each series
+The window allows you to describe a given exercise, give it the number of series, repetitions and weight in each series.
 <p align="center">
 <img src="img/ser_dark.png" height="600" width="300" > &emsp;&emsp;<img src="img/ser_white.png" height="600" width="300" >
 </p>
