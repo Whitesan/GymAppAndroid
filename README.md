@@ -1,5 +1,5 @@
 
-# GymApp &emsp;&emsp; <img align="center" src="app/src/main/res/drawable-v24/logo1.png"  height="42">
+# GymApp &emsp;&emsp; <img align="right" src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"  >
 
 
 GymApp is an android application that helps users  plan their workouts and track their progress.
